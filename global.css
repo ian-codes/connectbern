@@ -10,6 +10,7 @@ body {
     padding: 0;
     min-height: 100vh;
     overflow-x: hidden;
+    overscroll-behavior: none;
     --text-color: rgb(8, 80, 148);
 }
 
