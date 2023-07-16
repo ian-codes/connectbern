@@ -61,21 +61,6 @@
 
 <style>
     @media (max-width: 800px) {
-        section {
-            padding: 2em 1em !important;
-            margin: 0 .5em !important;
-        }
-
-        h2 {
-            font-size: 1.8em !important;
-            width: 100vw;
-            text-align: left;
-        }
-
-        p {
-            margin: 0 !important;
-        }
-
         .topbarWrapper {
             flex-wrap: wrap;
             gap: 1em;
@@ -87,31 +72,6 @@
             margin: 0 !important;
             padding: 0 !important;
         }
-    }
-
-    section {
-        padding: 3em 1em;
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-        border-radius: 1em;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.281);
-        border: 2px dotted rgba(128, 128, 128, 0.253);
-        margin: 2em .5em;
-        background: rgba(255, 255, 255, 0.055);
-    }
-
-    h2 {
-        font-size: 2em;
-        letter-spacing: 2px;
-        font-weight: lighter;
-        color: white;
-    }
-
-    p {
-        line-height: 1.5em;
-        font-size: 1.1em;
-        color: white;
     }
 
     p a {
@@ -143,11 +103,15 @@
         cursor: pointer;
     }
 
+    select option {
+        color: black !important;
+    }
+
     .topbarWrapper {
         display: flex;
         flex-direction: column;
         align-items: start;
-        margin: 0 1rem;
+        margin: 0;
         gap: 1em;
         margin-bottom: 1em;
         padding-bottom: 2em;
@@ -194,21 +158,6 @@
         background-position: center;
         width: 20px;
         height: 20px;
-    }
-
-    input {
-        color: white;
-        background: linear-gradient(rgba(255, 255, 255, 0.124), transparent);
-        padding: .5em;
-        font-size: 1em;
-        border-radius: .5em;
-        border: none;
-        box-shadow: 0 2px 2px rgba(50, 50, 50, 0.425);
-        transition: all .1s ease;
-    }
-
-    input::placeholder {
-        color: white;
     }
 
     .cardsContainer {
