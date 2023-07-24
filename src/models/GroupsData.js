@@ -21,7 +21,7 @@ export const GroupsData = [
         name: "Unkommerzieller Marktplatz",
         desc: "Gruppe zum Verschenken oder Austauschen - Mehr als 6500 Mitglieder",
         img: "marktplatz.webp",
-        link: "https://t.me/%2BEiuWDO-bw-hhYzlk"
+        link: "https://tiny.cc/unkomarktbern"
     },
     {
         name: "What's Up Bern",
