@@ -5,6 +5,11 @@
 
 
 <header>
+    <a id="createdBy" href="https://ian-codes.com" target="_blank">
+        website by ian-codes.com
+        <span class="linkImg"></span>
+    </a>
+
     <a href="/" title="home" class="titleWrapper">
         <div class="logo" style="background: url('logo.svg');" id="logo"></div>
         <div class="textWrapper">
@@ -46,8 +51,10 @@
     @media (max-width: 800px) {
         header {
             margin: 1em !important;
+            margin-top: 2em !important;
             padding: 1em 0 2em 0 !important;
             align-items: start !important;
+            gap: 1em;
         }
         .titleWrapper {
             align-items: start;
@@ -72,6 +79,35 @@
             width: 40px !important;
             height: 40px !important;
         }
+        #createdBy {
+            font-size: .6rem !important;
+            bottom: -1rem !important;
+        }
+    }
+
+    #createdBy {
+        position: absolute;
+        color: white;
+        opacity: .6;
+        font-size: .8rem;
+        letter-spacing: 1px;
+        right: -2rem;
+        bottom: -2rem;
+        transition: all .1s ease;
+    }
+
+    #createdBy:hover {
+        opacity: 1;
+    }
+
+    .linkImg {
+        background: url('link.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 1rem;
+        width: 1rem;
+        filter: invert(1);
     }
 
 
