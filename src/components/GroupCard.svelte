@@ -4,10 +4,16 @@
     function generateDetailsPageLinkFromGroupName(name) {
         return name.replaceAll(" ", "-").toLowerCase();
     }
+
+    let isSelected = false
 </script>
 
+{#if isSelected}
+    <button on:click={() => isSelected = !isSelected} class="deselect"></button>
+{/if}
 
-<div class="container">
+<div class="container {isSelected ? "selected" : ""}">
+    <button on:click={() => isSelected = !isSelected}></button>
     <div class="img" style="background: url('/groups/{GroupDataObject.img}');"></div>
     <div>
         <h3>{GroupDataObject.name}</h3>
@@ -25,6 +31,20 @@
 
 
 <style>
+    .deselect {
+        position: fixed;
+        inset: 0;
+        opacity: 0;
+        background: none;
+    }
+
+    button {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        background: none;
+    }
+
     .container {
         color: white;
         text-align: center;
@@ -34,7 +54,6 @@
         width: 300px;
         height: 300px;
         padding: 1em;
-        cursor: pointer;
         transition: .2s ease all;
         position: relative;
         overflow: hidden;
@@ -43,18 +62,30 @@
         box-shadow: 0 5px 3px 2px rgba(0, 0, 0, 0.158), 0 0 10px rgba(255, 255, 255, 0.089), 0 0 30px rgba(255, 255, 255, 0.199) inset;
     }
 
-    .container:hover, .container:focus {
-        transform: scale(1.05);
-        box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.363);
+    .selected {
+        transform: scale(1.02);
+        box-shadow: 0 5px 10px 2px rgba(0, 0, 0, 0.2);
         background: white;
         color: black;
+        transform: scale(1.02);
+        border-radius: 1em;
     }
 
-    .container:hover .img {
+    .container:hover {
+        box-shadow: 0 5px 10px 2px rgba(0, 0, 0, 0.2);
+        border-radius: 1em;
+    }
+
+    .selected .img, .container:hover .img {
         animation: rainbow 5s infinite linear;
     }
+    
+    .selected .buttonContainer {
+        display: flex;
+        opacity: 1;
+    }
 
-    .container:hover .joinButton {
+    .selected .btn:hover::after {
         opacity: 1;
     }
 
@@ -101,15 +132,6 @@
         transition: opacity .1s ease;
     }
 
-    .container:hover .buttonContainer {
-        display: flex;
-        opacity: 1;
-    }
-
-    .container:hover .btn:hover::after {
-        display: flex;
-        opacity: 1;
-    }
 
     @keyframes rainbow {
         0% {
