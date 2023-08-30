@@ -4,7 +4,7 @@
     import GroupCard from "./GroupCard.svelte";
 
     let groupType = "All"
-    let groupTypes = ["All", "WhatsApp", "Telegram", "Other"]
+    let groupTypes = ["All", "WhatsApp", "Telegram", "Multiplatform", "Other"]
 
     let groups = GroupsData
 
