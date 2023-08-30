@@ -70,7 +70,7 @@
 
     .eyeImg {
         filter: invert(1) !important;
-        background-image: url('eye.png');
+        background-image: url('/eye.png');
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
