@@ -18,6 +18,8 @@
         groups = filterByGroupType(groupType.toLowerCase())
         console.log(groupType)
     }
+
+    export let selectedGroup = ""
 </script>
 
 
@@ -53,7 +55,7 @@
 
     <div class="cardsContainer">
         {#each groups as groupDataObject}
-            <GroupCard GroupDataObject={groupDataObject} />
+            <GroupCard GroupDataObject={groupDataObject} bind:selectedGroup={selectedGroup} />
         {/each}
     </div>
 </section>

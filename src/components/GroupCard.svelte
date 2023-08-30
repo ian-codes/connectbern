@@ -1,36 +1,81 @@
 <script>
     export let GroupDataObject
+    export let selectedGroup = ""
 
     function generateDetailsPageLinkFromGroupName(name) {
         return name.replaceAll(" ", "-").toLowerCase();
     }
 
-    let isSelected = false
+    function isSelected() {
+        return selectedGroup === GroupDataObject.name
+    }
+
+    function changeSelectedGroup() {
+        if (selectedGroup === GroupDataObject.name) deselectGroup()
+
+        else {
+            selectedGroup = GroupDataObject.name
+        }
+        
+        console.log(selectedGroup)
+    }
+
+    function deselectGroup() {
+        selectedGroup = ""
+    }
 </script>
 
-{#if isSelected}
-    <button on:click={() => isSelected = !isSelected} class="deselect"></button>
+{#if selectedGroup === GroupDataObject.name}
+    <button on:click={deselectGroup} class="deselect"></button>
 {/if}
 
-<div class="container {isSelected ? "selected" : ""}">
-    <button on:click={() => isSelected = !isSelected}></button>
+<div class="container {selectedGroup === GroupDataObject.name ? "selected" : ""}">
+    <button on:click={changeSelectedGroup}></button>
     <div class="img" style="background: url('/groups/{GroupDataObject.img}');"></div>
     <div>
         <h3>{GroupDataObject.name}</h3>
         <p>{GroupDataObject.desc}</p>
     </div>
     <div class="buttonContainer">
-        <a href="{GroupDataObject.link}" target="_blank" class="btn joinButton">
+        <a href="{GroupDataObject.link}" target="_blank" class="btn join">
             Join
+            <span class="linkImg"></span>
         </a>
         <a href="{generateDetailsPageLinkFromGroupName(GroupDataObject.name)}" class="btn detailsButton">
             Details
+            <span class="eyeImg"></span>
         </a>
     </div>
 </div>
 
 
 <style>
+    .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .5em;
+        letter-spacing: 1px;
+        font-size: 1em;
+    }
+
+    .linkImg, .eyeImg {
+        width: 1em;
+        height: 1em;
+    }
+
+    .linkImg {
+        filter: invert(1);
+    }
+
+    .eyeImg {
+        filter: invert(1) !important;
+        background-image: url('eye.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+
     .deselect {
         position: fixed;
         inset: 0;
@@ -67,7 +112,6 @@
         box-shadow: 0 5px 10px 2px rgba(0, 0, 0, 0.2);
         background: white;
         color: black;
-        transform: scale(1.02);
         border-radius: 1em;
     }
 
@@ -82,10 +126,6 @@
     
     .selected .buttonContainer {
         display: flex;
-        opacity: 1;
-    }
-
-    .selected .btn:hover::after {
         opacity: 1;
     }
 
@@ -121,15 +161,6 @@
         opacity: 0;
         display: none;
         transition: all .2s ease;
-    }
-
-    .btn::after {
-        opacity: 0;
-        position: absolute;
-        content: '→';
-        right: 7em;
-        pointer-events: none;
-        transition: opacity .1s ease;
     }
 
 
