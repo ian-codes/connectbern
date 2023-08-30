@@ -10,20 +10,22 @@
 
     <div class="container">
         <div class="textContainer">
-            <h2>
-                {data.name}
-            </h2>
-        
-            <p>
-                {data.desc}
-            </p>
-
-            <div class="linkWrapper">
-                Link to join:
-                <a class="join" href="{data.link}">
-                    {data.link}
-                </a>
+            <div>
+                <h2>
+                    {data.name}
+                </h2>
+            
+                <p>
+                    {data.desc}
+                </p>
             </div>
+
+            <a class="join" href="{data.link}">
+                JOIN THIS GROUP
+                <span class="linkImg"></span>
+            </a>
+
+            <div class="placeholder"></div>
         </div>
     
         <div style="background-image: url(groups/{data.img})" class="img"></div>
@@ -50,11 +52,10 @@
         .img {
             width: 200px !important;
         }
+    }
 
-        .linkWrapper {
-            margin: 0 !important;
-            font-size: 1rem !important;
-        }
+    section {
+        padding: 1em !important;
     }
 
     .container {
@@ -68,13 +69,15 @@
     .textContainer {
         display: flex;
         flex-direction: column;
-        gap: 2em;
+        justify-content: space-evenly;
+        gap: 1em;
         width: 100%;
     }
 
     h2 {
         font-size: 2.5em;
         font-weight: bold;
+        margin-bottom: 1rem !important;
     }
 
     p {
@@ -85,6 +88,7 @@
         width: 100%;
         max-width: 300px;
         aspect-ratio: 1;
+        pointer-events: none;
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -94,15 +98,30 @@
     }
 
 
-    .linkWrapper {
+    .join {
+        max-width: max-content;
+        gap: 1em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         text-decoration: none;
-        color: white;
-        font-size: 1.5em;
-        margin: 0 1rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        padding: .8em 1.2em;
+        border-radius: 1em;
+        color: black;
+        background: white;
+        box-shadow: 0 2px 3px black;
     }
 
-    .join {
-        color: white;
+    .linkImg {
+        background: url('link.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 30px;
+        width: 30px;
     }
 
     .back {
@@ -111,6 +130,7 @@
         align-items: center;
         gap: 12px;
         background: black;
+        opacity: .5;
         width: max-content;
         padding: .8em 1.2em;
         transition: all .1s ease;
