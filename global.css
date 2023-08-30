@@ -85,6 +85,15 @@ input::placeholder {
     width: 100%;
 }
 
+.linkImg {
+    background-image: url('link.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+}
+
 
 @media (max-width: 800px) {
     section {
