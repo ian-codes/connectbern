@@ -88,6 +88,7 @@
         justify-content: space-between;
         gap: 3px;
         opacity: 0;
+        display: none;
         transition: all .2s ease;
     }
 
@@ -101,10 +102,12 @@
     }
 
     .container:hover .buttonContainer {
+        display: flex;
         opacity: 1;
     }
 
     .container:hover .btn:hover::after {
+        display: flex;
         opacity: 1;
     }
 
