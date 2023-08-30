@@ -7,7 +7,7 @@
 <header>
     <a id="createdBy" href="https://ian-codes.com" target="_blank">
         website by ian-codes.com
-        <span class="linkImg"></span>
+        <span style="background-image: url('link.png');" class="linkImg"></span>
     </a>
 
     <a href="/" title="home" class="titleWrapper">
@@ -91,9 +91,10 @@
         opacity: .6;
         font-size: .8rem;
         letter-spacing: 1px;
-        right: -2rem;
+        right: 0rem;
         bottom: -2rem;
         transition: all .1s ease;
+        gap: .5em !important;
     }
 
     #createdBy:hover {
@@ -101,7 +102,6 @@
     }
 
     .linkImg {
-        background: url('link.png');
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;

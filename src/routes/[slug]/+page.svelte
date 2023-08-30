@@ -113,10 +113,15 @@
         color: black;
         background: white;
         box-shadow: 0 2px 3px black;
+        transition: all .1s ease;
+    }
+
+    .join:hover {
+        transform: scale(1.02);
     }
 
     .linkImg {
-        background: url('link.png');
+        background-image: url('link.png');
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
@@ -142,8 +147,6 @@
     }
 
     .back:hover {
-        background: white;
         transform: scale(1.02);
-        color: black;
     }
 </style>
