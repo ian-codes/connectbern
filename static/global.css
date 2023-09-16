@@ -1,5 +1,11 @@
+@font-face {
+    font-family: "Jost";
+    src: url('fonts/Jost.ttf');
+}
+
+
 :root {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Jost", sans-serif;
     font-size: 16px;
     scroll-behavior: smooth;
 }
@@ -21,9 +27,9 @@ button {
 
 h2 {
     margin: 0 1rem;
-    font-size: 2em;
+    font-size: 1.8em;
     letter-spacing: 2px;
-    font-weight: lighter;
+    font-weight: normal;
     color: white;
 }
 

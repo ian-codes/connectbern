@@ -6,10 +6,6 @@
         return name.replaceAll(" ", "-").toLowerCase();
     }
 
-    function isSelected() {
-        return selectedGroup === GroupDataObject.name
-    }
-
     function changeSelectedGroup() {
         if (selectedGroup === GroupDataObject.name) deselectGroup()
 
@@ -32,7 +28,7 @@
 <div class="container {selectedGroup === GroupDataObject.name ? "selected" : ""}">
     <button on:click={changeSelectedGroup}></button>
     <div class="img" style="background: url('/groups/{GroupDataObject.img}');"></div>
-    <div>
+    <div class="textContainer">
         <h3>{GroupDataObject.name}</h3>
         <p>{GroupDataObject.desc}</p>
     </div>
@@ -91,6 +87,7 @@
     }
 
     .container {
+        border-radius: 1em;
         color: white;
         text-align: center;
         display: flex;
@@ -102,9 +99,15 @@
         transition: .2s ease all;
         position: relative;
         overflow: hidden;
-        border: 3px solid white;
+        border: 1px dotted white;
         background: linear-gradient(rgba(196, 196, 196, 0.03), transparent);
-        box-shadow: 0 5px 3px 2px rgba(0, 0, 0, 0.158), 0 0 10px rgba(255, 255, 255, 0.089), 0 0 30px rgba(255, 255, 255, 0.199) inset;
+        box-shadow: 0 5px 3px 2px rgba(0, 0, 0, 0.158), 0 0 5px rgba(255, 255, 255, 0.05), 0 0 30px rgba(255, 255, 255, 0.199) inset;
+    }
+
+    .textContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
     }
 
     .selected {
@@ -116,11 +119,12 @@
     }
 
     .container:hover {
-        box-shadow: 0 5px 10px 2px rgba(0, 0, 0, 0.2);
-        border-radius: 1em;
+        box-shadow: 0 5px 3px 2px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.2), 0 0 30px rgba(255, 255, 255, 0.199) inset;
+        transform: scale(1.02);
     }
 
     .selected .img, .container:hover .img {
+        filter: saturate(1);
         animation: rainbow 5s infinite linear;
     }
     
@@ -134,6 +138,7 @@
         font-size: 1.5em;
         text-align: center;
     }
+
 
     .img {
         position: relative;
@@ -166,6 +171,9 @@
 
     @keyframes rainbow {
         0% {
+            filter: saturate(0) hue-rotate(0);
+        }
+        3% {
             filter: saturate(1) hue-rotate(0);
         }
         100% {
