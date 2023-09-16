@@ -31,10 +31,10 @@
         min-height: 120vh;
         width: 100%;
         margin: auto;
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.089) inset, 0 0 500px rgba(255, 255, 255, 0.295), 0 0 50px rgba(0, 0, 0, 0.192);
+        /* background: rgba(128, 128, 128, 0.37); */
+        /* box-shadow: 0 0 30px rgba(0, 0, 0, 0.089) inset, 0 0 500px rgba(255, 255, 255, 0.295), 0 0 50px rgba(0, 0, 0, 0.192); */
         overflow: hidden;
         padding: 1em 2em;
-        background: rgba(128, 128, 128, 0.37);
     }
 
     .gradient {
@@ -65,7 +65,7 @@
         inset: 0;
         position: fixed;
         z-index: -2;
-        opacity: .2;
+        opacity: .1;
         pointer-events: none;
     }
 </style>

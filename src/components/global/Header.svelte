@@ -18,7 +18,7 @@
         </div>
     </a>
 
-    <nav>
+    <!-- <nav>
         <button title="menu" on:click={() => isOpen = !isOpen} class="burger {isOpen ? "burgerOpen" : ""}">
             {#each {length: 3} as _, i}
                 <span></span>
@@ -43,7 +43,7 @@
                 </li>
             </ol>
         {/if}
-    </nav>
+    </nav> -->
 </header>
 
 
@@ -52,7 +52,7 @@
         header {
             margin: 1em !important;
             margin-top: 2em !important;
-            padding: 1em 0 2em 0 !important;
+            padding: 1em 0 3em 0 !important;
             align-items: start !important;
             gap: 1em;
         }
@@ -63,10 +63,9 @@
         h1 {
             font-size: 1.5em !important;
             word-spacing: normal !important;
-            letter-spacing: .2em !important;
         }
         p {
-            font-size: .6em;
+            font-size: .7em;
             word-spacing: normal !important;
             letter-spacing: 1px !important;
         }
@@ -74,6 +73,7 @@
             width: 50px !important;
             height: 50px !important;
             background-size: contain !important;
+            border-width: 2px !important;
         } 
         .burger {
             width: 40px !important;
@@ -198,19 +198,19 @@
         height: 100px;
         aspect-ratio: 1;
         border-radius: 100%;
-        border: 1px solid white;
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.267) inset, 0 0 30px rgba(0, 0, 0, 0.206);
+        border: 2px solid white;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.267) inset, 0 0 10px rgba(0, 0, 0, 0.206);
         animation: spin 2s ease forwards, rotate infinite 30s linear;
     }
 
     @keyframes spin {
         0% {
-            box-shadow: 0 0 200px rgba(255, 255, 255, 0.493) inset, 0 0 30px rgba(192, 192, 192, 0.206);
+            box-shadow: 0 0 200px rgba(255, 255, 255, 0.493) inset, 0 0 10px rgba(192, 192, 192, 0.206);
             transform: rotate(-360deg);
         }
         100% {
             filter: blur(0);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.267) inset, 0 0 40px rgba(0, 0, 0, 0.123);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.267) inset, 0 0 10px rgba(0, 0, 0, 0.123);
             transform: rotate(360deg);
         }
     }
@@ -241,7 +241,7 @@
         justify-content: space-between;
         padding-top: 2em;
         padding-bottom: 2em;
-        margin: 0 4em;
+        margin: 0 2em;
         user-select: none;
     }
 
@@ -262,19 +262,18 @@
     }
 
     p {
-        letter-spacing: 3px;
-        word-spacing: 3px;
+        letter-spacing: 1px;
         color: white;
+        margin-left: 4px !important;
     }
 
     h1 {
         margin: 0;
         margin-bottom: .5rem;
-        font-weight: lighter;
+        font-weight: normal;
         font-size: 2.5em;
         text-transform: uppercase;
-        letter-spacing: 10px;
-        word-spacing: 1rem;
+        letter-spacing: 4px;
         color: white;
     }
 </style>
