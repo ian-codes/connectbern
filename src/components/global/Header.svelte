@@ -1,6 +1,11 @@
 <script>
     import LanguageToggler from "./LanguageToggler.svelte";
     import Nav from "./Nav.svelte";
+
+    import { currentLanguage } from '$lib/stores/languageStore';
+    $: language = $currentLanguage;
+    
+    import { t } from "$lib/locales/translations.js";
 </script>
 
 
@@ -16,7 +21,7 @@
         <div class="logo" style="background: url('logo.svg');" id="logo"></div>
         <div class="textWrapper">
             <h1>Connect Bern</h1>
-            <p>Collection of social groups in Bern</p>
+            <p>{t[language]["logo-description"]}</p>
         </div>
     </a>
 

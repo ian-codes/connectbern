@@ -1,6 +1,6 @@
 <script>
-    import { GroupsData, searchGroups, filterByGroupType } from "../models/GroupsData";
-    import { currentLanguage } from '../stores/languageStore';
+    import { GroupsData, searchGroups, filterByGroupType } from "$lib/models/GroupsData";
+    import { currentLanguage } from '$lib/stores/languageStore';
 
     $: language = $currentLanguage;
 

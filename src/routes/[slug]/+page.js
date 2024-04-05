@@ -1,5 +1,5 @@
-import { GroupsData } from "../../models/GroupsData";
+import { GroupsData } from "$lib/models/GroupsData";
 
 export function load({ params }) {
-    return GroupsData.find((group) => group.name.toLowerCase().split(" ")[0] === params.slug.toLowerCase().split("-")[0]);
+    return GroupsData.find(g => g.slug === params.slug);
 }

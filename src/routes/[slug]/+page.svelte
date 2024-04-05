@@ -1,10 +1,14 @@
 <script>
     export let data;
+
+    import { currentLanguage } from '$lib/stores/languageStore';
+
+    $: language = $currentLanguage;
 </script>
 
 
 <section>
-    <a class="btn back" href="/">
+    <a class="btn back" href="/#{data.slug}">
         <span>→</span>Back
     </a>
 
@@ -12,11 +16,11 @@
         <div class="textContainer">
             <div>
                 <h2>
-                    {data.name}
+                    {data.name[language]}
                 </h2>
             
                 <p>
-                    {data.desc}
+                    {data.desc[language]}
                 </p>
             </div>
 
@@ -28,7 +32,7 @@
             <div class="placeholder"></div>
         </div>
     
-        <div style="background-image: url(groups/{data.img})" class="img"></div>
+        <div style="background-image: url(/groups/{data.img})" class="img"></div>
     </div>
 
 </section>

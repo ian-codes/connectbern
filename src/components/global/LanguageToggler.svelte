@@ -1,5 +1,5 @@
 <script>
-    import { currentLanguage } from '../../stores/languageStore';
+    import { currentLanguage } from '$lib/stores/languageStore';
 
     $: language = $currentLanguage;
 
@@ -27,10 +27,8 @@
     @media (max-width: 800px) { 
         .languageToggler {
             font-size: .8em !important;
-
         }
     }
-
 
     .languageToggler {
         display: flex;
@@ -42,9 +40,10 @@
     .languageToggler button {
         background: none;
         padding: .7em;
-        border: 1px dashed white;
+        border: 1px solid white;
         cursor: pointer;
         opacity: .8;
+        aspect-ratio: 1;
         font-size: .8em;
         color: white;
         border-radius: 100%;

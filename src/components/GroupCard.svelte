@@ -1,18 +1,13 @@
 <script>
-    import { currentLanguage } from '../stores/languageStore';
-
-    export let GroupDataObject
-
+    import { currentLanguage } from '$lib/stores/languageStore';
     $: language = $currentLanguage;
 
-    function getLinkFromName(name) {
-        return name.replaceAll(" ", "-").toLowerCase();
-    }
+    export let GroupDataObject
 </script>
 
 
-<div class="container">
-    <div class="img" style="background: url('/groups/{GroupDataObject.img}');"></div>
+<div id="{GroupDataObject.slug}" class="container">
+    <div class="img" style="background: url('groups/{GroupDataObject.img}');"></div>
     <div class="textContainer">
         <h3>
             {typeof GroupDataObject.name === "string" ? GroupDataObject.name : GroupDataObject.name[language]}
@@ -24,7 +19,7 @@
             Join
             <span class="linkImg" />
         </a>
-        <a href="{getLinkFromName(typeof GroupDataObject.name === "string" ? GroupDataObject.name : GroupDataObject.name[language])}" class="button">
+        <a href="{GroupDataObject.slug}" class="button">
             Info
             <span class="eyeImg" />
         </a>
