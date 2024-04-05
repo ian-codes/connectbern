@@ -22,7 +22,7 @@
 
             <a class="join" href="{data.link}">
                 JOIN THIS GROUP
-                <span class="linkImg"></span>
+                <span class="linkImg" />
             </a>
 
             <div class="placeholder"></div>

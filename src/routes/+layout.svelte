@@ -1,5 +1,4 @@
 <script>
-    import Footer from "../components/global/Footer.svelte";
     import Header from "../components/global/Header.svelte";
 </script>
 
@@ -8,14 +7,9 @@
 
 <div class="outerWrapper">
     <Header />
-
     <main>
-        <slot>
-    
-        </slot>
+        <slot />
     </main>
-    
-    <!-- <Footer /> -->
 </div>
 
 <style>
@@ -31,10 +25,8 @@
         min-height: 120vh;
         width: 100%;
         margin: auto;
-        /* background: rgba(128, 128, 128, 0.37); */
-        /* box-shadow: 0 0 30px rgba(0, 0, 0, 0.089) inset, 0 0 500px rgba(255, 255, 255, 0.295), 0 0 50px rgba(0, 0, 0, 0.192); */
         overflow: hidden;
-        padding: 1em 2em;
+        padding: 1em 0;
     }
 
     .gradient {
@@ -65,7 +57,7 @@
         inset: 0;
         position: fixed;
         z-index: -2;
-        opacity: .1;
+        opacity: .2;
         pointer-events: none;
     }
 </style>

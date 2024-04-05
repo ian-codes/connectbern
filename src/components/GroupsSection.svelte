@@ -1,7 +1,12 @@
-
 <script>
     import { GroupsData, searchGroups, filterByGroupType } from "../models/GroupsData";
+    import { currentLanguage } from '../stores/languageStore';
+
+    $: language = $currentLanguage;
+
     import GroupCard from "./GroupCard.svelte";
+
+    import { t } from "$lib/locales/translations.js";
 
     let groupType = "All"
     let groupTypes = ["All", "WhatsApp", "Telegram", "Multiplatform", "Other"]
@@ -18,8 +23,6 @@
         groups = filterByGroupType(groupType.toLowerCase())
         console.log(groupType)
     }
-
-    export let selectedGroup = ""
 </script>
 
 
@@ -27,17 +30,18 @@
     <div class="topbarWrapper">
         <h2>Groups</h2>
         <p>
-            In these groups you can do many different things. If you have a general 
-            question, ask in the <a href="https://chat.whatsapp.com/FxFhMEQirDLHoRqQzY4UDz">Connect Bern</a> group or read the descriptions 
-            of the groups or translate the name of the group to English if it's in German, 
-            so you understand what the group is about.
+            {@html t[language]['groups-description']}
         </p>
     </div>
 
     <div class="settingsBar">
         <div class="groupTypeFilter">
             <label for="type">Type</label>
-            <select bind:value={groupType} on:change={handleGroupTypeChange} id="type" name="type">
+            <select bind:value={groupType} 
+                on:change={handleGroupTypeChange} 
+                id="type" 
+                name="type">
+
                 {#each groupTypes as type}
                     <option value={type}>{type}</option>
                 {/each}
@@ -45,9 +49,14 @@
         </div>
         
         <div class="searchbar">
-            <input on:change={handleSearch} bind:value={searchTerm} type="text" id="search" name="search" placeholder="Search groups" />
+            <input on:change={handleSearch} bind:value={searchTerm} 
+                type="text" 
+                id="search" 
+                name="search" 
+                placeholder="Search groups..." />
+
             <button class="iconWrapper">
-                <span class="searchIcon" style="background: url('/search.svg');"></span>
+                <span class="searchIcon" style="background: url('/search.svg');"/>
             </button>
         </div>
     </div>
@@ -55,7 +64,7 @@
 
     <div class="cardsContainer">
         {#each groups as groupDataObject}
-            <GroupCard GroupDataObject={groupDataObject} bind:selectedGroup={selectedGroup} />
+            <GroupCard GroupDataObject={groupDataObject} />
         {/each}
     </div>
 </section>
@@ -74,19 +83,30 @@
             margin: 0 !important;
             padding: 0 !important;
         }
+
+        p {
+            font-size: 1em !important;
+        }
     }
 
-    p a {
-        text-decoration: none;
+    a {
+        text-decoration-style: solid;
+        text-underline-offset: .4rem;
         color: white;
-        text-shadow: 1px 1px 2px black;
+    }
+
+    a:hover {
+        text-decoration-style: wavy;
+
+    }
+
+    p {
+        font-size: 1.4rem;
     }
 
     .groupTypeFilter {
         color: white;
-        background: rgba(255, 255, 255, 0.062);
         font-size: 1em;
-        border-radius: .5em;
         border: none;
         box-shadow: 0 2px 2px rgba(50, 50, 50, 0.425);
         display: flex;
@@ -101,7 +121,6 @@
         font-size: 1em;
         border: none;
         padding: .5em;
-        border-radius: 0 .5em .5em 0;
         cursor: pointer;
     }
 
@@ -117,7 +136,6 @@
         gap: 1em;
         margin-bottom: 1em;
         padding-bottom: 2em;
-        border-bottom: 1px dashed rgba(255, 255, 255, 0.486);
     }
 
     .settingsBar {
@@ -136,6 +154,10 @@
         align-items: center;
         justify-content: space-evenly;
         gap: 1em;
+    }
+
+    #search {
+        border-radius: none !important;
     }
 
     .iconWrapper {

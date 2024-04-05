@@ -1,77 +1,125 @@
 export const GroupsData = [
     {
         name: "Connect Bern",
-        desc: "Generelle Hauptgruppe",
+        desc: {
+            de: "Generelle Hauptgruppe.",
+            en: "General-purpose group."
+        },
         img: "connect-bern.webp",
         type: "whatsapp",
         link: "http://tiny.cc/connectbernwhatsapp"
     },
     {
-        name: "Sammlung von Telegramgruppen",
-        desc: "Eine Sammlung von links-orientierten Gruppen auf Telegram",
+        name: {
+            de: "Sammlung von Telegramgruppen",
+            en: "Collection of Telegram Groups"
+        },
+        desc: {
+            de: "Eine Sammlung von links-orientierten Gruppen auf Telegram.",
+            en: "A collection of various kinds of groups on Telegram."
+        },
         img: "telegramgruppen.webp",
         type: "telegram",
         link: "https://tiny.cc/unkomarktbern"
     },
     {
-        name: "Spielegruppe",
-        desc: "Gruppe für alles rund um das Spielen - mehr als 300 Mitglieder",
+        name: {
+            de: "Spielegruppe",
+            en: "Game Group"
+        },
+        desc: {
+            de: "Gruppe für alles rund um das Spielen - mehr als 300 Mitglieder.",
+            en: "A group for everything related to games. Over 300 members."
+        },
         img: "spielegruppe.webp",
         type: "multiplatform",
         link: "https://linktr.ee/gamesbern"
     },
     {
-        name: "Unkommerzieller Marktplatz",
-        desc: "Gruppe zum Verschenken oder Austauschen - Mehr als 6500 Mitglieder",
+        name: {
+            de: "Unkommerzieller Marktplatz",
+            en: "Non-commercial Market"
+        },
+        desc: {
+            de: "Gruppe zum Verschenken oder Austauschen. Mehr als 6500 Mitglieder.",
+            en: "A group for gifting or trading things. Over 6500 members."
+        },
         img: "marktplatz.webp",
         type: "telegram",
         link: "https://tiny.cc/unkomarktbern"
     },
     {
         name: "What's Up Bern",
-        desc: "Eine WhatsApp Gruppe, um Menschen kennenzulernen und von Events zu erfahren",
+        desc: {
+            de: "Eine WhatsApp Gruppe, um Menschen kennenzulernen und von Events zu erfahren.",
+            en: "A WhatsApp group to meet new people and get notified about upcoming events."
+        },
         img: "whats-up-bern.webp",
         type: "multiplatform",
         link: "https://linktr.ee/whatsupbern"
     },
     {
         name: "Let's Bern",
-        desc: "Eine aktive Gruppe, die sich oft trifft",
+        desc: {
+            de: "Eine aktive Gruppe, die sich oft trifft.",
+            en: "An active group that regularly meets up."
+        },
         img: "lets-bern.webp",
         type: "whatsapp",
         link: "http://tiny.cc/letsbern"
     },
     {
         name: "Events and friends Bern",
-        desc: "Eine weitere WhatsApp Gruppe, um Menschen kennenzulernen und von Events zu erfahren",
+        desc: {
+            de: "Eine weitere WhatsApp Gruppe, um Menschen kennenzulernen und von Events zu erfahren.",
+            en: "A WhatsApp group to meet new people and get notified about upcoming events."
+        },
         img: "events-and-friends.webp",
         type: "whatsapp",
         link: "http://tiny.cc/eventsandfriendsbern"
     },
     {
-        name: "Gruppe für IT-Interessierte",
-        desc: "Eine nicht offizielle Gruppe für den Chaos Treff (CCC/Hackerspace)",
+        name: {
+            de: "Gruppe für IT-Interessierte",
+            en: "Group for IT enthusiasts"
+        },
+        desc: {
+            de: "Eine inoffizielle Gruppe für den Chaos Treff (CCC/Hackerspace).",
+            en: "Unofficial gruop for the Chaos Treff (CCC/Hackerspace)."
+        },
         img: "it-gruppe.webp",
         type: "telegram",
         link: "https://t.me/+e6QTJfwGEus0NThi"
     },
     {
-        name: "Bärndütsch Konversationsgruppe",
-        desc: "Um Bärndütch zu üben oder zu reden",
+        name: {
+            de: "Bärndütsch Konversationsgruppe",
+            en: "Bernese Swiss German Conversational Group"
+        },
+        desc: {
+            de: "Um Bärndütch zu üben oder zu reden.",
+            en: "A group to practice and speak Bärndütsch (Bernese Swiss German)."
+        },
         img: "berndeutsch.webp",
         type: "whatsapp",
         link: "https://tiny.cc/berndeutsch"
     },
     {
         name: "Israelis & Jews & Friends",
-        desc: "A group for Israelis, Jews and friends",
+        desc: {
+            en: "A group for Israelis, Jews and friends.",
+            de: "Eine Gruppe für Israelis, Jüdische und Freunde."
+        },
         img: "israelis-jews-friends.webp",
         type: "whatsapp",
         link: "https://tiny.cc/israelisjewsfriends"
     },
     {
         name: "FIRE Community",
-        desc: "The Bernese Meetup for the FIRE community (financial independence, retire early)",
+        desc: {
+            en: "The Bernese Meetup for the FIRE community (financial independence, retire early).",
+            de: "Die berner Meetup-Gruppe der FIRE-Community (Financial Independence, Retire Early)."
+        },
         img: "fire-community.webp",
         type: "other",
         link: "https://forum.mustachianpost.com/t/meetup-in-bern-for-coffee-beer-and-chat-about-fi-re-plans/8673/"

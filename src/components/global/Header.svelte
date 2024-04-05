@@ -1,14 +1,16 @@
 <script>
-    let isOpen = false
+    import LanguageToggler from "./LanguageToggler.svelte";
+    import Nav from "./Nav.svelte";
 </script>
 
 
 
 <header>
-    <a id="createdBy" href="https://ian-codes.com" target="_blank">
+    <!-- <a id="createdBy" href="https://ian-codes.com" target="_blank">
         website by ian-codes.com
         <span style="background-image: url('link.png');" class="linkImg"></span>
-    </a>
+    </a> -->
+
 
     <a href="/" title="home" class="titleWrapper">
         <div class="logo" style="background: url('logo.svg');" id="logo"></div>
@@ -18,32 +20,10 @@
         </div>
     </a>
 
-    <!-- <nav>
-        <button title="menu" on:click={() => isOpen = !isOpen} class="burger {isOpen ? "burgerOpen" : ""}">
-            {#each {length: 3} as _, i}
-                <span></span>
-            {/each}
-        </button>
-        {#if (isOpen)}
-            <ol>
-                <li>
-                    <a class="navlink" href="/">
-                        Groups      
-                    </a>
-                </li>
-                <li>
-                    <a class="navlink" href="/about">
-                        About
-                    </a>
-                </li>
-                <li>
-                    <a class="navlink" href="/contact">
-                        Contact
-                    </a>
-                </li>
-            </ol>
-        {/if}
-    </nav> -->
+    <div class="side-wrapper">
+        <LanguageToggler />
+        <!-- <Nav /> -->
+    </div>
 </header>
 
 
@@ -75,14 +55,24 @@
             background-size: contain !important;
             border-width: 2px !important;
         } 
-        .burger {
-            width: 40px !important;
-            height: 40px !important;
-        }
         #createdBy {
             font-size: .6rem !important;
             bottom: -1rem !important;
         }
+
+        .side-wrapper {
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 0 !important;
+        }
+    }
+
+    .side-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 2em;
     }
 
     #createdBy {
@@ -110,88 +100,6 @@
         filter: invert(1);
     }
 
-
-    nav {
-        position: relative;
-    }
-
-    ol {
-        display: flex;
-        z-index: 1;
-        position: absolute;
-        right: 0;
-        margin: 0;
-        margin-top: 1em;
-        padding: 0;
-        flex-direction: column;
-        list-style: none;
-        color: white;
-        width: max-content;
-        border: 5px solid white;
-        filter: drop-shadow(0 5px 50px rgba(0, 0, 0, 0.247));
-    }
-
-    ol::before {
-        z-index: -1;
-        background: white;
-        position: absolute;
-        right: 10px;
-        top: -20px;
-        content: '';
-        width: 20px;
-        height: 15px;
-        clip-path: polygon(0 100%, 50% 0, 100% 100%)
-    }
-
-    .navlink {
-        box-shadow: 0 2px 1px 1px rgba(255, 255, 255, 0.411);
-        padding: 1em 1.5em 1em 1em;
-        color: black;
-        transition: all .2s ease;
-        background: white;
-    }
-
-
-    .navlink:hover {
-        background: black;
-        color: white
-    }
-
-
-    .burger {
-        position: relative;
-        width: 50px;
-        height: 50px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-        background: none;
-        cursor: pointer;
-        border: 1px dotted white;
-        padding: .5em;
-    }
-
-    .burgerOpen {
-        position: relative;
-    }
-
-    .burger, .burger span {
-        transition: all .2s ease;
-    }
-
-    .burger:hover {
-        padding: 0;
-        border: 0;
-    }
-
-    .burger span {
-        transition: all .2s ease;
-        height: 2px;
-        width: 100%;
-        background: white;
-    }
-
     .logo {
         background-repeat: no-repeat;
         background-position: center;
@@ -199,18 +107,15 @@
         aspect-ratio: 1;
         border-radius: 100%;
         border: 2px solid white;
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.267) inset, 0 0 10px rgba(0, 0, 0, 0.206);
         animation: spin 2s ease forwards, rotate infinite 30s linear;
     }
 
     @keyframes spin {
         0% {
-            box-shadow: 0 0 200px rgba(255, 255, 255, 0.493) inset, 0 0 10px rgba(192, 192, 192, 0.206);
             transform: rotate(-360deg);
         }
         100% {
             filter: blur(0);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.267) inset, 0 0 10px rgba(0, 0, 0, 0.123);
             transform: rotate(360deg);
         }
     }
