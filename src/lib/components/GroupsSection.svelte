@@ -1,5 +1,6 @@
 <script>
-    import { GroupsData, searchGroups, filterByGroupType } from "$lib/models/GroupsData";
+    import { GroupsData } from "$lib/models/GroupsData.js";
+    import { searchGroups, filterByGroupType } from "$lib/services/groupsManager.js";
     import { currentLanguage } from '$lib/stores/languageStore';
 
     $: language = $currentLanguage;
@@ -16,7 +17,7 @@
     let searchTerm = ""
 
     function handleSearch() {
-        groups = searchGroups(searchTerm)
+        groups = searchGroups(searchTerm, language)
     }
 
     function handleGroupTypeChange() {

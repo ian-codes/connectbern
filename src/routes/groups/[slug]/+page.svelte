@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>{data.name[language]} • Groups • Connect Bern </title>
+	<title>{data?.name?.[lang] ?? "Loading..."} • Connect Bern </title>
 </svelte:head>
 
 
@@ -8,7 +8,7 @@
 
     import { currentLanguage } from '$lib/stores/languageStore';
 
-    $: language = $currentLanguage;
+    $: lang = $currentLanguage;
 </script>
 
 
@@ -21,11 +21,11 @@
         <div class="textContainer">
             <div>
                 <h2>
-                    {data.name[language]}
+                    {data?.name?.[lang] ?? "Loading..."}
                 </h2>
             
                 <p>
-                    {data.desc[language]}
+                    {data?.desc?.[lang] ?? "Loading..."}
                 </p>
             </div>
 
