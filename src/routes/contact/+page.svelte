@@ -1,3 +1,8 @@
+<svelte:head>
+	<title>Contact • Connect Bern </title>
+</svelte:head>
+
+
 <!-- 
 
 <section>

@@ -1,7 +1,17 @@
 <script>
-    let isOpen = false
+    import { MenuData } from "$lib/models/MenuData.js";
+    import { currentLanguage } from "$lib/stores/languageStore.js";
+
+    $: lang = $currentLanguage;
+
+    let isOpen = false;
 </script>
 
+
+<button   
+    style="display: {isOpen ? "block" : "none"};" 
+    on:click={() => {isOpen = false;}} 
+    class="defocus" />
 
 <nav>
     <button title="menu" on:click={() => isOpen = !isOpen} class="burger {isOpen ? "burgerOpen" : ""}">
@@ -11,27 +21,26 @@
     </button>
     {#if (isOpen)}
         <ol>
-            <li>
-                <a class="navlink" href="/">
-                    Groups      
-                </a>
-            </li>
-            <li>
-                <a class="navlink" href="/about">
-                    About
-                </a>
-            </li>
-            <li>
-                <a class="navlink" href="/contact">
-                    Contact
-                </a>
-            </li>
+            {#each MenuData as item}
+                <li>
+                    <a title="{item.title[lang]}" class="navlink" href="/{item.slug}" on:click={() => {isOpen = false;}}>
+                        <span class="img" style="background-image: url(/navigation/{item.img});" />
+                        {item.title[lang]}
+                    </a>
+                </li>
+            {/each}
         </ol>
     {/if}
 </nav>
 
 
 <style>
+    .defocus {
+        position: fixed;
+        inset: 0;
+        opacity: 0;
+    }
+
     @media (max-width: 800px) {
         .burger {
             width: 40px !important;
@@ -64,7 +73,7 @@
         color: white;
         width: max-content;
         border: 5px solid white;
-        filter: drop-shadow(0 5px 50px rgba(0, 0, 0, 0.247));
+        filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.4));
     }
 
     ol::before {
@@ -80,18 +89,34 @@
     }
 
     .navlink {
+        display: flex;
+        flex-direction: row;
+        gap: .5em;
+        align-items: center;
+        justify-content: start;
         box-shadow: 0 2px 1px 1px rgba(255, 255, 255, 0.411);
         padding: 1em 1.5em 1em 1em;
         color: black;
-        transition: all .2s ease;
         background: white;
     }
-
-
     .navlink:hover {
-        background: black;
-        color: white
+        background: rgb(65, 65, 65);
+        color: white;
     }
+    .navlink:hover .img {
+        filter: invert(1);
+    }
+    .navlink .img {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 20px;
+        aspect-ratio: 1;
+    }
+    .navlink, .navlink .img {
+        transition: all .2s ease;
+    }
+
 
 
     .burger {

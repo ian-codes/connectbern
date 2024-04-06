@@ -10,12 +10,12 @@
 
 
 <div class="languageToggler">
-    <button id="en" 
+    <button id="en" title="English"
         on:click={() => handleLanguageToggle("en")}
         class:active={language == "en"}>
         EN
     </button>
-    <button id="de" 
+    <button id="de" title="Deutsch"
         on:click={() => handleLanguageToggle("de")}
         class:active={language == "de"}>
         DE
@@ -42,7 +42,7 @@
         padding: .7em;
         border: 1px solid white;
         cursor: pointer;
-        opacity: .8;
+        opacity: 1;
         aspect-ratio: 1;
         font-size: .8em;
         color: white;

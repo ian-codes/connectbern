@@ -7,7 +7,7 @@
 
 
 <div id="{GroupDataObject.slug}" class="container">
-    <div class="img" style="background: url('groups/{GroupDataObject.img}');"></div>
+    <div class="img" style="background: url('/groups/{GroupDataObject.img}');"></div>
     <div class="textContainer">
         <h3>
             {typeof GroupDataObject.name === "string" ? GroupDataObject.name : GroupDataObject.name[language]}
@@ -15,13 +15,13 @@
         <p>{GroupDataObject.desc[language]}</p>
     </div>
     <div class="buttonContainer">
-        <a href="{GroupDataObject.link}" target="_blank" class="button">
-            Join
+        <a title="Join group" href="{GroupDataObject.link}" target="_blank" class="button">
             <span class="linkImg" />
+            Join
         </a>
-        <a href="{GroupDataObject.slug}" class="button">
-            Info
+        <a title="Show details" href="/groups/{GroupDataObject.slug}" class="button">
             <span class="eyeImg" />
+            Info
         </a>
     </div>
 </div>
@@ -42,6 +42,8 @@
         color: black;
         background: white;
         box-shadow: 0 2px 3px black;
+    }
+    .button, .button span {
         transition: all .1s ease;
     }
 
@@ -100,7 +102,7 @@
     .container:hover .img, 
     .container:focus .img {
         filter: saturate(1);
-        animation: rainbow 5s infinite linear;
+        /* animation: rainbow 5s infinite linear; */
     }
 
     .container:hover .buttonContainer,

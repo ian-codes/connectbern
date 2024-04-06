@@ -4,7 +4,7 @@
 
     $: language = $currentLanguage;
 
-    import GroupCard from "./GroupCard.svelte";
+    import GroupCard from "$lib/components/GroupCard.svelte";
 
     import { t } from "$lib/locales/translations.js";
 
@@ -28,7 +28,9 @@
 
 <section>
     <div class="topbarWrapper">
-        <h2>Groups</h2>
+        <h2>
+            {t[language]["groups"]}
+        </h2>
         <p>
             {@html t[language]['groups-description']}
         </p>
@@ -36,9 +38,10 @@
 
     <div class="settingsBar">
         <div class="groupTypeFilter">
-            <label for="type">Type</label>
+            <label title="Filter groups by type" for="type">Type</label>
             <select bind:value={groupType} 
                 on:change={handleGroupTypeChange} 
+                title="Filter groups by type" 
                 id="type" 
                 name="type">
 
@@ -50,17 +53,17 @@
         
         <div class="searchbar">
             <input on:change={handleSearch} bind:value={searchTerm} 
-                type="text" 
+                type="text"
+                title="Search Groups"
                 id="search" 
                 name="search" 
-                placeholder="Search groups..." />
+                placeholder="{t[language]["search-groups"]}" />
 
-            <button class="iconWrapper">
+            <button title="Go" class="iconWrapper">
                 <span class="searchIcon" style="background: url('/search.svg');"/>
             </button>
         </div>
     </div>
-
 
     <div class="cardsContainer">
         {#each groups as groupDataObject}

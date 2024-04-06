@@ -1,6 +1,6 @@
 <script>
-    import LanguageToggler from "./LanguageToggler.svelte";
-    import Nav from "./Nav.svelte";
+    import LanguageToggler from "$lib/components/global/LanguageToggler.svelte";
+    import Nav from "$lib/components/global/Nav.svelte";
 
     import { currentLanguage } from '$lib/stores/languageStore';
     $: language = $currentLanguage;
@@ -11,12 +11,6 @@
 
 
 <header>
-    <!-- <a id="createdBy" href="https://ian-codes.com" target="_blank">
-        website by ian-codes.com
-        <span style="background-image: url('link.png');" class="linkImg"></span>
-    </a> -->
-
-
     <a href="/" title="home" class="titleWrapper">
         <div class="logo" style="background: url('logo.svg');" id="logo"></div>
         <div class="textWrapper">
@@ -27,17 +21,23 @@
 
     <div class="side-wrapper">
         <LanguageToggler />
-        <!-- <Nav /> -->
+        <Nav />
     </div>
 </header>
 
 
 <style>
+    @media (max-width: 420px) {
+        p {
+            display: none !important;
+        }
+    }
+
     @media (max-width: 800px) {
         header {
             margin: 1em !important;
             margin-top: 2em !important;
-            padding: 1em 0 3em 0 !important;
+            padding: 0 !important;
             align-items: start !important;
             gap: 1em;
         }
@@ -50,7 +50,7 @@
             word-spacing: normal !important;
         }
         p {
-            font-size: .7em;
+            font-size: .7rem !important;
             word-spacing: normal !important;
             letter-spacing: 1px !important;
         }
@@ -58,12 +58,8 @@
             width: 50px !important;
             height: 50px !important;
             background-size: contain !important;
-            border-width: 2px !important;
+            border-width: 1px !important;
         } 
-        #createdBy {
-            font-size: .6rem !important;
-            bottom: -1rem !important;
-        }
 
         .side-wrapper {
             flex-direction: column !important;
@@ -79,32 +75,7 @@
         align-items: center;
         gap: 2em;
     }
-
-    #createdBy {
-        position: absolute;
-        color: white;
-        opacity: .6;
-        font-size: .8rem;
-        letter-spacing: 1px;
-        right: 0rem;
-        bottom: -2rem;
-        transition: all .1s ease;
-        gap: .5em !important;
-    }
-
-    #createdBy:hover {
-        opacity: 1;
-    }
-
-    .linkImg {
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 1rem;
-        width: 1rem;
-        filter: invert(1);
-    }
-
+    
     .logo {
         background-repeat: no-repeat;
         background-position: center;
@@ -165,6 +136,7 @@
 
     .titleWrapper {
         animation: blur 1s forwards ease;
+        align-items: start;
     }
 
     a:hover {
@@ -174,14 +146,14 @@
     p {
         letter-spacing: 1px;
         color: white;
+        font-size: 1rem;
         margin-left: 4px !important;
     }
 
     h1 {
         margin: 0;
-        margin-bottom: .5rem;
         font-weight: normal;
-        font-size: 2.5em;
+        font-size: 3rem;
         text-transform: uppercase;
         letter-spacing: 4px;
         color: white;

@@ -1,5 +1,5 @@
 <script>
-    import Header from "../components/global/Header.svelte";
+    import Header from "$lib/components/global/Header.svelte";
 </script>
 
 <div class="gradient"></div>
@@ -12,11 +12,38 @@
     </main>
 </div>
 
+
 <style>
     @media (max-width: 800px) {
         .outerWrapper {
             padding: 0 !important;
         }
+
+        .topbarWrapper {
+            flex-wrap: wrap;
+            gap: 1em;
+            margin: 0 !important;
+            padding: 0 0 1em 0 !important;
+        }
+
+        .settingsBar {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        p {
+            font-size: 1em !important;
+        }
+    }
+
+    .topbarWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        margin: 0;
+        gap: 1em;
+        margin-bottom: 1em;
+        padding-bottom: 2em;
     }
 
     .outerWrapper {

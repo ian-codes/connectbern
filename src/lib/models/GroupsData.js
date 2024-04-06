@@ -1,6 +1,9 @@
 export const GroupsData = [
     {
-        name: "Connect Bern",
+        name: {
+            de: "Connect Bern",
+            en: "Connect Bern"
+        },
         slug: "connect-bern",
         desc: {
             de: "Generelle Hauptgruppe.",
@@ -53,7 +56,10 @@ export const GroupsData = [
         link: "https://tiny.cc/unkomarktbern"
     },
     {
-        name: "What's Up Bern",
+        name: {
+            de: "What's Up Bern",
+            en: "What's Up Bern"
+        },
         slug: "whats-up-bern",
         desc: {
             de: "Eine WhatsApp Gruppe, um Menschen kennenzulernen und von Events zu erfahren.",
@@ -64,7 +70,10 @@ export const GroupsData = [
         link: "https://linktr.ee/whatsupbern"
     },
     {
-        name: "Let's Bern",
+        name: {
+            de: "Let's Bern",
+            en: "Let's Bern"
+        },
         slug: "lets-bern",
         desc: {
             de: "Eine aktive Gruppe, die sich oft trifft.",
@@ -75,7 +84,10 @@ export const GroupsData = [
         link: "http://tiny.cc/letsbern"
     },
     {
-        name: "Events and friends Bern",
+        name: {
+            de: "Events and friends Bern",
+            en: "Events and Friends Berne"
+        },
         slug: "events-and-friends-bern",
         desc: {
             de: "Eine weitere WhatsApp Gruppe, um Menschen kennenzulernen und von Events zu erfahren.",
@@ -114,7 +126,10 @@ export const GroupsData = [
         link: "https://tiny.cc/berndeutsch"
     },
     {
-        name: "Israelis & Jews & Friends",
+        name: {
+            de: "Israelis, Jüdische & Freunde",
+            en: "Israelis, Jews & Friends"
+        },
         slug: "israelis-jews-and-friends",
         desc: {
             en: "A group for Israelis, Jews and friends.",
@@ -125,7 +140,10 @@ export const GroupsData = [
         link: "https://tiny.cc/israelisjewsfriends"
     },
     {
-        name: "FIRE Community",
+        name: {
+            de: "FIRE Community Bern",
+            en: "FIRE Community Berne"
+        },
         slug: "fire-community-bern",
         desc: {
             en: "The Bernese Meetup for the FIRE community (financial independence, retire early).",
