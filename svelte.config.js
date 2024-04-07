@@ -6,7 +6,7 @@ const config = {
 
     kit: {
         adapter: adapter({
-            fallback: 'index.html' // may differ from host to host
+            fallback: '404.html'
         }),
 
         prerender: {

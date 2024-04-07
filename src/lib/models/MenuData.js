@@ -4,7 +4,7 @@ export const MenuData = [
             de: "Gruppen",
             en: "Groups"
         },
-        slug: "groups",
+        slug: "",
         img: "groups.svg"
     },
     {

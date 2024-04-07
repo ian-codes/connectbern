@@ -1,13 +1,10 @@
 <svelte:head>
-	<title>Home • Connect Bern </title>
+	<title>Groups • Connect Bern </title>
+    <link rel="canonical" href="https://connectbern.ch/groups">
 </svelte:head>
 
-
 <script>
-    import { goto } from "$app/navigation";
-    import { onMount } from "svelte";
-
-    onMount(() => {
-        goto('/groups');
-    })
+    import GroupsSection from "$lib/components/GroupsSection.svelte";
 </script>
+
+<GroupsSection />

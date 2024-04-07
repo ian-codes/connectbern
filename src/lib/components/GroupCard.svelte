@@ -19,7 +19,7 @@
             <span class="linkImg" />
             Join
         </a>
-        <a title="Show details" href="/groups/{GroupDataObject.slug}" class="button">
+        <a title="Show details" href="/{GroupDataObject.slug}" class="button">
             <span class="eyeImg" />
             Info
         </a>
