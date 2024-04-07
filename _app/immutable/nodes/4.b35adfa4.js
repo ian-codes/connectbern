@@ -1,0 +1,1 @@
+import{s as n,n as e}from"../chunks/scheduler.2347a761.js";import{S as s,i as a,G as c,f as r}from"../chunks/index.21164477.js";function h(o){return{c(){this.h()},l(t){c("svelte-bjhll1",document.head).forEach(r),this.h()},h(){document.title="Contact • Connect Bern "},m:e,p:e,i:e,o:e,d:e}}class m extends s{constructor(t){super(),a(this,t,null,h,n,{})}}export{m as component};
