@@ -1,10 +1,73 @@
+@font-face {
+    font-family: "Jost";
+    src: url('fonts/Inter.ttf');
+}
+
+
+/* calendar */
+.ec {
+    --ec-text-color: #ffffff !important;
+}
+.ec-event {
+    cursor: pointer !important;
+    background: linear-gradient(-90deg, rgb(0, 153, 255), rgb(29, 99, 179)) !important;
+    transition: all .2s ease;
+}
+.ec-event:hover {
+    scale: 1.1;
+}
+.event-modal-button {
+    font-size: 1rem;
+    background: rgb(233, 233, 233);
+    color: black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5em;
+    padding: 1em;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: all .2s ease;
+}
+.event-modal-button:hover {
+    font-weight: bold;
+    background: linear-gradient(-120deg, rgb(0, 153, 255), rgb(233, 8, 120));
+    color: white;
+    scale: 1.05;
+    box-shadow: 0 3px 5px black;
+    animation: glow 4s infinite linear;
+}
+.event-modal-button:hover .icon {
+    filter: invert(1) !important;
+}
+.icon {
+    display: block;
+    height: 20px;
+    aspect-ratio: 1;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+@keyframes glow {
+    0% {
+        filter: hue-rotate(0);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+
+
 :root {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     scroll-behavior: smooth;
 }
 
 body {
+    font-family: "Jost", sans-serif;
     --text-color: rgb(8, 80, 148);
     position: relative;
     margin: 0;
@@ -16,14 +79,15 @@ body {
 
 button {
     padding: 0;
+    background: none;
     border: none;
+    cursor: pointer;
 }
 
 h2 {
     margin: 0 1rem;
-    font-size: 2em;
-    letter-spacing: 2px;
-    font-weight: lighter;
+    font-size: 2rem;
+    font-weight: normal;
     color: white;
 }
 
@@ -35,14 +99,16 @@ p {
     color: white;
 }
 
+a {
+    color: white;
+}
+
 section {
     padding: 3em 1em;
     display: flex;
     flex-direction: column;
     gap: 1em;
-    border-radius: 1em;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.281);
-    border: 2px dotted rgba(128, 128, 128, 0.253);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     margin: 2em .5em;
     background: rgba(255, 255, 255, 0.055);
 }
@@ -59,7 +125,7 @@ form {
 input, textarea {
     color: white;
     background: linear-gradient(rgba(255, 255, 255, 0.124), transparent);
-    padding: .5em;
+    padding: .5em .8em;
     font-size: 1em;
     border-radius: .5em;
     border: none;
@@ -69,6 +135,30 @@ input, textarea {
 
 input::placeholder {
     color: white;
+}
+
+.btn {
+    background: black;
+    text-decoration: none;
+    color: white;
+    border-radius: 1em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: .8em;
+    font-weight: bold;
+    padding: 1em;
+    transition: all .2s ease;
+    width: 100%;
+    cursor: pointer;
+}
+
+.linkImg {
+    background-image: url('/icons/link.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
 }
 
 
