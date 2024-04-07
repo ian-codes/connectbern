@@ -1,5 +1,6 @@
 <svelte:head>
 	<title>{data?.name?.[lang] ?? "Loading..."} • Connect Bern </title>
+    <link rel="canonical" href="https://connectbern.ch/groups/{data?.slug}">
 </svelte:head>
 
 
