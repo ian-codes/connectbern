@@ -4,6 +4,30 @@
 }
 
 
+/* calendar */
+.ec {
+    --ec-text-color: #ffffff !important;
+}
+.ec-event {
+    cursor: pointer !important;
+    background: linear-gradient(-90deg, rgb(0, 153, 255), rgb(29, 99, 179)) !important;
+    transition: all .2s ease;
+}
+.ec-event:hover {
+    scale: 1.1;
+}
+
+@keyframes glow {
+    0% {
+        filter: hue-rotate(0);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+
+
 :root {
     font-size: 16px;
     scroll-behavior: smooth;
@@ -23,6 +47,7 @@ body {
 button {
     padding: 0;
     border: none;
+    cursor: pointer;
 }
 
 h2 {

@@ -6,11 +6,13 @@
 <script>
     import { t } from "$lib/locales/translations.js";
     import { currentLanguage } from '$lib/stores/languageStore';
+    import Calendar from "$lib/components/calendar/Calendar.svelte";
 
     $: lang = $currentLanguage;
 </script>
 
 
+<Calendar />
 
 <section>
     <div class="topbarWrapper">

@@ -52,7 +52,6 @@
         min-height: 120vh;
         width: 100%;
         margin: auto;
-        overflow: hidden;
         padding: 1em 0;
     }
 
@@ -68,16 +67,7 @@
         opacity: 1;
         animation: glow 40s infinite linear;
     }
-
-    @keyframes glow {
-        0% {
-            filter: hue-rotate(0);
-        }
-        100% {
-            filter: hue-rotate(360deg);
-        }
-    }
-
+    
     .bg {
         height: 120vh;
         background: black;

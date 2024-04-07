@@ -9,6 +9,10 @@
 		"deploy": "npm run build && gh-pages -d build -t true"
 	},
 	"devDependencies": {
+		"@event-calendar/core": "^2.6.1",
+		"@event-calendar/day-grid": "^2.6.1",
+		"@event-calendar/list": "^2.6.1",
+		"@event-calendar/time-grid": "^2.6.1",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/adapter-static": "^2.0.2",
 		"@sveltejs/kit": "^1.20.4",
@@ -17,6 +21,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@internationalized/date": "^3.5.2",
+		"bits-ui": "^0.21.2",
+		"dayjs": "^1.11.10",
 		"gh-pages": "^5.0.0"
 	}
 }

@@ -1,4 +1,5 @@
 <script>
+    import { onMount } from "svelte";
     import LanguageToggler from "$lib/components/global/LanguageToggler.svelte";
     import Nav from "$lib/components/global/Nav.svelte";
 
