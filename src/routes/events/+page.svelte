@@ -11,9 +11,6 @@
     $: lang = $currentLanguage;
 </script>
 
-
-<!-- <Calendar /> -->
-
 <section>
     <div class="topbarWrapper">
         <h2>Events</h2>
@@ -159,6 +156,8 @@
         </li>
     </ul>
 </section>
+
+<Calendar />
 
 
 <style>
