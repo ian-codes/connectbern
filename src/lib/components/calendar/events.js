@@ -8,16 +8,19 @@ export const events = [
     {
         title: "BlaBla Language Exchange",
         start: new Date(2024, 3, 7, 19, 0),
-        end: new Date(2024, 3, 7, 22, 0)
+        end: new Date(2024, 3, 7, 22, 0),
+        extendedProps: { slug: "blabla-language-exchange" }
     },
     {
         title: "Karaoke Night at Delfino",
         start: new Date(2024, 3, 5, 21, 0),
-        end: new Date(2024, 3, 5, 23, 0)
+        end: new Date(2024, 3, 5, 23, 0),
+        extendedProps: { slug: "karaoke-night-delfino" }
     },
     {
         title: "Meetup",
         start: start,
-        end: end
+        end: end,
+        extendedProps: { slug: "meetup" }
     }
 ];

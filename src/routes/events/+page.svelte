@@ -12,7 +12,7 @@
 </script>
 
 
-<Calendar />
+<!-- <Calendar /> -->
 
 <section>
     <div class="topbarWrapper">

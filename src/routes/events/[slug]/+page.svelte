@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>{data?.name?.[lang] ?? "Loading..."} • Connect Bern </title>
+	<title>{data?.title ?? "Loading..."} • Events • Connect Bern </title>
 </svelte:head>
 
 
@@ -13,7 +13,7 @@
 
 
 <section>
-    <a class="btn back" href="/groups/#{data.slug}">
+    <a class="btn back" href="/events">
         <span>→</span>Back
     </a>
 
@@ -21,25 +21,11 @@
         <div class="textContainer">
             <div>
                 <h2>
-                    {data?.name?.[lang] ?? "Loading..."}
+                    {data?.title ?? "Loading..."}
                 </h2>
-            
-                <p>
-                    {data?.desc?.[lang] ?? "Loading..."}
-                </p>
             </div>
-
-            <a class="join" href="{data.link}">
-                JOIN THIS GROUP
-                <span class="linkImg" />
-            </a>
-
-            <div class="placeholder"></div>
         </div>
-    
-        <div style="background-image: url(/groups/{data.img})" class="img"></div>
     </div>
-
 </section>
 
 
@@ -130,7 +116,7 @@
     }
 
     .linkImg {
-        background-image: url('/icons/link.png');
+        background-image: url('/link.png');
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;

@@ -1,28 +1,49 @@
 <script>
+    import { onMount } from 'svelte';
+    import { writable } from 'svelte/store';
     import '@event-calendar/core/index.css';
     import Calendar from '@event-calendar/core';
     import DayGrid from '@event-calendar/day-grid';
+    import TimeGrid from "@event-calendar/time-grid";
     import { events } from "$lib/components/calendar/events.js";
     import EventInfoModal from './EventInfoModal.svelte';
+
 
     function handleEventClick(info) {
         event = info.event;
         isOpen = true;
-        console.log(isOpen);
+        console.log(event);
     }
 
     function closeEventInfoModal() {
         isOpen = false;
     }
 
+    const currentView = writable("dayGridMonth");
+
+    function checkViewportAndSetView() {
+        if (window.innerWidth <= 800) {
+            $currentView = "timeGridDay";
+        }
+    }
+
+    onMount(() => {
+        checkViewportAndSetView();
+        window.addEventListener('resize', checkViewportAndSetView);
+
+        return () => {
+            window.removeEventListener('resize', checkViewportAndSetView);
+        };
+    });
+
     let event;
     let isOpen;
 
-    let plugins = [DayGrid];
+    let plugins = [TimeGrid, DayGrid];
     let options = {
-        view: 'dayGridMonth',
+        view: $currentView,
         events: events,
-        eventClick: handleEventClick
+        eventClick: handleEventClick,
     };
 </script>
 
@@ -38,10 +59,6 @@
 
 
 <style>
-    @media (max-width: 800px) {
-        
-    }
-
     section {
         position: relative;
         padding: 2em 1em;

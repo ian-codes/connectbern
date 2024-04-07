@@ -13,7 +13,7 @@
 
 <header>
     <a href="/" title="home" class="titleWrapper">
-        <div class="logo" style="background: url('logo.svg');" id="logo"></div>
+        <div class="logo" style="background: url('/icons/logo.svg');" id="logo"></div>
         <div class="textWrapper">
             <h1>Connect Bern</h1>
             <p>{t[language]["logo-description"]}</p>

@@ -61,7 +61,7 @@
                 placeholder="{t[language]["search-groups"]}" />
 
             <button title="Go" class="iconWrapper">
-                <span class="searchIcon" style="background: url('/search.svg');"/>
+                <span class="searchIcon" style="background: url('/icons/search.svg');"/>
             </button>
         </div>
     </div>

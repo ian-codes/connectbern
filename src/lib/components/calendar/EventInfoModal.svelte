@@ -31,12 +31,21 @@
         <div class="buttonsContainer">
             <AddToCalendarButton />
             <OpenInMapsButton />
+            <a href="/events/{event?.extendedProps?.slug}"
+                class="event-modal-button">
+                <span class="icon eye-icon" />
+                Details Page
+            </a>
         </div>
     </div>
 </div>
 
 
 <style>
+    .eye-icon {
+        background-image: url("/icons/go-to-details.svg");
+    }
+
     .backdrop {
         position: fixed;
         inset: 0;
@@ -66,11 +75,11 @@
         flex-direction: column;
         gap: 1em;
         background: white;
-        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.384);
-        border: 1px solid black;
+        min-width: 50%;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.267) inset, 0 5px 30px rgba(0, 0, 0, 0.384);
         z-index: 5;
         color: black;
-        padding: 2em 4em;
+        padding: 2em 5em;
         border-radius: .5em;
     }
 
@@ -112,16 +121,30 @@
     }
 
     #close {
-        background-image: url("$lib/components/calendar/close.svg");
+        background: radial-gradient(red, rgb(90, 0, 0));
+        box-shadow: 0 0 2px 1p white inset;
         position: absolute;
         right: 0;
         top: 0;
-        width: 30px;
+        width: 1.5em;
         aspect-ratio: 1;
         margin: .5em;
         border-radius: 100%;
         transition: all .1s ease;
         opacity: .6;
+    }
+    #close::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        background-image: url("/icons/close.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        filter: invert(1);
+        opacity: .6;
+        width: 15px;
     }
     #close:hover {
         opacity: 1;

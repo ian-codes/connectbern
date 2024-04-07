@@ -62,7 +62,7 @@
     }
 
     .eyeImg {
-        background-image: url('/eye.png');
+        background-image: url('/icons/eye.png');
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
