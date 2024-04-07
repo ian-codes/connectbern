@@ -157,7 +157,9 @@
     </ul>
 </section>
 
-<!-- <Calendar /> -->
+<div style="display: none">
+    <Calendar />
+</div>
 
 
 <style>

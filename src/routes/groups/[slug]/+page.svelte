@@ -1,6 +1,6 @@
 <svelte:head>
 	<title>{data?.name?.[lang] ?? "Loading..."} • Connect Bern </title>
-    <link rel="canonical" href="https://connectbern.ch/{data?.slug}">
+    <link rel="canonical" href="https://connectbern.ch/groups/{data?.slug}">
 </svelte:head>
 
 
@@ -14,7 +14,7 @@
 
 
 <section>
-    <a class="btn back" href="/#{data.slug}">
+    <a class="btn back" href="/groups#{data?.slug ?? ""}">
         <span>→</span>Back
     </a>
 
@@ -30,7 +30,7 @@
                 </p>
             </div>
 
-            <a class="join" href="{data.link}">
+            <a class="join" href="{data?.link}">
                 JOIN THIS GROUP
                 <span class="linkImg" />
             </a>

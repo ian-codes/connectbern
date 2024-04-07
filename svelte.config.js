@@ -8,10 +8,6 @@ const config = {
         adapter: adapter({
             fallback: '404.html'
         }),
-
-        prerender: {
-            entries: ['*']
-        }
     }
 };
 

@@ -1,9 +1,9 @@
+<svelte:head>
+	<title>Groups • Connect Bern </title>
+</svelte:head>
 
 <script>
-    import { onMount } from "svelte";
-    import { goto } from "$app/navigation";
-
-    onMount(() => {
-        goto("/");
-    });
+    import GroupsSection from "$lib/components/GroupsSection.svelte";
 </script>
+
+<GroupsSection />
