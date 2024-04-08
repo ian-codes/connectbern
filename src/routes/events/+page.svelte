@@ -13,7 +13,7 @@
 
 <section>
     <div class="topbarWrapper">
-        <h2>Events</h2>
+        <h1>Events</h1>
         <p>
             {@html t[lang]['events-description']}
         </p>
@@ -21,57 +21,31 @@
 
     <ul>
         <li>
-            Check for events on Facebook on the local tab:
+            Check for events on Facebook on the 'local' tab:
             <a href="https://www.facebook.com/events/?date_filter_option=TODAY&discover_tab=LOCAL">
-                https://www.facebook.com/events/?date_filter_option=TODAY&discover_tab=LOCAL
+                Link
             </a>
         </li>
         <li>
-            On https://meetup.com and gemeinsam erleben (spontacts).
+            On <a href="https://meetup.com">Meetup.com</a> and 
+            <a href="https://gemeinsamerleben.com/orte-und-regionen/schweiz/bern">
+                Gemeinsam Erleben
+            </a>
         </li>
 
         <li>
-            On pusterum's website. (https://www.pusterum.ch/kultur)
+            On <a href="https://www.pusterum.ch/kultur">Pusterum's website</a>.
         </li>
 
         <li>
-            On the Reitschule and heitere Fahne Website.
+            On the <a href="https://www.reitschule.ch/reitschule/?programm">Reitschule</a>  
+            and <a href="https://www.dieheiterefahne.ch/menu">Heitere Fahne</a> websites.
         </li>
         <li>
-            unko agenda on telegram
+            <a href="https://bern.impacthub.net/events-erleben">Impact Hub Bern</a> 
         </li>
         <li>
-            impact hub Bern
-        </li>
-        <li>
-            Check Reddit to meet people
-        </li>
-
-        <li>
-            Places to be sociable:
-            <ol>
-                <li>
-                    Backpacker Hostel open 
-                </li>
-                <li>
-                    English club
-                </li>
-                <li>
-                    Erupt
-                </li>
-                <li>
-                    Reitschule restaurant
-                </li>
-                <li>
-                    Turnhalle
-                </li>
-                <li>
-                    Generationshaus
-                </li>
-                <li>
-                    Free walking tour
-                </li>
-            </ol>
+            Check the <a href="https://www.reddit.com/r/bern/"> Bern Subreddit</a> to meet people
         </li>
 
         <li>
@@ -161,26 +135,3 @@
     <Calendar />
 </div>
 
-
-<style>
-    .topbarWrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        margin: 0;
-        gap: 1em;
-        margin-bottom: 1em;
-    }
-
-    ul, ol {
-        list-style: square;
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-        font-size: 1.2rem;
-    }
-
-    li {
-        color: white;
-    }
-</style>

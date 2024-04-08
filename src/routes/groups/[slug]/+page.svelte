@@ -21,19 +21,24 @@
     <div class="container">
         <div class="textContainer">
             <div>
-                <h2>
+                <h1>
                     {data?.name?.[lang] ?? "Loading..."}
-                </h2>
+                </h1>
             
                 <p>
                     {data?.desc?.[lang] ?? "Loading..."}
                 </p>
+
+                <a class="join" href="{data?.link}">
+                    <span class="linkImg" />
+                    JOIN GROUP
+                </a>
             </div>
 
-            <a class="join" href="{data?.link}">
-                JOIN THIS GROUP
-                <span class="linkImg" />
-            </a>
+            <!-- <button class="btn share">
+                <span class="icon" style="background-image: url(/icons/share.svg);" />
+                Share Group
+            </button> -->
 
             <div class="placeholder"></div>
         </div>
@@ -51,12 +56,8 @@
             gap: 3em !important;
         }
 
-        h2 {
+        h1 {
             font-size: 1.5rem !important;
-        }
-
-        p {
-            font-size: 1rem !important;
         }
 
         .img {
@@ -66,6 +67,15 @@
 
     section {
         padding: 1em !important;
+    }
+
+    .share {
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        width: max-content;
+        background: white;
+        color: black;
     }
 
     .container {
@@ -84,7 +94,13 @@
         width: 100%;
     }
 
-    h2 {
+    .textContainer div {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    h1 {
         font-size: 2.5em;
         font-weight: bold;
         margin-bottom: 1rem !important;
@@ -119,6 +135,7 @@
         font-weight: bold;
         letter-spacing: 1px;
         padding: .8em 1.2em;
+        margin-left: 1em;
         border-radius: 1em;
         color: black;
         background: white;

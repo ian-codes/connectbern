@@ -12,7 +12,7 @@
         <h3>
             {typeof GroupDataObject.name === "string" ? GroupDataObject.name : GroupDataObject.name[language]}
         </h3>
-        <p>{GroupDataObject.desc[language]}</p>
+        <span class="group-description">{GroupDataObject.desc[language]}</span>
     </div>
     <div class="buttonContainer">
         <a title="Join group" href="{GroupDataObject.link}" target="_blank" class="button">
@@ -110,9 +110,13 @@
         display: flex;
     }
 
-    .container:hover p,
-    .container:focus p {
+    .container:hover .group-description,
+    .container:focus .group-description {
         display: none;
+    }
+
+    .group-description {
+        font-size: 1em;
     }
 
     

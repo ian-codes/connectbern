@@ -17,18 +17,26 @@ export const MenuData = [
     },
     {
         title: {
-            en: "Swiss Tips",
-            de: "Swiss Tips"
+            en: "Places",
+            de: "Orte"
         },
-        slug: "swiss-tips",
-        img: "tips.svg"
+        slug: "places",
+        img: "location.svg"
     },
-    {
-        title: {
-            en: "About",
-            de: "Info"
-        },
-        slug: "about",
-        img: "about.svg"
-    }
+    // {
+    //     title: {
+    //         en: "Tips",
+    //         de: "Tips"
+    //     },
+    //     slug: "tips",
+    //     img: "tips.svg"
+    // },
+    // {
+    //     title: {
+    //         en: "About",
+    //         de: "Info"
+    //     },
+    //     slug: "about",
+    //     img: "about.svg"
+    // }
 ];

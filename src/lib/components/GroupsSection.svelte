@@ -29,9 +29,9 @@
 
 <section>
     <div class="topbarWrapper">
-        <h2>
+        <h1>
             {t[language]["groups"]}
-        </h2>
+        </h1>
         <p>
             {@html t[language]['groups-description']}
         </p>
@@ -87,25 +87,6 @@
             margin: 0 !important;
             padding: 0 !important;
         }
-
-        p {
-            font-size: 1em !important;
-        }
-    }
-
-    a {
-        text-decoration-style: solid;
-        text-underline-offset: .4rem;
-        color: white;
-    }
-
-    a:hover {
-        text-decoration-style: wavy;
-
-    }
-
-    p {
-        font-size: 1.4rem;
     }
 
     .groupTypeFilter {
@@ -133,11 +114,6 @@
     }
 
     .topbarWrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        margin: 0;
-        gap: 1em;
         margin-bottom: 1em;
         padding-bottom: 2em;
     }

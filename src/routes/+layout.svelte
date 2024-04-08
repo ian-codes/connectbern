@@ -53,6 +53,7 @@
         width: 100%;
         margin: auto;
         padding: 1em 0;
+        overflow: hidden;
     }
 
     .gradient {
@@ -61,7 +62,6 @@
         background-size: cover;
         background-repeat: no-repeat;
         inset: 0;
-        height: 100vh;
         position: fixed;
         z-index: -2;
         opacity: 1;

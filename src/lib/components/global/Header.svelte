@@ -15,7 +15,7 @@
     <a href="/" title="home" class="titleWrapper">
         <div class="logo" style="background: url('/icons/logo.svg');" id="logo"></div>
         <div class="textWrapper">
-            <h1>Connect Bern</h1>
+            <span class="logo-text">Connect Bern</span>
             <p>{t[language]["logo-description"]}</p>
         </div>
     </a>
@@ -46,7 +46,7 @@
             align-items: start;
             padding: 0 !important;
         }
-        h1 {
+        .logo-text {
             font-size: 1.5em !important;
             word-spacing: normal !important;
         }
@@ -151,7 +151,7 @@
         margin-left: 4px !important;
     }
 
-    h1 {
+    .logo-text {
         margin: 0;
         font-weight: normal;
         font-size: 3rem;
