@@ -4,7 +4,7 @@
 }
 
 
-/* calendar */
+// calendar widget
 .ec {
     --ec-text-color: #ffffff !important;
 }
@@ -60,7 +60,23 @@
 }
 
 
+// lists
+ul, ol {
+    list-style: none;
+}
+ul {
+    list-style: square;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    font-size: 1.2rem;
+}
+li {
+    color: white;
+}
 
+
+// general
 :root {
     font-size: 16px;
     scroll-behavior: smooth;
@@ -83,7 +99,7 @@ button {
     cursor: pointer;
 }
 
-h2 {
+h1 {
     margin: 0 1rem;
     font-size: 2rem;
     font-weight: normal;
@@ -94,7 +110,7 @@ p {
     margin: 0 1rem;
     padding: 0;
     line-height: 1.5em;
-    font-size: 1.1em;
+    font-size: 1.4rem;
     color: white;
 }
 
@@ -112,6 +128,14 @@ section {
     background: rgba(255, 255, 255, 0.055);
 }
 
+.topbarWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 0;
+    gap: 1em;
+    margin-bottom: 1em;
+}
 
 form {
     margin: 1em;
@@ -167,7 +191,7 @@ input::placeholder {
         margin: 0 .5em !important;
     }
 
-    h2 {
+    h1 {
         font-size: 1.8em !important;
         width: 100vw;
         text-align: left;
@@ -176,6 +200,7 @@ input::placeholder {
 
     p {
         margin: 0 !important;
+        font-size: 1em !important;
     }
 
     form {
