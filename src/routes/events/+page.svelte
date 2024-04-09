@@ -131,5 +131,7 @@
     </ul>
 </section>
 
+<div style="display: none;">
     <Calendar />
+</div>
 
