@@ -1,5 +1,11 @@
 <script>
+    import { onMount } from "svelte";
     import Header from "$lib/components/global/Header.svelte";
+    import { currentLanguage } from "$lib/stores/languageStore.js";
+
+    onMount(() => {
+        currentLanguage.set(navigator.language.includes('en') ? 'en' : 'de'); 
+    });
 </script>
 
 <div class="gradient"></div>
