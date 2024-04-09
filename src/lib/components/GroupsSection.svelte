@@ -138,6 +138,7 @@
 
     #search {
         border-radius: none !important;
+        width: 100%;
     }
 
     .iconWrapper {

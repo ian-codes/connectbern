@@ -7,13 +7,16 @@
 
 
 <div id="{GroupDataObject.slug}" class="container">
-    <div class="img" style="background: url('/groups/{GroupDataObject.img}');"></div>
-    <div class="textContainer">
-        <h3>
-            {typeof GroupDataObject.name === "string" ? GroupDataObject.name : GroupDataObject.name[language]}
-        </h3>
-        <span class="group-description">{GroupDataObject.desc[language]}</span>
+    <div class="top-container">
+        <div class="img" style="background: url('/groups/{GroupDataObject.img}');"></div>
+        <div class="textContainer">
+            <h3>
+                {typeof GroupDataObject.name === "string" ? GroupDataObject.name : GroupDataObject.name[language]}
+            </h3>
+            <span class="group-description">{GroupDataObject.desc[language]}</span>
+        </div>
     </div>
+
     <div class="buttonContainer">
         <a title="Join group" href="{GroupDataObject.link}" target="_blank" class="button">
             <span class="linkImg" />
@@ -28,6 +31,30 @@
 
 
 <style>
+    @media (max-width: 800px) { 
+        .container {
+            height: min-content !important;
+        }
+    }
+
+    .top-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        
+    .buttonContainer {
+        position: relativge;
+        bottom: 1em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: .5em;
+        transition: all .2s ease;
+    }
+
     .button {
         max-width: max-content;
         gap: .5em;
@@ -40,16 +67,20 @@
         letter-spacing: 1px;
         padding: .8em 1.2em;
         color: black;
-        background: white;
-        box-shadow: 0 2px 3px black;
+        background: rgba(255, 255, 255, 0.87);
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.37);
+        border-radius: .5em;
+        transition: all .3s ease;
     }
+
     .button, .button span {
-        transition: all .1s ease;
+        transition: all .3s ease;
     }
 
     .button:hover {
-        background: rgb(77, 77, 77);
+        background: black;
         color: white;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.233);
     }
 
     .button:hover span {
@@ -75,14 +106,35 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: space-between;
+        gap: 1em;
         width: 300px;
-        aspect-ratio: 1;
-        padding: 1em;
-        transition: .2s ease all;
+        height: 350px;
+        min-height: max-content;
+        padding: 2em;
         z-index: 10;
         overflow: hidden;
-        background: linear-gradient(rgba(196, 196, 196, 0.1), transparent);
+        transition: .4s ease all;
+        border-top-left-radius: 1.5em;
+        border-bottom-right-radius: 1.5em;
         box-shadow: 0 5px 3px 2px rgba(0, 0, 0, 0.158), 0 0 5px rgba(255, 255, 255, 0.05);
+    }
+
+    .container::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(30deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.801));
+        transition: .4s ease all;
+        opacity: 0;
+    }
+    
+    .container:hover::before,
+    .container:focus::before {
+        opacity: 1;
+        background: linear-gradient(30deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.801));
+        color: black;
     }
 
     .textContainer {
@@ -94,9 +146,8 @@
     .container:hover, 
     .container:focus {
         transform: scale(1.02);
-        box-shadow: 0 5px 10px 2px rgba(0, 0, 0, 0.2);
-        background: rgba(255, 255, 255, 0.493);
         color: black;
+        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.185), 0 5px 10px 2px rgba(0, 0, 0, 0.2);
     }
 
     .container:hover .img, 
@@ -107,12 +158,7 @@
 
     .container:hover .buttonContainer,
     .container:focus .buttonContainer {
-        display: flex;
-    }
-
-    .container:hover .group-description,
-    .container:focus .group-description {
-        display: none;
+        opacity: 1;
     }
 
     .group-description {
@@ -132,23 +178,12 @@
         background-repeat: no-repeat;
         width: 100px;
         height: 100px;
+        min-height: 100px;
         border-radius: 100%;
         box-shadow: 0 5px 3px rgb(0, 0, 0);
         filter: saturate(0);
         transition: all .2s ease;
         margin-top: 1em;
-    }
-    
-    .buttonContainer {
-        position: absolute;
-        bottom: 1em;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: .5em;
-        display: none;
-        transition: all .2s ease;
     }
 
 

@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     import Header from "$lib/components/global/Header.svelte";
     import { currentLanguage } from "$lib/stores/languageStore.js";
+    import LanguageToggler from "../lib/components/global/LanguageToggler.svelte";
 
     onMount(() => {
         currentLanguage.set(navigator.language.includes('en') ? 'en' : 'de'); 
@@ -11,55 +12,24 @@
 <div class="gradient"></div>
 <div class="bg"></div>
 
-<div class="outerWrapper">
-    <Header />
-    <main>
-        <slot />
-    </main>
-</div>
+<Header />
+<main>
+    <slot />
+</main>
 
 
 <style>
     @media (max-width: 800px) {
-        .outerWrapper {
-            padding: 0 !important;
-        }
-
-        .topbarWrapper {
-            flex-wrap: wrap;
-            gap: 1em;
-            margin: 0 !important;
-            padding: 0 0 1em 0 !important;
-        }
-
-        .settingsBar {
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-
-        p {
-            font-size: 1em !important;
+        main {
+            margin-top: 120px !important;
         }
     }
 
-    .topbarWrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        margin: 0;
-        gap: 1em;
-        margin-bottom: 1em;
-        padding-bottom: 2em;
-    }
-
-    .outerWrapper {
-        position: relative;
-        max-width: 1100px;
-        min-height: 120vh;
-        width: 100%;
+    main {
+        overflow-x: hidden;
+        max-width: 1200px;
         margin: auto;
-        padding: 1em 0;
-        overflow: hidden;
+        margin-top: 200px;
     }
 
     .gradient {

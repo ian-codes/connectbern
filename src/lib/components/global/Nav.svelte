@@ -1,6 +1,7 @@
 <script>
     import { MenuData } from "$lib/models/MenuData.js";
     import { currentLanguage } from "$lib/stores/languageStore.js";
+    import LanguageToggler from "$lib/components/global/LanguageToggler.svelte";
 
     $: lang = $currentLanguage;
 
@@ -21,6 +22,9 @@
     </button>
     {#if (isOpen)}
         <ol>
+            <div class="languages visible">
+                <LanguageToggler dark={true} />
+            </div>
             {#each MenuData as item}
                 <li>
                     <a title="{item.title[lang]}" class="navlink" href="/{item.slug}" on:click={() => {isOpen = false;}}>
@@ -39,6 +43,17 @@
         position: fixed;
         inset: 0;
         opacity: 0;
+        cursor: default;
+    }
+
+    .languages {
+        display: none;
+    }
+
+    @media (max-width: 500px) {
+        .visible {
+            display: block !important;
+        }
     }
 
     @media (max-width: 800px) {
