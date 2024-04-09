@@ -96,6 +96,20 @@ body {
     overflow-x: hidden;
 }
 
+.flex-r {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-c {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 button {
     padding: 0;
     background: none;

@@ -2,13 +2,18 @@
     import { currentLanguage } from '$lib/stores/languageStore';
     $: language = $currentLanguage;
 
-    export let GroupDataObject
+    export let GroupDataObject;
+
+    let rating = 4;
+    let numberOfRatings = 20;
+    let stars = [];
 </script>
 
 
 <div id="{GroupDataObject.slug}" class="container">
     <div class="top-container">
         <div class="img" style="background: url('/groups/{GroupDataObject.img}');"></div>
+        
         <div class="textContainer">
             <h3>
                 {typeof GroupDataObject.name === "string" ? GroupDataObject.name : GroupDataObject.name[language]}
@@ -16,6 +21,16 @@
             <span class="group-description">{GroupDataObject.desc[language]}</span>
         </div>
     </div>
+
+    <div class="stars-container flex-r">
+        {#each {length: 5} as _, i}
+            <span bind:this={stars[i]} class="star icon {(i < rating ? "gold" : "")}" />
+        {/each}
+        <span class="ratings-amount">
+            ({numberOfRatings})
+        </span>
+    </div>
+
 
     <div class="buttonContainer">
         <a title="Join group" href="{GroupDataObject.link}" target="_blank" class="button">
@@ -27,6 +42,7 @@
             Info
         </a>
     </div>
+    
 </div>
 
 
@@ -37,6 +53,30 @@
         }
     }
 
+    .star {
+        background-image: url("/icons/star.png");
+        width: 20px;
+        height: 20px;
+        filter: saturate(0) brightness(.4);
+        opacity: .5;
+    }
+
+    .stars-container {
+        position: relative;
+    }
+
+    .gold {
+        filter: saturate(1) brightness(1) drop-shadow(0 0 20px rgba(243, 236, 195, 0.6));
+        opacity: 1;
+    }
+
+    .ratings-amount {
+        margin-left: 1em;
+        margin-top: 4px;
+        font-weight: normal;
+        font-size: .8rem;
+    }
+    
     .top-container {
         display: flex;
         flex-direction: column;
