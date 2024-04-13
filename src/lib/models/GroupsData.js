@@ -25,7 +25,7 @@ export const GroupsData = [
         },
         img: "telegramgruppen.webp",
         type: "telegram",
-        link: "https://tiny.cc/unkomarktbern"
+        link: "https://t.me/unkomarkt_sammlung"
     },
     {
         name: {
