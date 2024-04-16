@@ -52,7 +52,7 @@
             Monday:
             <ul>
                 <li>
-                    Denk:Mal - Swiss German course
+                    Denk:Mal - Swiss German course, join the <a href="https://tiny.cc/germanbern">WhatsApp Group</a>
                 </li>
             </ul>
         </li>
