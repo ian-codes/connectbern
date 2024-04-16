@@ -127,6 +127,20 @@ export const GroupsData = [
     },
     {
         name: {
+            de: "Deutschkurs",
+            en: "German Class"
+        },
+        slug: "german-class-group",
+        desc: {
+            de: "Um Deutsch zu lernen.",
+            en: "A group for the german class at the autonomous school of Bern."
+        },
+        img: "deutschkurs.webp",
+        type: "whatsapp",
+        link: "https://tiny.cc/germanbern"
+    },
+    {
+        name: {
             de: "Israelis, Jüdische & Freunde",
             en: "Israelis, Jews & Friends"
         },
