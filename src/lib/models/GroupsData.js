@@ -130,7 +130,7 @@ export const GroupsData = [
             de: "Deutschkurs",
             en: "German Class"
         },
-        slug: "german-class-group",
+        slug: "german-class",
         desc: {
             de: "Um Deutsch zu lernen.",
             en: "A group for the german class at the autonomous school of Bern."
