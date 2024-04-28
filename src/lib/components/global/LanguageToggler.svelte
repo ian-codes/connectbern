@@ -8,7 +8,7 @@
     }
 </script>
 
-<div class="container" class:dark={dark}>
+<div class="cntr" class:dark={dark}>
     <div class="languageToggler">
         <button id="en" title="English"
             on:click={() => handleLanguageToggle("en")}
@@ -32,7 +32,7 @@
         }
     }
 
-    .container {
+    .cntr {
         padding: .5em;
         display: flex;
         flex-direction: column;
@@ -40,20 +40,20 @@
         justify-content: center;
     }
 
-    .container * {
+    .cntr * {
         color: white;
     }
 
-    .container.dark * {
+    .cntr.dark * {
         color: black;
     }
 
-    .container.dark {
+    .cntr.dark {
         background: white;
         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     }
 
-    .container.dark button:hover {
+    .cntr.dark button:hover {
         text-decoration: underline;
     }
 

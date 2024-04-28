@@ -17,7 +17,7 @@
         <span>→</span>Back
     </a>
 
-    <div class="container">
+    <div class="cntr">
         <div class="textContainer">
             <div>
                 <h2>
@@ -31,7 +31,7 @@
 
 <style>
     @media (max-width: 800px) {
-        .container {
+        .cntr {
             flex-wrap: wrap;
             gap: 3em !important;
         }
@@ -53,7 +53,7 @@
         padding: 1em !important;
     }
 
-    .container {
+    .cntr {
         display: flex;
         flex-direction: row;
         justify-content: space-between;

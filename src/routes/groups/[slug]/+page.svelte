@@ -37,8 +37,8 @@
         <span>→</span>Back
     </a>
 
-    <div class="container">
-        <div class="textContainer">
+    <div class="cntr">
+        <div class="textcntr">
             <div>
                 <h1>
                     {data?.name?.[lang] ?? "Loading..."}
@@ -76,7 +76,7 @@
 
 <style>
     @media (max-width: 800px) {
-        .container {
+        .cntr {
             flex-wrap: wrap;
             gap: 3em !important;
         }
@@ -140,7 +140,7 @@
         clip-path: polygon(0 0, 100% 0, 50% 100%);
     }
 
-    .container {
+    .cntr {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -148,7 +148,7 @@
         margin: 2em 0;
     }
 
-    .textContainer {
+    .textcntr {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;

@@ -39,8 +39,11 @@
 
     <div class="settingsBar">
         <div class="groupTypeFilter">
-            <label title="Filter groups by type" for="type">Type</label>
-            <select bind:value={groupType} 
+            <label 
+                title="Filter groups by type" 
+                for="type">Type</label>
+            <select 
+                bind:value={groupType} 
                 on:change={handleGroupTypeChange} 
                 title="Filter groups by type" 
                 id="type" 
@@ -53,15 +56,21 @@
         </div>
         
         <div class="searchbar">
-            <input on:change={handleSearch} bind:value={searchTerm} 
+            <input 
+                on:change={handleSearch} 
+                bind:value={searchTerm} 
                 type="text"
                 title="Search Groups"
                 id="search" 
                 name="search" 
                 placeholder="{t[language]["search-groups"]}" />
 
-            <button title="Go" class="iconWrapper">
-                <span class="searchIcon" style="background: url('/icons/search.svg');"/>
+            <button 
+                title="Go" 
+                class="iconWrapper">
+                <span 
+                    class="searchIcon" 
+                    style="background: url('/icons/search.svg');"/>
             </button>
         </div>
     </div>
@@ -137,8 +146,8 @@
     }
 
     #search {
-        border-radius: none !important;
         width: 100%;
+        padding: .5em !important;
     }
 
     .iconWrapper {
@@ -167,7 +176,8 @@
 
     .cardsContainer {
         display: flex;
-        gap: 1em;
+        row-gap: 2em;
+        column-gap: 1em;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;

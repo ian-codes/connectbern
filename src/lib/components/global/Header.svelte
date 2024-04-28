@@ -20,8 +20,8 @@
 
 
 
-<header>
-    <div class:sticky={isSticky} class="container">
+<header class="header" class:sticky={isSticky}>
+    <div class="cntr">
         <a href="/" title="home" class="titleWrapper">
             <div class="logo" style="background: url('/icons/logo.svg');" id="logo"></div>
             <div class="textWrapper">
@@ -31,7 +31,7 @@
         </a>
     
         <div class="side-wrapper">
-            <div class="invisible">
+            <div class="inv">
                 <LanguageToggler />
             </div>
             <Nav />
@@ -42,7 +42,7 @@
 
 <style>
     @media (max-width: 500px) {
-        .container {
+        .cntr {
             align-items: center !important;
             padding: 1em !important;
         }
@@ -51,22 +51,22 @@
             display: none !important;
         }
 
-        .invisible {
+        .inv {
             display: none !important;
         }
 
-        header .side-wrapper {
+        .header .side-wrapper {
             flex-direction: column !important;
             gap: 0 !important;
         }
     }
 
     @media (max-width: 800px) {
-        header {
+        .header {
             align-items: start !important;
             gap: 1em;
         }
-        header .container {
+        .header .cntr {
             justify-content: start;
             align-items: start;
             flex-direction: row !important;
@@ -101,9 +101,10 @@
         } 
     }
 
-    header {
+    .header {
         z-index: 30;
         width: 100%;
+        left: 0;
         position: fixed;
         top: 0;
         user-select: none;
@@ -114,7 +115,7 @@
         margin-bottom: 3em;
     }
 
-    .container {
+    .cntr {
         max-width: 1200px;
         width: 100%;
         display: flex;
@@ -124,28 +125,31 @@
         padding: 2em;
         transition: all .2s ease;
     }
-    .container * {
+    .cntr * {
         transition: all .2s ease;
     }
-    .container.sticky {
-        top: 0;
-        left: 0;
+    .header.sticky .cntr {
         padding: 1em;
     }
-    .container.sticky::before {
+    .header.sticky {
+        top: 0;
+        left: 0;
+        padding: 0 !important;
+    }
+    .header.sticky::before {
         opacity: 1;
     }
-    .container.sticky p {
+    .header.sticky p {
         display: none;
     }
-    .container.sticky .titleWrapper {
+    .header.sticky .titleWrapper {
         align-items: center;
     }
-    .container.sticky .logo {
+    .header.sticky .logo {
         width: 40px;
         height: 40px;
     }
-    .container::before {
+    .header::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -172,15 +176,16 @@
         border-radius: 100%;
         border: 2px solid white;
         transition: all .2s ease;
+        transform-style: preserve-3d;
         animation: rotate infinite 30s linear;
     }
     
     @keyframes rotate {
         0% {
-            transform: rotate(0);
+            transform: perspective(2em) rotateY(0) rotate(0);
         }
         100% {
-            transform: rotate(360deg);
+            transform: perspective(2em) rotateY(360deg) rotate(720deg);
         }
     }
     

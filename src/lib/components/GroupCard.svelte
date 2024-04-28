@@ -6,23 +6,22 @@
 </script>
 
 
-<div id="{GroupDataObject.slug}" class="container">
+<div id="{GroupDataObject.slug}" class="cntr">
     <div class="top-container">
         <div class="img" style="background: url('/groups/{GroupDataObject.img}');"></div>
         <div class="textContainer">
             <h3>
                 {typeof GroupDataObject.name === "string" ? GroupDataObject.name : GroupDataObject.name[language]}
             </h3>
-            <span class="group-description">{GroupDataObject.desc[language]}</span>
         </div>
     </div>
 
     <div class="buttonContainer">
-        <a title="Join group" href="{GroupDataObject.link}" target="_blank" class="button">
+        <a title="Join group" href="{GroupDataObject.link}" target="_blank" class="buttone">
             <span class="linkImg" />
             Join
         </a>
-        <a title="Show details" href="/groups/{GroupDataObject.slug}" class="button">
+        <a title="Show details" href="/groups/{GroupDataObject.slug}" class="buttone">
             <span class="eyeImg" />
             Info
         </a>
@@ -32,7 +31,7 @@
 
 <style>
     @media (max-width: 800px) { 
-        .container {
+        .cntr {
             height: min-content !important;
         }
     }
@@ -43,10 +42,8 @@
         align-items: center;
     }
 
-        
     .buttonContainer {
-        position: relativge;
-        bottom: 1em;
+        position: relative;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -55,7 +52,7 @@
         transition: all .2s ease;
     }
 
-    .button {
+    .buttone {
         max-width: max-content;
         gap: .5em;
         display: flex;
@@ -73,17 +70,17 @@
         transition: all .3s ease;
     }
 
-    .button, .button span {
+    .buttone, .buttone span {
         transition: all .3s ease;
     }
 
-    .button:hover {
+    .buttone:hover {
         background: black;
         color: white;
         box-shadow: 0 2px 20px rgba(0, 0, 0, 0.233);
     }
 
-    .button:hover span {
+    .buttone:hover span {
         filter: invert(1) !important;
     }
 
@@ -99,7 +96,7 @@
         background-size: contain;
     }
 
-    .container {
+    .cntr {
         position: relative;
         color: white;
         text-align: center;
@@ -107,20 +104,19 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        gap: 1em;
-        width: 300px;
-        height: 350px;
-        min-height: max-content;
+        width: 250px;
+        height: 300px;
         padding: 2em;
         z-index: 10;
         overflow: hidden;
         transition: .4s ease all;
         border-top-left-radius: 1.5em;
         border-bottom-right-radius: 1.5em;
+        background: linear-gradient(-30deg, rgba(46, 44, 44, 0.1), rgba(255, 255, 255, 0.1));
         box-shadow: 0 5px 3px 2px rgba(0, 0, 0, 0.158), 0 0 5px rgba(255, 255, 255, 0.05);
     }
 
-    .container::before {
+    .cntr::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -130,8 +126,8 @@
         opacity: 0;
     }
     
-    .container:hover::before,
-    .container:focus::before {
+    .cntr:hover::before,
+    .cntr:focus::before {
         opacity: 1;
         background: linear-gradient(30deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.801));
         color: black;
@@ -143,21 +139,21 @@
         gap: 0;
     }
 
-    .container:hover, 
-    .container:focus {
+    .cntr:hover, 
+    .cntr:focus {
         transform: scale(1.02);
         color: black;
         box-shadow: 0 10px 30px rgba(255, 255, 255, 0.185), 0 5px 10px 2px rgba(0, 0, 0, 0.2);
     }
 
-    .container:hover .img, 
-    .container:focus .img {
+    .cntr:hover .img, 
+    .cntr:focus .img {
         filter: saturate(1);
         /* animation: rainbow 5s infinite linear; */
     }
 
-    .container:hover .buttonContainer,
-    .container:focus .buttonContainer {
+    .cntr:hover .buttonContainer,
+    .cntr:focus .buttonContainer {
         opacity: 1;
     }
 
