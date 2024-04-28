@@ -23,7 +23,11 @@
 <header class="header" class:sticky={isSticky}>
     <div class="cntr">
         <a href="/" title="home" class="titleWrapper">
-            <div class="logo" style="background: url('/icons/logo.svg');" id="logo"></div>
+            <div class="logoWrapper relative">
+                <div class="logo absolute" style="background: url('/icons/logo.svg');" id="logo" />
+                <div class="logo" style="background: url('/icons/logo.svg');" id="logo2" />
+            </div>
+
             <div class="textWrapper">
                 <span class="logo-text">Connect Bern</span>
                 <p>{t[language]["logo-description"]}</p>
@@ -167,6 +171,12 @@
         gap: 1em;
         transition: all .3s ease;
     }
+
+    .logoWrapper {
+        transform-style: preserve-3d;
+        transform: perspective(10em) rotateZ(30deg);
+        filter: drop-shadow(0 50px 20px rgb(170, 220, 243));
+    }
     
     .logo {
         background-repeat: no-repeat;
@@ -177,15 +187,36 @@
         border: 2px solid white;
         transition: all .2s ease;
         transform-style: preserve-3d;
+    }
+
+    #logo {
         animation: rotate infinite 30s linear;
     }
+    #logo2 {
+        mix-blend-mode: darken;
+        filter:  hue-rotate(30deg) brightness(5);
+        animation: rotate2 infinite 13s linear reverse;
+    }
+
     
     @keyframes rotate {
         0% {
-            transform: perspective(2em) rotateY(0) rotate(0);
+            transform: rotateY(0) rotate(0);
         }
         100% {
-            transform: perspective(2em) rotateY(360deg) rotate(720deg);
+            transform: rotateY(360deg) rotate(720deg);
+        }
+    }
+
+    @keyframes rotate2 {
+        0% {
+            transform: rotateY(0) rotate(0);
+        }
+        50% {
+            transform: rotateY(180deg) rotate(360deg);
+        }
+        100% {
+            transform: rotateY(360deg) rotate(720deg);
         }
     }
     
