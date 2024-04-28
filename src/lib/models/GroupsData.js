@@ -15,13 +15,13 @@ export const GroupsData = [
     },
     {
         name: {
-            de: "Sammlung von Telegramgruppen",
-            en: "Collection of Telegram Groups"
+            de: "Sammlung von Unkommerziellen Marktplätzen",
+            en: "Collection of Non-commercial Marketplaces"
         },
-        slug: "telegram-group-collection",
+        slug: "non-commercial-marketplaces",
         desc: {
-            de: "Eine Sammlung von links-orientierten Gruppen auf Telegram.",
-            en: "A collection of various kinds of groups on Telegram."
+            de: "Eine Sammlung von unkommerziellen Marktplatz-Gruppen auf Telegram.",
+            en: "A collection of non-commercial marketplace group chats on Telegram."
         },
         img: "telegramgruppen.webp",
         type: "telegram",
