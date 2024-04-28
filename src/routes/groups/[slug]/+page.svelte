@@ -6,10 +6,29 @@
 
 <script>
     export let data;
-
     import { currentLanguage } from '$lib/stores/languageStore';
 
+    let linkWasCopied = false;
+
+    $: copyLinkTooltipText = linkWasCopied ? "Copied!" : "Copy to clipboard";
+
     $: lang = $currentLanguage;
+
+    async function copyLink() {
+        try {
+            await navigator.clipboard.writeText(data.link);
+            linkWasCopied = true;
+
+            console.log(copyLinkTooltipText);
+
+            setTimeout(() => {
+                linkWasCopied = false;
+            }, 4000);
+        }
+        catch {
+            alert("Couldn't copy link");
+        }
+    }
 </script>
 
 
@@ -28,19 +47,25 @@
                 <p>
                     {data?.desc?.[lang] ?? "Loading..."}
                 </p>
-
-                <a class="join" href="{data?.link}">
-                    <span class="linkImg" />
-                    JOIN GROUP
-                </a>
             </div>
 
-            <!-- <button class="btn share">
-                <span class="icon" style="background-image: url(/icons/share.svg);" />
-                Share Group
-            </button> -->
+            <div class="w-full flex flex-col sm:flex-row gap-4">
+                <a class="join flex-1" href="{data?.link}">
+                    <span class="icon" style="background-image: url(/icons/link.png);" />
+                    JOIN GROUP
+                </a>
+    
+                <button on:click={copyLink} 
+                    class="join copyImgButton flex-1 relative">
 
-            <div class="placeholder"></div>
+                    <span class="tooltip">
+                        {copyLinkTooltipText}
+                    </span>
+
+                    <span class="icon copyImg" style="background-image: url(/icons/link.svg);" />
+                    Copy Link
+                </button>
+            </div>
         </div>
     
         <div style="background-image: url(/groups/{data.img})" class="img"></div>
@@ -69,13 +94,50 @@
         padding: 1em !important;
     }
 
-    .share {
+    .copyImg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .copyImgButton:hover .tooltip {
+        opacity: 1;
+        transition-delay: .4s;
+    }
+    
+    .tooltip {
+        text-transform: capitalize;
+        transition: all .2s ease;
+        opacity: 0;
+        pointer-events: none;
         display: flex;
         align-items: center;
-        justify-items: center;
+        padding: 1em;
+        content: 'Copy to clipboard';
+        position: relative;
+        font-weight: lighter;
+        font-size: .8em;
+        position: absolute;
+        @apply bg-gray-200;
+        top: -3em;
+        right: 0;
         width: max-content;
-        background: white;
-        color: black;
+        height: 2em;
+        border-radius: 1em;
+        box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
+        outline: 1px solid rgba(0, 0, 0, 0.253);
+    }
+
+    .tooltip::before {
+        content: '';
+        font-weight: lighter;
+        font-size: .8em;
+        position: absolute;
+        @apply bg-gray-200;
+        bottom: -.8em;
+        right: calc(50% - 10px);
+        width: 20px;
+        height: 1em;
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
     }
 
     .container {
@@ -90,14 +152,8 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        gap: 1em;
+        gap: 2em;
         width: 100%;
-    }
-
-    .textContainer div {
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
     }
 
     h1 {
@@ -125,17 +181,18 @@
 
 
     .join {
+        text-transform: uppercase;
         max-width: max-content;
-        gap: 1em;
+        gap: .5em;
         display: flex;
         flex-direction: row;
+        font-size: 1em;
         justify-content: space-between;
         align-items: center;
         text-decoration: none;
         font-weight: bold;
         letter-spacing: 1px;
         padding: .8em 1.2em;
-        margin-left: 1em;
         border-radius: 1em;
         color: black;
         background: white;
@@ -145,15 +202,6 @@
 
     .join:hover {
         transform: scale(1.02);
-    }
-
-    .linkImg {
-        background-image: url('/icons/link.png');
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 30px;
-        width: 30px;
     }
 
     .back {

@@ -1,8 +1,8 @@
 <script>
+    import "../app.css";
     import { onMount } from "svelte";
     import Header from "$lib/components/global/Header.svelte";
     import { currentLanguage } from "$lib/stores/languageStore.js";
-    import LanguageToggler from "../lib/components/global/LanguageToggler.svelte";
 
     onMount(() => {
         currentLanguage.set(navigator.language.includes('en') ? 'en' : 'de'); 
