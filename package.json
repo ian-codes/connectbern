@@ -14,7 +14,7 @@
 		"@event-calendar/list": "^2.6.1",
 		"@event-calendar/time-grid": "^2.6.1",
 		"@sveltejs/adapter-auto": "^2.0.0",
-		"@sveltejs/adapter-static": "^2.0.2",
+		"@sveltejs/adapter-static": "^2.0.3",
 		"@sveltejs/kit": "^1.20.4",
 		"autoprefixer": "^10.4.19",
 		"postcss": "^8.4.38",

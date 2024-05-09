@@ -1,12 +1,17 @@
 <script>
     import { currentLanguage } from '$lib/stores/languageStore';
+    import SocialPlatformComponent from './SocialPlatformComponent.svelte';
     $: language = $currentLanguage;
 
-    export let GroupDataObject
+    export let GroupDataObject;
 </script>
 
 
 <div id="{GroupDataObject.slug}" class="cntr">
+    <div class="absolute right-2 top-2 hover saturate-0 transition-all">
+        <SocialPlatformComponent socialPlatform={GroupDataObject.type} />
+    </div>
+
     <div class="top-container">
         <div class="img" style="background: url('/groups/{GroupDataObject.img}');"></div>
         <div class="textContainer">
@@ -34,6 +39,10 @@
         .cntr {
             height: min-content !important;
         }
+    }
+
+    .cntr:hover .hover {
+        filter: saturate(1);
     }
 
     .top-container {
