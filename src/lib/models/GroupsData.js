@@ -139,20 +139,20 @@ export const GroupsData = [
         type: "whatsapp",
         link: "https://tiny.cc/germanbern"
     },
-    {
-        name: {
-            de: "Israelis, Jüdische & Freunde",
-            en: "Israelis, Jews & Friends"
-        },
-        slug: "israelis-jews-and-friends",
-        desc: {
-            en: "A group for Israelis, Jews and friends.",
-            de: "Eine Gruppe für Israelis, Jüdische und Freunde."
-        },
-        img: "israelis-jews-friends.webp",
-        type: "whatsapp",
-        link: "https://tiny.cc/israelisjewsfriends"
-    },
+    // {
+    //     name: {
+    //         de: "Israelis, Jüdische & Freunde",
+    //         en: "Israelis, Jews & Friends"
+    //     },
+    //     slug: "israelis-jews-and-friends",
+    //     desc: {
+    //         en: "A group for Israelis, Jews and friends.",
+    //         de: "Eine Gruppe für Israelis, Jüdische und Freunde."
+    //     },
+    //     img: "israelis-jews-friends.webp",
+    //     type: "whatsapp",
+    //     link: "https://tiny.cc/israelisjewsfriends"
+    // },
     {
         name: {
             de: "FIRE Community Bern",
