@@ -23,11 +23,6 @@
 <header class="header" class:sticky={isSticky}>
     <div class="cntr">
         <a href="/" title="home" class="titleWrapper">
-            <div class="logoWrapper relative">
-                <div class="logo absolute" style="background: url('/icons/logo.svg');" id="logo" />
-                <div class="logo" style="background: url('/icons/logo.svg');" id="logo2" />
-            </div>
-
             <div class="textWrapper">
                 <span class="logo-text">Connect Bern</span>
                 <p>{t[language]["logo-description"]}</p>
@@ -50,15 +45,12 @@
             align-items: center !important;
             padding: 1em !important;
         }
-
         p {
             display: none !important;
         }
-
         .inv {
             display: none !important;
         }
-
         .header .side-wrapper {
             flex-direction: column !important;
             gap: 0 !important;
@@ -104,7 +96,6 @@
             border-width: 1px !important;
         } 
     }
-
     .header {
         z-index: 30;
         width: 100%;
@@ -118,7 +109,6 @@
         justify-content: center;
         margin-bottom: 3em;
     }
-
     .cntr {
         max-width: 1200px;
         width: 100%;
@@ -163,7 +153,6 @@
         opacity: 0;
         transition: all .2s ease;
     }
-
     .side-wrapper {
         display: flex;
         flex-direction: row;
@@ -171,55 +160,6 @@
         gap: 1em;
         transition: all .3s ease;
     }
-
-    .logoWrapper {
-        transform-style: preserve-3d;
-        transform: perspective(10em) rotateZ(30deg);
-        filter: drop-shadow(0 50px 20px rgb(170, 220, 243));
-    }
-    
-    .logo {
-        background-repeat: no-repeat;
-        background-position: center;
-        height: 100px;
-        width: 100px;
-        border-radius: 100%;
-        border: 2px solid white;
-        transition: all .2s ease;
-        transform-style: preserve-3d;
-    }
-
-    #logo {
-        animation: rotate infinite 30s linear;
-    }
-    #logo2 {
-        mix-blend-mode: darken;
-        filter:  hue-rotate(30deg) brightness(5);
-        animation: rotate2 infinite 13s linear reverse;
-    }
-
-    
-    @keyframes rotate {
-        0% {
-            transform: rotateY(0) rotate(0);
-        }
-        100% {
-            transform: rotateY(360deg) rotate(720deg);
-        }
-    }
-
-    @keyframes rotate2 {
-        0% {
-            transform: rotateY(0) rotate(0);
-        }
-        50% {
-            transform: rotateY(180deg) rotate(360deg);
-        }
-        100% {
-            transform: rotateY(360deg) rotate(720deg);
-        }
-    }
-    
     @keyframes blur {
         0% {
             filter: blur(20px);
@@ -228,7 +168,6 @@
             filter: blur(0);
         }
     }
-
     a {
         text-decoration: none;
         display: flex;
@@ -236,16 +175,13 @@
         gap: 1em;
         transition: all .1s ease;
     }
-
     .titleWrapper {
         animation: blur 1s forwards ease;
         align-items: start;
     }
-
     a:hover {
         box-shadow: 0 0 0 1px white;
     }
-
     @keyframes disappear {
         0% {
             font-size: 1rem;
@@ -257,20 +193,17 @@
             display: none;
         }
     }
-
     p {
-        letter-spacing: 1px;
         color: white;
+        font-weight: lighter;
         font-size: 1rem;
         margin-left: 4px !important;
     }
-
     .logo-text {
         margin: 0;
-        font-weight: normal;
-        font-size: 3rem;
+        font-size: 2.4rem;
         text-transform: uppercase;
-        letter-spacing: 4px;
+        font-weight: bold;
         color: white;
         transition: all .3s ease;
     }

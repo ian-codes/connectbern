@@ -45,24 +45,20 @@
         opacity: 0;
         cursor: default;
     }
-
     .languages {
         display: none;
     }
-
     @media (max-width: 500px) {
         .visible {
             display: block !important;
         }
     }
-
     @media (max-width: 800px) {
         .burger {
             width: 40px !important;
             height: 40px !important;
         }
     }
-
     a {
         text-decoration: none;
         display: flex;
@@ -70,11 +66,9 @@
         gap: 1em;
         transition: all .1s ease;
     }
-
     nav {
         position: relative;
     }
-
     ol {
         display: flex;
         z-index: 1;
@@ -90,7 +84,6 @@
         border: 5px solid white;
         filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.4));
     }
-
     ol::before {
         z-index: -1;
         background: white;
@@ -102,7 +95,6 @@
         height: 15px;
         clip-path: polygon(0 100%, 50% 0, 100% 100%)
     }
-
     .navlink {
         display: flex;
         flex-direction: row;
@@ -131,9 +123,6 @@
     .navlink, .navlink .img {
         transition: all .2s ease;
     }
-
-
-
     .burger {
         position: relative;
         width: 50px;
@@ -146,20 +135,12 @@
         cursor: pointer;
         padding: .5em;
     }
-
     .burgerOpen {
         position: relative;
     }
-
-    .burger, .burger span {
-        transition: all .2s ease;
-    }
-
     .burger:hover {
-        padding: 0;
-        border: 0;
+        outline: 1px solid white;
     }
-
     .burger span {
         transition: all .2s ease;
         height: 2px;

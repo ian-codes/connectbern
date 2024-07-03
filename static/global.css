@@ -106,8 +106,21 @@ button {
 h1 {
     margin: 0 1rem;
     font-size: 2rem !important;
-    font-weight: normal;
+    font-weight: bold;
     color: white;
+    position: relative;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+h1::after {
+    position: absolute;
+    content: '';
+    bottom: -5px;
+    left: 0;
+    width: 200%;
+    height: 1px;
+    border-radius: 100%;
+    background: linear-gradient(90deg, white, transparent);
 }
 
 p {

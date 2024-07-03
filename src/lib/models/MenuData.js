@@ -23,6 +23,14 @@ export const MenuData = [
         slug: "places",
         img: "location.svg"
     },
+    {
+        title: {
+            en: "Finance",
+            de: "Finanzen"
+        },
+        slug: "finance",
+        img: "finance.svg"
+    }
     // {
     //     title: {
     //         en: "Tips",
