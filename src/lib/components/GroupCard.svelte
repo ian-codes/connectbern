@@ -109,9 +109,8 @@
         z-index: 10;
         overflow: hidden;
         transition: .2s ease all;
-        border-radius: .8rem;
         background: linear-gradient(-30deg, rgba(46, 44, 44, 0.1), rgba(255, 255, 255, 0.1));
-        box-shadow: 0 5px 3px 2px rgba(0, 0, 0, 0.158), 0 0 5px rgba(255, 255, 255, 0.05);
+        box-shadow: 0 5px 3px 2px rgba(0, 0, 0, 0.158), 0 0 20px rgba(255, 255, 255, 0.05);
     }
     .cntr::before {
         content: '';
@@ -137,7 +136,7 @@
     .cntr:focus {
         transform: scale(1.02);
         color: black;
-        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.185), 0 5px 10px 2px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 5px 50px rgba(255, 255, 255, 0.4), 0 5px 10px 2px rgba(0, 0, 0, 0.2);
     }
     .cntr:hover .img, 
     .cntr:focus .img {
