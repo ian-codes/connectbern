@@ -81,11 +81,9 @@ li {
     font-size: 16px;
     scroll-behavior: smooth;
 }
-
 html {
     height: 100%;
 }
-
 body {
     font-family: "Jost", sans-serif;
     --text-color: rgb(8, 80, 148);
@@ -95,14 +93,12 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
 }
-
 button {
     padding: 0;
     background: none;
     border: none;
     cursor: pointer;
 }
-
 h1 {
     margin: 0 1rem;
     font-size: 2rem !important;
@@ -122,7 +118,6 @@ h1::after {
     border-radius: 100%;
     background: linear-gradient(90deg, white, transparent);
 }
-
 p {
     margin: 0 1rem;
     padding: 0;
@@ -130,11 +125,9 @@ p {
     font-size: 1.4rem;
     color: white;
 }
-
 a {
     color: white;
 }
-
 section {
     padding: 3em 1em;
     display: flex;
@@ -144,7 +137,6 @@ section {
     margin: 0 .5em;
     background: rgba(255, 255, 255, 0.055);
 }
-
 .topbarWrapper {
     display: flex;
     flex-direction: column;
@@ -153,7 +145,6 @@ section {
     gap: 1em;
     margin-bottom: 1em;
 }
-
 form {
     margin: 1em;
     display: flex;
@@ -161,7 +152,6 @@ form {
     gap: 2em;
     width: 100%;
 }
-
 input, textarea {
     color: white;
     background: linear-gradient(rgba(255, 255, 255, 0.124), transparent);
@@ -172,11 +162,9 @@ input, textarea {
     box-shadow: 0 2px 2px rgba(50, 50, 50, 0.425);
     transition: all .1s ease;
 }
-
 input::placeholder {
     color: white !important;
 }
-
 .btn {
     background: black;
     text-decoration: none;
@@ -191,7 +179,6 @@ input::placeholder {
     width: 100%;
     cursor: pointer;
 }
-
 .linkImg {
     background-image: url('/icons/link.png');
     background-size: contain;
@@ -207,19 +194,15 @@ input::placeholder {
         padding: 2em 1em !important;
         margin: 0 .5em !important;
     }
-
     h1 {
         font-size: 1.8em !important;
-        width: 100vw;
         text-align: left;
         margin: 0 !important;
     }
-
     p {
         margin: 0 !important;
         font-size: 1em !important;
     }
-
     form {
         margin: 0 !important;
     }
