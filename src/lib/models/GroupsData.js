@@ -43,6 +43,20 @@ export const GroupsData = [
     },
     {
         name: {
+            de: "Vegan Bern & Agglo",
+            en: "Vegan Bern & Surroundings"
+        },
+        slug: "vegan-bern",
+        desc: {
+            de: "Eine Gruppe für vegane Leute, um neue Freundschaften zu knüpfen und Meetups zo organisieren.",
+            en: "A group for vegan people, for making new vegan friends and to organize vegan meetups and events."
+        },
+        img: "vegan.webp",
+        type: "whatsapp",
+        link: "tiny.cc/veganbern"
+    },
+    {
+        name: {
             de: "Unkommerzieller Marktplatz",
             en: "Non-commercial Market"
         },
