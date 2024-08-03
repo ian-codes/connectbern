@@ -53,7 +53,7 @@ export const GroupsData = [
         },
         img: "vegan.webp",
         type: "whatsapp",
-        link: "tiny.cc/veganbern"
+        link: "https://tiny.cc/veganbern"
     },
     {
         name: {
