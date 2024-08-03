@@ -9,6 +9,14 @@ export const MenuData = [
     },
     {
         title: {
+            en: "Swiss Tips",
+            de: "Swiss Tips"
+        },
+        slug: "swiss-tips",
+        img: "swisstips.png"
+    },
+    {
+        title: {
             en: "Events",
             de: "Events"
         },
@@ -31,14 +39,7 @@ export const MenuData = [
         slug: "finance",
         img: "finance.svg"
     }
-    // {
-    //     title: {
-    //         en: "Tips",
-    //         de: "Tips"
-    //     },
-    //     slug: "tips",
-    //     img: "tips.svg"
-    // },
+
     // {
     //     title: {
     //         en: "About",

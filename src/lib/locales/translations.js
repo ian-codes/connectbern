@@ -11,7 +11,7 @@ export const t = {
     en: {
         "search-groups": "Search groups...",
         "groups": "Groups",
-        "swiss-tips-description": "Tips & Tricks for living in Berne and Switzerland.",
+        "swiss-tips-description": "Tips & Tricks for living in Berne and Switzerland!",
         "places-description": "Here's a list of cool places where you can be a social butterfly.",
         "events-description": "Here you can find different organized events in and around Berne that you can partake in.",
         "logo-description": "Collection of social groups in Berne",

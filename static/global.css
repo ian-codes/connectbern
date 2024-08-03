@@ -82,6 +82,7 @@ li {
     scroll-behavior: smooth;
 }
 html {
+    scroll-behavior: smooth;
     height: 100%;
 }
 body {
@@ -107,6 +108,9 @@ h1 {
     position: relative;
     margin-bottom: 1.5rem;
     display: inline-block;
+}
+h2, h3 {
+    color: white;
 }
 h1::after {
     position: absolute;
