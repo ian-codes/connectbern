@@ -4,21 +4,33 @@
 
 
 <script>
+    import { setContext } from 'svelte';
     import { t } from "$lib/locales/translations.js";
     import { currentLanguage } from '$lib/stores/languageStore';
     import { page } from "$app/stores";
-    import { onDestroy } from "svelte";
 
     $: lang = $currentLanguage;
 
     let subpage = '';
-    let key = 0;
 
     $: {
         const parts = $page.url.pathname.split('/').filter(Boolean);
         subpage = parts[parts.length - 1] || '/';
     }
 
+    const scrollToContent = () => {
+        requestAnimationFrame(() => {
+            const targetElement = document.querySelector("#content");
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 2,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
+
+    setContext('scrollToContent', scrollToContent);
 
     function handleClick(link) {
         subpage = link;
@@ -84,7 +96,7 @@
         </nav>
     </div>
 
-    <div class="section" key={key}>
+    <div id="content">
         <slot />
     </div>
 </section>
@@ -95,7 +107,7 @@
         word-wrap: break-word;
         display: inline !important;
     }
-    .section {
+    :global(.section) {
         animation: appear 1s forwards ease;
     }
     @keyframes appear {

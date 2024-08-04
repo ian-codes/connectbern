@@ -1,4 +1,15 @@
-<div class="section" id="free-sim">
+<script>
+    import { getContext, onMount } from 'svelte';
+
+    const scrollToContent = getContext('scrollToContent');
+
+    onMount(() => {
+        scrollToContent();
+    });
+</script>
+
+
+<div class="section">
     <h2>Free SIM Card with Free Data</h2>
     <p>
         Watch the video 👉 

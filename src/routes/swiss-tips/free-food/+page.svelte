@@ -1,4 +1,15 @@
-<div class="section" id="free-food">
+<script>
+    import { getContext, onMount } from 'svelte';
+
+    const scrollToContent = getContext('scrollToContent');
+
+    onMount(() => {
+        scrollToContent();
+    });
+</script>
+
+
+<div class="section">
     <h2>Free Food</h2>
     <ul>
         <li>

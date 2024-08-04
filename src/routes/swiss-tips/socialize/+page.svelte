@@ -1,4 +1,14 @@
-<div class="section" id="socialize">
+<script>
+    import { getContext, onMount } from 'svelte';
+
+    const scrollToContent = getContext('scrollToContent');
+
+    onMount(() => {
+        scrollToContent();
+    });
+</script>
+
+<div class="section">
     <h2>Socialize in Berne</h2>
     <ul>
         <li>

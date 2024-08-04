@@ -1,4 +1,15 @@
-<div class="section" id="looking-for-flat">
+<script>
+    import { getContext, onMount } from 'svelte';
+
+    const scrollToContent = getContext('scrollToContent');
+
+    onMount(() => {
+        scrollToContent();
+    });
+</script>
+
+
+<div class="section">
     <h2>
         Looking for a flat? Check out these:
     </h2>
