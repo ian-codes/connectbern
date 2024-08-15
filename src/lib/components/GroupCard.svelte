@@ -22,7 +22,7 @@
     </div>
 
     <div class="buttonContainer">
-        <a title="Join group" href="{GroupDataObject.link}" target="_blank" class="buttone">
+        <a title="Join group" href="/groups/{GroupDataObject.slug}/join" target="_blank" class="buttone">
             <span class="linkImg" />
             Join
         </a>

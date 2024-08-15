@@ -50,7 +50,7 @@
             </div>
 
             <div class="w-full flex flex-col sm:flex-row gap-4">
-                <a class="join flex-1" href="{data?.link}">
+                <a class="join flex-1" href="{data?.slug}/join">
                     <span class="icon" style="background-image: url(/icons/link.png);" />
                     JOIN GROUP
                 </a>
@@ -74,7 +74,7 @@
 </section>
 
 
-<style>
+<style lang='postcss'>
     @media (max-width: 800px) {
         .cntr {
             flex-wrap: wrap;
