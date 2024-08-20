@@ -66,7 +66,7 @@
                     Join fellow hackers and infosec professionals every 3rd Tuesday of 
                     the month for a relaxed meetup with drinks in various Swiss cities. 
                     It's free, except for special events.
-                    <a href="beerontuesday.ch">
+                    <a href="https://beerontuesday.ch">
                         beerontuesday.ch
                     </a>
                 <li>
