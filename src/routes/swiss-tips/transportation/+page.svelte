@@ -11,6 +11,7 @@
 
 <div class="section">
     <h2>Transportation</h2>
+    <i class="text-white">WARNING: Beware of the price changes on the SBB app - the price is actually double!</i>
     <h3>Long-distance Traveling</h3>
     <ul>
         <li>
