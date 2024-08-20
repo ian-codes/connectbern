@@ -6,9 +6,11 @@
 
 <script>
     export let data;
+    import { page } from '$app/stores';
     import { currentLanguage } from '$lib/stores/languageStore';
 
     let linkWasCopied = false;
+    let link = $page.url.href + '/join';
 
     $: copyLinkTooltipText = linkWasCopied ? "Copied!" : "Copy to clipboard";
 
@@ -16,7 +18,7 @@
 
     async function copyLink() {
         try {
-            await navigator.clipboard.writeText(data.link);
+            await navigator.clipboard.writeText(link);
             linkWasCopied = true;
 
             console.log(copyLinkTooltipText);
