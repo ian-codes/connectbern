@@ -10,8 +10,7 @@
     import { currentLanguage } from '$lib/stores/languageStore';
 
     let linkWasCopied = false;
-    let link = $page.url.href + '/join';
-
+    $: link = $page.url.href.replace(/\/$/, '') + '/join';
     $: copyLinkTooltipText = linkWasCopied ? "Copied!" : "Copy to clipboard";
 
     $: lang = $currentLanguage;
