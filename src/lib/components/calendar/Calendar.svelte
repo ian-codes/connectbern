@@ -90,7 +90,7 @@
             timeGridDay: lang === 'de' ? 'Tag' : 'Day',
             listMonth: lang === 'de' ? 'Agenda' : 'Agenda'
         },
-        height: 'auto',
+        height: '600px',
         eventColor: '#667eea',
         eventTextColor: '#fff',
         dayMaxEvents: 3,
@@ -334,6 +334,28 @@
         border-radius: 8px;
         padding: 1rem;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        max-height: 650px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    
+    /* Custom scrollbar styling */
+    .calendar-wrapper::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    .calendar-wrapper::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+    }
+    
+    .calendar-wrapper::-webkit-scrollbar-thumb {
+        background: #667eea;
+        border-radius: 4px;
+    }
+    
+    .calendar-wrapper::-webkit-scrollbar-thumb:hover {
+        background: #5a6fd8;
     }
     
     .event-stats {
@@ -407,6 +429,19 @@
     :global(.ec-event[data-source="user"]) {
         --ec-event-bg-color: #27ae60;
         --ec-event-border-color: #27ae60;
+    }
+    
+    /* List/Agenda view styling */
+    :global(.ec-list .ec-event) {
+        color: white !important;
+    }
+    
+    :global(.ec-list .ec-event-title) {
+        color: white !important;
+    }
+    
+    :global(.ec-list .ec-event-time) {
+        color: white !important;
     }
     
     @media (max-width: 768px) {
