@@ -4,9 +4,24 @@
 }
 
 
-// calendar widget
+/* calendar widget */
 .ec {
-    --ec-text-color: #ffffff !important;
+    --ec-text-color: #333333 !important;
+}
+.ec-button {
+    background: #667eea !important;
+    color: white !important;
+    border: none !important;
+}
+.ec-button:hover {
+    background: #5a6fd8 !important;
+}
+.ec-today-button {
+    background: #27ae60 !important;
+    color: white !important;
+}
+.ec-today-button:hover {
+    background: #219a52 !important;
 }
 .ec-event {
     cursor: pointer !important;
@@ -60,7 +75,7 @@
 }
 
 
-// lists
+/* lists */
 ul, ol {
     list-style: none;
 }
@@ -76,7 +91,7 @@ li {
 }
 
 
-// general
+/* general */
 :root {
     font-size: 16px;
     scroll-behavior: smooth;
@@ -112,6 +127,17 @@ h1 {
 h2, h3 {
     color: white;
 }
+/* Override for specific sections that need dark text */
+.static-events h2,
+.static-events h3,
+.static-events p,
+.static-events li,
+.static-events a {
+    color: #333 !important;
+}
+.static-events a:hover {
+    color: #667eea !important;
+}
 h1::after {
     position: absolute;
     content: '';
@@ -128,6 +154,11 @@ p {
     line-height: 1.5em;
     font-size: 1.4rem;
     color: white;
+}
+/* Override for sections that need dark text */
+.static-events p,
+.static-events li {
+    color: #333 !important;
 }
 a {
     color: white;
