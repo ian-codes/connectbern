@@ -206,7 +206,7 @@ export const GroupsData = [
             de: "Unkommerzieller Marktplatz für die Quartiere Fischermätteli, Mattenhof, Sulgenau und Weissenbühl.",
             en: "Non-commercial marketplace for Fischermätteli, Mattenhof, Sulgenau and Weissenbühl districts."
         },
-        img: "connect-bern.webp",
+        img: "telegramgruppen.webp",
         type: "telegram",
         link: "https://t.me/joinchat/V1agD1T8E7ZiOWY0"
     },
@@ -220,7 +220,7 @@ export const GroupsData = [
             de: "Unkommerzieller Marktplatz für Zollikofen.",
             en: "Non-commercial marketplace for Zollikofen."
         },
-        img: "lets-bern.webp",
+        img: "telegramgruppen.webp",
         type: "telegram",
         link: "https://tiny.cc/zusammenzollikofentg"
     },
@@ -234,7 +234,7 @@ export const GroupsData = [
             de: "Unkommerzieller Marktplatz für Konolfingen.",
             en: "Non-commercial marketplace for Konolfingen."
         },
-        img: "whats-up-bern.webp",
+        img: "telegramgruppen.webp",
         type: "telegram",
         link: "https://t.me/+0d0e2-SaejQxZTc0"
     },
@@ -248,7 +248,7 @@ export const GroupsData = [
             de: "Unkommerzieller Marktplatz für Worb.",
             en: "Non-commercial marketplace for Worb."
         },
-        img: "israelis-jews-friends.webp",
+        img: "marktplatz.webp",
         type: "telegram",
         link: "https://t.me/+qRhXsX8PJws1MDk0"
     },
@@ -262,7 +262,7 @@ export const GroupsData = [
             de: "Unkommerzieller Marktplatz für das Gürbetal.",
             en: "Non-commercial marketplace for Gürbetal valley."
         },
-        img: "berndeutsch.webp",
+        img: "marktplatz.webp",
         type: "telegram",
         link: "https://t.me/+OYMZhEs90tQ1NjU0"
     },
@@ -276,7 +276,7 @@ export const GroupsData = [
             de: "Unkommerzieller Marktplatz für die Region Gantrisch.",
             en: "Non-commercial marketplace for Gantrisch region."
         },
-        img: "deutschkurs.webp",
+        img: "marktplatz.webp",
         type: "telegram",
         link: "https://t.me/+JXMdN-Go9UY2NDM0"
     },
@@ -290,7 +290,7 @@ export const GroupsData = [
             de: "Unkommerzieller Marktplatz für das Wittigkofen-Quartier.",
             en: "Non-commercial marketplace for Wittigkofen district."
         },
-        img: "fire-community.webp",
+        img: "marktplatz.webp",
         type: "telegram",
         link: "http://tiny.cc/wittiunko"
     },
@@ -305,7 +305,7 @@ export const GroupsData = [
             de: "Gruppe zum Tauschen und Verschenken von Kindersachen.",
             en: "Group for trading and gifting children's items."
         },
-        img: "connect-bern.webp",
+        img: "telegramgruppen.webp",
         type: "telegram",
         link: "https://t.me/BEKindersachen"
     },
@@ -319,7 +319,7 @@ export const GroupsData = [
             de: "Gruppe für das Teilen von Lebensmitteln gegen Verschwendung.",
             en: "Group for sharing food to prevent waste."
         },
-        img: "vegan.webp",
+        img: "telegramgruppen.webp",
         type: "telegram",
         link: "https://t.me/foodsharingbe"
     },
@@ -333,7 +333,7 @@ export const GroupsData = [
             de: "Gruppe zum Tauschen von Kleidung.",
             en: "Group for exchanging clothes."
         },
-        img: "whats-up-bern.webp",
+        img: "telegramgruppen.webp",
         type: "telegram",
         link: "https://t.me/kleidertauschbern"
     },
@@ -347,7 +347,7 @@ export const GroupsData = [
             de: "Gruppe zum Tauschen von Pflanzen und Samen.",
             en: "Group for exchanging plants and seeds."
         },
-        img: "lets-bern.webp",
+        img: "telegramgruppen.webp",
         type: "telegram",
         link: "https://t.me/pflanzentauschen1"
     },
@@ -361,7 +361,7 @@ export const GroupsData = [
             de: "Gruppe zum Tauschen und Verkaufen von Musikinstrumenten.",
             en: "Group for exchanging and selling musical instruments."
         },
-        img: "events-and-friends.webp",
+        img: "telegramgruppen.webp",
         type: "telegram",
         link: "https://t.me/MusikInstrumente_Tausch_Bern"
     },
@@ -375,7 +375,7 @@ export const GroupsData = [
             de: "Netzwerk für Musiker*innen und Bands in Bern.",
             en: "Network for musicians and bands in Bern."
         },
-        img: "spielegruppe.webp",
+        img: "telegramgruppen.webp",
         type: "telegram",
         link: "https://t.me/musikernetzbern"
     },
@@ -404,7 +404,7 @@ export const GroupsData = [
             de: "Chat-Gruppe für Event-Veranstalter*innen.",
             en: "Chat group for event organizers."
         },
-        img: "spielegruppe.webp",
+        img: "telegramgruppen.webp",
         type: "telegram",
         link: "https://t.me/+UOrn5kOXNfeKYWHX"
     },
@@ -418,7 +418,7 @@ export const GroupsData = [
             de: "Gruppe für Events in und um Bern.",
             en: "Group for events in and around Bern."
         },
-        img: "lets-bern.webp",
+        img: "events-and-friends.webp",
         type: "telegram",
         link: "https://t.me/eventsbern"
     },
@@ -433,7 +433,7 @@ export const GroupsData = [
             de: "Gruppe für gegenseitige Unterstützung und Fürsorge.",
             en: "Group for mutual support and care."
         },
-        img: "berndeutsch.webp",
+        img: "connect-bern.webp",
         type: "telegram",
         link: "https://t.me/+Hr1XrvM2JZplZmZk"
     },
@@ -603,7 +603,7 @@ export const GroupsData = [
             de: "Gruppe für Wohnungssuche in Biel/Bienne.",
             en: "Group for housing search in Biel/Bienne."
         },
-        img: "israelis-jews-friends.webp",
+        img: "telegramgruppen.webp",
         type: "telegram",
         link: "https://t.me/joinchat/n-50O24IUIxmMWY0"
     },
@@ -617,7 +617,7 @@ export const GroupsData = [
             de: "Community-Gruppe für Biel/Bienne.",
             en: "Community group for Biel/Bienne."
         },
-        img: "spielegruppe.webp",
+        img: "telegramgruppen.webp",
         type: "telegram",
         link: "https://t.me/mobienne"
     },
