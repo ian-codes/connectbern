@@ -62,8 +62,8 @@ export const GroupsData = [
         },
         slug: "non-commercial-marketplace",
         desc: {
-            de: "Gruppe zum Verschenken oder Austauschen. Mehr als 6500 Mitglieder.",
-            en: "A group for gifting or trading things. Over 6500 members."
+            de: "Gruppe zum Verschenken oder Austauschen. Mehr als 12000 Mitglieder.",
+            en: "A group for gifting or trading things. Over 12000 members."
         },
         img: "marktplatz.webp",
         type: "telegram",
