@@ -87,9 +87,6 @@
                     Once a month posterum for games night - second Wednesday of the month usually.
                 </li>
                 <li>
-                    After work - JYoB, every first Wednesday of the month
-                </li>
-                <li>
                     Social get together of effective altruism group.
                 </li>
             </ul>
