@@ -99,20 +99,6 @@ export const GroupsData = [
     },
     {
         name: {
-            de: "Events and friends Bern",
-            en: "Events and Friends Berne"
-        },
-        slug: "events-and-friends-bern",
-        desc: {
-            de: "Eine weitere WhatsApp Gruppe, um Menschen kennenzulernen und von Events zu erfahren.",
-            en: "A WhatsApp group to meet new people and get notified about upcoming events."
-        },
-        img: "events-and-friends.webp",
-        type: "whatsapp",
-        link: "http://tiny.cc/eventsandfriendsbern"
-    },
-    {
-        name: {
             de: "Gruppe für IT-Interessierte",
             en: "Group for IT enthusiasts"
         },
