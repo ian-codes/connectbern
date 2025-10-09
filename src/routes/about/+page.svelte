@@ -19,6 +19,9 @@
         </p>
     </div>
     <p>
+        We are all about connecting people, check out our volunteer project at stayinginbern.com
+    </p>
+    <p>
         If you have any feedback, questions or concerns, don't hesitate to reach out!
     </p>
 </section>
