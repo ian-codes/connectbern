@@ -7,7 +7,22 @@ export const t = {
         "events-description": "Hier sind unterschiedliche Events in und rundum Bern zu finden.",
         "logo-description": "Eine Sammlung von Gruppen in Bern",
         "description": "Ein physischer und digitaler Ort in Bern: Komm jederzeit vorbei, fühl dich willkommen und finde Anschluss. Wir bringen Menschen zusammen, unterstützen beim Organisieren von Treffen und Events und zeigen dir Gruppen und Wege, wie du andere kennenlernen kannst.",
-        "groups-description": "In diesen Gruppen findet man verschiedenste Aktivitäten und Leute. Falls du eine Frage hast, kannst du gerne in der <a href=\"https://chat.whatsapp.com/FxFhMEQirDLHoRqQzY4UDz\" title=\"Connect Bern WhatsApp Group Chat\">Connect Bern</a> Gruppe nachfragen."
+        "groups-description": "In diesen Gruppen findet man verschiedenste Aktivitäten und Leute. Falls du eine Frage hast, kannst du gerne in der <a href=\"https://chat.whatsapp.com/FxFhMEQirDLHoRqQzY4UDz\" title=\"Connect Bern WhatsApp Group Chat\">Connect Bern</a> Gruppe nachfragen.",
+        "map-title": "Digitale Karte",
+        "map-description": "Unser digitaler Raum zum Verbinden - sag Hallo zu allen, die auch da sind! Kollaboriere, arbeite, lerne neue Leute kennen oder entspanne einfach.",
+        "map-feature-1-title": "Sag Hallo",
+        "map-feature-1-desc": "Triff dich mit anderen auf der Karte und tausche dich aus.",
+        "map-feature-2-title": "Kollaboriere",
+        "map-feature-2-desc": "Arbeite zusammen an Projekten oder organisiere Events.",
+        "map-feature-3-title": "Arbeite",
+        "map-feature-3-desc": "Nutze den Raum zum Arbeiten und Lernen.",
+        "map-feature-4-title": "Entspanne",
+        "map-feature-4-desc": "Chill einfach und genieße die Gemeinschaft.",
+        "map-feature-5-title": "Projekt helfen",
+        "map-feature-5-desc": "Hilf beim Projekt mit und verbinde dich mit anderen.",
+        "map-feature-6-title": "Fragen stellen",
+        "map-feature-6-desc": "Hast du Fragen? Komm vorbei und finde jemanden, der dir hilft.",
+        "go-to-map": "Geh zur Karte"
     },
     en: {
         "search-groups": "Search groups...",
@@ -17,6 +32,21 @@ export const t = {
         "events-description": "Here you can find different organized events in and around Berne that you can partake in.",
         "logo-description": "Collection of social groups in Berne",
         "description": "A phyisical and digital, welcoming space in Berne where anyone can come by anytime and feel at home. We connect people, help organize meetups and events, and point you to groups and paths to meet others.",
-        "groups-description": "In these groups you can do many different things. If you have a general question, feel free to ask in the <a href=\"https://tiny.cc/connectbernwhatsapp\" title=\"Connect Bern WhatsApp Group Chat\">Connect Bern</a> group. People will be happy to help out."
+        "groups-description": "In these groups you can do many different things. If you have a general question, feel free to ask in the <a href=\"https://tiny.cc/connectbernwhatsapp\" title=\"Connect Bern WhatsApp Group Chat\">Connect Bern</a> group. People will be happy to help out.",
+        "map-title": "Digital Map",
+        "map-description": "Our digital space to connect - say hi to anyone who's also there! Collaborate, work, meet people, or just chill.",
+        "map-feature-1-title": "Say Hi",
+        "map-feature-1-desc": "Meet up with others on the map and connect.",
+        "map-feature-2-title": "Collaborate",
+        "map-feature-2-desc": "Work together on projects or organize events.",
+        "map-feature-3-title": "Work",
+        "map-feature-3-desc": "Use the space for working and learning.",
+        "map-feature-4-title": "Chill",
+        "map-feature-4-desc": "Just relax and enjoy the community.",
+        "map-feature-5-title": "Help the Project",
+        "map-feature-5-desc": "Help with the project and connect with people.",
+        "map-feature-6-title": "Ask Questions",
+        "map-feature-6-desc": "Have questions about anything? Join and find someone to help you.",
+        "go-to-map": "Go to the Map"
     }
 }

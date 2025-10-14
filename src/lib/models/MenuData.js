@@ -43,6 +43,15 @@ export const MenuData = [
         slug: "finance",
         img: "finance.svg",
         homeImg: "finance.svg"
+    },
+    {
+        title: {
+            en: "Digital Map",
+            de: "Digitale Karte"
+        },
+        slug: "map",
+        img: "maps.svg",
+        homeImg: "maps.svg"
     }
 
     // {
