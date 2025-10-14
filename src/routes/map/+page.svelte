@@ -117,12 +117,7 @@
         padding: 1.5rem;
         text-align: center;
         box-shadow: 0 4px 12px rgba(0,0,0,.2);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .feature-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 20px rgba(255,255,255,.1);
+        cursor: default;
     }
 
     .feature-icon {
