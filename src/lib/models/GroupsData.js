@@ -11,7 +11,7 @@ export const GroupsData = [
         },
         img: "connect-bern.webp",
         type: "whatsapp",
-        link: "http://tiny.cc/connectbernwhatsapp"
+        link: "https://tiny.cc/connectbernwhatsapp"
     },
     {
         name: {

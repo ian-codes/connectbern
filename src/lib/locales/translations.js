@@ -15,6 +15,6 @@ export const t = {
         "places-description": "Here's a list of cool places where you can be a social butterfly.",
         "events-description": "Here you can find different organized events in and around Berne that you can partake in.",
         "logo-description": "Collection of social groups in Berne",
-        "groups-description": "In these groups you can do many different things. If you have a general question, feel free to ask in the <a href=\"https://chat.whatsapp.com/FxFhMEQirDLHoRqQzY4UDz\" title=\"Connect Bern WhatsApp Group Chat\">Connect Bern</a> group. People will be happy to help out."
+        "groups-description": "In these groups you can do many different things. If you have a general question, feel free to ask in the <a href=\"https://tiny.cc/connectbernwhatsapp\" title=\"Connect Bern WhatsApp Group Chat\">Connect Bern</a> group. People will be happy to help out."
     }
 }
