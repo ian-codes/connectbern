@@ -3,7 +3,7 @@
 </h1>
 
 <p>
-    This is website where people can find groups, events and cool places in and around Berne.
+    This is website where people can find groups, events and cool places in and around Bern.
 </p>
 
 <p>

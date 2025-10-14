@@ -98,7 +98,7 @@
             </a>
         </li>
     </ul>
-    <h3>Inside the City (Berne)</h3>
+    <h3>Inside the City (Bern)</h3>
     <ul>
         <li>
             You can ask <a href="https://chagai.website/" target="_blank">me</a> 
@@ -132,7 +132,7 @@
                     <a href="https://chagai.website/hbf_plan.jpg" target="_blank" style="display: block !important;">
                         <img style="width: full; max-width: 80%;"
                         src="https://chagai.website/hbf_plan.jpg" 
-                        alt="Berne Hauptbahnhof with 'Kanten'">
+                        alt="Bern Hauptbahnhof with 'Kanten'">
                     </a>
                 </li>
             </ul>

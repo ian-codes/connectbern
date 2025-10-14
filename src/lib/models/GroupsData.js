@@ -142,7 +142,7 @@ export const GroupsData = [
     {
         name: {
             de: "FIRE Community Bern",
-            en: "FIRE Community Berne"
+            en: "FIRE Community Bern"
         },
         slug: "fire-community-bern",
         desc: {

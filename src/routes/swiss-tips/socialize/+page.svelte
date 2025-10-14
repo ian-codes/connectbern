@@ -9,7 +9,7 @@
 </script>
 
 <div class="section">
-    <h2>Socialize in Berne</h2>
+    <h2>Socialize in Bern</h2>
     <ul>
         <li>
             Check out the <a href="/groups" target="_blank">groups</a>

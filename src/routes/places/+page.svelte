@@ -21,7 +21,7 @@
     <ul>
         <li>
             <a href="https://maps.app.goo.gl/KjFE3FX8mrqHDSQy5">
-                English Club of Berne
+                English Club of Bern
             </a>
         </li>
         <li>
