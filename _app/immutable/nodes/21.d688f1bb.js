@@ -32,7 +32,7 @@ import{s as n,n as a,k as s,o as l}from"../chunks/scheduler.c941296e.js";import{
             <a href="https://www.sbb.ch/de/kampagne/night.html" target="_blank">https://www.sbb.ch/de/kampagne/night.html</a>
             Here is the map showing where in Switzerland you can travel for free with 
             this ticket: 
-            <a href="https://www.sbb.ch/de/abos-billette/abonnemente" target="_blank">https://www.sbb.ch/de/abos-billette/abonnemente</a></li></ul> <h3>Inside the City (Berne)</h3> <ul class="svelte-ft33et"><li>You can ask <a href="https://chagai.website/" target="_blank">me</a> 
+            <a href="https://www.sbb.ch/de/abos-billette/abonnemente" target="_blank">https://www.sbb.ch/de/abos-billette/abonnemente</a></li></ul> <h3>Inside the City (Bern)</h3> <ul class="svelte-ft33et"><li>You can ask <a href="https://chagai.website/" target="_blank">me</a> 
             for the code to my bike if you wanna go around the city. 
             You can also try this website to borrow a bike for free 
             <a href="https://map.pumpipumpe.ch" target="_blank">https://map.pumpipumpe.ch</a></li> <li>You can get 1 free ride (only 3 franks) with public transportation if 
@@ -43,7 +43,7 @@ import{s as n,n as a,k as s,o as l}from"../chunks/scheduler.c941296e.js";import{
                     <a href="https://play.google.com/store/apps/details?id=com.fairtiq.android" target="_blank">https://play.google.com/store/apps/details?id=com.fairtiq.android</a></li> <li>Apple:
                     <a href="https://apps.apple.com/ch/app/fairtiq/id1094360403?l=en" target="_blank">https://apps.apple.com/ch/app/fairtiq/id1094360403?l=en</a></li> <li>Here you can find the different bus stops (&quot;Kanten&quot;) at the 
                     central station (tap on it for bigger size):
-                    <a href="https://chagai.website/hbf_plan.jpg" target="_blank" style="display: block !important;"><img style="width: full; max-width: 80%;" src="https://chagai.website/hbf_plan.jpg" alt="Berne Hauptbahnhof with &#39;Kanten&#39;"/></a></li></ul></li></ul> <h3>Parking</h3> <p>Parking spots with blue line are only free on sunday. 
+                    <a href="https://chagai.website/hbf_plan.jpg" target="_blank" style="display: block !important;"><img style="width: full; max-width: 80%;" src="https://chagai.website/hbf_plan.jpg" alt="Bern Hauptbahnhof with &#39;Kanten&#39;"/></a></li></ul></li></ul> <h3>Parking</h3> <p>Parking spots with blue line are only free on sunday. 
         But also not every blue parking zone. Always read the signs 
         carefully, use google lens to translate if needed. There is a ticket 
-        to buy to park the car on the blue lines:</p> <ul class="svelte-ft33et"><li>19 francs for 24 hours</li> <li>9 francs for 4 hours</li></ul>`;return{c(){e=p("div"),e.innerHTML=o,this.h()},l(t){e=f(t,"DIV",{class:!0,"data-svelte-h":!0}),u(e)!=="svelte-bykd8a"&&(e.innerHTML=o),this.h()},h(){d(e,"class","section")},m(t,r){g(t,e,r)},p:a,i:a,o:a,d(t){t&&m(e)}}}function y(i){const e=s("scrollToContent");return l(()=>{e()}),[]}class _ extends h{constructor(e){super(),c(this,e,y,b,n,{})}}export{_ as component};
+        to buy to park the car on the blue lines:</p> <ul class="svelte-ft33et"><li>19 francs for 24 hours</li> <li>9 francs for 4 hours</li></ul>`;return{c(){e=p("div"),e.innerHTML=o,this.h()},l(t){e=f(t,"DIV",{class:!0,"data-svelte-h":!0}),u(e)!=="svelte-zf4piu"&&(e.innerHTML=o),this.h()},h(){d(e,"class","section")},m(t,r){g(t,e,r)},p:a,i:a,o:a,d(t){t&&m(e)}}}function y(i){const e=s("scrollToContent");return l(()=>{e()}),[]}class _ extends h{constructor(e){super(),c(this,e,y,b,n,{})}}export{_ as component};
