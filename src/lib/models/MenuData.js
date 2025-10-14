@@ -5,7 +5,8 @@ export const MenuData = [
             en: "Groups"
         },
         slug: "groups",
-        img: "groups.svg"
+		img: "groups.svg",
+		homeImg: "/navigation/groups.svg"
     },
     {
         title: {
@@ -13,7 +14,8 @@ export const MenuData = [
             de: "Swiss Tips"
         },
         slug: "swiss-tips",
-        img: "swisstips.png"
+        img: "swisstips.png",
+        homeImg: "/navigation/tips.svg"
     },
     {
         title: {
@@ -21,7 +23,8 @@ export const MenuData = [
             de: "Events"
         },
         slug: "events",
-        img: "events.svg"
+		img: "events.svg",
+		homeImg: "calendar-add.svg"
     },
     {
         title: {
@@ -29,7 +32,8 @@ export const MenuData = [
             de: "Orte"
         },
         slug: "places",
-        img: "location.svg"
+		img: "location.svg",
+		homeImg: "maps.svg"
     },
     {
         title: {
@@ -37,7 +41,8 @@ export const MenuData = [
             de: "Finanzen"
         },
         slug: "finance",
-        img: "finance.svg"
+        img: "finance.svg",
+        homeImg: "finance.svg"
     }
 
     // {
