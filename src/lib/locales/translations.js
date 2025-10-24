@@ -6,7 +6,7 @@ export const t = {
         "swiss-tips-description": "Tips & Tricks für das Leben in Bern und in der Schweiz.",
         "events-description": "Hier sind unterschiedliche Events in und rundum Bern zu finden.",
         "logo-description": "Ein Raum zum Verbinden",
-        "description": "Ein physischer und digitaler Ort in Bern: Komm jederzeit vorbei, fühl dich willkommen und finde Anschluss. Wir bringen Menschen zusammen, unterstützen beim Organisieren von Treffen und Events und zeigen dir Gruppen und Wege, wie du andere kennenlernen kannst.",
+        "description": "<strong>Ein physischer und digitaler Ort um sich in Bern zu vernetzen</strong><br/>Komm jederzeit vorbei, fühl dich willkommen und finde Anschluss.<br/>Wir bringen Menschen zusammen, unterstützen beim Organisieren von Treffen und Events<br/>und zeigen dir Gruppen und Wege, wie du andere kennenlernen kannst.",
         "groups-description": "In diesen Gruppen findet man verschiedenste Aktivitäten und Leute. Falls du eine Frage hast, kannst du gerne in der <a href=\"https://chat.whatsapp.com/FxFhMEQirDLHoRqQzY4UDz\" title=\"Connect Bern WhatsApp Group Chat\">Connect Bern</a> Gruppe nachfragen.",
         "map-title": "Digitale Karte",
         "map-description": "Unser digitaler Raum zum Verbinden - sag Hallo zu allen, die auch da sind! Kollaboriere, arbeite, lerne neue Leute kennen oder entspanne einfach.",
@@ -22,7 +22,17 @@ export const t = {
         "map-feature-5-desc": "Hilf beim Projekt mit und verbinde dich mit anderen.",
         "map-feature-6-title": "Fragen stellen",
         "map-feature-6-desc": "Hast du Fragen? Komm vorbei und finde jemanden, der dir hilft.",
-        "go-to-map": "Geh zur Karte"
+        "go-to-map": "Geh zur Karte",
+        "location-title": "Physischer Raum",
+        "location-description": "Besuche uns persönlich in Bern! Wir sind ein Raum, wo Menschen sich verbinden können - keine kommerziellen Interessen, nur echte Gemeinschaft.",
+        "location-phone": "+41 78 316 67 27",
+        "location-contact-intro": "<strong>WhatsApp bevorzugt</strong> - wir antworten schneller!<br/> Kannst du auch anrufen, wenn es dringend ist.",
+        "location-volunteers": "Wir sind Freiwillige - bitte hab Geduld mit unseren Antwortzeiten! ❤️",
+        "location-btn-whatsapp": "💬 WhatsApp",
+        "location-btn-call": "📞 Anrufen",
+        "location-call-first": "⚠️ <strong>Wichtig:</strong> Ruf zuerst an! Komm nicht einfach vorbei - manchmal ist niemand da.",
+        "location-curious": "🤔 <strong>Nicht sicher, worum es bei uns geht?</strong> Komm vorbei und schau es dir an! Wir sind ein Raum für echte Verbindungen.",
+        "location-process": "🏠 <strong>Prozess:</strong> WhatsApp-Anruf → Formular ausfüllen → Willkommensgruppe beitreten → Jemand bestätigt den Termin"
     },
     en: {
         "search-groups": "Search groups...",
@@ -31,7 +41,7 @@ export const t = {
         "places-description": "Here's a list of cool places where you can be a social butterfly.",
         "events-description": "Here you can find different organized events in and around Bern that you can partake in.",
         "logo-description": "A space to connect",
-        "description": "A physical and digital, welcoming space in Bern where anyone can come by anytime and feel at home. We connect people, help organize meetups and events, and point you to groups and paths to meet others.",
+        "description": "<strong>A physical and digital space to connect in Bern</strong><br/>Come by anytime, feel welcome, and find your community.<br/>We connect people, help organize meetups and events,<br/>and guide you to groups and opportunities to meet others.",
         "groups-description": "In these groups you can do many different things. If you have a general question, feel free to ask in the <a href=\"https://tiny.cc/connectbernwhatsapp\" title=\"Connect Bern WhatsApp Group Chat\">Connect Bern</a> group. People will be happy to help out.",
         "map-title": "Digital Map",
         "map-description": "Our digital space to connect - say hi to anyone who's also there! Collaborate, work, meet people, or just chill.",
@@ -47,6 +57,16 @@ export const t = {
         "map-feature-5-desc": "Help with the project and connect with people.",
         "map-feature-6-title": "Ask Questions",
         "map-feature-6-desc": "Have questions about anything? Join and find someone to help you.",
-        "go-to-map": "Go to the Map"
+        "go-to-map": "Go to the Map",
+        "location-title": "Physical Space",
+        "location-description": "Visit us in person in Bern! A space where people connect - no commercial interests, just genuine community.",
+        "location-phone": "+41 78 316 67 27",
+        "location-contact-intro": "<strong>WhatsApp preferred</strong> - we respond faster!<br/> You can also call if it's urgent.",
+        "location-volunteers": "We're volunteers - please be patient with our response times! ❤️",
+        "location-btn-whatsapp": "💬 WhatsApp",
+        "location-btn-call": "📞 Call",
+        "location-call-first": "⚠️ <strong>Important:</strong> Call first! Don't just show up - sometimes no one is there.",
+        "location-curious": "🤔 <strong>Not sure what we're about?</strong> Come check us out! We're a space for genuine connections.",
+        "location-process": "🏠 <strong>Process:</strong> WhatsApp call → Fill form → Join welcome group → Someone confirms they can show you around"
     }
 }

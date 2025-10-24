@@ -35,8 +35,19 @@
         text-align: center;
         padding: 2rem 1rem;
     }
-    h1 { margin: .25rem 0; }
-    .subtitle { opacity: .9; max-width: 720px; }
+    h1 { margin: .25rem 0; font-size: 2.5rem; }
+    .subtitle {
+        opacity: .95;
+        max-width: 720px;
+        line-height: 1.6;
+        font-size: 1.1rem;
+    }
+    .subtitle :global(strong) {
+        font-size: 1.25rem;
+        opacity: 1;
+        display: block;
+        margin-bottom: 0.25rem;
+    }
     .menu-grid {
         width: 100%;
         display: grid;

@@ -1,6 +1,24 @@
 export const MenuData = [
     {
         title: {
+            en: "Physical Space",
+            de: "Physischer Raum"
+        },
+        slug: "location",
+        img: "home.svg",
+        homeImg: "/navigation/home.svg"
+    },
+    {
+        title: {
+            en: "Digital Map",
+            de: "Digitale Karte"
+        },
+        slug: "map",
+        img: "map.svg",
+        homeImg: "/navigation/map.svg"
+    },
+    {
+        title: {
             de: "Gruppen",
             en: "Groups"
         },
@@ -28,12 +46,12 @@ export const MenuData = [
     },
     {
         title: {
-            en: "Places",
-            de: "Orte"
+            en: "Places to Socialize",
+            de: "Soziale Orte"
         },
         slug: "places",
 		img: "location.svg",
-		homeImg: "maps.svg"
+		homeImg: "/navigation/location.svg"
     },
     {
         title: {
@@ -43,15 +61,6 @@ export const MenuData = [
         slug: "finance",
         img: "finance.svg",
         homeImg: "finance.svg"
-    },
-    {
-        title: {
-            en: "Digital Map",
-            de: "Digitale Karte"
-        },
-        slug: "map",
-        img: "maps.svg",
-        homeImg: "maps.svg"
     }
 
     // {

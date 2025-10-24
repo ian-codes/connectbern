@@ -83,18 +83,6 @@
     .hero h1 {
         font-size: 2.5rem;
         margin-bottom: 1rem;
-        background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
-        background-size: 200% 200%;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradient 3s ease infinite;
-    }
-
-    @keyframes gradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
     }
 
     .description {
