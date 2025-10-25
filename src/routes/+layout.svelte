@@ -5,7 +5,13 @@
     import { currentLanguage } from "$lib/stores/languageStore.js";
 
     onMount(() => {
-        currentLanguage.set(navigator.language.includes('en') ? 'en' : 'de'); 
+        // Check localStorage first, then fall back to browser language
+        const savedLanguage = localStorage.getItem('language');
+        if (savedLanguage) {
+            currentLanguage.set(savedLanguage);
+        } else {
+            currentLanguage.set(navigator.language.includes('en') ? 'en' : 'de');
+        }
     });
 </script>
 

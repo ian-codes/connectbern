@@ -23,6 +23,9 @@
 <header class="header" class:sticky={isSticky}>
     <div class="cntr">
         <a href="/" title="home" class="titleWrapper">
+            <div class="logo">
+                <img src="/icons/connect-bern-logo-white.png" alt="Connect Bern Logo" />
+            </div>
             <div class="textWrapper">
                 <span class="logo-text">Connect Bern</span>
                 <p>{t[language]["logo-description"]}</p>
@@ -199,6 +202,23 @@
         font-size: 1rem;
         margin-left: 4px !important;
     }
+    .logo {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all .3s ease;
+    }
+
+    .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
     .logo-text {
         margin: 0;
         font-size: 2.4rem;

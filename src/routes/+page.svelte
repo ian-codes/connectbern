@@ -4,9 +4,6 @@
     import { currentLanguage } from '$lib/stores/languageStore';
     import { MenuData } from "$lib/models/MenuData.js";
     $: language = $currentLanguage;
-    function goTo(slug) {
-        window.location.href = `/${slug}`;
-    }
 </script>
 
 <section class="landing">
@@ -16,10 +13,10 @@
 
     <div class="menu-grid">
         {#each MenuData as item}
-            <button class="menu-card" on:click={() => goTo(item.slug)} title={typeof item.title === 'string' ? item.title : item.title[language]}>
+            <a href="/{item.slug}" class="menu-card" title={typeof item.title === 'string' ? item.title : item.title[language]}>
                 <span class="menu-icon" style={`background-image: url('${(item.homeImg ?? '').startsWith('/') ? item.homeImg : '/icons/' + (item.homeImg ?? item.img)}')`} />
                 <span class="menu-title">{typeof item.title === 'string' ? item.title : item.title[language]}</span>
-            </button>
+            </a>
         {/each}
     </div>
 </section>
@@ -67,6 +64,7 @@
         border: none;
         cursor: pointer;
         color: white;
+        text-decoration: none;
         background: linear-gradient(rgba(255,255,255,.12), rgba(255,255,255,.04));
         box-shadow: 0 2px 6px rgba(0,0,0,.35);
         transition: transform .08s ease, box-shadow .08s ease;

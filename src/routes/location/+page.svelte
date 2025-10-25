@@ -20,12 +20,12 @@
             setTimeout(() => {
                 button.innerHTML = originalText;
                 button.classList.remove('copied', 'pulse');
-            }, 2000);
+            }, 5000);
         }).catch(() => {
             button.innerHTML = 'Failed';
             setTimeout(() => {
                 button.innerHTML = '📋 Copy';
-            }, 2000);
+            }, 5000);
         });
     }
 
@@ -43,22 +43,20 @@
     </div>
 
     <div class="phone-highlight">
-        <div class="phone-container">
-            <div class="phone-number">{t[lang]['location-phone']}</div>
-            <button 
-                id="copy-button"
-                class="btn btn-copy"
-                on:click={() => copyPhone(t[lang]['location-phone'], copyButton)}
-            >
-                📋 Copy
-            </button>
-        </div>
+        <div class="phone-number">{t[lang]['location-phone']}</div>
+        <button
+            id="copy-button"
+            class="btn btn-copy"
+            on:click={() => copyPhone(t[lang]['location-phone'], copyButton)}
+        >
+            📋 Copy
+        </button>
         <p class="contact-info">{@html t[lang]['location-contact-intro']}</p>
         <p class="volunteers-note">{@html t[lang]['location-volunteers']}</p>
     </div>
 
     <div class="button-group">
-        <a href="https://wa.me/41783166727?text=Hi!%20I%20found%20Connect%20Bern%20online%2C%20my%20name%20is%20____%20%2C%20let%27s%20chat!"
+        <a href="https://wa.me/41783166727?text={encodeURIComponent(t[lang]['location-whatsapp-message'])}"
            class="btn btn-whatsapp"
            target="_blank">
             {t[lang]['location-btn-whatsapp']}
@@ -79,37 +77,31 @@
 </section>
 
 <style>
+    /* Mobile-first styles */
     .phone-highlight {
         background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
-        padding: 1.5rem;
+        padding: 1rem;
         border-radius: 12px;
         text-align: center;
-        margin: 1.5rem 0;
+        margin: 1rem 0;
         border: 2px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .phone-container {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-        gap: 1.5rem;
-        background: rgba(0, 0, 0, 0.3);
-        padding: 0.75rem 1rem;
-        border-radius: 8px;
-        margin-bottom: 1rem;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        gap: 0.75rem;
     }
 
     .phone-number {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         font-weight: bold;
         color: white;
         margin: 0;
-        flex-shrink: 0;
+        word-break: break-all;
+        padding: 0.5rem 0;
     }
 
     .contact-info {
-        font-size: 1.1rem;
+        font-size: 1rem;
         margin-bottom: 0.5rem;
         line-height: 1.6;
     }
@@ -117,56 +109,63 @@
     .volunteers-note {
         font-style: italic;
         opacity: 0.9;
-        margin-top: 1rem;
+        margin-top: 0.75rem;
+        font-size: 0.95rem;
     }
 
     .button-group {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
-        margin: 1.5rem 0;
+        gap: 0.75rem;
+        margin: 1rem 0;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 
     .btn {
         display: inline-block;
         text-decoration: none;
-        padding: 1rem 1.5rem;
+        padding: 0.875rem 1.25rem;
         border-radius: 25px;
         text-align: center;
         font-weight: bold;
-        font-size: 1.1rem;
+        font-size: 1rem;
         transition: all 0.3s ease;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         border: none;
         cursor: pointer;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 
     .btn-copy {
-        background: rgba(102, 126, 234, 0.2);
-        color: #a8b4ff;
-        border: 2px solid #667eea;
-        padding: 0.44rem 0.66rem;
-        font-size: 0.825rem;
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 0.35rem 0.65rem;
+        font-size: 0.75rem;
         border-radius: 6px;
-        min-width: 66px;
-        max-width: 88px;
         white-space: nowrap;
-        flex-shrink: 0;
-        display: flex;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 0.3rem;
+        font-weight: 500;
+        width: auto;
     }
 
     .btn-copy:hover {
-        background: rgba(102, 126, 234, 0.4);
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.5);
         transform: translateY(-1px);
     }
 
     .btn-copy.copied {
-        background: #667eea;
+        background: rgba(255, 255, 255, 0.3);
         color: white;
-        border-color: #667eea;
+        border-color: rgba(255, 255, 255, 0.6);
     }
 
     .btn-copy.pulse {
@@ -196,11 +195,12 @@
 
     .info-box {
         background: rgba(255, 255, 255, 0.08);
-        padding: 1.25rem;
+        padding: 1rem;
         border-radius: 10px;
-        margin-bottom: 1rem;
+        margin-bottom: 0.875rem;
         border-left: 4px solid rgba(255, 255, 255, 0.3);
         line-height: 1.6;
+        font-size: 0.95rem;
     }
 
     .info-box.warning {
@@ -216,22 +216,79 @@
         display: block;
     }
 
+    /* Mobile-specific styles */
+    @media (max-width: 767px) {
+        .phone-highlight {
+            margin: 1rem 0.5rem;
+            padding: 1rem 0.75rem;
+        }
+
+        .button-group {
+            margin: 1rem 0.5rem;
+            padding: 0 0.5rem;
+        }
+
+        .btn {
+            width: calc(100% - 1rem);
+            margin: 0 0.5rem;
+            padding: 0.875rem 1rem;
+        }
+    }
+
+    /* Tablet and up */
+    @media (min-width: 640px) {
+        .phone-number {
+            font-size: 1.5rem;
+        }
+
+        .btn-copy {
+            font-size: 0.8rem;
+        }
+    }
+
+    /* Desktop */
     @media (min-width: 768px) {
+        .phone-highlight {
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            gap: 1rem;
+        }
+
         .button-group {
             flex-direction: row;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .btn {
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
         }
 
         .phone-number {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+        }
+
+        .volunteers-note {
+            font-size: 1rem;
+        }
+
+        .info-box {
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
         }
 
         .mobile-only {
             display: none;
         }
 
-        .phone-container {
-            max-width: 600px;
-            margin: 0 auto 1rem auto;
+        .btn-copy {
+            font-size: 0.8rem;
         }
     }
 </style>

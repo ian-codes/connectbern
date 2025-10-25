@@ -32,7 +32,8 @@ export const t = {
         "location-btn-call": "📞 Anrufen",
         "location-call-first": "⚠️ <strong>Wichtig:</strong> Ruf zuerst an! Komm nicht einfach vorbei - manchmal ist niemand da.",
         "location-curious": "🤔 <strong>Nicht sicher, worum es bei uns geht?</strong> Komm vorbei und schau es dir an! Wir sind ein Raum für echte Verbindungen.",
-        "location-process": "🏠 <strong>Prozess:</strong> WhatsApp-Anruf → Formular ausfüllen → Willkommensgruppe beitreten → Jemand bestätigt den Termin"
+        "location-process": "🏠 <strong>Prozess:</strong> WhatsApp-Anruf → Formular ausfüllen → Willkommensgruppe beitreten → Jemand bestätigt den Termin",
+        "location-whatsapp-message": "Hi, ich würde gerne das Connect Bern Projekt besuchen!"
     },
     en: {
         "search-groups": "Search groups...",
@@ -67,6 +68,7 @@ export const t = {
         "location-btn-call": "📞 Call",
         "location-call-first": "⚠️ <strong>Important:</strong> Call first! Don't just show up - sometimes no one is there.",
         "location-curious": "🤔 <strong>Not sure what we're about?</strong> Come check us out! We're a space for genuine connections.",
-        "location-process": "🏠 <strong>Process:</strong> WhatsApp call → Fill form → Join welcome group → Someone confirms they can show you around"
+        "location-process": "🏠 <strong>Process:</strong> WhatsApp call → Fill form → Join welcome group → Someone confirms they can show you around",
+        "location-whatsapp-message": "Hi, I would love to visit the Connect Bern project!"
     }
 }
