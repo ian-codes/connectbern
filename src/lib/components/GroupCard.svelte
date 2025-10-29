@@ -10,7 +10,7 @@
 <div id="{GroupDataObject.slug}" class="cntr">
     <div class="absolute right-2 top-2 hover saturate-0 transition-all">
         {#if GroupDataObject.slug === "connect-bern" && GroupDataObject._filteredPlatform}
-            <!-- Show only the filtered platform icon -->
+            <!-- Show only the filtered platform icon for Connect Bern when filtered -->
             <div class="top-icons">
                 {#if GroupDataObject._filteredPlatform === "whatsapp"}
                     <a href={GroupDataObject.link} target="_blank" rel="noopener noreferrer" title="WhatsApp">
@@ -22,8 +22,44 @@
                     </a>
                 {/if}
             </div>
-        {:else if GroupDataObject.slug === "connect-bern" && GroupDataObject.telegramLink}
-            <!-- Show both icons when not filtered -->
+        {:else if GroupDataObject.slug === "connect-bern" && GroupDataObject.facebookLink}
+            <!-- Show all three icons for Connect Bern when not filtered -->
+            <div class="top-icons">
+                <a href={GroupDataObject.link} target="_blank" rel="noopener noreferrer" title="WhatsApp">
+                    <span class="top-icon" style="background-image: url('/icons/whatsapp.svg');"></span>
+                </a>
+                <a href={GroupDataObject.telegramLink} target="_blank" rel="noopener noreferrer" title="Telegram">
+                    <span class="top-icon" style="background-image: url('/icons/telegram.svg');"></span>
+                </a>
+                <a href={GroupDataObject.facebookLink} target="_blank" rel="noopener noreferrer" title="Facebook">
+                    <span class="top-icon" style="background-image: url('/icons/facebook.svg');"></span>
+                </a>
+            </div>
+        {:else if GroupDataObject.facebookLink && GroupDataObject.whatsappLink && GroupDataObject.slug !== "connect-bern"}
+            <!-- Show Facebook and WhatsApp icons for other groups -->
+            <div class="top-icons">
+                <a href={GroupDataObject.whatsappLink} target="_blank" rel="noopener noreferrer" title="WhatsApp">
+                    <span class="top-icon" style="background-image: url('/icons/whatsapp.svg');"></span>
+                </a>
+                <a href={GroupDataObject.facebookLink} target="_blank" rel="noopener noreferrer" title="Facebook">
+                    <span class="top-icon" style="background-image: url('/icons/facebook.svg');"></span>
+                </a>
+            </div>
+        {:else if GroupDataObject._filteredPlatform && GroupDataObject.telegramLink}
+            <!-- Show only the filtered platform icon for multiplatform groups -->
+            <div class="top-icons">
+                {#if GroupDataObject._filteredPlatform === "whatsapp"}
+                    <a href={GroupDataObject.link} target="_blank" rel="noopener noreferrer" title="WhatsApp">
+                        <span class="top-icon" style="background-image: url('/icons/whatsapp.svg');"></span>
+                    </a>
+                {:else if GroupDataObject._filteredPlatform === "telegram"}
+                    <a href={GroupDataObject.telegramLink} target="_blank" rel="noopener noreferrer" title="Telegram">
+                        <span class="top-icon" style="background-image: url('/icons/telegram.svg');"></span>
+                    </a>
+                {/if}
+            </div>
+        {:else if GroupDataObject.telegramLink && GroupDataObject.link}
+            <!-- Show both icons for multiplatform groups when not filtered -->
             <div class="top-icons">
                 <a href={GroupDataObject.link} target="_blank" rel="noopener noreferrer" title="WhatsApp">
                     <span class="top-icon" style="background-image: url('/icons/whatsapp.svg');"></span>
@@ -32,8 +68,13 @@
                     <span class="top-icon" style="background-image: url('/icons/telegram.svg');"></span>
                 </a>
             </div>
-        {:else}
-            <SocialPlatformComponent socialPlatform={GroupDataObject.type} />
+        {:else if GroupDataObject.type === 'whatsapp' || GroupDataObject.type === 'telegram'}
+            <!-- Single platform icon with link -->
+            <div class="top-icons">
+                <a href={GroupDataObject.link} target="_blank" rel="noopener noreferrer" title={GroupDataObject.type === 'whatsapp' ? 'WhatsApp' : 'Telegram'}>
+                    <span class="top-icon" style="background-image: url('/icons/{GroupDataObject.type}.svg');"></span>
+                </a>
+            </div>
         {/if}
     </div>
 
@@ -58,9 +99,12 @@
                 Join
             </a>
         {:else if GroupDataObject.slug !== "connect-bern"}
-            <a title="Join group" href="/groups/{GroupDataObject.slug}/join" target="_blank" class="buttone">
+            <a title={GroupDataObject.slug === "community-groups" ? "View Connect Bern groups" : (GroupDataObject.isCollection ? "View selection of groups" : (GroupDataObject.type === "multiplatform" || (GroupDataObject.facebookLink && GroupDataObject.whatsappLink) ? "View all links" : (GroupDataObject.type === "whatsapp" ? "Join WhatsApp community" : "Join group")))}
+               href="/groups/{GroupDataObject.slug}/join"
+               target="_blank"
+               class="buttone">
                 <span class="linkImg"></span>
-                Join
+                {GroupDataObject.slug === "community-groups" ? "View Groups" : (GroupDataObject.isCollection ? "View Groups" : (GroupDataObject.type === "multiplatform" || (GroupDataObject.facebookLink && GroupDataObject.whatsappLink) ? "All Links" : "Join"))}
             </a>
         {/if}
         <a title="Show details" href="/groups/{GroupDataObject.slug}" class="buttone">

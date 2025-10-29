@@ -13,6 +13,7 @@ export const GroupsData = [
         type: "multiplatform",
         link: "https://tiny.cc/connectbernwhatsapp",
         telegramLink: "https://t.me/connectbern",
+        facebookLink: "https://www.facebook.com/connectbern",
         organizer: "connectbern"
     },
     {
@@ -43,21 +44,23 @@ export const GroupsData = [
         img: "connect-bern-logo-white.png",
         type: "whatsapp",
         link: "https://tiny.cc/connectbernwhatsapp",
-        organizer: "connectbern"
+        organizer: "connectbern",
+        isCollection: true
     },
     {
         name: {
-            de: "Sammlung von Unkommerziellen Marktplätzen",
-            en: "Collection of Non-commercial Marketplaces"
+            de: "Unko Links",
+            en: "Unko Links"
         },
         slug: "non-commercial-marketplaces",
         desc: {
-            de: "Eine Sammlung von unkommerziellen Marktplatz-Gruppen auf Telegram.",
-            en: "A collection of non-commercial marketplace group chats on Telegram."
+            de: "In diesem Kanal findest du die Link-Sammlung der unkommerziellen Markt-Plätze der Schweiz und zu vielen weiteren spezifischen Gruppen. 🙌🏼",
+            en: "In this channel you'll find a collection of links to non-commercial marketplaces in Switzerland and many other specific groups. 🙌🏼"
         },
-        img: "telegramgruppen.webp",
+        img: "unko-links.jpg",
         type: "telegram",
-        link: "https://t.me/unkomarkt_sammlung"
+        link: "https://t.me/s/unkomarkt_sammlung/70",
+        isCollection: true
     },
     {
         name: {
@@ -71,7 +74,8 @@ export const GroupsData = [
         },
         img: "spielegruppe.webp",
         type: "multiplatform",
-        link: "https://linktr.ee/gamesbern"
+        link: "https://tiny.cc/gamesgroupbern",
+        telegramLink: "https://t.me/joinchat/VADU-Gkqqyltzawe"
     },
     {
         name: {
@@ -112,8 +116,10 @@ export const GroupsData = [
             en: "A WhatsApp group to meet new people and get notified about upcoming events."
         },
         img: "whats-up-bern.webp",
-        type: "multiplatform",
-        link: "https://linktr.ee/whatsupbern"
+        type: "other",
+        link: "https://linktr.ee/whatsupbern",
+        whatsappLink: "https://linktr.ee/whatsupbern",
+        facebookLink: "https://linktr.ee/whatsupbern"
     },
     {
         name: {

@@ -10,7 +10,10 @@
     import { currentLanguage } from '$lib/stores/languageStore';
 
     let linkWasCopied = false;
-    $: link = $page.url.href.replace(/\/$/, '') + '/join';
+    // For multiplatform groups, copy the page link instead of /join link
+    $: link = (data?.type === "multiplatform" || (data?.facebookLink && data?.whatsappLink))
+        ? $page.url.href.replace(/\/$/, '')
+        : $page.url.href.replace(/\/$/, '') + '/join';
     $: copyLinkTooltipText = linkWasCopied ? "Copied!" : "Copy to clipboard";
 
     $: lang = $currentLanguage;
@@ -66,7 +69,7 @@
                     {:else}
                         <a class="join flex-1" href="{data?.slug}/join">
                             <span class="icon" style="background-image: url(/icons/link.png);" />
-                            JOIN GROUP
+                            {data?.isCollection ? "VIEW GROUPS" : (data?.slug === "community-groups" ? "JOIN WHATSAPP COMMUNITY" : "JOIN GROUP")}
                         </a>
                     {/if}
 
@@ -82,15 +85,39 @@
                     </button>
                 </div>
             {:else}
-                <div class="platform-links-detail">
-                    <a class="platform-detail-btn whatsapp" href="{data?.link}" target="_blank" rel="noopener noreferrer">
-                        <span class="platform-icon-large">💬</span>
-                        <span>WhatsApp</span>
-                    </a>
-                    <a class="platform-detail-btn telegram" href="{data?.telegramLink}" target="_blank" rel="noopener noreferrer">
-                        <span class="platform-icon-large">✈️</span>
-                        <span>Telegram</span>
-                    </a>
+                <div class="w-full flex flex-col gap-4">
+                    <div class="platform-explanation">
+                        <p>
+                            {#if lang === "de"}
+                                Die WhatsApp- und Telegram-Gruppen sind verbunden – Nachrichten werden zwischen beiden synchronisiert. Die Facebook-Gruppe ist separat.
+                            {:else}
+                                The WhatsApp and Telegram groups are connected – messages are synchronized between both. The Facebook group is separate.
+                            {/if}
+                        </p>
+                    </div>
+                    <div class="platform-links-detail">
+                        <a class="platform-detail-btn whatsapp" href="{data?.link}" target="_blank" rel="noopener noreferrer">
+                            <span>WhatsApp</span>
+                        </a>
+                        <a class="platform-detail-btn telegram" href="{data?.telegramLink}" target="_blank" rel="noopener noreferrer">
+                            <span>Telegram</span>
+                        </a>
+                        {#if data?.facebookLink}
+                            <a class="platform-detail-btn facebook" href="{data?.facebookLink}" target="_blank" rel="noopener noreferrer">
+                                <span>Facebook</span>
+                            </a>
+                        {/if}
+                    </div>
+                    <button on:click={copyLink}
+                        class="join copyImgButton relative">
+
+                        <span class="tooltip">
+                            {copyLinkTooltipText}
+                        </span>
+
+                        <span class="icon copyImg" style="background-image: url(/icons/link.svg);" />
+                        Copy Link
+                    </button>
                 </div>
             {/if}
         </div>
@@ -171,7 +198,8 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        gap: 1em;
+        align-items: flex-start;
+        gap: 2em;
         margin: 2em 0;
     }
 
@@ -180,7 +208,8 @@
         flex-direction: column;
         justify-content: space-evenly;
         gap: 2em;
-        width: 100%;
+        flex: 1;
+        min-width: 0;
     }
 
     h1 {
@@ -194,9 +223,10 @@
     }
 
     .img {
-        width: 100%;
-        max-width: 300px;
-        aspect-ratio: 1;
+        width: 300px;
+        height: 300px;
+        min-width: 300px;
+        flex-shrink: 0;
         pointer-events: none;
         background-position: center;
         background-size: cover;
@@ -255,10 +285,22 @@
         font-size: 1.5em;
     }
 
+    .platform-explanation {
+        margin-bottom: 1.5em;
+    }
+
+    .platform-explanation p {
+        font-size: 1em;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.9);
+        margin: 0;
+    }
+
     .platform-links-detail {
         display: flex;
-        flex-direction: column;
-        gap: 1em;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.75em;
         width: 100%;
     }
 
@@ -266,16 +308,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 1em;
-        padding: 1.2em 2em;
-        border-radius: 1em;
+        gap: 0.5em;
+        padding: 0.6em 1.2em;
+        border-radius: 0.5em;
         text-decoration: none;
         font-weight: bold;
-        font-size: 1.2em;
+        font-size: 0.9em;
         text-transform: uppercase;
         letter-spacing: 1px;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        flex: 0 0 auto;
     }
 
     .platform-detail-btn.whatsapp {
@@ -300,18 +343,29 @@
         box-shadow: 0 6px 20px rgba(0, 136, 204, 0.5);
     }
 
-    .platform-icon-large {
-        font-size: 2em;
+    .platform-detail-btn.facebook {
+        background: linear-gradient(135deg, #1877F2, #0d5dbf);
+        color: white;
+    }
+
+    .platform-detail-btn.facebook:hover {
+        background: linear-gradient(135deg, #0d5dbf, #084a94);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(24, 119, 242, 0.5);
     }
 
     @media (max-width: 800px) {
         .platform-detail-btn {
-            font-size: 1em;
-            padding: 1em 1.5em;
+            font-size: 0.85em;
+            padding: 0.5em 1em;
         }
 
-        .platform-icon-large {
-            font-size: 1.5em;
+        .platform-links-detail {
+            gap: 0.5em;
+        }
+
+        .platform-explanation p {
+            font-size: 0.95em;
         }
     }
 

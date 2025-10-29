@@ -30,10 +30,10 @@ export function filterByGroupType(type) {
         }
         case "whatsapp": {
             for (let group of GroupsData) {
-                if (group.type.includes(type) || (group.slug === "connect-bern" && group.link)) {
+                if (group.type.includes(type) || (group.type === "multiplatform" && group.link)) {
                     const groupCopy = { ...group }
-                    // For Connect Bern, override to show only WhatsApp when filtered
-                    if (group.slug === "connect-bern") {
+                    // For multiplatform groups, override to show only WhatsApp when filtered
+                    if (group.type === "multiplatform" && group.telegramLink) {
                         groupCopy._filteredPlatform = "whatsapp"
                     }
                     groups.push(groupCopy)
@@ -43,10 +43,10 @@ export function filterByGroupType(type) {
         }
         case "telegram": {
             for (let group of GroupsData) {
-                if (group.type.includes(type) || (group.slug === "connect-bern" && group.telegramLink)) {
+                if (group.type.includes(type) || (group.type === "multiplatform" && group.telegramLink)) {
                     const groupCopy = { ...group }
-                    // For Connect Bern, override to show only Telegram when filtered
-                    if (group.slug === "connect-bern") {
+                    // For multiplatform groups, override to show only Telegram when filtered
+                    if (group.type === "multiplatform" && group.telegramLink) {
                         groupCopy._filteredPlatform = "telegram"
                     }
                     groups.push(groupCopy)
