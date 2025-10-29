@@ -20,18 +20,36 @@ export function filterByGroupType(type) {
         case "all": {
             return GroupsData
         }
+        case "connectbern": {
+            for (let group of GroupsData) {
+                if (group.organizer === "connectbern") {
+                    groups.push(group)
+                }
+            }
+            return groups
+        }
         case "whatsapp": {
             for (let group of GroupsData) {
-                if (group.type.includes(type)) {
-                    groups.push(group)
+                if (group.type.includes(type) || (group.slug === "connect-bern" && group.link)) {
+                    const groupCopy = { ...group }
+                    // For Connect Bern, override to show only WhatsApp when filtered
+                    if (group.slug === "connect-bern") {
+                        groupCopy._filteredPlatform = "whatsapp"
+                    }
+                    groups.push(groupCopy)
                 }
             }
             return groups
         }
         case "telegram": {
             for (let group of GroupsData) {
-                if (group.type.includes(type)) {
-                    groups.push(group)
+                if (group.type.includes(type) || (group.slug === "connect-bern" && group.telegramLink)) {
+                    const groupCopy = { ...group }
+                    // For Connect Bern, override to show only Telegram when filtered
+                    if (group.slug === "connect-bern") {
+                        groupCopy._filteredPlatform = "telegram"
+                    }
+                    groups.push(groupCopy)
                 }
             }
             return groups

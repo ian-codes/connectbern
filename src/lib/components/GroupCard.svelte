@@ -1,15 +1,40 @@
 <script>
     import { currentLanguage } from '$lib/stores/languageStore';
     import SocialPlatformComponent from './SocialPlatformComponent.svelte';
-    $: language = $currentLanguage;
 
     export let GroupDataObject;
+    $: language = $currentLanguage;
 </script>
 
 
 <div id="{GroupDataObject.slug}" class="cntr">
     <div class="absolute right-2 top-2 hover saturate-0 transition-all">
-        <SocialPlatformComponent socialPlatform={GroupDataObject.type} />
+        {#if GroupDataObject.slug === "connect-bern" && GroupDataObject._filteredPlatform}
+            <!-- Show only the filtered platform icon -->
+            <div class="top-icons">
+                {#if GroupDataObject._filteredPlatform === "whatsapp"}
+                    <a href={GroupDataObject.link} target="_blank" rel="noopener noreferrer" title="WhatsApp">
+                        <span class="top-icon" style="background-image: url('/icons/whatsapp.svg');"></span>
+                    </a>
+                {:else if GroupDataObject._filteredPlatform === "telegram"}
+                    <a href={GroupDataObject.telegramLink} target="_blank" rel="noopener noreferrer" title="Telegram">
+                        <span class="top-icon" style="background-image: url('/icons/telegram.svg');"></span>
+                    </a>
+                {/if}
+            </div>
+        {:else if GroupDataObject.slug === "connect-bern" && GroupDataObject.telegramLink}
+            <!-- Show both icons when not filtered -->
+            <div class="top-icons">
+                <a href={GroupDataObject.link} target="_blank" rel="noopener noreferrer" title="WhatsApp">
+                    <span class="top-icon" style="background-image: url('/icons/whatsapp.svg');"></span>
+                </a>
+                <a href={GroupDataObject.telegramLink} target="_blank" rel="noopener noreferrer" title="Telegram">
+                    <span class="top-icon" style="background-image: url('/icons/telegram.svg');"></span>
+                </a>
+            </div>
+        {:else}
+            <SocialPlatformComponent socialPlatform={GroupDataObject.type} />
+        {/if}
     </div>
 
     <div class="top-container">
@@ -18,16 +43,28 @@
             <h3>
                 {typeof GroupDataObject.name === "string" ? GroupDataObject.name : GroupDataObject.name[language]}
             </h3>
+            
         </div>
     </div>
 
     <div class="buttonContainer">
-        <a title="Join group" href="/groups/{GroupDataObject.slug}/join" target="_blank" class="buttone">
-            <span class="linkImg" />
-            Join
-        </a>
+        {#if GroupDataObject.slug === "connect-bern" && GroupDataObject._filteredPlatform}
+            <a title="Join group"
+               href={GroupDataObject._filteredPlatform === "whatsapp" ? GroupDataObject.link : GroupDataObject.telegramLink}
+               target="_blank"
+               rel="noopener noreferrer"
+               class="buttone">
+                <span class="linkImg"></span>
+                Join
+            </a>
+        {:else if GroupDataObject.slug !== "connect-bern"}
+            <a title="Join group" href="/groups/{GroupDataObject.slug}/join" target="_blank" class="buttone">
+                <span class="linkImg"></span>
+                Join
+            </a>
+        {/if}
         <a title="Show details" href="/groups/{GroupDataObject.slug}" class="buttone">
-            <span class="eyeImg" />
+            <span class="eyeImg"></span>
             Info
         </a>
     </div>
@@ -95,6 +132,20 @@
         background-position: center;
         background-size: contain;
     }
+    .top-icons {
+        display: flex;
+        gap: .4em;
+        align-items: center;
+    }
+    .top-icon {
+        display: inline-block;
+        width: 1.75rem;
+        height: 1.75rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+    }
     .cntr {
         position: relative;
         color: white;
@@ -151,6 +202,7 @@
         font-size: 1.5em;
         text-align: center;
     }
+    
     .img {
         position: relative;
         background-position: center;

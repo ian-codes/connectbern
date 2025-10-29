@@ -50,23 +50,49 @@
                 </p>
             </div>
 
-            <div class="w-full flex flex-col sm:flex-row gap-4">
-                <a class="join flex-1" href="{data?.slug}/join">
-                    <span class="icon" style="background-image: url(/icons/link.png);" />
-                    JOIN GROUP
-                </a>
-    
-                <button on:click={copyLink} 
-                    class="join copyImgButton flex-1 relative">
+            {#if data?.slug !== "connect-bern"}
+                <div class="w-full flex flex-col gap-4">
+                    {#if data?.telegramLink}
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a class="join flex-1 whatsapp-btn" href="{data?.link}" target="_blank" rel="noopener noreferrer">
+                                <span class="platform-icon">💬</span>
+                                JOIN WHATSAPP
+                            </a>
+                            <a class="join flex-1 telegram-btn" href="{data?.telegramLink}" target="_blank" rel="noopener noreferrer">
+                                <span class="platform-icon">✈️</span>
+                                JOIN TELEGRAM
+                            </a>
+                        </div>
+                    {:else}
+                        <a class="join flex-1" href="{data?.slug}/join">
+                            <span class="icon" style="background-image: url(/icons/link.png);" />
+                            JOIN GROUP
+                        </a>
+                    {/if}
 
-                    <span class="tooltip">
-                        {copyLinkTooltipText}
-                    </span>
+                    <button on:click={copyLink}
+                        class="join copyImgButton relative">
 
-                    <span class="icon copyImg" style="background-image: url(/icons/link.svg);" />
-                    Copy Link
-                </button>
-            </div>
+                        <span class="tooltip">
+                            {copyLinkTooltipText}
+                        </span>
+
+                        <span class="icon copyImg" style="background-image: url(/icons/link.svg);" />
+                        Copy Link
+                    </button>
+                </div>
+            {:else}
+                <div class="platform-links-detail">
+                    <a class="platform-detail-btn whatsapp" href="{data?.link}" target="_blank" rel="noopener noreferrer">
+                        <span class="platform-icon-large">💬</span>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a class="platform-detail-btn telegram" href="{data?.telegramLink}" target="_blank" rel="noopener noreferrer">
+                        <span class="platform-icon-large">✈️</span>
+                        <span>Telegram</span>
+                    </a>
+                </div>
+            {/if}
         </div>
     
         <div style="background-image: url(/groups/{data.img})" class="img"></div>
@@ -188,7 +214,7 @@
         display: flex;
         flex-direction: row;
         font-size: 1em;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         text-decoration: none;
         font-weight: bold;
@@ -203,6 +229,90 @@
 
     .join:hover {
         transform: scale(1.02);
+    }
+
+    .whatsapp-btn {
+        background: linear-gradient(135deg, #25D366, #128C7E);
+        color: white;
+    }
+
+    .whatsapp-btn:hover {
+        background: linear-gradient(135deg, #128C7E, #075E54);
+        box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+    }
+
+    .telegram-btn {
+        background: linear-gradient(135deg, #0088cc, #005580);
+        color: white;
+    }
+
+    .telegram-btn:hover {
+        background: linear-gradient(135deg, #005580, #003d5c);
+        box-shadow: 0 5px 15px rgba(0, 136, 204, 0.4);
+    }
+
+    .platform-icon {
+        font-size: 1.5em;
+    }
+
+    .platform-links-detail {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        width: 100%;
+    }
+
+    .platform-detail-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+        padding: 1.2em 2em;
+        border-radius: 1em;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2em;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .platform-detail-btn.whatsapp {
+        background: linear-gradient(135deg, #25D366, #128C7E);
+        color: white;
+    }
+
+    .platform-detail-btn.whatsapp:hover {
+        background: linear-gradient(135deg, #128C7E, #075E54);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+    }
+
+    .platform-detail-btn.telegram {
+        background: linear-gradient(135deg, #0088cc, #005580);
+        color: white;
+    }
+
+    .platform-detail-btn.telegram:hover {
+        background: linear-gradient(135deg, #005580, #003d5c);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 136, 204, 0.5);
+    }
+
+    .platform-icon-large {
+        font-size: 2em;
+    }
+
+    @media (max-width: 800px) {
+        .platform-detail-btn {
+            font-size: 1em;
+            padding: 1em 1.5em;
+        }
+
+        .platform-icon-large {
+            font-size: 1.5em;
+        }
     }
 
     .back {

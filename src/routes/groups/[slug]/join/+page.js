@@ -2,6 +2,8 @@
 import { GroupsData } from "$lib/models/GroupsData";
 import { redirect } from "@sveltejs/kit";
 
+export const prerender = false;
+
 export function load({ params }) {
     const data = GroupsData.find(g => g.slug === params.slug);
 

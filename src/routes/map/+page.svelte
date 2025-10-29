@@ -16,6 +16,11 @@
     <div class="hero">
         <h1>🗺️ {t[language]["map-title"]}</h1>
         <p class="description">{@html t[language]["map-description"]}</p>
+
+        <button class="quick-access-button" on:click={goToMap}>
+            <span class="quick-icon">🚀</span>
+            <span class="quick-text">{t[language]["go-to-map"]}</span>
+        </button>
     </div>
 
     <div class="features">
@@ -89,6 +94,82 @@
         font-size: 1.2rem;
         opacity: 0.9;
         line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .quick-access-button {
+        margin-top: 1.5rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        border-radius: 50px;
+        padding: 1rem 2.5rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        animation: pulse 2s infinite;
+    }
+
+    .quick-access-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        transition: left 0.6s ease;
+    }
+
+    .quick-access-button:hover::before {
+        left: 100%;
+    }
+
+    .quick-access-button:hover {
+        transform: translateY(-3px) scale(1.08);
+        box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
+    }
+
+    .quick-access-button:active {
+        transform: translateY(-1px) scale(1.05);
+    }
+
+    .quick-icon {
+        font-size: 1.8rem;
+        animation: rocketBounce 1.5s infinite;
+    }
+
+    .quick-text {
+        position: relative;
+        z-index: 1;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        50% {
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+        }
+    }
+
+    @keyframes rocketBounce {
+        0%, 100% {
+            transform: translateY(0) rotate(0deg);
+        }
+        25% {
+            transform: translateY(-4px) rotate(-5deg);
+        }
+        75% {
+            transform: translateY(-2px) rotate(5deg);
+        }
     }
 
     .features {
@@ -195,11 +276,27 @@
         .hero h1 {
             font-size: 2rem;
         }
-        
+
+        .description {
+            font-size: 1rem;
+        }
+
+        .quick-access-button {
+            font-size: 1rem;
+            padding: 0.9rem 2rem;
+            width: 100%;
+            max-width: 300px;
+            justify-content: center;
+        }
+
+        .quick-icon {
+            font-size: 1.5rem;
+        }
+
         .features {
             grid-template-columns: 1fr;
         }
-        
+
         .mappy-button {
             font-size: 1rem;
             padding: 0.8rem 1.5rem;

@@ -37,8 +37,17 @@ export const MenuData = [
     },
     {
         title: {
-            en: "Events",
-            de: "Events"
+            en: "Events Calendar",
+            de: "Events Kalender"
+        },
+        slug: "events-calendar",
+		img: "events.svg",
+		homeImg: "calendar-add.svg"
+    },
+    {
+        title: {
+            en: "Reoccurring Events",
+            de: "Wiederkehrende Events"
         },
         slug: "events",
 		img: "events.svg",

@@ -1,17 +1,49 @@
 export const GroupsData = [
     {
         name: {
-            de: "Connect Bern",
-            en: "Connect Bern"
+            de: "Connect Bern Hauptgruppe",
+            en: "Connect Bern main group"
         },
         slug: "connect-bern",
         desc: {
-            de: "Generelle Hauptgruppe.",
-            en: "General-purpose group."
+            de: "Diese Gruppe ist für alles rund um Connect Bern und die Connect Bern Mission (Menschen in Bern verbinden 🙂)",
+            en: "This group is for anything related to Connect Bern and the Connect Bern mission (connecting people in Bern 🙂)"
         },
-        img: "connect-bern.webp",
+        img: "connect-bern-logo-white.png",
+        type: "multiplatform",
+        link: "https://tiny.cc/connectbernwhatsapp",
+        telegramLink: "https://t.me/connectbern",
+        organizer: "connectbern"
+    },
+    {
+        name: {
+            de: "Connect Bern Sprachenaustausch",
+            en: "Connect Bern Language Exchange"
+        },
+        slug: "language-exchange",
+        desc: {
+            de: "Sprachenaustausch jeden Mittwoch im Connect Bern Haus. Übe verschiedene Sprachen und lerne neue Leute kennen!",
+            en: "Language exchange every Wednesday at Connect Bern house. Practice different languages and meet new people!"
+        },
+        img: "language-exchange-icon.jpg",
         type: "whatsapp",
-        link: "https://tiny.cc/connectbernwhatsapp"
+        link: "https://tiny.cc/language-exchange",
+        organizer: "connectbern"
+    },
+    {
+        name: {
+            de: "Connect Bern Community Gruppen",
+            en: "Connect Bern Community Groups"
+        },
+        slug: "community-groups",
+        desc: {
+            de: "Eine Sammlung von verschiedenen Community-Gruppen, die von Connect Bern betrieben werden.\n\nDies sind kleinere, spezialisierte WhatsApp-Gruppen für verschiedene Interessen und Aktivitäten - von geselligen Treffen über spezifische Hobbys bis hin zu Veranstaltungen.\n\nWir zeigen hier nur einige der verfügbaren Gruppen. Tritt der Hauptgruppe bei, um mehr über alle Community-Gruppen zu erfahren!",
+            en: "A collection of various community groups run by Connect Bern.\n\nThese are smaller, specialized WhatsApp groups for different interests and activities - from social hangouts to specific hobbies and events.\n\nWe're only showing some of the available groups here. Join the main group to discover more community groups!"
+        },
+        img: "connect-bern-logo-white.png",
+        type: "whatsapp",
+        link: "https://tiny.cc/connectbernwhatsapp",
+        organizer: "connectbern"
     },
     {
         name: {

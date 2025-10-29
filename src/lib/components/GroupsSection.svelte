@@ -2,6 +2,8 @@
     import { GroupsData } from "$lib/models/GroupsData.js";
     import { searchGroups, filterByGroupType } from "$lib/services/groupsManager.js";
     import { currentLanguage } from '$lib/stores/languageStore';
+    import { page } from '$app/stores';
+    import { goto } from '$app/navigation';
 
     $: language = $currentLanguage;
 
@@ -10,7 +12,7 @@
     import { t } from "$lib/locales/translations.js";
 
     let groupType = "All"
-    let groupTypes = ["All", "WhatsApp", "Telegram", "Multiplatform", "Other"]
+    let groupTypes = ["All", "Connect Bern", "WhatsApp", "Telegram", "Multiplatform", "Other"]
 
     let groups = GroupsData
 
@@ -21,8 +23,9 @@
     }
 
     function handleGroupTypeChange() {
-        groups = filterByGroupType(groupType.toLowerCase())
-        console.log(groupType)
+        const filterType = groupType === "Connect Bern" ? "connectbern" : groupType.toLowerCase()
+        groups = filterByGroupType(filterType)
+        console.log('Filter changed to:', groupType, 'Filtered groups:', groups.length)
     }
 </script>
 
@@ -76,7 +79,7 @@
     </div>
 
     <div class="cardsContainer">
-        {#each groups as groupDataObject}
+        {#each groups as groupDataObject (groupDataObject.slug + (groupDataObject._filteredPlatform || ''))}
             <GroupCard GroupDataObject={groupDataObject} />
         {/each}
     </div>
