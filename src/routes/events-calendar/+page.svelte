@@ -68,7 +68,7 @@
         return new Date(year, month, nthDay);
     }
 
-    function formatDate(date) {
+    $: formatDate = (date) => {
         const days = lang === 'de'
             ? ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
             : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -85,22 +85,23 @@
         return lang === 'de'
             ? `${dayName}, ${day}. ${month} ${year}`
             : `${dayName}, ${month} ${day}, ${year}`;
-    }
+    };
 
     function getDaysUntil(date) {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
-        date.setHours(0, 0, 0, 0);
-        const diffTime = date - today;
+        const dateClone = new Date(date);
+        dateClone.setHours(0, 0, 0, 0);
+        const diffTime = dateClone - today;
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         return diffDays;
     }
 
-    function getDaysUntilText(days) {
+    $: getDaysUntilText = (days) => {
         if (days === 0) return lang === 'de' ? 'Heute!' : 'Today!';
         if (days === 1) return lang === 'de' ? 'Morgen' : 'Tomorrow';
         return lang === 'de' ? `in ${days} Tagen` : `in ${days} days`;
-    }
+    };
 
     onMount(() => {
         const events = [
