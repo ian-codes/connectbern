@@ -23,7 +23,9 @@
         const currentDay = today.getDay(); // 0 = Sunday, 1 = Monday, etc.
         let daysUntil = dayOfWeek - currentDay;
 
-        if (daysUntil <= 0) {
+        // If it's today, return today (daysUntil === 0)
+        // If the day has passed this week, get next week (daysUntil < 0)
+        if (daysUntil < 0) {
             daysUntil += 7;
         }
 
@@ -270,9 +272,16 @@
             }
         ];
 
-        // Sort events by date
+        // Sort events by date - include all events from today onwards
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Set to start of day
+
         calendarEvents = events
-            .filter(event => event.date > new Date() || (event.date.toDateString() === new Date().toDateString()))
+            .filter(event => {
+                const eventDate = new Date(event.date);
+                eventDate.setHours(0, 0, 0, 0); // Compare only dates, not times
+                return eventDate >= today;
+            })
             .sort((a, b) => a.date - b.date);
     });
 

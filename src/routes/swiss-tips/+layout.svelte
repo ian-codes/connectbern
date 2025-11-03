@@ -68,13 +68,7 @@
 
 <section>
     <div class="topbarWrapper">
-        <h1>Swiss Tips 
-            <span style="font-weight: lighter; text-wrap: nowrap">
-                <a href="https://chagai.website/swisstips/" target="_blank">
-                    by Chagai (Joe)
-                </a>
-            </span>
-        </h1>
+        <h1>Swiss Tips</h1>
         <p>
             {@html t[lang]['swiss-tips-description']}
             <br />

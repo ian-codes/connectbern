@@ -55,7 +55,22 @@
 
             {#if data?.slug !== "connect-bern"}
                 <div class="w-full flex flex-col gap-4">
-                    {#if data?.telegramLink}
+                    {#if data?.telegramLink && data?.slug === "game-group"}
+                        <!-- Game Group with Linktree -->
+                        <div class="platform-links-detail">
+                            <a class="platform-detail-btn whatsapp" href="{data?.link}" target="_blank" rel="noopener noreferrer">
+                                <span>WhatsApp</span>
+                            </a>
+                            <a class="platform-detail-btn telegram" href="{data?.telegramLink}" target="_blank" rel="noopener noreferrer">
+                                <span>Telegram</span>
+                            </a>
+                            {#if data?.linktreeLink}
+                                <a class="platform-detail-btn linktree" href="{data?.linktreeLink}" target="_blank" rel="noopener noreferrer">
+                                    <span>All Links</span>
+                                </a>
+                            {/if}
+                        </div>
+                    {:else if data?.telegramLink}
                         <div class="flex flex-col sm:flex-row gap-4">
                             <a class="join flex-1 whatsapp-btn" href="{data?.link}" target="_blank" rel="noopener noreferrer">
                                 <span class="platform-icon">💬</span>
@@ -129,7 +144,7 @@
 
 
 <style lang='postcss'>
-    @media (max-width: 800px) {
+    @media (max-width: 1150px) {
         .cntr {
             flex-wrap: wrap;
             gap: 3em !important;
@@ -352,6 +367,17 @@
         background: linear-gradient(135deg, #0d5dbf, #084a94);
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(24, 119, 242, 0.5);
+    }
+
+    .platform-detail-btn.linktree {
+        background: linear-gradient(135deg, #43E660, #2ea845);
+        color: white;
+    }
+
+    .platform-detail-btn.linktree:hover {
+        background: linear-gradient(135deg, #2ea845, #1f7830);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(67, 230, 96, 0.5);
     }
 
     @media (max-width: 800px) {

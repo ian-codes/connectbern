@@ -75,7 +75,8 @@ export const GroupsData = [
         img: "spielegruppe.webp",
         type: "multiplatform",
         link: "https://tiny.cc/gamesgroupbern",
-        telegramLink: "https://t.me/joinchat/VADU-Gkqqyltzawe"
+        telegramLink: "https://t.me/joinchat/VADU-Gkqqyltzawe",
+        linktreeLink: "https://linktr.ee/gamesbern"
     },
     {
         name: {
@@ -116,7 +117,7 @@ export const GroupsData = [
             en: "A WhatsApp group to meet new people and get notified about upcoming events."
         },
         img: "whats-up-bern.webp",
-        type: "other",
+        type: "multiplatform",
         link: "https://linktr.ee/whatsupbern",
         whatsappLink: "https://linktr.ee/whatsupbern",
         facebookLink: "https://linktr.ee/whatsupbern"
