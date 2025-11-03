@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Chess Night • Events • Connect Bern</title>
+	<title>Connect & Cheers • Events • Connect Bern</title>
 </svelte:head>
 
 <script>
@@ -9,20 +9,20 @@
 
     const content = {
         de: {
-            title: "Hobby-Schach",
-            description: "Komm vorbei, um mit uns ein bisschen Hobby-Schach zu spielen und neue Leute in entspannter Atmosphäre im Connect Bern Haus kennenzulernen ♟🙂",
+            title: "Connect & Cheers",
+            description: "Jeden Freitagabend in der PROGR Turnhalle – entspannter Treff zum Anstoßen, Austauschen und neue Leute kennenlernen. Teil der Community-Projekte Connect Bern & Staying in Bern.",
             instructions: "Schreib uns bitte auf WhatsApp, damit wir dir die Adresse schicken können 😊🎉",
             phone: "+41783166727",
-            date: "📅 am 4ten November um 18:00",
-            closing: "Wir freuen uns darauf, euch alle dort zu sehen!"
+            time: "⏰ Jeden Freitag ab 18:00",
+            closing: "Wir freuen uns darauf, dich dort zu sehen!"
         },
         en: {
-            title: "Hobby Chess",
-            description: "Come join us to play some hobby chess and meet people in an informal setup at our Connect Bern project house ♟🙂",
+            title: "Connect & Cheers",
+            description: "Every Friday evening at PROGR Turnhalle – relaxed drinks, chats and connections. Part of the Connect Bern & Staying in Bern community projects.",
             instructions: "Please write us on WhatsApp so we can share the address with you 😊🎉",
             phone: "+41783166727",
-            date: "📅 on the 4th of November at 18:00",
-            closing: "Looking forward to see you all there!"
+            time: "⏰ Every Friday from 18:00",
+            closing: "Looking forward to seeing you there!"
         }
     };
 </script>
@@ -41,7 +41,7 @@
             </p>
 
             <div class="infoBox">
-                <p class="date">{content[lang].date}</p>
+                <p class="time">{content[lang].time}</p>
             </div>
 
             <div class="contactBox">
@@ -124,7 +124,7 @@
         text-align: center;
     }
 
-    .date {
+    .time {
         font-size: 1.4em;
         font-weight: bold;
         margin: 0;

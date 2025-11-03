@@ -1,5 +1,21 @@
 <svelte:head>
 	<title>Events Calendar • Connect Bern</title>
+	<meta name="description" content="Discover upcoming events in Bern. Weekly and special meetups by Connect Bern and friends." />
+
+	<!-- Open Graph -->
+	<meta property="og:url" content="https://connectbern.ch/events-calendar" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Events Calendar • Connect Bern" />
+	<meta property="og:description" content="Discover upcoming events in Bern. Weekly and special meetups by Connect Bern and friends." />
+	<meta property="og:image" content="https://connectbern.ch/icons/connect-bern-logo-white.png" />
+
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="twitter:domain" content="connectbern.ch" />
+	<meta property="twitter:url" content="https://connectbern.ch/events-calendar" />
+	<meta name="twitter:title" content="Events Calendar • Connect Bern" />
+	<meta name="twitter:description" content="Discover upcoming events in Bern. Weekly and special meetups by Connect Bern and friends." />
+	<meta name="twitter:image" content="https://connectbern.ch/icons/connect-bern-logo-white.png" />
 </svelte:head>
 
 <script>
@@ -237,6 +253,18 @@
                 link: 'https://www.meetup.com/eruptlounge/events/calendar/'
             },
             // Friday events
+            {
+                title: { de: 'Connect & Cheers', en: 'Connect & Cheers' },
+                date: getNextWeekday(5), // Friday
+                recurring: 'weekly',
+                time: '18:00',
+                description: {
+                    de: 'Jeden Freitagabend in der PROGR Turnhalle – entspannter Treff zum Anstoßen, Austauschen und neue Leute kennenlernen. Teil der Community-Projekte Connect Bern & Staying in Bern.',
+                    en: 'Every Friday evening at PROGR Turnhalle – relaxed drinks, chats and connections.'
+                },
+                link: '/events/connect-and-cheers',
+                organizer: 'connectbern'
+            },
             {
                 title: { de: 'English Speaking Club', en: 'English Speaking Club' },
                 date: getNextWeekday(5), // Friday

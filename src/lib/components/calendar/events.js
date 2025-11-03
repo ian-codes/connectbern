@@ -28,5 +28,11 @@ export const events = [
         start: new Date(2025, 10, 4, 18, 0),
         end: new Date(2025, 10, 4, 21, 0),
         extendedProps: { slug: "chess" }
+    },
+    {
+        title: "Connect & Cheers",
+        start: new Date(2025, 10, 7, 18, 0),
+        end: new Date(2025, 10, 7, 22, 0),
+        extendedProps: { slug: "connect-and-cheers" }
     }
 ];
