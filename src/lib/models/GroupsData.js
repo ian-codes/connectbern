@@ -128,12 +128,13 @@ export const GroupsData = [
         },
         slug: "it-group",
         desc: {
-            de: "Eine inoffizielle Gruppe für den Chaos Treff (CCC/Hackerspace).",
-            en: "Unofficial gruop for the Chaos Treff (CCC/Hackerspace)."
+            de: "Eine allgemeine Gruppe, um Menschen zu verbinden, die sich für Programmierung, Hacking und alles rund um Computer interessieren.<br><br><strong>Hinweis:</strong> Diese Gruppe ist nicht wirklich aktiv. Wir empfehlen den ChaosTreff Bern zu besuchen, der sehr aktiv ist: <a href='https://chaostreffbern.ch/' target='_blank' rel='noopener noreferrer'>chaostreffbern.ch</a> - ein Hackerspace in Bern, der in gewisser Weise mit der Computer Chaos Club Bewegung (CCC) verbunden ist.",
+            en: "A general group for connecting people who are into programming, hacking and anything related to computers.<br><br><strong>Note:</strong> This group is not really active. We recommend checking out ChaosTreff Bern which is very active: <a href='https://chaostreffbern.ch/' target='_blank' rel='noopener noreferrer'>chaostreffbern.ch</a> - a hacker space in Bern related in a way to the Computer Chaos Club movement (CCC)."
         },
         img: "it-gruppe.webp",
         type: "telegram",
-        link: "https://t.me/+e6QTJfwGEus0NThi"
+        link: "https://t.me/+e6QTJfwGEus0NThi",
+        organizer: "connectbern"
     },
     {
         name: {
