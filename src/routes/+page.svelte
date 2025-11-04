@@ -38,6 +38,24 @@
         <p><strong>{t[language]["about-p3"]}</strong></p>
     </div>
 
+    <div class="what-we-do-section">
+        <h3>{t[language]["what-we-do-title"]}</h3>
+
+        <div class="what-we-do-content">
+            <p><strong>🏠 {t[language]["what-we-do-physical-title"]}:</strong> {t[language]["what-we-do-physical-desc"]}</p>
+
+            <p><strong>🗺️ {t[language]["what-we-do-digital-title"]}:</strong> {t[language]["what-we-do-digital-desc"]}</p>
+
+            <p><strong>👥 {t[language]["what-we-do-groups-title"]}:</strong> {t[language]["what-we-do-groups-desc"]}</p>
+
+            <p><strong>🎉 {t[language]["what-we-do-events-title"]}:</strong> {t[language]["what-we-do-events-desc"]}</p>
+
+            <p><strong>☕ {t[language]["what-we-do-places-title"]}:</strong> {t[language]["what-we-do-places-desc"]}</p>
+
+            <p><strong>💡 {t[language]["what-we-do-tips-title"]}:</strong> {t[language]["what-we-do-tips-desc"]}</p>
+        </div>
+    </div>
+
     <div class="values-section">
         <h3>{t[language]["about-values-title"]}</h3>
 
@@ -77,14 +95,14 @@
 
 <style>
     .landing {
-        min-height: 80vh;
+        min-height: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
         gap: 1rem;
         text-align: center;
-        padding: 2rem 1rem;
+        padding: 2rem 1rem 3rem;
     }
     h1 { margin: .25rem 0; font-size: 2.5rem; }
     .subtitle {
@@ -105,6 +123,7 @@
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
         gap: 1rem;
         margin-top: 1rem;
+        margin-bottom: 0;
         max-width: 960px;
     }
     .menu-card {
@@ -193,6 +212,45 @@
         font-size: 1.15rem;
     }
 
+    .what-we-do-section {
+        margin-top: 3rem;
+    }
+
+    .what-we-do-section h3 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        font-weight: bold;
+    }
+
+    .what-we-do-content {
+        max-width: 800px;
+        margin: 0 auto;
+        background: rgba(108, 72, 167, 0.08);
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid rgba(108, 72, 167, 0.2);
+    }
+
+    .what-we-do-content p {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        margin: 1.5rem 0;
+        text-align: left;
+    }
+
+    .what-we-do-content p:first-child {
+        margin-top: 0;
+    }
+
+    .what-we-do-content p:last-child {
+        margin-bottom: 0;
+    }
+
+    .what-we-do-content strong {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.95);
+    }
+
     .values-section {
         margin-top: 3rem;
     }
@@ -216,14 +274,6 @@
         border-radius: 12px;
         padding: 1.5rem;
         text-align: left;
-        transition: all 0.3s ease;
-    }
-
-    .value-card:hover {
-        transform: translateY(-5px);
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.2);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
     .value-icon {
@@ -280,6 +330,19 @@
 
         .about-content p:first-child {
             font-size: 1.1rem;
+        }
+
+        .what-we-do-section h3 {
+            font-size: 1.6rem;
+        }
+
+        .what-we-do-content {
+            padding: 1.5rem;
+        }
+
+        .what-we-do-content p {
+            font-size: 1rem;
+            margin: 1.2rem 0;
         }
 
         .values-section h3 {
