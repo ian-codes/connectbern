@@ -108,22 +108,6 @@ export const GroupsData = [
     },
     {
         name: {
-            de: "What's Up Bern",
-            en: "What's Up Bern"
-        },
-        slug: "whats-up-bern",
-        desc: {
-            de: "Eine WhatsApp Gruppe, um Menschen kennenzulernen und von Events zu erfahren.",
-            en: "A WhatsApp group to meet new people and get notified about upcoming events."
-        },
-        img: "whats-up-bern.webp",
-        type: "multiplatform",
-        link: "https://linktr.ee/whatsupbern",
-        whatsappLink: "https://linktr.ee/whatsupbern",
-        facebookLink: "https://linktr.ee/whatsupbern"
-    },
-    {
-        name: {
             de: "Let's Bern",
             en: "Let's Bern"
         },
