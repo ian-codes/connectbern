@@ -47,9 +47,9 @@
                 <h1>
                     {data?.name?.[lang] ?? "Loading..."}
                 </h1>
-            
+
                 <p>
-                    {data?.desc?.[lang] ?? "Loading..."}
+                    {@html data?.desc?.[lang] ?? "Loading..."}
                 </p>
             </div>
 
@@ -154,6 +154,10 @@
             font-size: 1.5rem !important;
         }
 
+        p {
+            font-size: 1.1em !important;
+        }
+
         .img {
             width: 200px !important;
         }
@@ -235,6 +239,30 @@
 
     p {
         font-size: 1.5em;
+        line-height: 1.6;
+    }
+
+    p :global(a) {
+        color: #FFD700;
+        text-decoration: underline;
+        transition: color 0.2s ease;
+        font-weight: 600;
+    }
+
+    p :global(a:hover) {
+        color: #FFF;
+        text-decoration: none;
+    }
+
+    p :global(strong) {
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.95);
+    }
+
+    p :global(br) {
+        display: block;
+        content: "";
+        margin: 0.5em 0;
     }
 
     .img {

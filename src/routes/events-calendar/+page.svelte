@@ -123,6 +123,18 @@
 
     onMount(() => {
         const events = [
+            // Handpan event (weekly recurring)
+            {
+                title: { de: 'Handpan-Lektion für Anfänger', en: 'Beginner Handpan Lesson' },
+                date: getNextWeekday(0), // Sunday
+                recurring: 'weekly',
+                description: {
+                    de: 'Handpan-Lektion für Anfänger mit Berni 🎶 (20 CHF Kaution um deinen Platz zu garantieren)',
+                    en: 'Beginner handpan lesson with Berni 🎶 (20 CHF deposit to guarantee your spot)'
+                },
+                link: '/events/handpan',
+                organizer: 'connectbern'
+            },
             // Chess event (specific date)
             {
                 title: { de: 'Hobby-Schach', en: 'Hobby Chess' },
@@ -174,14 +186,14 @@
             },
             {
                 title: { de: 'BlaBla Language Exchange', en: 'BlaBla Language Exchange' },
-                date: getNextWeekday(2), // Tuesday
+                date: getNextWeekday(3), // Wednesday
                 recurring: 'weekly',
                 time: '19:00',
                 description: {
                     de: 'Internationales Treffen zum Sprachenaustausch',
                     en: 'International language exchange meetup'
                 },
-                link: '/events/blabla-language-exchange'
+                link: 'https://t.me/+-Q6c3xU3uEwyNmZk'
             },
             {
                 title: { de: 'CCC Wöchentliches Treffen', en: 'CCC Weekly Meeting' },

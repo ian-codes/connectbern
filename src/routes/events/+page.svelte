@@ -134,6 +134,15 @@
                 </li>
             </ul>
         </li>
+
+        <li>
+            Sunday:
+            <ul>
+                <li>
+                    <a href="/events/handpan">Beginner Handpan Lesson</a> 🎶 (with Berni - 20 CHF deposit to guarantee your spot)
+                </li>
+            </ul>
+        </li>
     </ul>
 </section>
 

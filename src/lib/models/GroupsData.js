@@ -18,13 +18,13 @@ export const GroupsData = [
     },
     {
         name: {
-            de: "Connect Bern Sprachenaustausch",
-            en: "Connect Bern Language Exchange"
+            de: "Sprachenaustausch in Bern",
+            en: "Language Exchanges in Bern"
         },
         slug: "language-exchange",
         desc: {
-            de: "Sprachenaustausch jeden Mittwoch im Connect Bern Haus. Übe verschiedene Sprachen und lerne neue Leute kennen!",
-            en: "Language exchange every Wednesday at Connect Bern house. Practice different languages and meet new people!"
+            de: "Es gibt 3 Sprachenaustausch-Veranstaltungen in Bern, die wir kennen: 2 am Mittwoch (Connect Bern Haus & BlaBla) und 1 am Donnerstag. Übe verschiedene Sprachen und lerne neue Leute kennen!",
+            en: "There are 3 language exchange events in Bern that we know about: 2 on Wednesday (Connect Bern house & BlaBla) and 1 on Thursday. Practice different languages and meet new people!"
         },
         img: "language-exchange-icon.jpg",
         type: "whatsapp",
@@ -76,7 +76,8 @@ export const GroupsData = [
         type: "multiplatform",
         link: "https://tiny.cc/gamesgroupbern",
         telegramLink: "https://t.me/joinchat/VADU-Gkqqyltzawe",
-        linktreeLink: "https://linktr.ee/gamesbern"
+        linktreeLink: "https://linktr.ee/gamesbern",
+        organizer: "connectbern"
     },
     {
         name: {
@@ -146,17 +147,18 @@ export const GroupsData = [
         },
         img: "berndeutsch.webp",
         type: "whatsapp",
-        link: "https://tiny.cc/berndeutsch"
+        link: "https://tiny.cc/berndeutsch",
+        organizer: "connectbern"
     },
     {
         name: {
-            de: "Deutschkurs",
-            en: "German Class"
+            de: "Kostenloses Deutsch",
+            en: "Free German"
         },
-        slug: "german-class",
+        slug: "free-german",
         desc: {
-            de: "Um Deutsch zu lernen.",
-            en: "A group for the german class at the autonomous school of Bern."
+            de: "Eine Gruppe, um sich zu vernetzen und Orte zu finden, die kostenlose Hilfe beim Deutschlernen anbieten.<br><br><strong>Kurse an der Autonomen Schule Bern (Denk:Mal):</strong><br>Hier findet ihr die Termine: <a href='https://denk-mal.info' target='_blank' rel='noopener noreferrer'>denk-mal.info</a> (Tipp: ganz unten auf dem Handy findet ihr den Kalender)<br>Adresse: Lagerweg 12, 3013 Bern - <a href='https://maps.app.goo.gl/ihNDmeKisdGmhzmRA' target='_blank' rel='noopener noreferrer'>Google Maps</a><br><br><strong>Unsere gemeinsame \"Klasse\":</strong><br>Ein Treffen zum gemeinsamen Deutschlernen jeden Montag. Entweder für Leute, die intensiv und selbstmotiviert lernen möchten, oder für Leute mit sehr hohem Niveau, die zusammen üben und voneinander lernen möchten. Wir haben keinen Lehrer oder Moderator - wenn du das brauchst, ist es am besten zur Autonomen Schule Bern zu gehen.",
+            en: "A group to connect and find out places that offer help with learning German for free.<br><br><strong>Classes at the Autonomous School of Bern (Denk:Mal):</strong><br>Here you will find the dates: <a href='https://denk-mal.info' target='_blank' rel='noopener noreferrer'>denk-mal.info</a> (Tip: at the bottom of the mobile page you'll find the calendar)<br>Address: Lagerweg 12, 3013 Bern - <a href='https://maps.app.goo.gl/ihNDmeKisdGmhzmRA' target='_blank' rel='noopener noreferrer'>Google Maps</a><br><br><strong>Our get-together \"class\":</strong><br>A meeting to learn German together every Monday, either for people who want to learn intensively and are self motivated or for people with a very high level who want to practice together and learn from each other. We don't have a teacher or moderator and if you need that, it's best you go to the Autonomous School of Bern."
         },
         img: "deutschkurs.webp",
         type: "whatsapp",
