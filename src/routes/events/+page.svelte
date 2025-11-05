@@ -61,14 +61,8 @@
             Tuesday:
             <ul>
                 <li>
-                    <b>Every 3rd Tuesday:</b>
-                    <br />
-                    Join fellow hackers and infosec professionals every 3rd Tuesday of 
-                    the month for a relaxed meetup with drinks in various Swiss cities. 
-                    It's free, except for special events.
-                    <a href="https://beerontuesday.ch">
-                        beerontuesday.ch
-                    </a>
+                    <a href="/events/beer-on-tuesday">Beer on Tuesday</a> 🍺
+                    (every 3rd Tuesday - mandatory pre-registration required!)
                 <li>
                     International Meetup Blabla language exchange
                 </li>

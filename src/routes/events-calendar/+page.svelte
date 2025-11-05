@@ -179,10 +179,10 @@
                 recurring: 'monthly',
                 time: '19:00',
                 description: {
-                    de: 'Treffen mit Hackern und Infosec-Profis',
-                    en: 'Meetup with hackers and infosec professionals'
+                    de: 'Treffen mit Hackern und Infosec-Profis - Voranmeldung erforderlich!',
+                    en: 'Meetup with hackers and infosec professionals - Pre-registration required!'
                 },
-                link: 'https://beerontuesday.ch'
+                link: '/events/beer-on-tuesday'
             },
             {
                 title: { de: 'BlaBla Language Exchange', en: 'BlaBla Language Exchange' },
