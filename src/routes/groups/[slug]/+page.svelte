@@ -151,15 +151,39 @@
         }
 
         h1 {
-            font-size: 1.5rem !important;
+            font-size: 1.8rem !important;
         }
 
-        p {
-            font-size: 1.1em !important;
+        .textcntr {
+            min-width: 300px;
         }
 
         .img {
             width: 200px !important;
+        }
+    }
+
+    @media (max-width: 700px) {
+        .cntr {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 1.5em !important;
+        }
+
+        h1 {
+            font-size: 1.5rem !important;
+        }
+
+        .textcntr {
+            min-width: 0;
+            width: 100%;
+        }
+
+        .img {
+            width: 220px !important;
+            height: 220px !important;
+            min-width: 220px !important;
+            margin: 0 auto;
         }
     }
 
@@ -228,7 +252,7 @@
         justify-content: space-evenly;
         gap: 2em;
         flex: 1;
-        min-width: 0;
+        min-width: 250px;
     }
 
     h1 {
@@ -238,8 +262,12 @@
     }
 
     p {
-        font-size: 1.5em;
-        line-height: 1.6;
+        font-size: 1.25rem !important;
+        min-font-size: 1.25rem !important;
+        line-height: 1.6 !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
     }
 
     p :global(a) {
