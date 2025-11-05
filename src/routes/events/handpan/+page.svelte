@@ -62,6 +62,12 @@
                 {content[lang].callToAction}
             </p>
 
+            <div class="imageGallery">
+                <img src="/images/handpan-1.jpg" alt="Handpan" class="handpanImage" />
+                <img src="/images/handpan-2.jpg" alt="Handpan" class="handpanImage" />
+                <img src="/images/handpan-3.jpg" alt="Handpan" class="handpanImage" />
+            </div>
+
             <div class="infoBox">
                 <p class="date">{content[lang].date}</p>
             </div>
@@ -131,6 +137,15 @@
         .depositTitle {
             font-size: 1.2em;
         }
+
+        .imageGallery {
+            flex-direction: column;
+            gap: 1em;
+        }
+
+        .handpanImage {
+            max-width: 100%;
+        }
     }
 
     section {
@@ -180,6 +195,30 @@
     .callToAction {
         text-align: center;
         font-size: 1.2em;
+    }
+
+    .imageGallery {
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 2em 0;
+    }
+
+    .handpanImage {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+        border-radius: 1em;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+        object-fit: cover;
+    }
+
+    .handpanImage:hover {
+        transform: scale(1.05);
     }
 
     .infoBox {
