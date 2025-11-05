@@ -123,6 +123,20 @@ export const GroupsData = [
     },
     {
         name: {
+            de: "Let's Dine",
+            en: "Let's Dine"
+        },
+        slug: "lets-dine",
+        desc: {
+            de: "Eine internationale Gruppe, die sich regelmässig zum Abendessen oder wahlweise auch Brunch in der Stadt Bern trifft. Es wird dabei hauptsächlich in englischer Sprache kommuniziert, aber auch Schweizerdeutsch-Sprecher kommen zu diesen Treffen.",
+            en: "An international group that meets regularly for dinner or optionally brunch in the city of Bern. Communication is mainly in English, but people who speak Swiss German also attend these events."
+        },
+        img: "lets-dine.jpg",
+        type: "whatsapp",
+        link: "https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoiWHFxd2JJY0dta0pHVEZENFlsaE9GN2s0M0pnMWpQS21jYlU4NG1LOER2RDd4RVREVFIxcUlhNjRoRUxkeDJlNk45cHI5WW9PVHc9PSIsImgiOiJXZWxjaGUgRW5kdW5nIChvaG5lIFB1bmt0KSBoYWJlbiBXZWJzZWl0ZW4gYXVzIGRlciBTY2h3ZWl6PyAvLy8vLyBXaGljaCBlbmRpbmcgKHdpdGhvdXQgcG9pbnQpIGRvIHdlYnNpdGVzIGZyb20gU3dpdHplcmxhbmQgaGF2ZT8iLCJzIjoiUlFsUDcxSDBwMGlER0djbjc3amhXZz09IiwiaSI6IjN5K24wUHkrTlNvbDhnY2kifQ=="
+    },
+    {
+        name: {
             de: "Gruppe für IT-Interessierte",
             en: "Group for IT enthusiasts"
         },
