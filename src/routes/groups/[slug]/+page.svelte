@@ -258,7 +258,6 @@
     h1 {
         font-size: 2.5em;
         font-weight: bold;
-        margin-bottom: 1rem !important;
     }
 
     p {

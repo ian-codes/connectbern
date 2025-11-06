@@ -102,7 +102,6 @@
     h1 {
         font-size: 3em;
         font-weight: bold;
-        margin-bottom: 0.5rem;
         text-align: center;
     }
 

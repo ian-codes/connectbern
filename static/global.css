@@ -112,16 +112,7 @@ h1 {
 h2, h3 {
     color: white;
 }
-h1::after {
-    position: absolute;
-    content: '';
-    bottom: -5px;
-    left: 0;
-    width: 200%;
-    height: 1px;
-    border-radius: 100%;
-    background: linear-gradient(90deg, white, transparent);
-}
+
 p {
     margin: 0 1rem;
     padding: 0;
@@ -144,10 +135,11 @@ section {
 .topbarWrapper {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     margin: 0;
     gap: 1em;
     margin-bottom: 1em;
+    text-align: center;
 }
 form {
     margin: 1em;
@@ -198,6 +190,10 @@ input::placeholder {
         padding: 2em 1em !important;
         margin: 0 .5em !important;
     }
+    .topbarWrapper {
+        align-items: start;
+        text-align: left;
+    }
     h1 {
         font-size: 1.8em !important;
         text-align: left;
@@ -206,6 +202,7 @@ input::placeholder {
     p {
         margin: 0 !important;
         font-size: 1em !important;
+        text-align: left !important;
     }
     form {
         margin: 0 !important;

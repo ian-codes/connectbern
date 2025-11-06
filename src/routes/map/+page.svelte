@@ -87,7 +87,6 @@
 
     .hero h1 {
         font-size: 2.5rem;
-        margin-bottom: 1rem;
     }
 
     .description {
