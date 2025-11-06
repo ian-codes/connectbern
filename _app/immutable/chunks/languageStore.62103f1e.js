@@ -1,0 +1,1 @@
+import{w as r}from"./index.2c6c2b00.js";function o(){const{subscribe:t,set:n,update:a}=r("en");return{subscribe:t,set:e=>{typeof window<"u"&&localStorage.setItem("language",e),n(e)},update:a}}const c=o();export{c};
