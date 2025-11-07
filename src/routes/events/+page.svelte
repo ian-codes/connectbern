@@ -882,13 +882,16 @@
     .eventsGrid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 1.5em;
+        gap: 2em;
         margin-top: 2em;
     }
 
     .eventCard {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: linear-gradient(135deg,
+            rgb(183, 200, 244),
+            rgb(182, 199, 255)
+        );
+        border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 1em;
         padding: 1.5em;
         display: flex;
@@ -897,13 +900,29 @@
         transition: all 0.3s ease;
         animation: fadeInUp 0.5s ease forwards;
         opacity: 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        position: relative;
+        color: #2a2a2a;
     }
 
     .eventCard:hover {
         transform: translateY(-5px);
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.2);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(135deg,
+            rgb(160, 193, 243),
+            rgb(161, 185, 222)
+        );
+        border-color: rgba(0, 0, 0, 0.2);
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+    }
+
+    .eventCard h2,
+    .eventCard h3,
+    .eventCard p,
+    .eventCard .dateText,
+    .eventCard .timeText,
+    .eventCard .daysUntil,
+    .eventCard .eventDescription {
+        color: #2a2a2a;
     }
 
     .eventHeader {

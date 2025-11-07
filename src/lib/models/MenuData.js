@@ -53,15 +53,6 @@ export const MenuData = [
 		img: "location.svg",
 		homeImg: "/navigation/location.svg"
     },
-    {
-        title: {
-            en: "Finance",
-            de: "Finanzen"
-        },
-        slug: "finance",
-        img: "finance.svg",
-        homeImg: "finance.svg"
-    }
 
     // {
     //     title: {
