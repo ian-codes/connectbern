@@ -53,6 +53,15 @@ export const MenuData = [
 		img: "location.svg",
 		homeImg: "/navigation/location.svg"
     },
+    {
+        title: {
+            en: "Similar Projects",
+            de: "Ähnliche Projekte"
+        },
+        slug: "similar-projects",
+		img: "similar-projects.svg",
+		homeImg: "/navigation/similar-projects.svg"
+    },
 
     // {
     //     title: {

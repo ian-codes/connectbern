@@ -44,6 +44,12 @@
                 {content[lang].description}
             </p>
 
+            <div class="imageGallery">
+                <img src="/images/connect-and-cheers-1.jpg" alt="Connect & Cheers" class="eventImage" />
+                <img src="/images/connect-and-cheers-2.jpg" alt="Connect & Cheers" class="eventImage" />
+                <img src="/images/connect-and-cheers-3.jpg" alt="Connect & Cheers" class="eventImage" />
+            </div>
+
             <div class="infoBox">
                 <p class="time">{content[lang].time}</p>
             </div>
@@ -85,6 +91,15 @@
         p {
             font-size: 1rem !important;
         }
+
+        .imageGallery {
+            flex-direction: column;
+            gap: 1em;
+        }
+
+        .eventImage {
+            max-width: 100%;
+        }
     }
 
     section {
@@ -121,6 +136,30 @@
     .description {
         text-align: center;
         font-size: 1.3em;
+    }
+
+    .imageGallery {
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 2em 0;
+    }
+
+    .eventImage {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+        border-radius: 1em;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+        object-fit: cover;
+    }
+
+    .eventImage:hover {
+        transform: scale(1.05);
     }
 
     .infoBox {
