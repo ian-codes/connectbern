@@ -1,0 +1,20 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Center circle -->
+  <circle cx="12" cy="12" r="2.5" fill="currentColor"/>
+
+  <!-- Top circle -->
+  <circle cx="12" cy="4" r="2" fill="currentColor"/>
+  <line x1="12" y1="6" x2="12" y2="9.5" stroke="currentColor" stroke-width="1.5"/>
+
+  <!-- Bottom circle -->
+  <circle cx="12" cy="20" r="2" fill="currentColor"/>
+  <line x1="12" y1="14.5" x2="12" y2="18" stroke="currentColor" stroke-width="1.5"/>
+
+  <!-- Left circle -->
+  <circle cx="4" cy="12" r="2" fill="currentColor"/>
+  <line x1="6" y1="12" x2="9.5" y2="12" stroke="currentColor" stroke-width="1.5"/>
+
+  <!-- Right circle -->
+  <circle cx="20" cy="12" r="2" fill="currentColor"/>
+  <line x1="14.5" y1="12" x2="18" y2="12" stroke="currentColor" stroke-width="1.5"/>
+</svg>
