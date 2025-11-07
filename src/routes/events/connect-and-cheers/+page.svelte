@@ -10,16 +10,20 @@
     const content = {
         de: {
             title: "Connect & Cheers",
-            description: "Jeden Freitagabend in der PROGR Turnhalle – entspannter Treff zum Anstoßen, Austauschen und neue Leute kennenlernen. Teil der Community-Projekte Connect Bern & Staying in Bern.",
-            instructions: "Schreib uns bitte auf WhatsApp, damit wir dir die Adresse schicken können 😊🎉",
+            description: "Jeden Freitagabend in der PROGR Turnhalle – entspannter Treff zum Anstoßen, Austauschen und neue Leute kennenlernen. Teil des Community-Projekts Connect Bern.",
+            instructions: "Bitte ruf uns an, falls du uns nicht finden kannst",
+            address: "Speichergasse 4, 3011 Bern",
+            mapsLink: "Google Maps",
             phone: "+41783166727",
             time: "⏰ Jeden Freitag ab 18:00",
             closing: "Wir freuen uns darauf, dich dort zu sehen!"
         },
         en: {
             title: "Connect & Cheers",
-            description: "Every Friday evening at PROGR Turnhalle – relaxed drinks, chats and connections. Part of the Connect Bern & Staying in Bern community projects.",
-            instructions: "Please write us on WhatsApp so we can share the address with you 😊🎉",
+            description: "Every Friday evening at PROGR Turnhalle – relaxed drinks, chats and connections. Part of the Connect Bern community project.",
+            instructions: "Please call us if you can't find us",
+            address: "Speichergasse 4, 3011 Bern",
+            mapsLink: "Google Maps",
             phone: "+41783166727",
             time: "⏰ Every Friday from 18:00",
             closing: "Looking forward to seeing you there!"
@@ -44,11 +48,15 @@
                 <p class="time">{content[lang].time}</p>
             </div>
 
+            <div class="locationBox">
+                <p class="addressLabel">📍 {content[lang].address}</p>
+                <a href="https://maps.app.goo.gl/dUPCqGh5Q5bJqevE8" class="btn mapsBtn" target="_blank" rel="noopener noreferrer">
+                    🗺️ {content[lang].mapsLink}
+                </a>
+            </div>
+
             <div class="contactBox">
                 <p class="instructions">{content[lang].instructions}</p>
-                <a href="tel:{content[lang].phone}" class="phoneLink">
-                    {content[lang].phone}
-                </a>
                 <div class="contactButtons">
                     <a href="https://wa.me/{content[lang].phone.replace(/[^0-9]/g, '')}" class="btn contactBtn whatsapp" target="_blank" rel="noopener noreferrer">
                         💬 WhatsApp
@@ -129,6 +137,42 @@
         margin: 0;
     }
 
+    .locationBox {
+        background: rgba(108, 72, 167, 0.15);
+        padding: 2em;
+        border-radius: 1em;
+        border: 2px solid rgba(108, 72, 167, 0.3);
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        align-items: center;
+    }
+
+    .addressLabel {
+        font-size: 1.3em;
+        font-weight: bold;
+        margin: 0;
+        text-align: center;
+    }
+
+    .mapsBtn {
+        padding: 0.4em 0.8em;
+        font-size: 0.85em;
+        text-decoration: none;
+        border-radius: 0.4em;
+        font-weight: bold;
+        transition: all 0.2s ease;
+        background: rgba(58, 152, 189, 0.6);
+        color: white;
+        border: 1px solid rgba(58, 152, 189, 0.8);
+        max-width: fit-content;
+    }
+
+    .mapsBtn:hover {
+        background: rgba(58, 152, 189, 0.8);
+        transform: scale(1.05);
+    }
+
     .contactBox {
         background: rgba(255, 255, 255, 0.08);
         padding: 2em;
@@ -143,22 +187,7 @@
     .instructions {
         text-align: center;
         margin: 0;
-    }
-
-    .phoneLink {
-        font-size: 1.5em;
-        font-weight: bold;
-        color: white;
-        text-decoration: none;
-        padding: 0.5em 1em;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 0.5em;
-        transition: all 0.2s ease;
-    }
-
-    .phoneLink:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: scale(1.05);
+        font-size: 1.1em;
     }
 
     .contactButtons {

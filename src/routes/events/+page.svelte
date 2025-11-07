@@ -336,8 +336,8 @@
                 recurring: 'weekly',
                 time: '18:00',
                 description: {
-                    de: 'Jeden Freitagabend in der PROGR Turnhalle – entspannter Treff zum Anstoßen, Austauschen und neue Leute kennenlernen. Teil der Community-Projekte Connect Bern & Staying in Bern.',
-                    en: 'Every Friday evening at PROGR Turnhalle – relaxed drinks, chats and connections.'
+                    de: 'Jeden Freitagabend in der PROGR Turnhalle – entspannter Treff zum Anstoßen, Austauschen und neue Leute kennenlernen. Teil des Community-Projekts Connect Bern.',
+                    en: 'Every Friday evening at PROGR Turnhalle – relaxed drinks, chats and connections. Part of the Connect Bern community project.'
                 },
                 link: '/events/connect-and-cheers',
                 organizer: 'connectbern'
