@@ -354,12 +354,23 @@
             },
             {
                 title: { de: 'Karaoke Nacht bei DELFINO', en: 'Karaoke Night at DELFINO' },
+                date: getNextWeekday(5),
+                recurring: 'weekly',
+                time: '21:00',
+                description: {
+                    de: 'Finde Freunde beim Karaoke. Frage in Gruppen, ob jemand mitkommen möchte, damit du nicht alleine gehen musst! 🎤',
+                    en: 'Find friends while doing karaoke. Ask in groups if anybody wants to join you, so you don\'t have to go alone! 🎤'
+                },
+                link: '/events/karaoke-night-delfino'
+            },
+            {
+                title: { de: 'Karaoke Nacht bei DELFINO', en: 'Karaoke Night at DELFINO' },
                 date: getNextWeekday(6),
                 recurring: 'weekly',
                 time: '21:00',
                 description: {
-                    de: 'Karaoke Nacht',
-                    en: 'Karaoke night'
+                    de: 'Finde Freunde beim Karaoke. Frage in Gruppen, ob jemand mitkommen möchte, damit du nicht alleine gehen musst! 🎤',
+                    en: 'Find friends while doing karaoke. Ask in groups if anybody wants to join you, so you don\'t have to go alone! 🎤'
                 },
                 link: '/events/karaoke-night-delfino'
             },
@@ -736,6 +747,8 @@
         );
         -webkit-mask: linear-gradient(#fff 0 0) content-box,
                       linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box,
+              linear-gradient(#fff 0 0);
         -webkit-mask-composite: xor;
         mask-composite: exclude;
         opacity: 0.5;
