@@ -17,7 +17,7 @@
     const content = {
         de: {
             title: "Ähnliche Projekte",
-            intro: "Andere großartige Projekte und Ressourcen, um Verbindungen zu schaffen und Einsamkeit zu bekämpfen.",
+            intro: "Andere großartige Projekte und Seiten, die dir helfen, neue Leute zu finden und zu treffen.",
             bern: {
                 title: "Projekte in Bern",
                 subtitle: "Verbindungen in Bern schaffen"
@@ -29,7 +29,7 @@
         },
         en: {
             title: "Similar Projects",
-            intro: "Other great projects and resources to build connections and combat loneliness.",
+            intro: "Other great projects and pages that help you find and meet new people.",
             bern: {
                 title: "Projects in Bern",
                 subtitle: "Building connections in Bern"
