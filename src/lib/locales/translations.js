@@ -2,7 +2,7 @@ export const t = {
     de: {
         "search-groups": "Gruppen durchsuchen...",
         "groups": "Gruppen",
-        "places-description": "Hier ist eine Liste cooler Orte, wo man gesellig sein kann.",
+        "places-description": "Hier sind einige Ideen, wo du gesellig sein kannst.",
         "swiss-tips-description": "Tips & Tricks für das Leben in Bern und in der Schweiz.",
         "events-description": "Diese Events sind anders als gewöhnliche Veranstaltungen. Während reguläre Events sich auf das Thema konzentrieren und Menschen oft mit ihrer Gruppe kommen, haben diese Events einen Fokus darauf, neue Leute kennenzulernen. Sie sind soziale Orte, die bewusst versuchen, Menschen zusammenzubringen und eine offene, einladende Atmosphäre für alle zu schaffen.",
         "logo-description": "Ein Raum zum Verbinden",
@@ -71,7 +71,7 @@ export const t = {
         "search-groups": "Search groups...",
         "groups": "Groups",
         "swiss-tips-description": "Tips & Tricks for living in Bern and Switzerland!",
-        "places-description": "Here's a list of cool places where you can be a social butterfly.",
+        "places-description": "Here are some ideas of where you can be social.",
         "events-description": "These events are different from regular events. While regular events focus on the topic itself and people often come with their group, these events have a focus on meeting new people. They're social places that consciously try to bring people together and create an open, welcoming atmosphere that's accepting of everyone.",
         "logo-description": "A space to connect",
         "description": "<strong>A physical and digital space to connect in Bern</strong>",
