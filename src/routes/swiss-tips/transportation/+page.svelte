@@ -31,56 +31,45 @@
         </li>
 
         <li>
-            You can get a ride on 
+            You can get a ride on
             <a href="https://blablacar.com" target="_blank">
                 https://blablacar.com
-            </a>  
-            for around 10 franks. 
-            If you are really desperate you can also try blablacar daily and ask 
-            the driver if you can come for only one trip. 
+            </a>
+            for very cheap and you can try
+            <a href="https://www.blablacardaily.com/" target="_blank">
+                https://www.blablacardaily.com/
+            </a>
         </li>
 
         <li>
-            Traveling via Flixbus is also possible inside of Switzerland. 
-            It's illegal for Flixbus to offer rides inside of Switzerland (Kabotageverbots) 
-            so they don't do it but it you buy a ticket to Freiburg in Germany when you're 
-            going to Basel from Bern you can just get off in Basel and it's still much cheaper 
-            in some cases than paying for the train. The same goes for Zürich if you travel to Lindau 
-            in Germany or Bregenz in Austria from Bern or to Bern as cheap as 13.50 you can just get off at Zürich. 
-            No guarantee but it seems like when you look for these rides from Bern and then from Barrel/Zürich it shows 
-            the same arrival time which is a pretty strong indicator, you can also check on the trip tab, it shows all the stops.
+            Traveling via Flixbus is also possible inside of Switzerland.
+            Flixbus is apparently not allowed yet to offer rides inside of Switzerland (Kabotageverbots)
+            so they don't do it but if you buy a ticket to Freiburg in Germany when you're
+            going to Basel from Bern you can just get off in Basel and it's still much cheaper
+            in some cases than paying for the train. The same goes for Zürich if you travel to Lindau
+            in Germany or Bregenz in Austria from Bern or to Bern as cheap as 13.50 you can just get off at Zürich.
+            No guarantee but it seems like when you look for these rides from Bern and then from Basel/Zürich it shows
+            the same arrival time which is a pretty strong indicator, check on the trip tab, it shows all the stops.
         </li>
 
         <li>
             If you're very lucky you can maybe find a ride for free in these groups
-            To and from Bern:
-            WhatsApp: 
+            to or from Bern:
+            WhatsApp:
             <a href="https://tiny.cc/mitfahrenbernwhatsapp" target="_blank">
-                https://tiny.cc/mitfahrenbernwhatsapp 
+                https://tiny.cc/mitfahrenbernwhatsapp
             </a>
-            
-            Telegram: 
+
+            Telegram:
             <a href="https://tiny.cc/mitfahrenbern" target="_blank">
                 https://tiny.cc/mitfahrenbern
             </a>
-            Other cities, if you want to also try your luck in other similiar groups besides 
-            the Bernese one you can look for the "mitfahren" or "mitfahrgelegenheit" here: 
+            Other cities, if you want to also try your luck in other similiar groups besides
+            the Bernese one you can look for the "mitfahren" or "mitfahrgelegenheit" here:
             <a href="https://t.me/unkomarkt_sammlung" target="_blank">
                 https://t.me/unkomarkt_sammlung
             </a>
             (there is also 1 for all of Switzerland)
-        </li>
-
-        <li>
-            You can search for a cheap (between Fr. 40 - 52) daily ticket for all of Switzerland 
-            on this website 
-            <a href="https://www.tageskarte-gemeinde.ch/" target="_blank">
-                https://www.tageskarte-gemeinde.ch/
-            </a>  
-            sometimes they have an option to send it 
-            by post (for example to my place) if you think about it early enough, otherwise you need to 
-            go to the place you are buying the ticket from which might be far and also cost money if 
-            you don't want to hitchhike or bike there....
         </li>
 
         <li>
@@ -101,17 +90,15 @@
     <h3>Inside the City (Bern)</h3>
     <ul>
         <li>
-            You can ask <a href="https://chagai.website/" target="_blank">me</a> 
-            for the code to my bike if you wanna go around the city. 
-            You can also try this website to borrow a bike for free 
+            You can check at the project house if we have a bike available.
+            You can also try this website to borrow a bike for free
             <a href="https://map.pumpipumpe.ch" target="_blank">
                 https://map.pumpipumpe.ch
             </a>
         </li>
         <li>
-            You can get 1 free ride (only 3 franks) with public transportation if 
-            you register to an app called FAIRTIQ if you use code MCW8ZTR5S
-            (disclosure - I will also get 3 franks)
+            You can get 1 free ride (only 3 franks) with public transportation if
+            you register to an app called FAIRTIQ if you use a code from someone else - for example this code MCW8ZTR5S
             and here are links to the app: 
             <ul>
                 <li>

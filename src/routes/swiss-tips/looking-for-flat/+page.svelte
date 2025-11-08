@@ -53,4 +53,32 @@
             </a>
         </li>
     </ul>
+
+    <h3>Need a place to sleep while looking for an apartment?</h3>
+    <p>You can try these platforms for free accommodation:</p>
+    <ul>
+        <li>
+            <a href="https://trustroots.org" target="_blank">
+                https://trustroots.org
+            </a>
+        </li>
+        <li>
+            <a href="https://bewelcome.org" target="_blank">
+                https://bewelcome.org
+            </a>
+        </li>
+        <li>
+            <a href="https://couchers.org" target="_blank">
+                https://couchers.org
+            </a>
+        </li>
+        <li>
+            If you still can't find anything you can write in
+            some
+            <a href="/groups" target="_blank">
+                groups
+            </a>
+            for help.
+        </li>
+    </ul>
 </div>

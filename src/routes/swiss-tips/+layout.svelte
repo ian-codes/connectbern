@@ -50,14 +50,6 @@
             link: "free-food"
         },
         {
-            name: "Socialize",
-            link: "socialize"
-        },
-        {
-            name: "Random Tips!",
-            link: "random-tips"
-        },
-        {
             name: "Looking for a Flat?",
             link: "looking-for-flat"
         }

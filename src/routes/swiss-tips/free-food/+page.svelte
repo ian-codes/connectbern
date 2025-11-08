@@ -52,5 +52,15 @@
             especially at Migros and Coop.
         </li>
 
+        <li>
+            You can use the microwave in the supermarket when they are open.
+            For example in Coop/Migros.
+        </li>
+
+        <li>
+            You can drink the water from the fountains which you can
+            find all around town!
+        </li>
+
     </ul>
 </div>
