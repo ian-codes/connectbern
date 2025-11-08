@@ -42,6 +42,21 @@
         </p>
     </div>
 
+    <div class="info-box highlight">
+        <p>{@html t[lang]['location-visit-info']}</p>
+    </div>
+
+    <div class="ideas-section">
+        <h2 class="ideas-title">{t[lang]['location-ideas-title']}</h2>
+        <div class="ideas-grid">
+            {#each t[lang]['location-ideas'] as idea, i (i)}
+                <div class="idea-card">
+                    {idea}
+                </div>
+            {/each}
+        </div>
+    </div>
+
     <div class="phone-highlight">
         <div class="phone-number">{t[lang]['location-phone']}</div>
         <button
@@ -70,14 +85,48 @@
         <p>{@html t[lang]['location-call-first']}</p>
     </div>
 
-    <div class="info-box">
-        <p>{@html t[lang]['location-curious']}</p>
-    </div>
-
 </section>
 
 <style>
     /* Mobile-first styles */
+    .ideas-section {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .ideas-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        margin: 0 0 1.5rem 0;
+        color: white;
+    }
+
+    .ideas-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .idea-card {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 1.25rem;
+        border-radius: 10px;
+        border-left: 4px solid rgba(102, 126, 234, 0.6);
+        font-size: 1.1rem;
+        line-height: 1.6;
+        transition: all 0.3s ease;
+    }
+
+    .idea-card:hover {
+        background: rgba(255, 255, 255, 0.12);
+        transform: translateX(5px);
+        border-left-color: rgba(102, 126, 234, 0.9);
+    }
+
     .phone-highlight {
         background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
         padding: 1rem;
@@ -208,6 +257,11 @@
         border-left-color: #ffc107;
     }
 
+    .info-box.highlight {
+        background: rgba(102, 126, 234, 0.15);
+        border-left-color: #667eea;
+    }
+
     .info-box p {
         margin: 0;
     }
@@ -218,6 +272,20 @@
 
     /* Mobile-specific styles */
     @media (max-width: 767px) {
+        .ideas-section {
+            margin: 1.5rem 0.5rem;
+            padding: 1rem;
+        }
+
+        .ideas-title {
+            font-size: 1.3rem;
+        }
+
+        .idea-card {
+            font-size: 1rem;
+            padding: 1rem;
+        }
+
         .phone-highlight {
             margin: 1rem 0.5rem;
             padding: 1rem 0.75rem;
@@ -248,6 +316,24 @@
 
     /* Desktop */
     @media (min-width: 768px) {
+        .ideas-section {
+            padding: 2rem;
+        }
+
+        .ideas-title {
+            font-size: 1.8rem;
+        }
+
+        .ideas-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .idea-card {
+            font-size: 1.15rem;
+            padding: 1.5rem;
+        }
+
         .phone-highlight {
             padding: 1.5rem;
             margin: 1.5rem 0;

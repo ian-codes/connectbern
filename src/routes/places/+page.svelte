@@ -7,10 +7,18 @@
     import { currentLanguage } from '$lib/stores/languageStore';
     import { getContext, onMount } from 'svelte';
 
-    const scrollToContent = getContext('scrollToContent');
+    let scrollToContent;
+    try {
+        scrollToContent = getContext('scrollToContent');
+    } catch (e) {
+        // Context not available, create a no-op function
+        scrollToContent = () => {};
+    }
 
     onMount(() => {
-        scrollToContent();
+        if (scrollToContent) {
+            scrollToContent();
+        }
     });
 
     $: lang = $currentLanguage;

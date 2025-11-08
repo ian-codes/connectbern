@@ -197,6 +197,18 @@
     onMount(() => {
         const events = [
             {
+                title: { de: 'Coffee, Cake & Connect', en: 'Coffee, Cake & Connect' },
+                date: getNextWeekday(0),
+                recurring: 'weekly',
+                time: '16:00',
+                description: {
+                    de: 'Unsere wöchentliche Zeit für neue Leute, die das Projekt kennenlernen möchten! ☕🍰',
+                    en: 'Our weekly time for new people who want to see what the project is about! ☕🍰'
+                },
+                link: '/events/coffee-cake-connect',
+                organizer: 'connectbern'
+            },
+            {
                 title: { de: 'Handpan-Lektion für Anfänger', en: 'Beginner Handpan Lesson' },
                 date: getNextWeekday(0),
                 recurring: 'weekly',
