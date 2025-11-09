@@ -123,7 +123,6 @@
 
     .idea-card:hover {
         background: rgba(255, 255, 255, 0.12);
-        transform: translateX(5px);
         border-left-color: rgba(102, 126, 234, 0.9);
     }
 

@@ -799,6 +799,12 @@
         margin-top: 2em;
     }
 
+    @media (max-width: 1000px) {
+        .resourceCards {
+            grid-template-columns: 1fr;
+        }
+    }
+
     .resourceCard {
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(255, 255, 255, 0.1);
@@ -829,13 +835,17 @@
         font-size: 1.1em;
         font-weight: bold;
         margin: 0;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
     }
 
     .resourceCard p {
         font-size: 0.9em;
         opacity: 0.8;
         margin: 0;
-        line-height: 1.4;
+        line-height: 1.5;
+        max-width: 100%;
     }
 
     /*  Calendar View Styles */
@@ -1197,8 +1207,17 @@
         }
 
         .resourceCards {
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            grid-template-columns: 1fr;
             gap: 0.8em;
+        }
+
+        .resourceCard h3 {
+            font-size: 0.95em;
+            line-height: 1.3;
+        }
+
+        .resourceCard p {
+            font-size: 0.85em;
         }
 
         .filterButtons {
