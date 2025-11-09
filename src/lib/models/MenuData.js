@@ -62,6 +62,15 @@ export const MenuData = [
 		img: "similar-projects.svg",
 		homeImg: "/navigation/similar-projects.svg"
     },
+    {
+        title: {
+            en: "How can I help?",
+            de: "Wie kann ich helfen?"
+        },
+        slug: "support-us",
+		img: "help.svg",
+		homeImg: "/navigation/help.svg"
+    }
 
     // {
     //     title: {
