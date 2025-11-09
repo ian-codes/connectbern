@@ -19,12 +19,12 @@
             },
             telegram: {
                 title: "Food Sharing Telegram Gruppe",
-                text: "Du kannst auch der Food Sharing Gruppe auf Telegram beitreten und nach Essen fragen oder warten, bis jemand etwas anbietet, das er anbietet.",
+                text: "Du kannst auch der Food Sharing Gruppe auf Telegram beitreten und nach Essen fragen oder warten, bis jemand etwas anbietet.",
                 button: "Telegram Gruppe beitreten"
             },
             foodsharing: {
                 title: "Food Sharing Website",
-                text: "Es gibt eine Website namens Food Sharing, auf der du einen kurzen Test bestehen musst (frag sie um Hilfe, wenn du nicht weiterkommst) und dann kannst du fast jeden Abend kostenlos Essen von einigen Restaurants und anderen Orten abholen. Die Idee dieser Bewegung ist es, Lebensmittelverschwendung zu reduzieren, also geht es nicht darum, dass du kostenloses Essen bekommst, sondern darum, Lebensmittelverschwendung zu reduzieren. Du kannst das Essen, das du sammelst, auch in der Food Sharing Gruppe oder in den Kühlschränken weitergeben.",
+                text: "Es gibt eine Website namens Food Sharing, auf der du einen kurzen Test bestehen musst (frag um Hilfe, wenn du nicht weiterkommst) und dann kannst du fast jeden Abend kostenlos Essen von einigen Restaurants und anderen Orten abholen. Die Idee dieser Bewegung ist es, Lebensmittelverschwendung zu reduzieren, also geht es nicht darum, dass du kostenloses Essen bekommst, sondern darum, Lebensmittelverschwendung zu reduzieren. Du kannst das Essen, das du sammelst, auch in der Food Sharing Gruppe oder in den Kühlschränken weitergeben.",
                 button: "Food Sharing besuchen"
             },
             toogood: {

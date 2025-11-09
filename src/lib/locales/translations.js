@@ -35,7 +35,7 @@ export const t = {
         ],
         "location-phone": "+41 78 316 67 27",
         "location-contact-intro": "<strong>WhatsApp bevorzugt</strong> - wir antworten schneller!<br/> Kannst du auch anrufen, wenn es dringend ist.",
-        "location-volunteers": "Wir sind Freiwillige - bitte hab Geduld mit unseren Antwortzeiten! ❤️",
+        "location-volunteers": "Wir arbeiten freiwillig - bitte hab Geduld mit unseren Antwortzeiten! ❤️",
         "location-btn-whatsapp": "💬 WhatsApp",
         "location-btn-call": "📞 Anrufen",
         "location-call-first": "⚠️ <strong>Wichtig:</strong> Schreib uns oder ruf uns zuerst an, komm nicht einfach das erste Mal unangemeldet vorbei, weil vielleicht niemand da ist. Oder, wenn du abenteuerlustig bist, tritt <a href='/map'>der Karte</a> bei und schau, ob jemand zu Hause ist!",
@@ -63,7 +63,7 @@ export const t = {
         "what-we-do-places-desc": "Eine kleine Liste wirklich sozialer Orte - nicht zu kommerziell, fokussiert auf Gemeinschaft, mit vielen Events. Orte, wo man auch einfach dasitzen kann, ohne etwas konsumieren zu müssen. Wir zeigen, was existiert!",
         "about-values-title": "Was uns wichtig ist:",
         "about-safe-space-title": "Sicherer Raum",
-        "about-safe-space-desc": "Sicherer Raum für Minderheiten - wir möchten, dass sich Familien, die ältere Generation, LGBTQ+, Ausländer und Frauen in unseren Räumen und bei den von uns organisierten Veranstaltungen sicher fühlen. Wir arbeiten aktiv daran, dies zu erreichen und freuen uns sehr über Vorschläge, wie wir uns verbessern können.",
+        "about-safe-space-desc": "Sicherer Raum für Minderheiten - wir möchten, dass sich Familien, die ältere Generation, LGBTQ+, Personen aus dem Ausland und Frauen in unseren Räumen und bei den von uns organisierten Veranstaltungen sicher fühlen. Wir arbeiten aktiv daran, dies zu erreichen und freuen uns sehr über Vorschläge, wie wir uns verbessern können.",
         "about-positive-title": "Positiv bleiben",
         "about-positive-desc": "Wir bemühen uns, eine positive und einladende Umgebung für echte Verbindungen zu schaffen! Wir heissen Menschen herzlich willkommen, die ihren Freundeskreis erweitern möchten, möchten aber transparent sein, dass wir nicht für psychische Gesundheitsunterstützung ausgestattet sind. Wenn du mit ernsthafter Einsamkeit oder Depression zu kämpfen hast, ermutigen wir dich, professionelle Hilfe zu suchen - wir können Teil deines Unterstützungsnetzwerks sein, aber kein Ersatz für professionelle Betreuung.",
         "about-hygiene-title": "Persönlicher Raum",
@@ -71,9 +71,9 @@ export const t = {
         "about-boundaries-title": "Grenzen respektieren",
         "about-boundaries-desc": "Dies ist ein Ort, um Menschen zu treffen, und die Grenze zwischen Plaudern, Extrovertiertheit, Versuchen ein Gespräch aufrechtzuerhalten und Aufdringlichkeit ist sehr fein. Versuchen wir alle, uns dessen bewusst zu sein, versuchen wir, einander nicht zu verurteilen und gemeinsam zu lernen, wie man sanft zur nächsten Person übergeht. Denk daran, Menschen zu finden, mit denen du wirklich eine Verbindung hast, ist keine leichte Aufgabe und du musst vielleicht ein paar Mal vorbeikommen, bis du endlich deine Leute findest.",
         "about-no-dating-title": "Kein Dating-Ort",
-        "about-no-dating-desc": "Dies ist kein Ort, um Frauen anzubaggern. Leider passiert es in öffentlich zugänglichen Räumen, wo es weniger soziale Verantwortlichkeit gibt, dass viele Typen das versuchen, aber wir tolerieren das überhaupt nicht. Wenn dich jemand unwohl fühlen lässt, bring das Thema bitte zur Sprache, wenn du dich wohl genug fühlst - wir werden dich unterstützen. Dies beinhaltet das Senden privater Nachrichten oder jegliche Art von unangemessenem Verhalten. Der Fokus auf Dating verdirbt es wirklich für die Frauen, sie werden bereits überall sonst im Leben angemacht, lasst uns dies zu einem sicheren Raum für sie machen.",
+        "about-no-dating-desc": "Dies ist kein Ort, um Frauen anzubaggern. Leider passiert es in öffentlich zugänglichen Räumen, wo es weniger soziale Verantwortlichkeit gibt, dass viele Männer das versuchen, aber wir tolerieren das überhaupt nicht. Wenn dich jemand unwohl fühlen lässt, bring das Thema bitte zur Sprache, wenn du dich wohl genug fühlst - wir werden dich unterstützen. Dies beinhaltet das Senden privater Nachrichten oder jegliche Art von unangemessenem Verhalten. Der Fokus auf Dating verdirbt es wirklich für die Frauen, sie werden bereits überall sonst im Leben angemacht, lasst uns dies zu einem sicheren Raum für sie machen.",
         "about-active-title": "Aktiv & Entwickelnd",
-        "about-active-desc": "Dieses Ziel zu erreichen ist extrem herausfordernd. Wir kämpfen ständig damit, die Erwartungen zwischen verschiedenen Arten von Menschen in Einklang zu bringen, wir machen Fehler, lernen und wachsen. Aber wir wollen nicht aufgeben! Wir suchen Hilfe, sei es finanziell oder einfach durch deine Zeit als Freiwilliger. Bitte melde dich bei uns, um uns Ratschläge zu geben, deine Meinung zu teilen, wir sind daran interessiert, besser zu werden! Wir haben auch reine Frauengruppen, falls du daran interessiert bist, dort beizutreten und zu teilen :)"
+        "about-active-desc": "Dieses Ziel zu erreichen ist extrem herausfordernd. Wir kämpfen ständig damit, die Erwartungen zwischen verschiedenen Arten von Menschen in Einklang zu bringen, wir machen Fehler, lernen und wachsen. Aber wir wollen nicht aufgeben! Wir suchen Hilfe, sei es finanziell oder einfach durch deine Zeit als freiwillige Person. Bitte melde dich bei uns, um uns Ratschläge zu geben, deine Meinung zu teilen, wir sind daran interessiert, besser zu werden! Wir haben auch reine Frauengruppen, falls du daran interessiert bist, dort beizutreten und zu teilen :)"
     },
     en: {
         "search-groups": "Search groups...",

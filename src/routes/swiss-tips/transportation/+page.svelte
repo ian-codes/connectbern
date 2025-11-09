@@ -12,7 +12,7 @@
     const content = {
         de: {
             title: "Transport",
-            warning: "WARNUNG für Erstnutzer der SBB: Vorsicht bei Preisänderungen in der SBB App - der Preis ist tatsächlich doppelt so hoch!",
+            warning: "WARNUNG für Erstnutzer:innen der SBB: Vorsicht bei Preisänderungen in der SBB App - der Preis ist tatsächlich doppelt so hoch!",
             longDistance: "Fernreisen",
             hitchhike: {
                 title: "Wenn du trampen möchtest:",
@@ -34,7 +34,7 @@
                 text: "Mit viel Glück kannst du vielleicht eine kostenlose Fahrt in diesen Gruppen nach oder von Bern finden:",
                 whatsapp: "WhatsApp",
                 telegram: "Telegram",
-                other: "Andere Städte, wenn du auch in anderen ähnlichen Gruppen außer der Berner dein Glück versuchen möchtest, kannst du nach \"mitfahren\" oder \"mitfahrgelegenheit\" hier suchen:",
+                other: "Andere Städte, wenn du auch in anderen ähnlichen Gruppen außer der Berner:innen dein Glück versuchen möchtest, kannst du nach \"mitfahren\" oder \"mitfahrgelegenheit\" hier suchen:",
                 switzerland: "(es gibt auch eine für die ganze Schweiz)"
             },
             nightPass: {

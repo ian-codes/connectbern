@@ -18,7 +18,7 @@
                 { name: "Facebook Gruppen", note: "WG Zimmer Bern & Wohnung Frei Bern (und vielleicht weitere)", url: "https://www.facebook.com/groups/251733488892455/", url2: "https://www.facebook.com/wohnung.frei.bern/", icon: "/icons/facebook.svg", iconType: "svg", multiLink: true },
                 { name: "meinwgzimmer.ch", note: "(sehr schönes und neues UI, aber weniger genutzt)", url: "https://meinwgzimmer.ch/", icon: "🏠" },
                 { name: "wgzimmer.ch", note: "(am meisten genutzt, nur WG-Zimmer)", url: "https://wgzimmer.ch", icon: "🏘️" },
-                { name: "flatfox.ch", note: "(Ausländer nutzen dies viel für WG-Zimmer, generell beliebt für ganze Wohnungen)", url: "https://flatfox.ch", icon: "🦊" },
+                { name: "flatfox.ch", note: "(Personen aus dem Ausland nutzen dies viel für WG-Zimmer, generell beliebt für ganze Wohnungen)", url: "https://flatfox.ch", icon: "🦊" },
                 { name: "ronorp.net", note: "(alternative Website, bietet auch Wohnungssuche)", url: "https://ronorp.net/market/housing", icon: "🔍" }
             ],
             feedback: {

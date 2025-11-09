@@ -259,7 +259,7 @@
                 recurring: 'monthly',
                 time: '19:00',
                 description: {
-                    de: 'Treffen mit Hackern und Infosec-Profis - Voranmeldung erforderlich!',
+                    de: 'Treffen mit Hacker:innen und Infosec-Profis - Voranmeldung erforderlich!',
                     en: 'Meetup with hackers and infosec professionals - Pre-registration required!'
                 },
                 link: '/events/beer-on-tuesday'
@@ -327,7 +327,7 @@
                 date: getNextWeekday(4),
                 recurring: 'weekly',
                 description: {
-                    de: 'Deutsch üben (Schaue auf MeetUp für Ort)',
+                    de: 'Deutsch üben (schau auf MeetUp für Ort)',
                     en: 'Practice German (check MeetUp for location)'
                 },
                 link: 'https://www.meetup.com/meetup-bern/events/calendar/'
