@@ -1,5 +1,21 @@
 <svelte:head>
 	<title>Connect & Cheers • Events • Connect Bern</title>
+	<meta name="description" content="Every Friday evening at PROGR Turnhalle – relaxed drinks, chats and connections. Part of the Connect Bern community project." />
+
+	<!-- Open Graph -->
+	<meta property="og:url" content="https://connectbern.ch/events/connect-and-cheers" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Connect & Cheers • Connect Bern" />
+	<meta property="og:description" content="Every Friday evening at PROGR Turnhalle – relaxed drinks, chats and connections. Part of the Connect Bern community project." />
+	<meta property="og:image" content="https://connectbern.ch/images/connect-and-cheers-1.jpg" />
+
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="twitter:domain" content="connectbern.ch" />
+	<meta property="twitter:url" content="https://connectbern.ch/events/connect-and-cheers" />
+	<meta name="twitter:title" content="Connect & Cheers • Connect Bern" />
+	<meta name="twitter:description" content="Every Friday evening at PROGR Turnhalle – relaxed drinks, chats and connections. Part of the Connect Bern community project." />
+	<meta name="twitter:image" content="https://connectbern.ch/images/connect-and-cheers-1.jpg" />
 </svelte:head>
 
 <script>
