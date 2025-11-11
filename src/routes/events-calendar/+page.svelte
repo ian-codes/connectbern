@@ -7,7 +7,7 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="Events Calendar • Connect Bern" />
 	<meta property="og:description" content="Discover upcoming events in Bern. Weekly and special meetups by Connect Bern and friends." />
-	<meta property="og:image" content="https://connectbern.ch/icons/connect-bern-logo-white.png" />
+	<meta property="og:image" content="https://connectbern.ch/images/connect-and-cheers-1.jpg" />
 
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
@@ -15,7 +15,7 @@
 	<meta property="twitter:url" content="https://connectbern.ch/events-calendar" />
 	<meta name="twitter:title" content="Events Calendar • Connect Bern" />
 	<meta name="twitter:description" content="Discover upcoming events in Bern. Weekly and special meetups by Connect Bern and friends." />
-	<meta name="twitter:image" content="https://connectbern.ch/icons/connect-bern-logo-white.png" />
+	<meta name="twitter:image" content="https://connectbern.ch/images/connect-and-cheers-1.jpg" />
 </svelte:head>
 
 <script>
