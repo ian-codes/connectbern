@@ -70,6 +70,15 @@ export const MenuData = [
         slug: "support-us",
 		img: "help.svg",
 		homeImg: "/navigation/help.svg"
+    },
+    {
+        title: {
+            en: "Get in touch",
+            de: "Schreib uns"
+        },
+        slug: "contact",
+		img: "contact.svg",
+		homeImg: "/navigation/contact.svg"
     }
 
     // {

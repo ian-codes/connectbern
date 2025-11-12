@@ -113,7 +113,17 @@ export const t = {
         "support-cash-desc": "Bevorzugst du persönlich zu spenden? Bargeldspenden sind immer willkommen!",
         "support-cash-details": "Du kannst deine Spende in der dafür vorgesehenen Box in unserem Raum hinterlassen. Suche nach der Spendenbox in der Nähe des Eingangs.",
         "support-thank-you": "Danke, dass du unsere Gemeinschaft unterstützt! 🙏",
-        "support-thank-you-desc": "Jeder Beitrag hilft uns, diesen Raum offen und einladend für alle zu halten."
+        "support-thank-you-desc": "Jeder Beitrag hilft uns, diesen Raum offen und einladend für alle zu halten.",
+        "contact-title": "Schreib uns",
+        "contact-description": "Hast du eine Frage, einen Vorschlag oder möchtest du dich einfach melden?<br>Fülle das untenstehende Formular aus und wir melden uns so schnell wie möglich bei dir!",
+        "contact-name": "Name",
+        "contact-email": "E-Mail *",
+        "contact-phone": "Telefonnummer",
+        "contact-message": "Nachricht",
+        "contact-submit": "Nachricht senden",
+        "contact-submitting": "Wird gesendet...",
+        "contact-success": "Vielen Dank! Wir melden uns bald bei dir.",
+        "contact-error": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
     },
     en: {
         "search-groups": "Search groups...",
@@ -229,6 +239,16 @@ export const t = {
         "support-cash-desc": "Prefer to donate in person? Cash donations are always welcome!",
         "support-cash-details": "You can leave your donation in the designated box at our space. Look for the donation box near the entrance.",
         "support-thank-you": "Thank you for supporting our community! 🙏",
-        "support-thank-you-desc": "Every contribution helps us keep this space open and welcoming for everyone."
+        "support-thank-you-desc": "Every contribution helps us keep this space open and welcoming for everyone.",
+        "contact-title": "Get in touch",
+        "contact-description": "Have a question, suggestion, or just want to reach out?<br>Fill out the form below and we'll get back to you as soon as possible!",
+        "contact-name": "Name",
+        "contact-email": "Email *",
+        "contact-phone": "Phone Number",
+        "contact-message": "Message",
+        "contact-submit": "Send Message",
+        "contact-submitting": "Sending...",
+        "contact-success": "Thank you! We'll get back to you soon.",
+        "contact-error": "Something went wrong. Please try again."
     }
 }

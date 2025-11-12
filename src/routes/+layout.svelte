@@ -2,6 +2,7 @@
     import "../app.css";
     import { onMount } from "svelte";
     import Header from "$lib/components/global/Header.svelte";
+    import Footer from "$lib/components/global/Footer.svelte";
     import { currentLanguage } from "$lib/stores/languageStore.js";
 
     onMount(() => {
@@ -22,6 +23,7 @@
 <main>
     <slot />
 </main>
+<Footer />
 
 
 <style>

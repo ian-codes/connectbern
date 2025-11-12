@@ -1,64 +1,131 @@
+<script>
+    import { currentLanguage } from '$lib/stores/languageStore.js';
+    import { t } from '$lib/locales/translations.js';
+
+    $: lang = $currentLanguage;
+
+    let formStatus = '';
+    let isSubmitting = false;
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+        isSubmitting = true;
+        formStatus = '';
+
+        const form = event.target;
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch('https://formspree.io/f/mblqllvn', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            isSubmitting = false;
+
+            if (response.ok) {
+                formStatus = 'success';
+                form.reset();
+            } else {
+                formStatus = 'error';
+            }
+        } catch (error) {
+            isSubmitting = false;
+            formStatus = 'error';
+        }
+    }
+</script>
+
 <svelte:head>
-	<title>Contact • Connect Bern </title>
+    <title>{t[lang]['contact-title']} • Connect Bern</title>
 </svelte:head>
-
-
-<!-- 
 
 <section>
     <div class="topbarWrapper">
-        <h2>Contact</h2>
+        <h2>{t[lang]['contact-title']}</h2>
         <p>
-            Have a suggestion for a group chat that could be added to the collection?
-            Let us know!
-            <br>
-            Or if you have feedback on the site, or would like to chat about anything else, feel free to write us a message below.
+            {@html t[lang]['contact-description']}
         </p>
     </div>
 
-
     <div class="wrapper">
-        <form>
+        <form
+            on:submit={handleSubmit}
+            id="contactForm"
+        >
             <div class="inputWrapper">
-                <label for="name">Name</label>
-                <input id="name" name="name" type="text" />
+                <label for="name">{t[lang]['contact-name']}</label>
+                <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    disabled={isSubmitting}
+                />
             </div>
-        
+
             <div class="inputWrapper">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" />
+                <label for="email">{t[lang]['contact-email']}</label>
+                <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    disabled={isSubmitting}
+                />
             </div>
-        
+
             <div class="inputWrapper">
-                <label for="message">Message</label>
-                <textarea id="message" name="message"></textarea>
+                <label for="phone">{t[lang]['contact-phone']}</label>
+                <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="+41 XX XXX XX XX"
+                    disabled={isSubmitting}
+                />
             </div>
-    
+
+            <div class="inputWrapper">
+                <label for="message">{t[lang]['contact-message']}</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    disabled={isSubmitting}
+                ></textarea>
+            </div>
+
+            {#if formStatus === 'success'}
+                <p class="success-message">{t[lang]['contact-success']}</p>
+            {/if}
+
+            {#if formStatus === 'error'}
+                <p class="error-message">{t[lang]['contact-error']}</p>
+            {/if}
+
             <div class="buttonWrapper">
-                <button>Clear</button>
-                <a href = 'mailto:my@email?body="Yourbody"&subject="a subject".com'>SEND EMAIL TO my@email.com</a>
-                <button class="primary">Send</button>
+                <button
+                    type="submit"
+                    class="primary"
+                    disabled={isSubmitting}
+                >
+                    {isSubmitting ? t[lang]['contact-submitting'] : t[lang]['contact-submit']}
+                </button>
             </div>
         </form>
-    
+
         <div class="image"></div>
     </div>
-
-    <p>Website created by Ian of kilendra.com. 
-        <br>
-        Do you like the look and feel of the site? Contact me about your
-        project idea at ian@kilendra.com for a non-binding chat.
-        Looking forward to working together!
-    </p>
 </section>
-
-
-
 
 <style>
     .wrapper {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         gap: 2em;
     }
 
@@ -85,6 +152,8 @@
         display: flex;
         flex-direction: column;
         gap: 1em;
+        text-align: center;
+        align-items: center;
     }
 
     section {
@@ -92,10 +161,17 @@
         position: relative;
         overflow: hidden;
     }
-    
+
     p {
         color: white;
         font-size: 1em;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+        align-items: center;
     }
 
     .inputWrapper {
@@ -108,36 +184,58 @@
 
     .inputWrapper label {
         color: white;
+        font-weight: 500;
+    }
+
+    input, textarea {
+        padding: .8em;
+        border-radius: .5em;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(0, 0, 0, 0.3);
+        color: white;
+        font-size: 1em;
+        font-family: inherit;
+    }
+
+    input:focus, textarea:focus {
+        outline: none;
+        border-color: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     }
 
     textarea {
-        max-width: calc(500px - 1em);
-        max-height: 200px;
-        padding: .5em;
+        max-width: calc(500px - 1.6em);
+        min-height: 120px;
+        resize: vertical;
     }
 
     .buttonWrapper {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: flex-end;
         max-width: 500px;
         gap: 1em;
     }
 
     button {
-        width: 100%;
-        padding: 1em;
+        padding: 1em 2em;
         border-radius: 1em;
         letter-spacing: 2px;
         font-size: 1em;
         cursor: pointer;
         background: none;
+        border: none;
         box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.444), 1px 1px 2px rgba(0, 0, 0, 0.444), -1px 5px 20px rgba(0, 0, 0, 0.255);
         color: white;
         transition: all .1s ease;
     }
 
-    button:hover {
+    button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    button:not(:disabled):hover {
         transform: scale(1.05);
         box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.444), 1px 1px 2px rgba(0, 0, 0, 0.444), 0 5px 1px black, 0 0 30px rgba(255, 255, 255, 0.447);
     }
@@ -147,7 +245,39 @@
         color: black;
     }
 
-    .primary:hover {
+    .primary:not(:disabled):hover {
         background: white;
     }
-</style> -->
+
+    .success-message {
+        color: #4ade80;
+        background: rgba(74, 222, 128, 0.1);
+        padding: 1em;
+        border-radius: 0.5em;
+        border: 1px solid rgba(74, 222, 128, 0.3);
+        max-width: 500px;
+    }
+
+    .error-message {
+        color: #f87171;
+        background: rgba(248, 113, 113, 0.1);
+        padding: 1em;
+        border-radius: 0.5em;
+        border: 1px solid rgba(248, 113, 113, 0.3);
+        max-width: 500px;
+    }
+
+    @media (max-width: 800px) {
+        .wrapper {
+            flex-direction: column;
+        }
+
+        .image {
+            display: none;
+        }
+
+        form {
+            align-items: flex-start;
+        }
+    }
+</style>
