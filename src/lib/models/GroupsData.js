@@ -119,7 +119,7 @@ export const GroupsData = [
             en: "An active group that regularly meets up."
         },
         img: "lets-bern.webp",
-        type: "whatsapp",
+        type: "multiplatform",
         link: "https://tiny.cc/letsbern",
         whatsappLink: "https://tiny.cc/letsbern",
         facebookLink: "https://www.facebook.com/groups/1965867326916840"
