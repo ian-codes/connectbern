@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#1877F2"/>
+
+  <!-- Facebook 'f' logo -->
+  <path d="M117.5 104.5V88c0-5.5 3.5-7 6-7h11V58h-15c-16.5 0-20 12.5-20 20v26.5H85v23h14.5V172h18v-44.5h15l2-23h-17z" fill="white"/>
+
+  <!-- Small group indicator circles -->
+  <circle cx="145" cy="145" r="12" fill="white" opacity="0.9"/>
+  <circle cx="165" cy="135" r="10" fill="white" opacity="0.8"/>
+  <circle cx="155" cy="160" r="8" fill="white" opacity="0.7"/>
+</svg>
