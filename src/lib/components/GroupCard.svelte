@@ -68,10 +68,10 @@
                     <span class="top-icon" style="background-image: url('/icons/telegram.svg');"></span>
                 </a>
             </div>
-        {:else if GroupDataObject.type === 'whatsapp' || GroupDataObject.type === 'telegram'}
+        {:else if (GroupDataObject.type === 'whatsapp' || GroupDataObject.type === 'telegram' || GroupDataObject.type === 'facebook') && !GroupDataObject.isCollection}
             <!-- Single platform icon with link -->
             <div class="top-icons">
-                <a href={GroupDataObject.link} target="_blank" rel="noopener noreferrer" title={GroupDataObject.type === 'whatsapp' ? 'WhatsApp' : 'Telegram'}>
+                <a href={GroupDataObject.link} target="_blank" rel="noopener noreferrer" title={GroupDataObject.type === 'whatsapp' ? 'WhatsApp' : GroupDataObject.type === 'telegram' ? 'Telegram' : 'Facebook'}>
                     <span class="top-icon" style="background-image: url('/icons/{GroupDataObject.type}.svg');"></span>
                 </a>
             </div>
@@ -98,13 +98,13 @@
                 <span class="linkImg"></span>
                 Join
             </a>
-        {:else if GroupDataObject.slug !== "connect-bern"}
-            <a title={GroupDataObject.slug === "community-groups" ? "View Connect Bern groups" : (GroupDataObject.isCollection ? "View selection of groups" : (GroupDataObject.type === "multiplatform" || (GroupDataObject.facebookLink && GroupDataObject.whatsappLink) ? "View all links" : (GroupDataObject.type === "whatsapp" ? "Join WhatsApp community" : "Join group")))}
+        {:else if GroupDataObject.slug !== "connect-bern" && GroupDataObject.slug !== "vegan-bern"}
+            <a title={GroupDataObject.slug === "community-groups" ? "View Connect Bern groups" : (GroupDataObject.isCollection ? "View selection of groups" : (GroupDataObject.type === "multiplatform" || (GroupDataObject.facebookLink && GroupDataObject.whatsappLink) ? "View join options" : (GroupDataObject.type === "whatsapp" ? "Join WhatsApp community" : "Join group")))}
                href="/groups/{GroupDataObject.slug}/join"
-               target="_blank"
+               target={GroupDataObject.isCollection && GroupDataObject.slug !== "non-commercial-marketplaces" ? "_self" : "_blank"}
                class="buttone">
                 <span class="linkImg"></span>
-                {GroupDataObject.slug === "community-groups" ? "View Groups" : (GroupDataObject.isCollection ? "View Groups" : (GroupDataObject.type === "multiplatform" || (GroupDataObject.facebookLink && GroupDataObject.whatsappLink) ? "All Links" : "Join"))}
+                {GroupDataObject.slug === "community-groups" ? "View Groups" : (GroupDataObject.isCollection ? "View Groups" : "Join")}
             </a>
         {/if}
         <a title="Show details" href="/groups/{GroupDataObject.slug}" class="buttone">

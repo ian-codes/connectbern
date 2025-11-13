@@ -54,9 +54,17 @@ export function filterByGroupType(type) {
             }
             return groups
         }
+        case "facebook": {
+            for (let group of GroupsData) {
+                if (group.type.includes(type) || group.facebookLink) {
+                    groups.push(group)
+                }
+            }
+            return groups
+        }
         case "other": {
             for (let group of GroupsData) {
-                if (!group.type.includes("whatsapp") && !group.type.includes("telegram") && !group.type.includes("multiplatform")) {
+                if (!group.type.includes("whatsapp") && !group.type.includes("telegram") && !group.type.includes("multiplatform") && !group.type.includes("facebook") && !group.facebookLink) {
                     groups.push(group)
                 }
             }

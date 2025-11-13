@@ -12,7 +12,7 @@
     import { t } from "$lib/locales/translations.js";
 
     let groupType = "All"
-    let groupTypes = ["All", "Connect Bern", "WhatsApp", "Telegram", "Multiplatform", "Other"]
+    let groupTypes = ["All", "Connect Bern", "WhatsApp", "Telegram", "Facebook", "Multiplatform", "Other"]
 
     let groups = GroupsData
 

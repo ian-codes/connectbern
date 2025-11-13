@@ -9,11 +9,11 @@ export const GroupsData = [
             de: "Diese Gruppe ist für alles rund um Connect Bern und die Connect Bern Mission (Menschen in Bern verbinden 🙂)",
             en: "This group is for anything related to Connect Bern and the Connect Bern mission (connecting people in Bern 🙂)"
         },
-        img: "connect-bern-logo-white.png",
+        img: "connect-bern-logo-orange.png",
         type: "multiplatform",
         link: "https://tiny.cc/connectbernwhatsapp",
         telegramLink: "https://t.me/connectbern",
-        facebookLink: "https://www.facebook.com/connectbern",
+        facebookLink: "https://www.facebook.com/groups/connectbern",
         organizer: "connectbern"
     },
     {
@@ -72,7 +72,7 @@ export const GroupsData = [
             de: "Gruppe für alles rund um das Spielen - mehr als 300 Mitglieder.",
             en: "A group for everything related to games. Over 300 members."
         },
-        img: "spielegruppe.webp",
+        img: "games-group.jpg",
         type: "multiplatform",
         link: "https://tiny.cc/gamesgroupbern",
         telegramLink: "https://t.me/joinchat/VADU-Gkqqyltzawe",
@@ -90,8 +90,9 @@ export const GroupsData = [
             en: "A group for vegan people, for making new vegan friends and to organize vegan meetups and events."
         },
         img: "vegan.webp",
-        type: "whatsapp",
-        link: "https://tiny.cc/veganbern"
+        type: "multiplatform",
+        link: "https://tiny.cc/veganbern",
+        telegramLink: "https://t.me/bernvegan"
     },
     {
         name: {
@@ -119,7 +120,24 @@ export const GroupsData = [
         },
         img: "lets-bern.webp",
         type: "whatsapp",
-        link: "https://tiny.cc/letsbern"
+        link: "https://tiny.cc/letsbern",
+        whatsappLink: "https://tiny.cc/letsbern",
+        facebookLink: "https://www.facebook.com/groups/1965867326916840"
+    },
+    {
+        name: {
+            de: "Aktive Facebook-Gruppen",
+            en: "Active Facebook Groups"
+        },
+        slug: "active-facebook-groups",
+        desc: {
+            de: "Eine Sammlung von aktiven Facebook-Gruppen in Bern, in denen du Leute finden kannst:<br><br><strong>What's Up Bern</strong> (11'000+ Mitglieder) - Hauptsächlich Englisch<br><strong>WasWieWo in Bern</strong> (9'000+ Mitglieder) - Hauptsächlich Deutsch<br><strong>People Of Bern</strong> (7'000+ Mitglieder) - Beide Sprachen gleichmässig",
+            en: "A collection of active Facebook groups in Bern where you can find people:<br><br><strong>What's Up Bern</strong> (11,000+ members) - Mainly English<br><strong>WasWieWo in Bern</strong> (9,000+ members) - Mainly German<br><strong>People Of Bern</strong> (7,000+ members) - Both languages equally"
+        },
+        img: "facebook-groups.svg",
+        type: "facebook",
+        link: "https://www.facebook.com/groups/whatsupbern",
+        isCollection: true
     },
     {
         name: {

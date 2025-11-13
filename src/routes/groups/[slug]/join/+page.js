@@ -11,5 +11,10 @@ export function load({ params }) {
         throw redirect(301, "/");
     }
 
+    // For collections, return the data to show the page (except non-commercial-marketplaces)
+    if ((data.isCollection || params.slug === 'active-facebook-groups') && params.slug !== 'non-commercial-marketplaces') {
+        return { group: data };
+    }
+
     throw redirect(301, data?.link);
 }

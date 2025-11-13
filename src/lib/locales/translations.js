@@ -123,7 +123,10 @@ export const t = {
         "contact-submit": "Nachricht senden",
         "contact-submitting": "Wird gesendet...",
         "contact-success": "Vielen Dank! Wir melden uns bald bei dir.",
-        "contact-error": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+        "contact-error": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+        "events-suggest-title": "Weisst du von einem Event?",
+        "events-suggest-description": "Wir suchen Events, die sich auf das Kennenlernen neuer Menschen konzentrieren – nicht nur kommerzielle oder thematisch fokussierte Veranstaltungen. Wenn das Event, von dem du weisst, Menschen zusammenbringt und eine offene, einladende Atmosphäre schafft, würden wir gerne davon hören!",
+        "events-suggest-button": "Event vorschlagen"
     },
     en: {
         "search-groups": "Search groups...",
@@ -249,6 +252,9 @@ export const t = {
         "contact-submit": "Send Message",
         "contact-submitting": "Sending...",
         "contact-success": "Thank you! We'll get back to you soon.",
-        "contact-error": "Something went wrong. Please try again."
+        "contact-error": "Something went wrong. Please try again.",
+        "events-suggest-title": "Know of an event?",
+        "events-suggest-description": "We're looking for events that focus on meeting new people – not just commercial or topic-focused gatherings. If the event you know of brings people together and creates an open, welcoming atmosphere, we'd love to hear about it!",
+        "events-suggest-button": "Suggest an Event"
     }
 }

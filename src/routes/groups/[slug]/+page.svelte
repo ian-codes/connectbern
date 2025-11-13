@@ -53,7 +53,58 @@
                 </p>
             </div>
 
-            {#if data?.slug !== "connect-bern"}
+            {#if data?.slug === "connect-bern" || data?.slug === "vegan-bern"}
+                <div class="w-full flex flex-col gap-4">
+                    {#if data?.slug === "connect-bern"}
+                        <div class="platform-explanation">
+                            <p>
+                                {#if lang === "de"}
+                                    Die WhatsApp- und Telegram-Gruppen sind verbunden – Nachrichten werden zwischen beiden synchronisiert. Die Facebook-Gruppe ist separat.
+                                {:else}
+                                    The WhatsApp and Telegram groups are connected – messages are synchronized between both. The Facebook group is separate.
+                                {/if}
+                            </p>
+                        </div>
+                    {:else if data?.slug === "vegan-bern"}
+                        <div class="platform-explanation">
+                            <p>
+                                {#if lang === "de"}
+                                    Die WhatsApp- und Telegram-Gruppen sind getrennt.
+                                {:else}
+                                    The WhatsApp and Telegram groups are separate.
+                                {/if}
+                            </p>
+                        </div>
+                    {/if}
+                    <div class="platform-links-detail">
+                        {#if data?.link}
+                            <a class="platform-detail-btn whatsapp" href="{data?.link}" target="_blank" rel="noopener noreferrer">
+                                <span>WhatsApp</span>
+                            </a>
+                        {/if}
+                        {#if data?.telegramLink}
+                            <a class="platform-detail-btn telegram" href="{data?.telegramLink}" target="_blank" rel="noopener noreferrer">
+                                <span>Telegram</span>
+                            </a>
+                        {/if}
+                        {#if data?.facebookLink}
+                            <a class="platform-detail-btn facebook" href="{data?.facebookLink}" target="_blank" rel="noopener noreferrer">
+                                <span>Facebook</span>
+                            </a>
+                        {/if}
+                    </div>
+                    <button on:click={copyLink}
+                        class="join copyImgButton relative">
+
+                        <span class="tooltip">
+                            {copyLinkTooltipText}
+                        </span>
+
+                        <span class="icon copyImg" style="background-image: url(/icons/link.svg);" />
+                        Copy Link
+                    </button>
+                </div>
+            {:else}
                 <div class="w-full flex flex-col gap-4">
                     {#if data?.telegramLink && data?.slug === "game-group"}
                         <!-- Game Group with Linktree -->
@@ -69,6 +120,16 @@
                                     <span>All Links</span>
                                 </a>
                             {/if}
+                        </div>
+                    {:else if data?.facebookLink && data?.whatsappLink}
+                        <!-- WhatsApp and Facebook combination -->
+                        <div class="platform-links-detail">
+                            <a class="platform-detail-btn whatsapp" href="{data?.whatsappLink}" target="_blank" rel="noopener noreferrer">
+                                <span>WhatsApp</span>
+                            </a>
+                            <a class="platform-detail-btn facebook" href="{data?.facebookLink}" target="_blank" rel="noopener noreferrer">
+                                <span>Facebook</span>
+                            </a>
                         </div>
                     {:else if data?.telegramLink}
                         <div class="flex flex-col sm:flex-row gap-4">
@@ -88,41 +149,6 @@
                         </a>
                     {/if}
 
-                    <button on:click={copyLink}
-                        class="join copyImgButton relative">
-
-                        <span class="tooltip">
-                            {copyLinkTooltipText}
-                        </span>
-
-                        <span class="icon copyImg" style="background-image: url(/icons/link.svg);" />
-                        Copy Link
-                    </button>
-                </div>
-            {:else}
-                <div class="w-full flex flex-col gap-4">
-                    <div class="platform-explanation">
-                        <p>
-                            {#if lang === "de"}
-                                Die WhatsApp- und Telegram-Gruppen sind verbunden – Nachrichten werden zwischen beiden synchronisiert. Die Facebook-Gruppe ist separat.
-                            {:else}
-                                The WhatsApp and Telegram groups are connected – messages are synchronized between both. The Facebook group is separate.
-                            {/if}
-                        </p>
-                    </div>
-                    <div class="platform-links-detail">
-                        <a class="platform-detail-btn whatsapp" href="{data?.link}" target="_blank" rel="noopener noreferrer">
-                            <span>WhatsApp</span>
-                        </a>
-                        <a class="platform-detail-btn telegram" href="{data?.telegramLink}" target="_blank" rel="noopener noreferrer">
-                            <span>Telegram</span>
-                        </a>
-                        {#if data?.facebookLink}
-                            <a class="platform-detail-btn facebook" href="{data?.facebookLink}" target="_blank" rel="noopener noreferrer">
-                                <span>Facebook</span>
-                            </a>
-                        {/if}
-                    </div>
                     <button on:click={copyLink}
                         class="join copyImgButton relative">
 

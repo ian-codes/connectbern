@@ -234,7 +234,7 @@
             {
                 title: { de: 'Sprachenaustausch', en: 'Language Exchange' },
                 date: getNextWeekday(3),
-                time: '18:00',
+                time: '19:00',
                 recurring: 'weekly',
                 description: {
                     de: 'Sprachenaustausch im Connect Bern Haus - übe verschiedene Sprachen!',
@@ -276,13 +276,14 @@
                 link: 'https://t.me/+-Q6c3xU3uEwyNmZk'
             },
             {
-                title: { de: 'CCC Wöchentliches Treffen', en: 'CCC Weekly Meeting' },
+                title: { de: 'ChaosTreff Bern Wöchentliches Treffen', en: 'ChaosTreff Bern Weekly Meeting' },
                 date: getNextWeekday(2),
                 recurring: 'weekly',
                 description: {
-                    de: 'Chaos Computer Club Treffen',
-                    en: 'Chaos Computer Club meeting'
-                }
+                    de: 'Ein Hackerspace in Bern, verwandt mit der Chaos Computer Club (CCC) Bewegung, aber nicht Teil davon',
+                    en: 'A hacker space in Bern related to the Chaos Computer Club (CCC) movement, but not part of it'
+                },
+                link: 'https://chaostreffbern.ch/'
             },
             {
                 title: { de: 'Posterum Spieleabend', en: 'Posterum Games Night' },
@@ -346,7 +347,7 @@
                 title: { de: 'Connect & Cheers', en: 'Connect & Cheers' },
                 date: getNextWeekday(5),
                 recurring: 'weekly',
-                time: '18:00',
+                time: '19:00',
                 description: {
                     de: 'Jeden Freitagabend in der PROGR Turnhalle – entspannter Treff zum Anstoßen, Austauschen und neue Leute kennenlernen. Teil des Community-Projekts Connect Bern.',
                     en: 'Every Friday evening at PROGR Turnhalle – relaxed drinks, chats and connections. Part of the Connect Bern community project.'
@@ -421,6 +422,16 @@
             </p>
         </div>
 
+        <!-- Suggest Event CTA -->
+        <div class="suggestEventCTA">
+            <div class="ctaIcon">✨</div>
+            <h3>{t[lang]['events-suggest-title']}</h3>
+            <p>{t[lang]['events-suggest-description']}</p>
+            <a href="/contact" class="ctaButton">
+                {t[lang]['events-suggest-button']} →
+            </a>
+        </div>
+
         <!-- Filter View Switcher -->
         <div class="filterBar">
             <span class="filterLabel">{lang === 'de' ? 'Ansicht:' : 'View:'}</span>
@@ -474,7 +485,12 @@
                             <div class="eventHeader">
                                 <h2>
                                     {#if group.events[0].recurring === 'weekly'}
-                                        {lang === 'de' ? 'Wöchentliche Events' : 'Weekly Events'}
+                                        {(() => {
+                                            const days = lang === 'de'
+                                                ? ['Sonntags-Events', 'Montags-Events', 'Dienstags-Events', 'Mittwochs-Events', 'Donnerstags-Events', 'Freitags-Events', 'Samstags-Events']
+                                                : ['Sunday Events', 'Monday Events', 'Tuesday Events', 'Wednesday Events', 'Thursday Events', 'Friday Events', 'Saturday Events'];
+                                            return days[group.events[0].date.getDay()];
+                                        })()}
                                     {:else}
                                         {lang === 'de' ? 'Monatliche Events' : 'Monthly Events'}
                                     {/if}
@@ -678,6 +694,84 @@
     .eventsIntro {
         margin-top: 2em !important;
         margin-bottom: 2em !important;
+    }
+
+    /* Suggest Event CTA */
+    .suggestEventCTA {
+        background: linear-gradient(135deg, rgba(255, 180, 100, 0.15), rgba(255, 120, 150, 0.15));
+        border: 2px solid rgba(255, 180, 100, 0.4);
+        border-radius: 1.2em;
+        padding: 1.5em 1.5em;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.7em;
+        max-width: 550px;
+        width: 100%;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(255, 180, 100, 0.2);
+    }
+
+    .suggestEventCTA:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(255, 180, 100, 0.3);
+        border-color: rgba(255, 180, 100, 0.6);
+    }
+
+    .ctaIcon {
+        font-size: 2.2em;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+    }
+
+    .suggestEventCTA h3 {
+        font-size: 1.4em;
+        font-weight: bold;
+        margin: 0;
+        color: white;
+    }
+
+    .suggestEventCTA p {
+        font-size: 0.95em;
+        line-height: 1.5;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.95);
+        max-width: 500px;
+    }
+
+    .ctaButton {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+        padding: 0.8em 1.5em;
+        background: linear-gradient(135deg, rgba(255, 180, 100, 0.9), rgba(255, 120, 150, 0.9));
+        color: white;
+        text-decoration: none;
+        border-radius: 2em;
+        font-weight: bold;
+        font-size: 0.95em;
+        transition: all 0.3s ease;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        margin-top: 0.3em;
+    }
+
+    .ctaButton:hover {
+        transform: translateX(5px) scale(1.05);
+        background: linear-gradient(135deg, rgba(255, 200, 120, 1), rgba(255, 140, 170, 1));
+        box-shadow: 0 6px 25px rgba(255, 180, 100, 0.4);
+        border-color: rgba(255, 255, 255, 0.5);
     }
 
     /* Filter Bar Style */
@@ -1167,6 +1261,38 @@
             padding: 0 0.5em;
             line-height: 1.7;
             font-size: 1.05em;
+        }
+
+        .suggestEventCTA {
+            padding: 0.6em 0.8em;
+            gap: 0.3em;
+            border-radius: 0.8em;
+            max-width: 100%;
+        }
+
+        .ctaIcon {
+            font-size: 1.2em;
+        }
+
+        .suggestEventCTA h3 {
+            font-size: 0.9em;
+        }
+
+        .suggestEventCTA p {
+            font-size: 0.7em;
+            line-height: 1.3;
+        }
+
+        .ctaButton {
+            padding: 0.4em 0.6em;
+            font-size: 0.65em;
+            width: auto;
+            max-width: 90%;
+            justify-content: center;
+        }
+
+        .ctaButton:hover {
+            transform: scale(1.02);
         }
 
         .filterBar {
