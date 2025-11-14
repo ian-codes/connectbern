@@ -27,7 +27,9 @@
             },
             flixbus: {
                 title: "Flixbus-Trick",
-                text: "Reisen mit Flixbus innerhalb der Schweiz ist ebenfalls möglich. Flixbus darf anscheinend noch keine Fahrten innerhalb der Schweiz anbieten (Kabotageverbots), deshalb tun sie es nicht, aber wenn du ein Ticket nach Freiburg in Deutschland kaufst, wenn du von Bern nach Basel fährst, kannst du einfach in Basel aussteigen und es ist in manchen Fällen immer noch viel günstiger als der Zug. Dasselbe gilt für Zürich, wenn du von Bern nach Lindau in Deutschland oder Bregenz in Österreich reist oder nach Bern für nur 13,50, kannst du einfach in Zürich aussteigen. Keine Garantie, aber es scheint so, als ob wenn du diese Fahrten von Bern und dann von Basel/Zürich suchst, die gleiche Ankunftszeit angezeigt wird, was ein ziemlich starker Indikator ist, schau dir den Trip-Tab an, er zeigt alle Haltestellen."
+                text: "Reisen mit Flixbus innerhalb der Schweiz ist ebenfalls möglich. Flixbus darf anscheinend noch keine Fahrten innerhalb der Schweiz anbieten (Kabotageverbots), deshalb tun sie es nicht, aber wenn du ein Ticket nach Freiburg in Deutschland kaufst, wenn du von Bern nach Basel fährst, kannst du einfach in Basel aussteigen und es ist in manchen Fällen immer noch viel günstiger als der Zug. Dasselbe gilt für Zürich, wenn du von Bern nach Lindau in Deutschland oder Bregenz in Österreich reist oder nach Bern für nur 13,50, kannst du einfach in Zürich aussteigen. Keine Garantie, aber es scheint so, als ob wenn du diese Fahrten von Bern und dann von Basel/Zürich suchst, die gleiche Ankunftszeit angezeigt wird, was ein ziemlich starker Indikator ist, schau dir den Trip-Tab an, er zeigt alle Haltestellen.",
+                exampleText: "Du kannst dir ein Beispielvideo ansehen, das zeigt, wie das funktioniert:",
+                example: "Beispiel ansehen"
             },
             freeRides: {
                 title: "Kostenlose Mitfahrgelegenheiten",
@@ -86,7 +88,9 @@
             },
             flixbus: {
                 title: "Flixbus Hack",
-                text: "Traveling via Flixbus is also possible inside of Switzerland. Flixbus is apparently not allowed yet to offer rides inside of Switzerland (Kabotageverbots) so they don't do it but if you buy a ticket to Freiburg in Germany when you're going to Basel from Bern you can just get off in Basel and it's still much cheaper in some cases than paying for the train. The same goes for Zürich if you travel to Lindau in Germany or Bregenz in Austria from Bern or to Bern as cheap as 13.50 you can just get off at Zürich. No guarantee but it seems like when you look for these rides from Bern and then from Basel/Zürich it shows the same arrival time which is a pretty strong indicator, check on the trip tab, it shows all the stops."
+                text: "Traveling via Flixbus is also possible inside of Switzerland. Flixbus is apparently not allowed yet to offer rides inside of Switzerland (Kabotageverbots) so they don't do it but if you buy a ticket to Freiburg in Germany when you're going to Basel from Bern you can just get off in Basel and it's still much cheaper in some cases than paying for the train. The same goes for Zürich if you travel to Lindau in Germany or Bregenz in Austria from Bern or to Bern as cheap as 13.50 you can just get off at Zürich. No guarantee but it seems like when you look for these rides from Bern and then from Basel/Zürich it shows the same arrival time which is a pretty strong indicator, check on the trip tab, it shows all the stops.",
+                exampleText: "You can watch an example video showing how this works:",
+                example: "Watch example"
             },
             freeRides: {
                 title: "Free Rides",
@@ -175,6 +179,12 @@
         <div class="tip-card highlight">
             <h4>💡 {content[lang].flixbus.title}</h4>
             <p>{content[lang].flixbus.text}</p>
+            <p class="sub-text">{content[lang].flixbus.exampleText}</p>
+            <div class="button-spacer">
+                <a href="https://youtube.com/shorts/58jQ6BxYYyA" class="btn btn-compact btn-primary" target="_blank" rel="noopener noreferrer">
+                    🎥 {content[lang].flixbus.example}
+                </a>
+            </div>
         </div>
 
         <!-- Free Rides -->
