@@ -204,8 +204,8 @@ export const GroupsData = [
         },
         slug: "fire-community-bern",
         desc: {
-            en: "The Bernese Meetup for the FIRE community (financial independence, retire early).",
-            de: "Die berner Meetup-Gruppe der FIRE-Community (Financial Independence, Retire Early)."
+            en: "The Bernese Meetup for the FIRE community (Financial Independence, Retire Early). This community is interested in personal finances, investing, the real estate market, and learning how to spend less money. Most of their communication happens on the forum, for example where and when the next meetup is.<br><br>There's also a WhatsApp group available only per personal request - <a href='/contact' title='Contact us'>contact us</a> or ask in the forum.",
+            de: "Die berner Meetup-Gruppe der FIRE-Community (Financial Independence, Retire Early). Diese Community interessiert sich für persönliche Finanzen, Investitionen, den Immobilienmarkt und das Erlernen, wie man weniger Geld ausgibt. Der Großteil der Kommunikation findet im Forum statt, zum Beispiel wo und wann das nächste Treffen ist.<br><br>Es gibt auch eine WhatsApp-Gruppe, die nur auf persönliche Anfrage verfügbar ist - <a href='/contact' title='Kontaktiere uns'>kontaktiere uns</a> oder frag im Forum nach."
         },
         img: "fire-community.webp",
         type: "other",

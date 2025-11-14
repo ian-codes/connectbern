@@ -145,7 +145,7 @@
                     {:else}
                         <a class="join flex-1" href="{data?.slug}/join">
                             <span class="icon" style="background-image: url(/icons/link.png);" />
-                            {data?.isCollection ? "VIEW GROUPS" : (data?.slug === "community-groups" ? "JOIN WHATSAPP COMMUNITY" : "JOIN GROUP")}
+                            {data?.isCollection ? "VIEW GROUPS" : (data?.slug === "community-groups" ? "JOIN WHATSAPP COMMUNITY" : (data?.slug === "fire-community-bern" ? "CHECK FORUM" : "JOIN GROUP"))}
                         </a>
                     {/if}
 

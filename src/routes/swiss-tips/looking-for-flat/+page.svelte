@@ -15,7 +15,7 @@
             subtitle: "Hier sind einige Websites und Gruppen zum Finden einer Wohnung:",
             platforms: [
                 { name: "Telegram Gruppe", note: "für befristete und unbefristete Wohnangebote (WG-Zimmer, Wohnung, u.ä.) bzw. Suche nach einer Wohnung. Fast 10k Mitglieder, sehr aktiv!", url: "https://t.me/joinchat/LIezUBJgr4IRDyv8jYTWkg", icon: "/icons/telegram.svg", iconType: "svg" },
-                { name: "Facebook Gruppen", note: "WG Zimmer Bern & Wohnung Frei Bern (und vielleicht weitere)", url: "https://www.facebook.com/groups/251733488892455/", url2: "https://www.facebook.com/wohnung.frei.bern/", icon: "/icons/facebook.svg", iconType: "svg", multiLink: true },
+                { name: "Facebook Gruppen", note: "WG Zimmer Bern & Wohnung Frei Bern (und vielleicht weitere)", url: "https://www.facebook.com/groups/251733488892455/", url2: "https://www.facebook.com/wohnung.frei.bern/", url3: "https://www.facebook.com/groups/115018895203401", icon: "/icons/facebook.svg", iconType: "svg", multiLink: true },
                 { name: "meinwgzimmer.ch", note: "(sehr schönes und neues UI, aber weniger genutzt)", url: "https://meinwgzimmer.ch/", icon: "🏠" },
                 { name: "wgzimmer.ch", note: "(am meisten genutzt, nur WG-Zimmer)", url: "https://wgzimmer.ch", icon: "🏘️" },
                 { name: "flatfox.ch", note: "(Personen aus dem Ausland nutzen dies viel für WG-Zimmer, generell beliebt für ganze Wohnungen)", url: "https://flatfox.ch", icon: "🦊" },
@@ -44,7 +44,7 @@
             subtitle: "Check out these websites and groups to find an apartment:",
             platforms: [
                 { name: "Telegram Group", note: "for temporary and permanent housing offers (shared rooms, apartments, etc.) or searching for an apartment. Nearly 10k members, very active!", url: "https://t.me/joinchat/LIezUBJgr4IRDyv8jYTWkg", icon: "/icons/telegram.svg", iconType: "svg" },
-                { name: "Facebook Groups", note: "WG Zimmer Bern & Wohnung Frei Bern (and perhaps more)", url: "https://www.facebook.com/groups/251733488892455/", url2: "https://www.facebook.com/wohnung.frei.bern/", icon: "/icons/facebook.svg", iconType: "svg", multiLink: true },
+                { name: "Facebook Groups", note: "WG Zimmer Bern & Wohnung Frei Bern (and perhaps more)", url: "https://www.facebook.com/groups/251733488892455/", url2: "https://www.facebook.com/wohnung.frei.bern/", url3: "https://www.facebook.com/groups/115018895203401", icon: "/icons/facebook.svg", iconType: "svg", multiLink: true },
                 { name: "meinwgzimmer.ch", note: "(a very nice and new UI, but less used)", url: "https://meinwgzimmer.ch/", icon: "🏠" },
                 { name: "wgzimmer.ch", note: "(most used, shared flats only)", url: "https://wgzimmer.ch", icon: "🏘️" },
                 { name: "flatfox.ch", note: "(foreigners use this a lot for shared flats, generally popular for flats alone)", url: "https://flatfox.ch", icon: "🦊" },
@@ -94,11 +94,14 @@
                             <p class="platform-note">{platform.note}</p>
                         {/if}
                         <div class="multi-link-buttons">
+                            <a href={platform.url3} class="mini-btn" target="_blank" rel="noopener noreferrer">
+                                Wohnungsinserate Bern (23k+) →
+                            </a>
                             <a href={platform.url} class="mini-btn" target="_blank" rel="noopener noreferrer">
-                                Bern Wohnung, Zimmer, WG →
+                                Bern Wohnung, Zimmer, WG (14k+) →
                             </a>
                             <a href={platform.url2} class="mini-btn" target="_blank" rel="noopener noreferrer">
-                                Wohnung Frei Bern →
+                                Wohnung Frei Bern (6k+) →
                             </a>
                         </div>
                     </div>

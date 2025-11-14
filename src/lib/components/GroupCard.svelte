@@ -98,7 +98,7 @@
                 <span class="linkImg"></span>
                 Join
             </a>
-        {:else if GroupDataObject.slug !== "connect-bern" && GroupDataObject.slug !== "vegan-bern"}
+        {:else if GroupDataObject.slug !== "connect-bern" && GroupDataObject.slug !== "vegan-bern" && GroupDataObject.slug !== "game-group" && GroupDataObject.slug !== "lets-bern" && GroupDataObject.slug !== "fire-community-bern"}
             <a title={GroupDataObject.slug === "community-groups" ? "View Connect Bern groups" : (GroupDataObject.isCollection ? "View selection of groups" : (GroupDataObject.type === "multiplatform" || (GroupDataObject.facebookLink && GroupDataObject.whatsappLink) ? "View join options" : (GroupDataObject.type === "whatsapp" ? "Join WhatsApp community" : "Join group")))}
                href="/groups/{GroupDataObject.slug}/join"
                target={GroupDataObject.isCollection && GroupDataObject.slug !== "non-commercial-marketplaces" ? "_self" : "_blank"}

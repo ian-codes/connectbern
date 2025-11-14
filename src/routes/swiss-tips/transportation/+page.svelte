@@ -60,9 +60,13 @@
             },
             parking: {
                 title: "Parken",
-                text: "Parkplätze mit blauer Linie sind nur sonntags kostenlos. Aber auch nicht jede blaue Parkzone. Lies immer die Schilder sorgfältig durch, verwende Google Lens zum Übersetzen, falls nötig. Es gibt ein Ticket zu kaufen, um auf den blauen Linien zu parken:",
-                day: "19 Franken für 24 Stunden",
-                hours: "9 Franken für 4 Stunden"
+                text: "Parke in der blauen Zone. Parkgebühren:",
+                free: "1 Stunde kostenlos",
+                hours: "4 Stunden: 9 CHF",
+                day: "1 Tag: 16 CHF",
+                evening: "Nach 18 Uhr (bis 8 Uhr morgens) sowie sonntags ganztägig kostenlos",
+                buyTicket: "Parkticket kaufen",
+                guide: "Weitere Informationen findest du in diesem Parkführer:"
             }
         },
         en: {
@@ -115,9 +119,13 @@
             },
             parking: {
                 title: "Parking",
-                text: "Parking spots with blue line are only free on sunday. But also not every blue parking zone. Always read the signs carefully, use google lens to translate if needed. There is a ticket to buy to park the car on the blue lines:",
-                day: "19 francs for 24 hours",
-                hours: "9 francs for 4 hours"
+                text: "Park in the blue zone. Parking fees:",
+                free: "1 hour for free",
+                hours: "4 hours: 9 CHF",
+                day: "1 day: 16 CHF",
+                evening: "After 6 PM (until 8 AM the next morning) parking is for free, also for the whole day on Sundays",
+                buyTicket: "Buy parking ticket",
+                guide: "For more information, please check this guide:"
             }
         }
     };
@@ -244,9 +252,17 @@
         <div class="tip-card">
             <p>{content[lang].parking.text}</p>
             <ul class="pricing-list">
-                <li>💰 {content[lang].parking.day}</li>
+                <li>✅ {content[lang].parking.free}</li>
                 <li>💰 {content[lang].parking.hours}</li>
+                <li>💰 {content[lang].parking.day}</li>
+                <li>🌙 {content[lang].parking.evening}</li>
             </ul>
+            <div class="button-spacer">
+                <a href="https://formular.bern.ch/forms/findform?shortname=besucherparkkarte&formtecid=3&areashortname=bern-OGP" class="btn btn-compact btn-primary" target="_blank" rel="noopener noreferrer">
+                    🎫 {content[lang].parking.buyTicket}
+                </a>
+            </div>
+            <p class="sub-text">{content[lang].parking.guide} <a href="https://sharep.io/parking-in-bern-guide/" class="inline-link" target="_blank" rel="noopener noreferrer">Parking in Bern Guide</a></p>
         </div>
     </div>
 </div>
@@ -438,6 +454,7 @@
 
     .button-spacer {
         padding-top: 2.5rem;
+        margin-bottom: 1.5rem;
         display: block;
     }
 
@@ -511,10 +528,13 @@
         .btn-compact {
             width: auto;
             max-width: fit-content;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.85rem;
         }
 
         .button-spacer {
-            padding-top: 3rem;
+            padding-top: 2rem;
+            margin-bottom: 1.5rem;
         }
     }
 </style>
