@@ -232,6 +232,18 @@
                 organizer: 'connectbern'
             },
             {
+                title: { de: 'Tichu Abend', en: 'Tichu Evening' },
+                date: new Date(2025, 11, 23, 18, 30),
+                time: '18:30',
+                description: {
+                    de: 'Komm vorbei und spiel mit uns Tichu! 🃏',
+                    en: 'Come join us for a game of Tichu! 🃏'
+                },
+                link: '/events/tichu',
+                recurring: false,
+                organizer: 'connectbern'
+            },
+            {
                 title: { de: 'Sprachenaustausch', en: 'Language Exchange' },
                 date: getNextWeekday(3),
                 time: '19:00',
