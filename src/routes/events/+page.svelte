@@ -244,6 +244,18 @@
                 organizer: 'connectbern'
             },
             {
+                title: { de: 'Sound journey HANDPAN CONCERT', en: 'Sound journey HANDPAN CONCERT' },
+                date: new Date(2025, 11, 13, 18, 0),
+                time: '18:00-19:00',
+                description: {
+                    de: 'Ein warmer, gemütlicher Raum während der kälteren Wintertage. Decken, Kissen, heißer Tee & eine Stunde beruhigende Handpan-Klänge. Ein sanfter Moment zum Entspannen, Loslassen und Wiederverbinden. 🛋☕🎶',
+                    en: 'Step into a warm, cozy space during the colder winter days. Blankets, pillows, hot tea & one hour of soothing handpan sounds. A gentle moment to relax, unwind and reconnect. 🛋☕🎶'
+                },
+                link: '/events/handpan-concert',
+                recurring: false,
+                organizer: 'connectbern'
+            },
+            {
                 title: { de: 'Sprachenaustausch', en: 'Language Exchange' },
                 date: getNextWeekday(3),
                 time: '19:00',
