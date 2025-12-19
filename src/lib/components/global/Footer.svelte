@@ -107,6 +107,7 @@
         padding: 3em 2em 2em;
         width: 100%;
         position: relative;
+        box-sizing: border-box;
     }
 
     .footer-content {
@@ -177,6 +178,7 @@
         max-width: 1200px;
         margin-left: auto;
         margin-right: auto;
+        box-sizing: border-box;
     }
 
     .github-link {
@@ -224,7 +226,7 @@
         animation: slideIn 0.3s ease, slideOut 0.3s ease 2.2s;
         font-weight: 500;
         z-index: 1000;
-        max-width: calc(100vw - 2em);
+        max-width: calc(100% - 2em);
     }
 
     @keyframes slideIn {
@@ -325,9 +327,10 @@
             font-size: 0.85em;
             padding: 0.6em 0.8em;
             gap: 0.5em;
-            max-width: calc(100vw - 4em);
+            max-width: 100%;
             width: 100%;
             align-items: flex-start;
+            box-sizing: border-box;
         }
 
         .github-link svg {
@@ -358,8 +361,9 @@
         .github-link {
             font-size: 0.8em;
             padding: 0.5em 0.6em;
-            max-width: calc(100vw - 3em);
+            max-width: 100%;
             gap: 0.4em;
+            box-sizing: border-box;
         }
 
         .github-link svg {
