@@ -52,5 +52,11 @@ export const events = [
         start: new Date(2025, 11, 19, 19, 0),
         end: new Date(2025, 11, 19, 21, 0),
         extendedProps: { slug: "berndeutsch" }
+    },
+    {
+        title: "Christmas Together in Bern",
+        start: new Date(2025, 11, 25, 19, 0),
+        end: new Date(2025, 11, 25, 22, 0),
+        extendedProps: { slug: "christmas-together" }
     }
 ];

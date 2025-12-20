@@ -256,6 +256,18 @@
                 organizer: 'connectbern'
             },
             {
+                title: { de: 'Christmas Together in Bern', en: 'Christmas Together in Bern' },
+                date: new Date(2025, 11, 25, 19, 0),
+                time: '19:00',
+                description: {
+                    de: 'Weihnachten muss man nicht allein verbringen. Komm vorbei für peruanisches Essen, Kuchen und einen entspannten Abend. Warm, einfach und offen für alle. 🎄',
+                    en: 'Christmas doesn\'t have to be spent alone. Join us for Peruvian food, cake and a relaxed evening. Warm, simple, and open to everyone. 🎄'
+                },
+                link: '/events/christmas-together',
+                recurring: false,
+                organizer: 'connectbern'
+            },
+            {
                 title: { de: 'Sprachenaustausch', en: 'Language Exchange' },
                 date: getNextWeekday(3),
                 time: '19:00',
