@@ -51,7 +51,38 @@
             preferWhatsapp: "Preferably on WhatsApp:",
             alternativeContact: "SMS or call works too though:",
             phone: "+41783166727",
-            whatsappMessage: "Hi, I would like to join Christmas Together!"
+            whatsappMessage: "Hi, I would like to join Christmas Together!",
+            registerTitle: "📢 Lass uns mehr Leute erreichen!",
+            registerDesc: "Wir haben das Event auf diesen Plattformen registriert. Wenn du ein Konto hast, registriere dich auch dort – der Algorithmus mag es, wenn etwas passiert, und es hilft uns, mehr Menschen zu erreichen! 🚀",
+            ronorpLink: "Ronorp",
+            spontactsLink: "Spontacts",
+            redditLink: "Reddit",
+            facebookLink: "Facebook",
+            meetupLink: "Meetup",
+            flyerTitle: "📸 Flyer herunterladen",
+            flyerDesc: "Möchtest du das Event auf deinem Instagram oder Social Media teilen? Lade unseren Flyer herunter!"
+        },
+        en: {
+            title: "Christmas Together in Bern",
+            date: "December 25th",
+            time: "⏰ 7:00 PM",
+            description: "Christmas doesn't have to be spent alone. On December 25th, we're inviting anyone who wants to spend the cold days together, meet new people, and enjoy a relaxed evening.",
+            details: "We start at 7:00 pm. Lia will prepare Peruvian food and cake, and you're very welcome to be creative and bring something to share if you'd like.",
+            addressNote: "If you've never been to Connect Bern before, just write us for the address.<br>Please let us know if you're coming, so we know how many people to expect and can prepare.",
+            closing: "Warm, simple, and open to everyone.",
+            preferWhatsapp: "Preferably on WhatsApp:",
+            alternativeContact: "SMS or call works too though:",
+            phone: "+41783166727",
+            whatsappMessage: "Hi, I would like to join Christmas Together!",
+            registerTitle: "📢 Let's reach more people!",
+            registerDesc: "We've registered the event on these platforms. If you have an account, please also register there – the algorithm likes it when something is happening, and it helps us reach more people! 🚀",
+            ronorpLink: "Ronorp",
+            spontactsLink: "Spontacts",
+            redditLink: "Reddit",
+            facebookLink: "Facebook",
+            meetupLink: "Meetup",
+            flyerTitle: "📸 Download Flyer",
+            flyerDesc: "Want to share the event on your Instagram or social media? Download our flyer!"
         }
     };
 
@@ -134,6 +165,36 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="registerBox">
+                <h2 class="registerTitle">{content[lang].registerTitle}</h2>
+                <p class="registerDesc">{content[lang].registerDesc}</p>
+                <div class="registerButtons">
+                    <a href="https://ronorp.net/bern/market/posts/gemeinsam-weihnachten-in-bern-25-dezember" class="btn registerBtn ronorp" target="_blank" rel="noopener noreferrer">
+                        🌐 {content[lang].ronorpLink}
+                    </a>
+                    <a href="https://community.spontacts.com/community/friendseek/appointments/doDtDBb4mM8" class="btn registerBtn spontacts" target="_blank" rel="noopener noreferrer">
+                        🎯 {content[lang].spontactsLink}
+                    </a>
+                    <a href="https://www.reddit.com/r/bern/comments/1prea9u/gemeinsam_weihnachten_in_bern_25_dezember/" class="btn registerBtn reddit" target="_blank" rel="noopener noreferrer">
+                        🔴 {content[lang].redditLink}
+                    </a>
+                    <a href="https://fb.me/e/1UXgeDPBWo" class="btn registerBtn facebook" target="_blank" rel="noopener noreferrer">
+                        📘 {content[lang].facebookLink}
+                    </a>
+                    <a href="https://www.meetup.com/meetup-bern/events/312512915" class="btn registerBtn meetup" target="_blank" rel="noopener noreferrer">
+                        👥 {content[lang].meetupLink}
+                    </a>
+                </div>
+            </div>
+
+            <div class="flyerBox">
+                <h2 class="flyerTitle">{content[lang].flyerTitle}</h2>
+                <p class="flyerDesc">{content[lang].flyerDesc}</p>
+                <a href="/images/event-flyer-christmas.jpg" download="christmas-together-bern.jpg" class="btn downloadBtn">
+                    ⬇️ Download Flyer
+                </a>
             </div>
 
             <p class="closing">
@@ -386,6 +447,145 @@
 
     .whatsapp:hover {
         background: #1fb855;
+        transform: scale(1.05);
+    }
+
+    .registerBox {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 2em;
+        border-radius: 1em;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+        align-items: center;
+    }
+
+    .registerTitle {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin: 0;
+        text-align: center;
+    }
+
+    .registerDesc {
+        text-align: center;
+        margin: 0;
+        font-size: 1.05em;
+        line-height: 1.6;
+        max-width: 600px;
+    }
+
+    .registerButtons {
+        display: flex;
+        gap: 1em;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .registerBtn {
+        padding: 0.6em 1em;
+        font-size: 0.95em;
+        text-decoration: none;
+        border-radius: 0.6em;
+        font-weight: bold;
+        transition: all 0.2s ease;
+        border: 2px solid white;
+        display: inline-block;
+        width: auto;
+    }
+
+    .ronorp {
+        background: #7C3AED;
+        color: white;
+    }
+
+    .ronorp:hover {
+        background: #6d28d9;
+        transform: scale(1.05);
+    }
+
+    .spontacts {
+        background: #FF6B35;
+        color: white;
+    }
+
+    .spontacts:hover {
+        background: #e55a2a;
+        transform: scale(1.05);
+    }
+
+    .reddit {
+        background: #FF4500;
+        color: white;
+    }
+
+    .reddit:hover {
+        background: #e03d00;
+        transform: scale(1.05);
+    }
+
+    .facebook {
+        background: #1877F2;
+        color: white;
+    }
+
+    .facebook:hover {
+        background: #0d65d9;
+        transform: scale(1.05);
+    }
+
+    .meetup {
+        background: #F64060;
+        color: white;
+    }
+
+    .meetup:hover {
+        background: #d63550;
+        transform: scale(1.05);
+    }
+
+    .flyerBox {
+        background: rgba(255, 215, 0, 0.1);
+        padding: 2em;
+        border-radius: 1em;
+        border: 2px solid rgba(255, 215, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        align-items: center;
+    }
+
+    .flyerTitle {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin: 0;
+        text-align: center;
+    }
+
+    .flyerDesc {
+        text-align: center;
+        margin: 0;
+        font-size: 1.1em;
+    }
+
+    .downloadBtn {
+        padding: 0.7em 1.3em;
+        font-size: 1.05em;
+        text-decoration: none;
+        border-radius: 0.6em;
+        font-weight: bold;
+        transition: all 0.2s ease;
+        border: 2px solid white;
+        background: #10B981;
+        color: white;
+        display: inline-block;
+        width: auto;
+    }
+
+    .downloadBtn:hover {
+        background: #059669;
         transform: scale(1.05);
     }
 
