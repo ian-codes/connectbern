@@ -368,6 +368,18 @@
                 link: 'https://www.meetup.com/eruptlounge/events/calendar/'
             },
             {
+                title: { de: 'Berndeutsch Konversationsgruppe', en: 'Berndeutsch Conversation Group' },
+                date: getNextWeekday(5),
+                recurring: 'weekly',
+                time: '19:00',
+                description: {
+                    de: 'Mir träffe üs am Abe zum gmüetlech Mundart mitanang rede. Mir tüe gärn Schwizerdütsch üebe. 🇨🇭💬',
+                    en: 'We meet in the evening to practice Swiss German dialect together in a relaxed atmosphere. 🇨🇭💬'
+                },
+                link: '/events/berndeutsch',
+                organizer: 'connectbern'
+            },
+            {
                 title: { de: 'Connect & Cheers', en: 'Connect & Cheers' },
                 date: getNextWeekday(5),
                 recurring: 'weekly',

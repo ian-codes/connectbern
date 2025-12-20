@@ -46,5 +46,11 @@ export const events = [
         start: new Date(2025, 11, 13, 18, 0),
         end: new Date(2025, 11, 13, 19, 0),
         extendedProps: { slug: "handpan-concert" }
+    },
+    {
+        title: "Berndeutsch Konversationsgruppe",
+        start: new Date(2025, 11, 19, 19, 0),
+        end: new Date(2025, 11, 19, 21, 0),
+        extendedProps: { slug: "berndeutsch" }
     }
 ];
