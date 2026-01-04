@@ -1099,7 +1099,7 @@
     .eventCard .timeText,
     .eventCard .daysUntil,
     .eventCard .eventDescription {
-        color: #2a2a2a;
+        color: #1e40af;
     }
 
     .eventHeader {
@@ -1122,11 +1122,11 @@
         font-size: 1.1em;
         font-weight: bold;
         padding: 0.8em 1em;
-        background: linear-gradient(135deg, rgba(130, 230, 180, 0.15), rgba(100, 210, 170, 0.15));
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(96, 165, 250, 0.15));
         border-radius: 0.5em;
         text-align: center;
-        border: 1px solid rgba(130, 230, 180, 0.35);
-        color: rgb(160, 255, 210);
+        border: 1px solid rgba(59, 130, 246, 0.35);
+        color: rgb(244, 46, 198);
     }
 
     .eventDate {
@@ -1195,7 +1195,7 @@
         gap: 0.5em;
         padding: 0.8em 1.2em;
         background: rgba(255, 255, 255, 0.1);
-        color: white;
+        color: #1e40af;
         text-decoration: none;
         border-radius: 0.5em;
         font-weight: bold;
@@ -1271,7 +1271,7 @@
         gap: 0.5em;
         padding: 0.6em 1em;
         background: rgba(255, 255, 255, 0.1);
-        color: white;
+        color: #1e40af;
         text-decoration: none;
         border-radius: 0.5em;
         font-weight: bold;
