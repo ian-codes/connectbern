@@ -268,6 +268,17 @@
                 organizer: 'connectbern'
             },
             {
+                title: { de: 'Acoustic Circle', en: 'Acoustic Circle' },
+                date: new Date(2026, 0, 9, 18, 0),
+                time: '18:00-22:00',
+                description: {
+                    de: 'Ein intimer Abend für Musiker:innen und Musikliebhaber:innen in unserem gemütlichen Wohnzimmer. 5–6 Musiker:innen, akustische Sets, eigene Songs. 🎸✨',
+                    en: 'An intimate evening for musicians and music lovers in our cozy living room. 5–6 musicians, acoustic sets, original songs. 🎸✨'
+                },
+                link: '/events/acoustic-circle',
+                recurring: false,
+            },
+            {
                 title: { de: 'Sprachenaustausch', en: 'Language Exchange' },
                 date: getNextWeekday(3),
                 time: '19:00',
