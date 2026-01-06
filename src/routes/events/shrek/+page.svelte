@@ -44,7 +44,9 @@
             facebookLink: "Facebook",
             spontactsLink: "Spontacts",
             ronorpLink: "Ronorp",
-            redditLink: "Reddit"
+            redditLink: "Reddit",
+            reminderTitle: "🔔 Erhalte eine Erinnerung auf WhatsApp oder Email",
+            reminderDesc: "Melde dich hier an und erhalte eine Erinnerung!"
         },
         en: {
             title: "Shrek Movie Night • Filmabend",
@@ -63,7 +65,9 @@
             facebookLink: "Facebook",
             spontactsLink: "Spontacts",
             ronorpLink: "Ronorp",
-            redditLink: "Reddit"
+            redditLink: "Reddit",
+            reminderTitle: "🔔 Get a reminder on WhatsApp or Email",
+            reminderDesc: "Register here and get a reminder!"
         }
     };
 
@@ -171,6 +175,26 @@
                         🔴 {content[lang].redditLink}
                     </a>
                 </div>
+            </div>
+
+            <div class="reminderBox">
+                <h2 class="reminderTitle">{content[lang].reminderTitle}</h2>
+                <p class="reminderDesc">{content[lang].reminderDesc}</p>
+                <div class="arrowDown">↓</div>
+            </div>
+
+            <div class="lumaBox">
+                <iframe
+                    src="https://luma.com/embed/event/evt-5eT1RNoJSL936np/simple"
+                    width="100%"
+                    height="850"
+                    frameborder="0"
+                    style="border-radius: 4px; max-width: 600px;"
+                    allow="fullscreen"
+                    aria-hidden="false"
+                    tabindex="0"
+                    title="Luma Event Registration"
+                ></iframe>
             </div>
         </div>
     </div>
@@ -512,6 +536,58 @@
         font-style: italic;
         opacity: 0.85;
         max-width: 600px;
+    }
+
+    .reminderBox {
+        background: rgba(37, 211, 102, 0.1);
+        padding: 1.5em;
+        border-radius: 1em;
+        border: 2px solid rgba(37, 211, 102, 0.3);
+        display: flex;
+        flex-direction: column;
+        gap: 0.8em;
+        align-items: center;
+        margin-top: 2em;
+    }
+
+    .reminderTitle {
+        font-size: 1.4em;
+        font-weight: bold;
+        margin: 0;
+        text-align: center;
+    }
+
+    .reminderDesc {
+        text-align: center;
+        margin: 0;
+        font-size: 1.05em;
+        line-height: 1.6;
+        max-width: 500px;
+    }
+
+    .arrowDown {
+        font-size: 3em;
+        color: rgba(37, 211, 102, 0.8);
+        margin-top: 0.3em;
+        animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(10px); }
+    }
+
+    .lumaBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2em 0;
+        width: 100%;
+    }
+
+    .lumaBox iframe {
+        max-width: 600px;
+        width: 100%;
     }
 
     .back {
