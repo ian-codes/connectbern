@@ -277,6 +277,19 @@
                 },
                 link: '/events/acoustic-circle',
                 recurring: false,
+                organizer: 'connectbern'
+            },
+            {
+                title: { de: 'Shrek Movie Night • Filmabend', en: 'Shrek Movie Night • Filmabend' },
+                date: new Date(2026, 0, 11, 19, 0),
+                time: '19:00',
+                description: {
+                    de: 'Lustiger Abend mit Shrek! Bring deine Lieblingssnacks mit. Anmeldung erforderlich - wir haben nur 2 Sofas! 🎬🛋️',
+                    en: 'Fun evening watching Shrek! Bring your favorite snacks. Registration required - we only have 2 couches! 🎬🛋️'
+                },
+                link: '/events/shrek',
+                recurring: false,
+                organizer: 'connectbern'
             },
             {
                 title: { de: 'Sprachenaustausch', en: 'Language Exchange' },
