@@ -14,50 +14,13 @@
     let eventsDisplayMode = 'events'; // 'events' or 'resources'
     let calendarEvents = [];
     let filterMode = 'connectbern'; // 'all' or 'connectbern'
-    let showRecurring = true;
 
-    // Copy all the calendar logic from events-calendar page
-    $: groupedEvents = (() => {
-        const events = filterMode === 'connectbern'
+    // Simple chronological event list
+    $: filteredEvents = (() => {
+        return filterMode === 'connectbern'
             ? calendarEvents.filter(event => event.organizer === 'connectbern')
-            : showRecurring
-            ? calendarEvents
-            : calendarEvents.filter(event => !event.recurring);
-
-        const grouped = [];
-        const processedIndices = new Set();
-
-        events.forEach((event, i) => {
-            if (processedIndices.has(i)) return;
-
-            if (!event.recurring) {
-                grouped.push({ events: [event], isGroup: false });
-                processedIndices.add(i);
-                return;
-            }
-
-            const sameDay = events.filter((e, j) =>
-                !processedIndices.has(j) &&
-                e.recurring === event.recurring &&
-                e.date.getDay() === event.date.getDay()
-            );
-
-            if (sameDay.length > 1) {
-                grouped.push({ events: sameDay, isGroup: true });
-                sameDay.forEach(e => {
-                    const idx = events.indexOf(e);
-                    processedIndices.add(idx);
-                });
-            } else {
-                grouped.push({ events: [event], isGroup: false });
-                processedIndices.add(i);
-            }
-        });
-
-        return grouped;
+            : calendarEvents;
     })();
-
-    $: filteredEvents = groupedEvents;
 
     function getNextWeekday(dayOfWeek) {
         const today = new Date();
@@ -75,12 +38,14 @@
 
     function getNextNthWeekday(dayOfWeek, nthOccurrence) {
         const today = new Date();
+        today.setHours(0, 0, 0, 0);
         const currentMonth = today.getMonth();
         const currentYear = today.getFullYear();
 
         let date = getNthWeekdayOfMonth(currentYear, currentMonth, dayOfWeek, nthOccurrence);
+        date.setHours(0, 0, 0, 0);
 
-        if (date <= today) {
+        if (date < today) {
             let nextMonth = currentMonth + 1;
             let nextYear = currentYear;
             if (nextMonth > 11) {
@@ -91,6 +56,27 @@
         }
 
         return date;
+    }
+
+    function generateMonthlyOccurrences(dayOfWeek, nthOccurrence, monthsAhead = 3) {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const occurrences = [];
+
+        for (let i = 0; i < monthsAhead; i++) {
+            const targetMonth = today.getMonth() + i;
+            const targetYear = today.getFullYear() + Math.floor(targetMonth / 12);
+            const adjustedMonth = targetMonth % 12;
+
+            const date = getNthWeekdayOfMonth(targetYear, adjustedMonth, dayOfWeek, nthOccurrence);
+            date.setHours(0, 0, 0, 0);
+
+            if (date >= today) {
+                occurrences.push(date);
+            }
+        }
+
+        return occurrences;
     }
 
     function getNthWeekdayOfMonth(year, month, dayOfWeek, nthOccurrence) {
@@ -472,6 +458,36 @@
             }
         ];
 
+        // Generate multiple occurrences for ping pong events (1st and 3rd Wednesday)
+        const pingPongTemplate = {
+            title: { de: 'Sip & Smash - Ping Pong bei Lovestino', en: 'Sip & Smash - Ping Pong at Lovestino' },
+            recurring: 'monthly-multiple',
+            time: '16:30-00:30',
+            description: {
+                de: 'Ping Pong bei Lovestino! Bring deinen Schläger mit oder hol dir einen vor Ort. Frag in der WhatsApp-Gruppe, wer heute dabei ist! 🏓',
+                en: 'Ping pong at Lovestino! Bring your paddle or get one there. Ask in the WhatsApp group who\'s going today! 🏓'
+            },
+            link: '/events/pingpong'
+        };
+
+        // Generate occurrences for 1st Wednesday (next 3 months)
+        const firstWedOccurrences = generateMonthlyOccurrences(3, 1, 3);
+        firstWedOccurrences.forEach(date => {
+            events.push({
+                ...pingPongTemplate,
+                date: date
+            });
+        });
+
+        // Generate occurrences for 3rd Wednesday (next 3 months)
+        const thirdWedOccurrences = generateMonthlyOccurrences(3, 3, 3);
+        thirdWedOccurrences.forEach(date => {
+            events.push({
+                ...pingPongTemplate,
+                date: date
+            });
+        });
+
         const today = new Date();
         today.setHours(0, 0, 0, 0);
 
@@ -551,116 +567,50 @@
             {/if}
 
             <div class="eventsGrid">
-                {#each filteredEvents as group, i}
+                {#each filteredEvents as event, i}
                     <div class="eventCard" style="animation-delay: {i * 0.05}s">
-                        {#if group.isGroup}
-                            <div class="eventHeader">
-                                <h2>
-                                    {#if group.events[0].recurring === 'weekly'}
-                                        {(() => {
-                                            const days = lang === 'de'
-                                                ? ['Sonntags-Events', 'Montags-Events', 'Dienstags-Events', 'Mittwochs-Events', 'Donnerstags-Events', 'Freitags-Events', 'Samstags-Events']
-                                                : ['Sunday Events', 'Monday Events', 'Tuesday Events', 'Wednesday Events', 'Thursday Events', 'Friday Events', 'Saturday Events'];
-                                            return days[group.events[0].date.getDay()];
-                                        })()}
-                                    {:else}
-                                        {lang === 'de' ? 'Monatliche Events' : 'Monthly Events'}
+                        <div class="eventHeader">
+                            <h2>{event.title[lang]}</h2>
+                            {#if event.recurring && event.recurring !== 'monthly-multiple'}
+                                <span class="recurringTag">
+                                    {#if event.recurring === 'weekly'}
+                                        {lang === 'de' ? 'Wöchentlich' : 'Weekly'}
+                                    {:else if event.recurring === 'monthly'}
+                                        {lang === 'de' ? 'Monatlich' : 'Monthly'}
                                     {/if}
-                                </h2>
-                            </div>
-
-                            <div class="recurrencePattern">
-                                🔄 {getRecurrencePattern(group.events[0])}
-                            </div>
-
-                            <div class="eventDate">
-                                <span class="dateIcon">📅</span>
-                                <div class="dateInfo">
-                                    <div class="dateLabelRow">
-                                        <span class="dateLabel">{content[lang].nextOccurrence}:</span>
-                                        <span class="dateText">{formatDate(group.events[0].date)}</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="daysUntil">
-                                {getDaysUntilText(getDaysUntil(group.events[0].date))}
-                            </div>
-
-                            <div class="groupedEventsList">
-                                {#each group.events as event}
-                                    <div class="groupedEvent">
-                                        <div class="groupedEventHeader">
-                                            <h3>{event.title[lang]}</h3>
-                                            {#if event.time}
-                                                <span class="groupedEventTime">⏰ {event.time}</span>
-                                            {/if}
-                                        </div>
-                                        {#if event.description}
-                                            <p class="groupedEventDescription">
-                                                {event.description[lang]}
-                                            </p>
-                                        {/if}
-                                        {#if event.link}
-                                            <a
-                                                href={event.link}
-                                                class="groupedEventLink"
-                                                target={event.link.startsWith('http') ? '_blank' : '_self'}
-                                                rel={event.link.startsWith('http') ? 'noopener noreferrer' : ''}
-                                            >
-                                                {lang === 'de' ? 'Mehr Info' : 'More Info'} →
-                                            </a>
-                                        {/if}
-                                    </div>
-                                {/each}
-                            </div>
-                        {:else}
-                            {@const event = group.events[0]}
-                            <div class="eventHeader">
-                                <h2>{event.title[lang]}</h2>
-                            </div>
-
-                            {#if event.recurring}
-                                <div class="recurrencePattern">
-                                    🔄 {getRecurrencePattern(event)}
-                                </div>
+                                </span>
                             {/if}
+                        </div>
 
-                            <div class="eventDate">
-                                <span class="dateIcon">📅</span>
-                                <div class="dateInfo">
-                                    <div class="dateLabelRow">
-                                        {#if event.recurring}
-                                            <span class="dateLabel">{content[lang].nextOccurrence}:</span>
-                                        {/if}
-                                        <span class="dateText">{formatDate(event.date)}</span>
-                                    </div>
-                                    {#if event.time}
-                                        <span class="timeText">⏰ {event.time}</span>
-                                    {/if}
-                                </div>
+                        <div class="eventDate">
+                            <span class="dateIcon">📅</span>
+                            <div class="dateInfo">
+                                <span class="dateText">{formatDate(event.date)}</span>
+                                {#if event.time}
+                                    <span class="timeText">⏰ {event.time}</span>
+                                {/if}
                             </div>
+                        </div>
 
-                            <div class="daysUntil">
-                                {getDaysUntilText(getDaysUntil(event.date))}
-                            </div>
+                        <div class="daysUntil">
+                            {getDaysUntilText(getDaysUntil(event.date))}
+                        </div>
 
-                            {#if event.description}
-                                <p class="eventDescription">
-                                    {event.description[lang]}
-                                </p>
-                            {/if}
+                        {#if event.description}
+                            <p class="eventDescription">
+                                {event.description[lang]}
+                            </p>
+                        {/if}
 
-                            {#if event.link}
-                                <a
-                                    href={event.link}
-                                    class="eventLink"
-                                    target={event.link.startsWith('http') ? '_blank' : '_self'}
-                                    rel={event.link.startsWith('http') ? 'noopener noreferrer' : ''}
-                                >
-                                    {lang === 'de' ? 'Mehr Info' : 'More Info'} →
-                                </a>
-                            {/if}
+                        {#if event.link}
+                            <a
+                                href={event.link}
+                                class="eventLink"
+                                target={event.link.startsWith('http') ? '_blank' : '_self'}
+                                rel={event.link.startsWith('http') ? 'noopener noreferrer' : ''}
+                            >
+                                {lang === 'de' ? 'Mehr Info' : 'More Info'} →
+                            </a>
                         {/if}
                     </div>
                 {/each}
@@ -1140,6 +1090,18 @@
         margin: 0;
         flex: 1;
         min-width: 200px;
+    }
+
+    .recurringTag {
+        display: inline-block;
+        padding: 0.4em 0.8em;
+        font-size: 0.75em;
+        font-weight: 600;
+        background: rgba(59, 130, 246, 0.15);
+        color: #3b82f6;
+        border-radius: 999px;
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        white-space: nowrap;
     }
 
     .recurrencePattern {

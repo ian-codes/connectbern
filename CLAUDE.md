@@ -1,0 +1,1 @@
+Make sure the buttons are always wrapping tightly around their text content, so they are not too large
