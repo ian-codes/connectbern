@@ -1181,7 +1181,7 @@
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         position: relative;
         color: #2a2a2a;
-        min-height: 520px;
+        min-height: 250px;
     }
 
     .eventCard:hover {
@@ -1304,7 +1304,7 @@
         -webkit-line-clamp: 5;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        min-height: 7.5em;
+        min-height: 2.5em;
         flex-grow: 1;
     }
 
