@@ -15,6 +15,7 @@
     let calendarEvents = [];
     let filterMode = 'all'; // 'all' or 'connectbern'
     let showSuggestDialog = false;
+    let showWhyDifferentDialog = false;
 
     // Simple chronological event list
     $: filteredEvents = (() => {
@@ -169,6 +170,38 @@
         }
         return null;
     };
+
+    // Floating button animation
+    let floatingX = 85;
+    let floatingY = 85;
+    let buttonElement;
+
+    function moveFloatingButton() {
+        if (typeof window === 'undefined') return;
+
+        const buttonWidth = 250; // Approximate button width
+        const buttonHeight = 60; // Approximate button height
+        const padding = 20;
+
+        const maxX = window.innerWidth - buttonWidth - padding;
+        const maxY = window.innerHeight - buttonHeight - padding;
+
+        floatingX = Math.random() * (maxX - padding) + padding;
+        floatingY = Math.random() * (maxY - padding) + padding;
+    }
+
+    onMount(() => {
+        // Move button every 3-5 seconds randomly
+        const moveInterval = setInterval(() => {
+            const randomDelay = 3000 + Math.random() * 2000;
+            setTimeout(moveFloatingButton, randomDelay);
+        }, 5000);
+
+        // Initial random position after 1 second
+        setTimeout(moveFloatingButton, 1000);
+
+        return () => clearInterval(moveInterval);
+    });
 
     const content = {
         de: {
@@ -520,40 +553,49 @@
 
 <section>
     <div class="topbarWrapper">
-        <div class="titleSection">
-            <h1>Events</h1>
-            <p class="eventsIntro">
-                {@html t[lang]['events-description']}
-            </p>
-        </div>
-
-        <!-- Filter View Switcher -->
-        <div class="filterBar">
-            <span class="filterLabel">{lang === 'de' ? 'Ansicht:' : 'View:'}</span>
-            <div class="filterOptions">
-                <button
-                    class="filterChip {eventsDisplayMode === 'events' ? 'active' : ''}"
-                    on:click={() => eventsDisplayMode = 'events'}
-                >
-                    <span class="chipIcon">📅</span>
-                    <span class="chipText">{lang === 'de' ? 'Kommende Events' : 'Upcoming Events'}</span>
-                </button>
-                <button
-                    class="filterChip {eventsDisplayMode === 'resources' ? 'active' : ''}"
-                    on:click={() => eventsDisplayMode = 'resources'}
-                >
-                    <span class="chipIcon">🌐</span>
-                    <span class="chipText">{lang === 'de' ? 'Mehr finden' : 'Find More'}</span>
-                </button>
+        <div class="titleRow">
+            <!-- Filter View Switcher (left side) -->
+            <div class="filterBar">
+                <span class="filterLabel">{lang === 'de' ? 'Ansicht:' : 'View:'}</span>
+                <div class="filterOptions">
+                    <button
+                        class="filterChip {eventsDisplayMode === 'events' ? 'active' : ''}"
+                        on:click={() => eventsDisplayMode = 'events'}
+                    >
+                        <span class="chipIcon">📅</span>
+                        <span class="chipText">{lang === 'de' ? 'Kommende Events' : 'Upcoming Events'}</span>
+                    </button>
+                    <button
+                        class="filterChip {eventsDisplayMode === 'resources' ? 'active' : ''}"
+                        on:click={() => eventsDisplayMode = 'resources'}
+                    >
+                        <span class="chipIcon">🌐</span>
+                        <span class="chipText">{lang === 'de' ? 'Mehr finden' : 'Find More'}</span>
+                    </button>
+                </div>
             </div>
 
-            <!-- Suggest Event Button -->
-            <button class="suggestEventButton" on:click={() => showSuggestDialog = true}>
-                <span class="buttonIcon">✨</span>
-                <span class="buttonText">{t[lang]['events-suggest-title']}</span>
+            <div class="titleSection">
+                <h1>{lang === 'de' ? 'Events Agenda' : 'Events Calendar'}</h1>
+            </div>
+
+            <button class="whyDifferentButton" on:click={() => showWhyDifferentDialog = true} title={t[lang]['events-why-different']}>
+                <span class="whyIcon">🤔</span>
+                <span class="whyText">{t[lang]['events-why-different']}</span>
             </button>
         </div>
     </div>
+
+    <!-- Floating Suggest Event Button (Moving around) -->
+    <button
+        class="floatingButton"
+        bind:this={buttonElement}
+        style="left: {floatingX}px; top: {floatingY}px;"
+        on:click={() => showSuggestDialog = true}
+    >
+        <span class="floatingIcon">🔥</span>
+        <span class="floatingText">{lang === 'de' ? 'Event vorschlagen?' : 'Know of an event?'}</span>
+    </button>
 
     <!-- Suggest Event Dialog -->
     {#if showSuggestDialog}
@@ -566,6 +608,18 @@
                 <a href="/contact" class="dialogButton">
                     {t[lang]['events-suggest-button']} →
                 </a>
+            </div>
+        </div>
+    {/if}
+
+    <!-- Why Different Dialog -->
+    {#if showWhyDifferentDialog}
+        <div class="dialogOverlay" on:click={() => showWhyDifferentDialog = false}>
+            <div class="dialogBox" on:click|stopPropagation>
+                <button class="closeButton" on:click={() => showWhyDifferentDialog = false}>×</button>
+                <div class="dialogIcon">💡</div>
+                <h2>{t[lang]['events-why-different-title']}</h2>
+                <p class="dialogDescription">{t[lang]['events-description']}</p>
             </div>
         </div>
     {/if}
@@ -729,11 +783,16 @@
     section {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 2em 1em;
+        padding: 1.5em 1em 0 1em;
+        overflow-x: hidden;
+    }
+
+    :global(body) {
+        overflow-x: hidden;
     }
 
     .topbarWrapper {
-        margin-bottom: 2em;
+        margin-bottom: 0;
         border: none;
         border-bottom: none;
         display: flex;
@@ -742,13 +801,20 @@
         align-items: center;
     }
 
+    .titleRow {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 2em;
+    }
+
     .titleSection {
         text-align: center;
+        flex: 1;
         display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        border: none;
-        width: 100%;
+        justify-content: center;
     }
 
     .titleSection p {
@@ -764,6 +830,67 @@
         border: none;
         border-bottom: none;
         padding-bottom: 0;
+    }
+
+    /* Why Different Button */
+    .whyDifferentButton {
+        display: flex;
+        align-items: center;
+        gap: 0.6em;
+        padding: 0.7em 1.2em;
+        background: linear-gradient(135deg, rgba(147, 51, 234, 0.2), rgba(79, 70, 229, 0.2));
+        border: 2px solid rgba(147, 51, 234, 0.4);
+        border-radius: 2em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: white;
+        font-size: 0.9em;
+        font-weight: 600;
+        white-space: nowrap;
+        box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3);
+        animation: subtleBounce 3s ease-in-out infinite;
+        flex-shrink: 0;
+        margin-left: auto;
+    }
+
+    @keyframes subtleBounce {
+        0%, 100% {
+            transform: translateY(0) scale(1);
+        }
+        50% {
+            transform: translateY(-5px) scale(1.02);
+        }
+    }
+
+    .whyDifferentButton:hover {
+        transform: scale(1.08) rotate(-2deg);
+        background: linear-gradient(135deg, rgba(147, 51, 234, 0.35), rgba(79, 70, 229, 0.35));
+        border-color: rgba(147, 51, 234, 0.6);
+        box-shadow: 0 6px 25px rgba(147, 51, 234, 0.5);
+        animation: none;
+    }
+
+    .whyDifferentButton:active {
+        transform: scale(1.02);
+    }
+
+    .whyIcon {
+        font-size: 1.5em;
+        line-height: 1;
+        animation: wiggleIcon 2s ease-in-out infinite;
+    }
+
+    @keyframes wiggleIcon {
+        0%, 100% {
+            transform: rotate(-10deg);
+        }
+        50% {
+            transform: rotate(10deg);
+        }
+    }
+
+    .whyText {
+        font-size: 0.95em;
     }
 
     .eventsIntro {
@@ -852,47 +979,112 @@
     /* Filter Bar Style */
     .filterBar {
         display: flex;
+        flex-direction: row;
         align-items: center;
-        gap: 1.5em;
-        padding: 1.2em 2em;
+        gap: 1em;
+        padding: 1em 1.5em;
         background: rgba(0, 0, 0, 0.25);
         border-radius: 1em;
         border: 1px solid rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+        margin-right: auto;
     }
 
-    /* Suggest Event Button */
-    .suggestEventButton {
+    /* Floating Button (Moving around page) */
+    .floatingButton {
+        position: fixed;
+        padding: 1em 1.5em;
+        background: linear-gradient(135deg, rgb(255, 100, 80), rgb(255, 150, 50));
+        border: 3px solid rgba(255, 255, 255, 0.8);
+        border-radius: 2em;
+        cursor: pointer;
         display: flex;
         align-items: center;
-        gap: 0.6em;
-        padding: 0.7em 1.5em;
-        background: linear-gradient(135deg, rgb(255, 200, 100), rgb(255, 180, 80));
-        color: rgb(20, 20, 30);
-        border: none;
-        border-radius: 2em;
-        font-size: 0.95em;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(255, 180, 80, 0.4);
-        margin-left: auto;
+        justify-content: center;
+        gap: 0.7em;
+        box-shadow: 0 8px 30px rgba(255, 100, 80, 0.6);
+        z-index: 999;
+        transition: left 2.5s cubic-bezier(0.4, 0, 0.2, 1),
+                    top 2.5s cubic-bezier(0.4, 0, 0.2, 1),
+                    transform 0.3s ease,
+                    box-shadow 0.3s ease;
+        animation: wiggle 3s ease-in-out infinite, glow 2s ease-in-out infinite;
+        white-space: nowrap;
+        transform-origin: center;
     }
 
-    .suggestEventButton:hover {
-        transform: translateY(-3px) scale(1.05);
-        box-shadow: 0 8px 25px rgba(255, 180, 80, 0.6);
+    @keyframes wiggle {
+        0%, 100% {
+            transform: rotate(-3deg) scale(1);
+        }
+        25% {
+            transform: rotate(3deg) scale(1.05);
+        }
+        50% {
+            transform: rotate(-3deg) scale(1);
+        }
+        75% {
+            transform: rotate(3deg) scale(0.95);
+        }
     }
 
-    .buttonIcon {
-        font-size: 1.3em;
+    @keyframes glow {
+        0%, 100% {
+            box-shadow: 0 8px 30px rgba(255, 100, 80, 0.6), 0 0 20px rgba(255, 150, 50, 0.4);
+        }
+        50% {
+            box-shadow: 0 10px 40px rgba(255, 100, 80, 0.9), 0 0 30px rgba(255, 150, 50, 0.7);
+        }
+    }
+
+    .floatingButton:hover {
+        transform: scale(1.2) rotate(5deg);
+        animation: none;
+        box-shadow: 0 15px 50px rgba(255, 100, 80, 0.9);
+    }
+
+    .floatingButton:active {
+        transform: scale(1.1);
+    }
+
+    .floatingIcon {
+        font-size: 1.8em;
         line-height: 1;
+        animation: pulse 1.5s ease-in-out infinite;
     }
 
-    .buttonText {
-        line-height: 1;
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.2);
+        }
+    }
+
+    .floatingText {
+        font-size: 1em;
+        font-weight: bold;
+        color: white;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        letter-spacing: 0.3px;
+    }
+
+    @media (max-width: 800px) {
+        .floatingButton {
+            padding: 0.8em 1.2em;
+            gap: 0.5em;
+        }
+
+        .floatingIcon {
+            font-size: 1.5em;
+        }
+
+        .floatingText {
+            font-size: 0.85em;
+        }
     }
 
     /* Dialog Styles */
@@ -1006,32 +1198,32 @@
     }
 
     .filterLabel {
-        font-size: 1em;
+        font-size: 0.85em;
         font-weight: 600;
         color: rgba(255, 255, 255, 0.8);
         text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 0.9em;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
     }
 
     .filterOptions {
         display: flex;
-        gap: 0.8em;
-        flex-wrap: wrap;
+        gap: 0.6em;
+        flex-wrap: nowrap;
     }
 
     .filterChip {
         display: inline-flex;
         align-items: center;
-        gap: 0.6em;
-        padding: 0.7em 1.3em;
+        gap: 0.5em;
+        padding: 0.6em 1em;
         border: 2px solid rgba(255, 255, 255, 0.15);
         background: rgba(255, 255, 255, 0.05);
         color: rgba(255, 255, 255, 0.75);
         border-radius: 2em;
         cursor: pointer;
         transition: all 0.3s ease;
-        font-size: 0.95em;
+        font-size: 0.85em;
         font-weight: 500;
         white-space: nowrap;
         position: relative;
@@ -1078,12 +1270,12 @@
     }
 
     .chipIcon {
-        font-size: 1.2em;
+        font-size: 1.1em;
         line-height: 1;
     }
 
     .chipText {
-        font-size: 1em;
+        font-size: 0.95em;
         line-height: 1;
     }
 
@@ -1161,7 +1353,7 @@
 
     /*  Calendar View Styles */
     .calendarViewWrapper {
-        margin-top: 0.5em;
+        margin-top: 0;
     }
 
     @keyframes fadeInUp {
@@ -1180,7 +1372,7 @@
         gap: 1em;
         justify-content: center;
         flex-wrap: wrap;
-        margin-top: 1em;
+        margin-top: 0;
     }
 
     .filterBtn {
@@ -1208,17 +1400,18 @@
     }
 
     .disclaimer {
-        margin-top: 2em;
-        padding: 1.2em 1.5em;
+        margin-top: 1.5em;
+        padding: 0.8em 1em;
         background: rgba(255, 180, 0, 0.1);
         border: 1px solid rgba(255, 180, 0, 0.3);
-        border-radius: 0.8em;
-        font-size: 1em;
-        line-height: 1.6;
+        border-radius: 0.6em;
+        font-size: 0.8em;
+        line-height: 1.5;
         text-align: left;
         max-width: 800px;
         margin-left: auto;
         margin-right: auto;
+        opacity: 0.9;
     }
 
     .disclaimer :global(strong) {
@@ -1568,7 +1761,24 @@
         }
 
         .topbarWrapper {
-            gap: 2em;
+            gap: 1.5em;
+        }
+
+        .titleRow {
+            flex-direction: column;
+            gap: 1.5em;
+        }
+
+        .filterBar {
+            order: 1;
+        }
+
+        .titleSection {
+            order: 2;
+        }
+
+        .whyDifferentButton {
+            order: 3;
         }
 
         .titleSection {
@@ -1577,6 +1787,20 @@
 
         h1 {
             font-size: 2em;
+        }
+
+        .whyDifferentButton {
+            padding: 0.6em 1em;
+            font-size: 0.8em;
+            gap: 0.5em;
+        }
+
+        .whyIcon {
+            font-size: 1.3em;
+        }
+
+        .whyText {
+            font-size: 0.85em;
         }
 
         .titleSection p {
@@ -1618,28 +1842,38 @@
         }
 
         .filterBar {
+            gap: 0.8em;
+            padding: 0.8em;
+            flex-wrap: wrap;
+        }
+
+        .filterButtons {
             flex-direction: column;
-            gap: 1em;
-            padding: 1em;
+            align-items: center;
+            gap: 0.8em;
         }
 
         .filterLabel {
-            font-size: 0.85em;
+            font-size: 0.8em;
         }
 
         .filterOptions {
-            width: 100%;
-            justify-content: center;
-            gap: 0.6em;
+            gap: 0.5em;
         }
 
         .filterChip {
-            padding: 0.6em 1.1em;
-            font-size: 0.9em;
+            padding: 0.5em 0.9em;
+            font-size: 0.8em;
         }
 
         .filterChip.active {
             transform: scale(1.02);
+        }
+
+        .filterBtn {
+            width: 100%;
+            max-width: 300px;
+            font-size: 0.95em;
         }
 
         .chipIcon {
@@ -1668,17 +1902,6 @@
             font-size: 0.85em;
         }
 
-        .filterButtons {
-            flex-direction: column;
-            align-items: center;
-            gap: 0.8em;
-        }
-
-        .filterBtn {
-            width: 100%;
-            max-width: 300px;
-            font-size: 0.95em;
-        }
 
         .dateGroupsContainer {
             gap: 2em;

@@ -4,7 +4,7 @@ export const t = {
         "groups": "Gruppen",
         "places-description": "Hier sind einige Ideen, wo du gesellig sein kannst.",
         "swiss-tips-description": "Tips & Tricks für das Leben in Bern und in der Schweiz. Diese Tipps sind hauptsächlich für Neuankömmlinge gedacht und können auch für Reisende und Einheimische hilfreich sein, die vielleicht noch nicht von dem einen oder anderen gehört haben.",
-        "events-description": "Diese Events sind anders als gewöhnliche Veranstaltungen. Während reguläre Events sich auf das Thema konzentrieren und Menschen oft mit ihrer Gruppe kommen, haben diese Events einen Fokus darauf, neue Leute kennenzulernen. Sie sind soziale Orte, die bewusst versuchen, Menschen zusammenzubringen und eine offene, einladende Atmosphäre für alle zu schaffen.",
+        "events-description": "Diese Events sind anders als gewöhnliche Veranstaltungen. Während reguläre Events sich auf das Thema konzentrieren und Menschen oft mit ihrer Gruppe kommen, haben diese Events einen Fokus darauf, neue Leute kennenzulernen. Dies sind Orte, die sich bewusster darum bemühen, Menschen zusammenzubringen und eine offenere, einladende Atmosphäre haben.",
         "logo-description": "Ein Raum zum Verbinden",
         "description": "<strong>Ein physischer und digitaler Ort um sich in Bern zu vernetzen</strong>",
         "groups-description": "In diesen Gruppen findet man verschiedenste Aktivitäten und Leute. Falls du eine Frage hast, kannst du gerne in der <a href=\"/groups/connect-bern\" title=\"Connect Bern main group\">Connect Bern</a> Gruppe nachfragen.",
@@ -152,14 +152,16 @@ export const t = {
         "contact-error": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
         "events-suggest-title": "Weisst du von einem Event?",
         "events-suggest-description": "Wir suchen Events, die sich auf das Kennenlernen neuer Menschen konzentrieren – nicht nur kommerzielle oder thematisch fokussierte Veranstaltungen. Wenn das Event, von dem du weisst, Menschen zusammenbringt und eine offene, einladende Atmosphäre schafft, würden wir gerne davon hören!",
-        "events-suggest-button": "Event vorschlagen"
+        "events-suggest-button": "Event vorschlagen",
+        "events-why-different": "Warum sind diese Events anders?",
+        "events-why-different-title": "Was macht diese Events besonders?"
     },
     en: {
         "search-groups": "Search groups...",
         "groups": "Groups",
         "swiss-tips-description": "Tips & Tricks for living in Bern and Switzerland! These tips are mainly for newcomers and might also be helpful for travelers and locals who might not have heard about a thing or two.",
         "places-description": "Here are some ideas of where you can be social.",
-        "events-description": "These events are different from regular events. While regular events focus on the topic itself and people often come with their group, these events have a focus on meeting new people. They're social places that consciously try to bring people together and create an open, welcoming atmosphere that's accepting of everyone.",
+        "events-description": "These events are different from regular events. While regular events focus on the topic itself and people often come with their group, these events have a focus on meeting new people. These are places that are more conscious about bringing people together and have a more open, welcoming atmosphere.",
         "logo-description": "A space to connect",
         "description": "<strong>A physical and digital space to connect in Bern</strong>",
         "groups-description": "In these groups you can do many different things. If you have a general question, feel free to ask in the <a href=\"/groups/connect-bern\" title=\"Connect Bern main group\">Connect Bern</a> group. People will be happy to help out.",
@@ -307,6 +309,8 @@ export const t = {
         "contact-error": "Something went wrong. Please try again.",
         "events-suggest-title": "Know of an event?",
         "events-suggest-description": "We're looking for events that focus on meeting new people – not just commercial or topic-focused gatherings. If the event you know of brings people together and creates an open, welcoming atmosphere, we'd love to hear about it!",
-        "events-suggest-button": "Suggest an Event"
+        "events-suggest-button": "Suggest an Event",
+        "events-why-different": "Why are these events different?",
+        "events-why-different-title": "What makes these events special?"
     }
 }

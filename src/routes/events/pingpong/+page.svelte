@@ -326,12 +326,12 @@
         align-items: stretch;
         gap: 1.5em;
         margin: 2em 0;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
     }
 
     .mediaItem {
         flex: 1;
-        min-width: 280px;
+        min-width: 0;
         max-width: 400px;
         display: flex;
         justify-content: center;
