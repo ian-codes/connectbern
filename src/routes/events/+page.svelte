@@ -16,6 +16,7 @@
     let filterMode = 'all'; // 'all' or 'connectbern'
     let showSuggestDialog = false;
     let showWhyDifferentDialog = false;
+    let showDisclaimer = false;
 
     // Simple chronological event list
     $: filteredEvents = (() => {
@@ -643,8 +644,16 @@
             </div>
 
             {#if filterMode === 'all'}
-                <div class="disclaimer">
-                    {@html content[lang].disclaimer}
+                <div class="disclaimerWrapper">
+                    <button class="disclaimerToggle" on:click={() => showDisclaimer = !showDisclaimer}>
+                        ⚠️ {lang === 'de' ? 'Wichtiger Hinweis' : 'Important Note'}
+                        <span class="toggleIcon">{showDisclaimer ? '▼' : '▶'}</span>
+                    </button>
+                    {#if showDisclaimer}
+                        <div class="disclaimer">
+                            {@html content[lang].disclaimer}
+                        </div>
+                    {/if}
                 </div>
             {/if}
 
@@ -1113,9 +1122,11 @@
         background: linear-gradient(135deg, rgb(30, 40, 60), rgb(20, 30, 50));
         border: 2px solid rgba(255, 200, 100, 0.3);
         border-radius: 1.5em;
-        padding: 3em 2.5em;
-        max-width: 500px;
-        width: 90%;
+        padding: 2em 1.5em;
+        max-width: 450px;
+        width: 85%;
+        max-height: 80vh;
+        overflow-y: auto;
         position: relative;
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         animation: slideUp 0.3s ease;
@@ -1158,38 +1169,40 @@
     }
 
     .dialogIcon {
-        font-size: 4em;
-        margin-bottom: 0.5em;
+        font-size: 3em;
+        margin-bottom: 0.4em;
     }
 
     .dialogBox h2 {
         color: white;
-        font-size: 1.8em;
+        font-size: 1.3em;
         margin-bottom: 0.5em;
+        line-height: 1.3;
     }
 
     .dialogDescription {
         color: rgba(255, 255, 255, 0.8);
-        font-size: 1.1em;
-        line-height: 1.6;
-        margin-bottom: 2em;
+        font-size: 0.85em;
+        line-height: 1.4;
+        margin-bottom: 1.2em;
     }
 
     .dialogButton {
         display: inline-flex;
         align-items: center;
         gap: 0.5em;
-        padding: 1em 2em;
+        padding: 0.9em 1.8em;
         background: linear-gradient(135deg, rgb(255, 200, 100), rgb(255, 180, 80));
         color: rgb(20, 20, 30);
         border: none;
         border-radius: 2em;
-        font-size: 1em;
+        font-size: 0.9em;
         font-weight: 700;
         text-decoration: none;
         cursor: pointer;
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(255, 180, 80, 0.4);
+        margin-top: 0.5em;
     }
 
     .dialogButton:hover {
@@ -1373,6 +1386,7 @@
         justify-content: center;
         flex-wrap: wrap;
         margin-top: 0;
+        margin-bottom: 1.5em;
     }
 
     .filterBtn {
@@ -1399,18 +1413,50 @@
         box-shadow: 0 5px 20px rgba(108, 72, 167, 0.4);
     }
 
-    .disclaimer {
+    .disclaimerWrapper {
         margin-top: 1.5em;
-        padding: 0.8em 1em;
-        background: rgba(255, 180, 0, 0.1);
-        border: 1px solid rgba(255, 180, 0, 0.3);
-        border-radius: 0.6em;
-        font-size: 0.8em;
-        line-height: 1.5;
-        text-align: left;
+        margin-bottom: 2em;
         max-width: 800px;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .disclaimerToggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5em;
+        width: 100%;
+        padding: 0.6em 1em;
+        background: rgba(255, 180, 0, 0.15);
+        border: 1px solid rgba(255, 180, 0, 0.4);
+        border-radius: 0.6em;
+        font-size: 0.75em;
+        font-weight: 600;
+        color: rgb(255, 200, 100);
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .disclaimerToggle:hover {
+        background: rgba(255, 180, 0, 0.2);
+        border-color: rgba(255, 180, 0, 0.5);
+    }
+
+    .toggleIcon {
+        font-size: 0.8em;
+        transition: transform 0.2s ease;
+    }
+
+    .disclaimer {
+        margin-top: 0.5em;
+        padding: 0.7em 0.9em;
+        background: rgba(255, 180, 0, 0.1);
+        border: 1px solid rgba(255, 180, 0, 0.3);
+        border-radius: 0.6em;
+        font-size: 0.7em;
+        line-height: 1.4;
+        text-align: left;
         opacity: 0.9;
     }
 
@@ -1766,11 +1812,14 @@
 
         .titleRow {
             flex-direction: column;
-            gap: 1.5em;
+            gap: 1em;
+            padding: 0 0.5em;
         }
 
         .filterBar {
             order: 1;
+            width: 100%;
+            max-width: 100%;
         }
 
         .titleSection {
@@ -1779,6 +1828,9 @@
 
         .whyDifferentButton {
             order: 3;
+            width: 100%;
+            max-width: 100%;
+            justify-content: center;
         }
 
         .titleSection {
@@ -1786,21 +1838,22 @@
         }
 
         h1 {
-            font-size: 2em;
+            font-size: 1.6em;
+            word-wrap: break-word;
         }
 
         .whyDifferentButton {
             padding: 0.6em 1em;
-            font-size: 0.8em;
+            font-size: 0.75em;
             gap: 0.5em;
         }
 
         .whyIcon {
-            font-size: 1.3em;
+            font-size: 1.2em;
         }
 
         .whyText {
-            font-size: 0.85em;
+            font-size: 0.9em;
         }
 
         .titleSection p {
@@ -1842,38 +1895,104 @@
         }
 
         .filterBar {
-            gap: 0.8em;
-            padding: 0.8em;
+            gap: 0.6em;
+            padding: 0.7em 0.6em;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .filterButtons {
             flex-direction: column;
             align-items: center;
-            gap: 0.8em;
+            gap: 0.6em;
         }
 
         .filterLabel {
-            font-size: 0.8em;
+            font-size: 0.7em;
+            width: 100%;
+            text-align: center;
         }
 
         .filterOptions {
-            gap: 0.5em;
+            gap: 0.4em;
+            width: 100%;
+            justify-content: center;
         }
 
         .filterChip {
-            padding: 0.5em 0.9em;
-            font-size: 0.8em;
+            padding: 0.5em 0.8em;
+            font-size: 0.7em;
+            flex: 1;
+            min-width: 0;
+            justify-content: center;
         }
 
         .filterChip.active {
-            transform: scale(1.02);
+            transform: scale(1);
+        }
+
+        .chipText {
+            font-size: 0.85em;
+        }
+
+        .chipIcon {
+            font-size: 1em;
         }
 
         .filterBtn {
             width: 100%;
-            max-width: 300px;
-            font-size: 0.95em;
+            max-width: 100%;
+            font-size: 0.85em;
+            padding: 0.7em 1em;
+        }
+
+        .disclaimerToggle {
+            font-size: 0.65em;
+            padding: 0.5em 0.8em;
+        }
+
+        .disclaimer {
+            font-size: 0.6em;
+            padding: 0.6em 0.7em;
+        }
+
+        .dialogBox {
+            padding: 1.2em 0.9em;
+            width: 92%;
+            max-width: 92%;
+        }
+
+        .dialogBox h2 {
+            font-size: 1.1em;
+            margin-bottom: 0.4em;
+        }
+
+        .dialogDescription {
+            font-size: 0.75em;
+            line-height: 1.3;
+            margin-bottom: 1em;
+        }
+
+        .dialogIcon {
+            font-size: 2em;
+            margin-bottom: 0.3em;
+        }
+
+        .closeButton {
+            width: 32px;
+            height: 32px;
+            font-size: 1.3em;
+            top: 0.7em;
+            right: 0.7em;
+        }
+
+        .dialogButton {
+            font-size: 0.8em;
+            padding: 0.7em 1.3em;
+        }
+
+        .filterButtons {
+            margin-bottom: 1em;
         }
 
         .chipIcon {
