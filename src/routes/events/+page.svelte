@@ -13,7 +13,7 @@
 
     let eventsDisplayMode = 'events'; // 'events' or 'resources'
     let calendarEvents = [];
-    let filterMode = 'connectbern'; // 'all' or 'connectbern'
+    let filterMode = 'all'; // 'all' or 'connectbern'
 
     // Simple chronological event list
     $: filteredEvents = (() => {
