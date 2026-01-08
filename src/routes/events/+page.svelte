@@ -22,6 +22,22 @@
             : calendarEvents;
     })();
 
+    // Group events by date
+    $: groupedByDate = (() => {
+        const groups = {};
+        filteredEvents.forEach(event => {
+            const dateKey = event.date.toDateString();
+            if (!groups[dateKey]) {
+                groups[dateKey] = {
+                    date: event.date,
+                    events: []
+                };
+            }
+            groups[dateKey].events.push(event);
+        });
+        return Object.values(groups);
+    })();
+
     function getNextWeekday(dayOfWeek) {
         const today = new Date();
         const currentDay = today.getDay();
@@ -566,52 +582,77 @@
                 </div>
             {/if}
 
-            <div class="eventsGrid">
-                {#each filteredEvents as event, i}
-                    <div class="eventCard" style="animation-delay: {i * 0.05}s">
-                        <div class="eventHeader">
-                            <h2>{event.title[lang]}</h2>
-                            {#if event.recurring && event.recurring !== 'monthly-multiple'}
-                                <span class="recurringTag">
-                                    {#if event.recurring === 'weekly'}
-                                        {lang === 'de' ? 'Wöchentlich' : 'Weekly'}
-                                    {:else if event.recurring === 'monthly'}
-                                        {lang === 'de' ? 'Monatlich' : 'Monthly'}
-                                    {/if}
-                                </span>
-                            {/if}
-                        </div>
-
-                        <div class="eventDate">
-                            <span class="dateIcon">📅</span>
-                            <div class="dateInfo">
-                                <span class="dateText">{formatDate(event.date)}</span>
-                                {#if event.time}
-                                    <span class="timeText">⏰ {event.time}</span>
-                                {/if}
+            <div class="dateGroupsContainer">
+                {#each groupedByDate as group, groupIndex}
+                    {@const isToday = getDaysUntil(group.date) === 0}
+                    <div class="dateGroup {isToday ? 'today' : ''}" style="animation-delay: {groupIndex * 0.05}s">
+                        <div class="dateGroupHeader">
+                            <div class="dateGroupDate">
+                                <div class="dayNumber">{group.date.getDate()}</div>
+                                <div class="monthYear">
+                                    {(() => {
+                                        const months = lang === 'de'
+                                            ? ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez']
+                                            : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                                        return months[group.date.getMonth()];
+                                    })()}
+                                </div>
+                            </div>
+                            <div class="dateGroupInfo">
+                                <div class="fullDate">{formatDate(group.date)}</div>
+                                <div class="daysUntilBadge">{getDaysUntilText(getDaysUntil(group.date))}</div>
                             </div>
                         </div>
 
-                        <div class="daysUntil">
-                            {getDaysUntilText(getDaysUntil(event.date))}
+                        <div class="eventsGrid">
+                            {#each group.events as event, i}
+                                <div class="eventCard" style="animation-delay: {(groupIndex * 0.05) + (i * 0.02)}s">
+                                    <div class="eventHeader">
+                                        <h2>{event.title[lang]}</h2>
+                                        {#if event.recurring && event.recurring !== 'monthly-multiple'}
+                                            <span class="recurringTag">
+                                                {#if event.recurring === 'weekly'}
+                                                    {lang === 'de' ? 'Wöchentlich' : 'Weekly'}
+                                                {:else if event.recurring === 'monthly'}
+                                                    {lang === 'de' ? 'Monatlich' : 'Monthly'}
+                                                {/if}
+                                            </span>
+                                        {/if}
+                                    </div>
+
+                                    <div class="eventDate">
+                                        <span class="dateIcon">📅</span>
+                                        <div class="dateInfo">
+                                            <span class="dateText">{formatDate(event.date)}</span>
+                                            {#if event.time}
+                                                <span class="timeText">⏰ {event.time}</span>
+                                            {/if}
+                                        </div>
+                                    </div>
+
+                                    <div class="daysUntil">
+                                        {getDaysUntilText(getDaysUntil(event.date))}
+                                    </div>
+
+                                    {#if event.description}
+                                        <p class="eventDescription">
+                                            {event.description[lang]}
+                                        </p>
+                                    {/if}
+
+                                    {#if event.link}
+                                        <a
+                                            href={event.link}
+                                            class="eventLink"
+                                            target={event.link.startsWith('http') ? '_blank' : '_self'}
+                                            rel={event.link.startsWith('http') ? 'noopener noreferrer' : ''}
+                                        >
+                                            {lang === 'de' ? 'Mehr Info' : 'More Info'} →
+                                        </a>
+                                    {/if}
+                                </div>
+                            {/each}
                         </div>
-
-                        {#if event.description}
-                            <p class="eventDescription">
-                                {event.description[lang]}
-                            </p>
-                        {/if}
-
-                        {#if event.link}
-                            <a
-                                href={event.link}
-                                class="eventLink"
-                                target={event.link.startsWith('http') ? '_blank' : '_self'}
-                                rel={event.link.startsWith('http') ? 'noopener noreferrer' : ''}
-                            >
-                                {lang === 'de' ? 'Mehr Info' : 'More Info'} →
-                            </a>
-                        {/if}
                     </div>
                 {/each}
             </div>
@@ -1030,11 +1071,97 @@
         color: rgb(255, 200, 100);
     }
 
+    /* Date Groups Container */
+    .dateGroupsContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 3em;
+        margin-top: 2em;
+    }
+
+    .dateGroup {
+        animation: fadeInUp 0.5s ease forwards;
+        opacity: 0;
+    }
+
+    .dateGroupHeader {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5em;
+        padding: 0 0 1em 0;
+        margin-bottom: 1.5em;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        min-height: 70px;
+    }
+
+    .dateGroup.today .dateGroupHeader {
+        border-bottom-color: rgba(255, 200, 100, 0.4);
+    }
+
+    .dateGroupDate {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 60px;
+        flex-shrink: 0;
+    }
+
+    .dayNumber {
+        font-size: 2em;
+        font-weight: 700;
+        line-height: 1;
+        color: white;
+    }
+
+    .dateGroup.today .dayNumber {
+        color: rgb(255, 200, 100);
+    }
+
+    .monthYear {
+        font-size: 0.85em;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        opacity: 0.7;
+        color: white;
+    }
+
+    .dateGroupInfo {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3em;
+        min-height: 52px;
+    }
+
+    .fullDate {
+        font-size: 1.1em;
+        font-weight: 600;
+        color: white;
+        line-height: 1.4;
+        min-height: 1.5em;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .daysUntilBadge {
+        font-size: 0.9em;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: auto;
+    }
+
+    .dateGroup.today .daysUntilBadge {
+        color: rgb(255, 200, 100);
+    }
+
+    /* Events Grid */
     .eventsGrid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
         gap: 2em;
-        margin-top: 2em;
     }
 
     .eventCard {
@@ -1054,6 +1181,7 @@
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         position: relative;
         color: #2a2a2a;
+        min-height: 520px;
     }
 
     .eventCard:hover {
@@ -1064,6 +1192,21 @@
         );
         border-color: rgba(0, 0, 0, 0.2);
         box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+    }
+
+    .dateGroup.today .eventCard {
+        border: 2px solid rgba(255, 200, 100, 0.6);
+        box-shadow:
+            0 4px 20px rgba(0, 0, 0, 0.15),
+            0 0 30px rgba(255, 180, 80, 0.3),
+            inset 0 0 20px rgba(255, 200, 100, 0.1);
+    }
+
+    .dateGroup.today .eventCard:hover {
+        box-shadow:
+            0 10px 35px rgba(0, 0, 0, 0.25),
+            0 0 40px rgba(255, 180, 80, 0.4),
+            inset 0 0 25px rgba(255, 200, 100, 0.15);
     }
 
     .eventCard h2,
@@ -1090,6 +1233,12 @@
         margin: 0;
         flex: 1;
         min-width: 200px;
+        min-height: 3.6em;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.3;
     }
 
     .recurringTag {
@@ -1102,17 +1251,7 @@
         border-radius: 999px;
         border: 1px solid rgba(59, 130, 246, 0.3);
         white-space: nowrap;
-    }
-
-    .recurrencePattern {
-        font-size: 1.1em;
-        font-weight: bold;
-        padding: 0.8em 1em;
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(96, 165, 250, 0.15));
-        border-radius: 0.5em;
-        text-align: center;
-        border: 1px solid rgba(59, 130, 246, 0.35);
-        color: rgb(244, 46, 198);
+        flex-shrink: 0;
     }
 
     .eventDate {
@@ -1122,6 +1261,7 @@
         padding: 1em;
         background: rgba(255, 255, 255, 0.03);
         border-radius: 0.5em;
+        flex-shrink: 0;
     }
 
     .dateIcon {
@@ -1132,20 +1272,6 @@
         display: flex;
         flex-direction: column;
         gap: 0.3em;
-    }
-
-    .dateLabelRow {
-        display: flex;
-        flex-direction: column;
-        gap: 0.2em;
-    }
-
-    .dateLabel {
-        font-size: 0.85em;
-        opacity: 0.7;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        font-weight: 600;
     }
 
     .dateText {
@@ -1166,6 +1292,7 @@
         border-radius: 0.5em;
         text-align: center;
         border: 1px solid rgba(255, 255, 255, 0.1);
+        flex-shrink: 0;
     }
 
     .eventDescription {
@@ -1173,6 +1300,12 @@
         opacity: 0.85;
         margin: 0;
         line-height: 1.5;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 7.5em;
+        flex-grow: 1;
     }
 
     .eventLink {
@@ -1188,6 +1321,7 @@
         transition: all 0.2s ease;
         border: 1px solid rgba(255, 255, 255, 0.2);
         align-self: flex-start;
+        margin-top: auto;
     }
 
     .eventLink:hover {
@@ -1392,9 +1526,48 @@
             font-size: 0.95em;
         }
 
+        .dateGroupsContainer {
+            gap: 2em;
+        }
+
+        .dateGroupHeader {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1em;
+            padding: 0 0 0.8em 0;
+            margin-bottom: 1em;
+        }
+
+        .dateGroupDate {
+            min-width: auto;
+        }
+
+        .dayNumber {
+            font-size: 1.8em;
+        }
+
+        .fullDate {
+            font-size: 1em;
+        }
+
         .eventsGrid {
             grid-template-columns: 1fr;
             gap: 1em;
+        }
+
+        .eventCard {
+            min-height: 460px;
+        }
+
+        .eventCard h2 {
+            font-size: 1.2em;
+            min-height: 3.1em;
+        }
+
+        .eventDescription {
+            font-size: 0.95em;
+            min-height: 7.1em;
+            -webkit-line-clamp: 5;
         }
     }
 </style>
