@@ -206,24 +206,24 @@
 
     const content = {
         de: {
-            title: 'Events Kalender',
+            title: 'Events',
             description: 'Hier sind alle kommenden Events - sortiert nach Datum. Die Daten werden automatisch aktualisiert.',
             recurringLabel: 'Wiederkehrend',
             oneTime: 'Einmalig',
-            filterAll: 'Alle Events',
-            filterConnectBern: 'Connect Bern Events',
+            filterAll: 'Alle zeigen',
+            filterConnectBern: 'Organisiert von Connect Bern',
             toggleRecurring: 'Wiederkehrende Events',
             toggleSpecial: 'Nur Spezial-Events',
             nextOccurrence: 'Nächstes Event',
             disclaimer: '⚠️ <strong>Hinweis:</strong> Wöchentliche und monatliche Events finden möglicherweise nicht immer statt. Bitte überprüfe die Details auf den jeweiligen Event-Seiten oder Webseiten.'
         },
         en: {
-            title: 'Events Calendar',
+            title: 'Events',
             description: 'Here are all upcoming events - sorted by date. Dates are automatically updated.',
             recurringLabel: 'Recurring',
             oneTime: 'One-time',
-            filterAll: 'All Events',
-            filterConnectBern: 'Connect Bern Events',
+            filterAll: 'Show All',
+            filterConnectBern: 'Organised by Connect Bern',
             toggleRecurring: 'Recurring Events',
             toggleSpecial: 'Special Events Only',
             nextOccurrence: 'Next Occurrence',
@@ -557,14 +557,13 @@
         <div class="titleRow">
             <!-- Filter View Switcher (left side) -->
             <div class="filterBar">
-                <span class="filterLabel">{lang === 'de' ? 'Ansicht:' : 'View:'}</span>
                 <div class="filterOptions">
                     <button
                         class="filterChip {eventsDisplayMode === 'events' ? 'active' : ''}"
                         on:click={() => eventsDisplayMode = 'events'}
                     >
                         <span class="chipIcon">📅</span>
-                        <span class="chipText">{lang === 'de' ? 'Kommende Events' : 'Upcoming Events'}</span>
+                        <span class="chipText">{lang === 'de' ? 'Kommende' : 'Upcoming'}</span>
                     </button>
                     <button
                         class="filterChip {eventsDisplayMode === 'resources' ? 'active' : ''}"
@@ -577,7 +576,7 @@
             </div>
 
             <div class="titleSection">
-                <h1>{lang === 'de' ? 'Events Agenda' : 'Events Calendar'}</h1>
+                <h1>Events</h1>
             </div>
 
             <button class="whyDifferentButton" on:click={() => showWhyDifferentDialog = true} title={t[lang]['events-why-different']}>
@@ -646,14 +645,12 @@
             {#if filterMode === 'all'}
                 <div class="disclaimerWrapper">
                     <button class="disclaimerToggle" on:click={() => showDisclaimer = !showDisclaimer}>
-                        ⚠️ {lang === 'de' ? 'Wichtiger Hinweis' : 'Important Note'}
+                        <span class="toggleText">⚠️ {lang === 'de' ? 'Wichtiger Hinweis' : 'Important Note'}</span>
                         <span class="toggleIcon">{showDisclaimer ? '▼' : '▶'}</span>
                     </button>
-                    {#if showDisclaimer}
-                        <div class="disclaimer">
-                            {@html content[lang].disclaimer}
-                        </div>
-                    {/if}
+                    <div class="disclaimer" class:expanded={showDisclaimer}>
+                        {@html content[lang].disclaimer}
+                    </div>
                 </div>
             {/if}
 
@@ -845,21 +842,28 @@
     .whyDifferentButton {
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 0.6em;
-        padding: 0.7em 1.2em;
+        width: 60px;
+        height: 60px;
+        padding: 0;
         background: linear-gradient(135deg, rgba(147, 51, 234, 0.2), rgba(79, 70, 229, 0.2));
         border: 2px solid rgba(147, 51, 234, 0.4);
-        border-radius: 2em;
+        border-radius: 50%;
         cursor: pointer;
         transition: all 0.3s ease;
         color: white;
         font-size: 0.9em;
         font-weight: 600;
-        white-space: nowrap;
         box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3);
         animation: subtleBounce 3s ease-in-out infinite;
         flex-shrink: 0;
         margin-left: auto;
+        position: relative;
+    }
+
+    .whyDifferentButton .whyText {
+        display: none;
     }
 
     @keyframes subtleBounce {
@@ -884,7 +888,7 @@
     }
 
     .whyIcon {
-        font-size: 1.5em;
+        font-size: 2em;
         line-height: 1;
         animation: wiggleIcon 2s ease-in-out infinite;
     }
@@ -1421,26 +1425,9 @@
         margin-right: auto;
     }
 
+    /* Hide toggle button on desktop */
     .disclaimerToggle {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.5em;
-        width: 100%;
-        padding: 0.6em 1em;
-        background: rgba(255, 180, 0, 0.15);
-        border: 1px solid rgba(255, 180, 0, 0.4);
-        border-radius: 0.6em;
-        font-size: 0.75em;
-        font-weight: 600;
-        color: rgb(255, 200, 100);
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
-
-    .disclaimerToggle:hover {
-        background: rgba(255, 180, 0, 0.2);
-        border-color: rgba(255, 180, 0, 0.5);
+        display: none;
     }
 
     .toggleIcon {
@@ -1448,8 +1435,8 @@
         transition: transform 0.2s ease;
     }
 
+    /* Always show disclaimer on desktop */
     .disclaimer {
-        margin-top: 0.5em;
         padding: 0.7em 0.9em;
         background: rgba(255, 180, 0, 0.1);
         border: 1px solid rgba(255, 180, 0, 0.3);
@@ -1458,10 +1445,12 @@
         line-height: 1.4;
         text-align: left;
         opacity: 0.9;
+        margin-bottom: 1.5em;
     }
 
     .disclaimer :global(strong) {
         color: rgb(255, 200, 100);
+        margin-right: 0.5em;
     }
 
     /* Date Groups Container */
@@ -1811,26 +1800,35 @@
         }
 
         .titleRow {
-            flex-direction: column;
+            flex-direction: row;
+            flex-wrap: wrap;
             gap: 1em;
             padding: 0 0.5em;
         }
 
         .filterBar {
-            order: 1;
-            width: 100%;
-            max-width: 100%;
-        }
-
-        .titleSection {
-            order: 2;
-        }
-
-        .whyDifferentButton {
             order: 3;
             width: 100%;
             max-width: 100%;
-            justify-content: center;
+            flex-basis: 100%;
+        }
+
+        .titleSection {
+            order: 1;
+            flex: 1;
+        }
+
+        .whyDifferentButton {
+            order: 2;
+            width: 50px;
+            height: 50px;
+            margin-left: 0;
+            margin-right: 0;
+            flex-shrink: 0;
+        }
+
+        .whyDifferentButton .whyText {
+            display: none;
         }
 
         .titleSection {
@@ -1842,18 +1840,8 @@
             word-wrap: break-word;
         }
 
-        .whyDifferentButton {
-            padding: 0.6em 1em;
-            font-size: 0.75em;
-            gap: 0.5em;
-        }
-
         .whyIcon {
-            font-size: 1.2em;
-        }
-
-        .whyText {
-            font-size: 0.9em;
+            font-size: 1.6em;
         }
 
         .titleSection p {
@@ -1907,11 +1895,6 @@
             gap: 0.6em;
         }
 
-        .filterLabel {
-            font-size: 0.7em;
-            width: 100%;
-            text-align: center;
-        }
 
         .filterOptions {
             gap: 0.4em;
@@ -1946,14 +1929,66 @@
             padding: 0.7em 1em;
         }
 
+        /* Show toggle button on mobile */
         .disclaimerToggle {
-            font-size: 0.65em;
-            padding: 0.5em 0.8em;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 0.4em;
+            width: auto;
+            max-width: max-content;
+            padding: 0.4em 0.7em;
+            background: rgba(255, 180, 0, 0.15);
+            border: 1px solid rgba(255, 180, 0, 0.4);
+            border-radius: 0.5em;
+            font-size: 0.6em;
+            font-weight: 600;
+            color: rgb(255, 200, 100);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
         }
 
+        .toggleText {
+            flex: 1;
+            white-space: nowrap;
+            line-height: 1.2;
+        }
+
+        .toggleIcon {
+            flex-shrink: 0;
+            margin-top: 0.05em;
+            font-size: 0.9em;
+        }
+
+        .disclaimerToggle:hover {
+            background: rgba(255, 180, 0, 0.2);
+            border-color: rgba(255, 180, 0, 0.5);
+        }
+
+        /* When expanded, make button wider */
+        .disclaimer.expanded ~ .disclaimerToggle,
+        .disclaimerWrapper:has(.disclaimer.expanded) .disclaimerToggle {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .disclaimerWrapper:has(.disclaimer.expanded) .toggleText {
+            white-space: normal;
+            word-wrap: break-word;
+        }
+
+        /* Collapsible on mobile */
         .disclaimer {
             font-size: 0.6em;
             padding: 0.6em 0.7em;
+            display: none;
+            margin-top: 0.5em;
+            margin-bottom: 1.5em;
+        }
+
+        .disclaimer.expanded {
+            display: block;
         }
 
         .dialogBox {
@@ -1993,6 +2028,20 @@
 
         .filterButtons {
             margin-bottom: 1em;
+        }
+
+        /* Make floating button smaller on mobile */
+        .floatingButton {
+            padding: 0.6em 0.9em;
+            font-size: 0.75em;
+        }
+
+        .floatingIcon {
+            font-size: 1.3em;
+        }
+
+        .floatingText {
+            font-size: 0.8em;
         }
 
         .chipIcon {
@@ -2064,6 +2113,10 @@
             font-size: 0.95em;
             min-height: 7.1em;
             -webkit-line-clamp: 5;
+        }
+
+        .dateIcon {
+            font-size: 1em;
         }
     }
 </style>
