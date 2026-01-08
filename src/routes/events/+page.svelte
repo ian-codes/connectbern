@@ -14,6 +14,7 @@
     let eventsDisplayMode = 'events'; // 'events' or 'resources'
     let calendarEvents = [];
     let filterMode = 'all'; // 'all' or 'connectbern'
+    let showSuggestDialog = false;
 
     // Simple chronological event list
     $: filteredEvents = (() => {
@@ -526,16 +527,6 @@
             </p>
         </div>
 
-        <!-- Suggest Event CTA -->
-        <div class="suggestEventCTA">
-            <div class="ctaIcon">✨</div>
-            <h3>{t[lang]['events-suggest-title']}</h3>
-            <p>{t[lang]['events-suggest-description']}</p>
-            <a href="/contact" class="ctaButton">
-                {t[lang]['events-suggest-button']} →
-            </a>
-        </div>
-
         <!-- Filter View Switcher -->
         <div class="filterBar">
             <span class="filterLabel">{lang === 'de' ? 'Ansicht:' : 'View:'}</span>
@@ -555,8 +546,29 @@
                     <span class="chipText">{lang === 'de' ? 'Mehr finden' : 'Find More'}</span>
                 </button>
             </div>
+
+            <!-- Suggest Event Button -->
+            <button class="suggestEventButton" on:click={() => showSuggestDialog = true}>
+                <span class="buttonIcon">✨</span>
+                <span class="buttonText">{t[lang]['events-suggest-title']}</span>
+            </button>
         </div>
     </div>
+
+    <!-- Suggest Event Dialog -->
+    {#if showSuggestDialog}
+        <div class="dialogOverlay" on:click={() => showSuggestDialog = false}>
+            <div class="dialogBox" on:click|stopPropagation>
+                <button class="closeButton" on:click={() => showSuggestDialog = false}>×</button>
+                <div class="dialogIcon">✨</div>
+                <h2>{t[lang]['events-suggest-title']}</h2>
+                <p class="dialogDescription">{t[lang]['events-suggest-description']}</p>
+                <a href="/contact" class="dialogButton">
+                    {t[lang]['events-suggest-button']} →
+                </a>
+            </div>
+        </div>
+    {/if}
 
     <!-- Upcoming Events View -->
     {#if eventsDisplayMode === 'events'}
@@ -849,6 +861,148 @@
         backdrop-filter: blur(10px);
         flex-wrap: wrap;
         justify-content: center;
+    }
+
+    /* Suggest Event Button */
+    .suggestEventButton {
+        display: flex;
+        align-items: center;
+        gap: 0.6em;
+        padding: 0.7em 1.5em;
+        background: linear-gradient(135deg, rgb(255, 200, 100), rgb(255, 180, 80));
+        color: rgb(20, 20, 30);
+        border: none;
+        border-radius: 2em;
+        font-size: 0.95em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 180, 80, 0.4);
+        margin-left: auto;
+    }
+
+    .suggestEventButton:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(255, 180, 80, 0.6);
+    }
+
+    .buttonIcon {
+        font-size: 1.3em;
+        line-height: 1;
+    }
+
+    .buttonText {
+        line-height: 1;
+    }
+
+    /* Dialog Styles */
+    .dialogOverlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .dialogBox {
+        background: linear-gradient(135deg, rgb(30, 40, 60), rgb(20, 30, 50));
+        border: 2px solid rgba(255, 200, 100, 0.3);
+        border-radius: 1.5em;
+        padding: 3em 2.5em;
+        max-width: 500px;
+        width: 90%;
+        position: relative;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        animation: slideUp 0.3s ease;
+        text-align: center;
+    }
+
+    @keyframes slideUp {
+        from {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .closeButton {
+        position: absolute;
+        top: 1em;
+        right: 1em;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: white;
+        font-size: 2em;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        line-height: 1;
+    }
+
+    .closeButton:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: rotate(90deg);
+    }
+
+    .dialogIcon {
+        font-size: 4em;
+        margin-bottom: 0.5em;
+    }
+
+    .dialogBox h2 {
+        color: white;
+        font-size: 1.8em;
+        margin-bottom: 0.5em;
+    }
+
+    .dialogDescription {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.1em;
+        line-height: 1.6;
+        margin-bottom: 2em;
+    }
+
+    .dialogButton {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+        padding: 1em 2em;
+        background: linear-gradient(135deg, rgb(255, 200, 100), rgb(255, 180, 80));
+        color: rgb(20, 20, 30);
+        border: none;
+        border-radius: 2em;
+        font-size: 1em;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 180, 80, 0.4);
+    }
+
+    .dialogButton:hover {
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(255, 180, 80, 0.6);
     }
 
     .filterLabel {
