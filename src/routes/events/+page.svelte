@@ -329,6 +329,30 @@
                 organizer: 'connectbern'
             },
             {
+                title: { de: 'Brunch & Games', en: 'Brunch & Games' },
+                date: new Date(2026, 0, 17, 9, 0),
+                time: '09:00',
+                description: {
+                    de: 'Starte deinen Samstag mit einem leckeren Brunch und bleib für Spiele! 🥐🎲',
+                    en: 'Start your Saturday with a delicious brunch and stay for games! 🥐🎲'
+                },
+                link: '/events/brunch-games',
+                recurring: false,
+                organizer: 'connectbern'
+            },
+            {
+                title: { de: 'Pubquiz & Dinner', en: 'Pubquiz & Dinner' },
+                date: new Date(2026, 0, 18, 17, 30),
+                time: '17:30',
+                description: {
+                    de: 'Teste dein Wissen in unserem Pubquiz und geniesse ein leckeres Abendessen! 🧠🍕',
+                    en: 'Test your knowledge in our pubquiz and enjoy a delicious dinner! 🧠🍕'
+                },
+                link: '/events/pubquiz-dinner',
+                recurring: false,
+                organizer: 'connectbern'
+            },
+            {
                 title: { de: 'Sprachenaustausch', en: 'Language Exchange' },
                 date: getNextWeekday(3),
                 time: '19:00',
