@@ -1,1 +1,0 @@
-import{w as r}from"./index.1e088ef2.js";function o(){const{subscribe:t,set:n,update:a}=r("en");return{subscribe:t,set:e=>{typeof window<"u"&&localStorage.setItem("language",e),n(e)},update:a}}const c=o();export{c};
