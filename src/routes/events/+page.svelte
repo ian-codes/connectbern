@@ -330,7 +330,7 @@
             },
             {
                 title: { de: 'Shrek Movie Night • Filmabend', en: 'Shrek Movie Night • Filmabend' },
-                date: new Date(2026, 0, 11, 19, 0),
+                date: new Date(2026, 0, 14, 19, 0),
                 time: '19:00',
                 description: {
                     de: 'Lustiger Abend mit Shrek! Bring deine Lieblingssnacks mit. Anmeldung erforderlich - wir haben nur 2 Sofas! 🎬🛋️',
