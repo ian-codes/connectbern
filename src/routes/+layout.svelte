@@ -27,6 +27,31 @@
 
 
 <style>
+    /* Additional scrollbar hiding at component level */
+    :global(*) {
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
+    :global(*::-webkit-scrollbar) {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+
+    :global(html),
+    :global(body) {
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
+    :global(html::-webkit-scrollbar),
+    :global(body::-webkit-scrollbar) {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+
     @media (max-width: 800px) {
         main {
             margin-top: 120px !important;
@@ -51,7 +76,7 @@
         opacity: 1;
         animation: glow 40s infinite linear;
     }
-    
+
     .bg {
         height: 120vh;
         background: black;
