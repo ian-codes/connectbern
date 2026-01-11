@@ -305,6 +305,18 @@
                 organizer: 'connectbern'
             },
             {
+                title: { de: 'Wine & Cheese Night', en: 'Wine & Cheese Night' },
+                date: new Date(2026, 0, 24, 18, 0),
+                time: '18:00',
+                description: {
+                    de: 'Ein Abend mit Käse, Wein und neuen Begegnungen. Kuratierte Käse- & Weinverkostung, Blind-Tasting-Spiele und Tischrotation zum Kennenlernen. 🧀🍷\n\n25 CHF – geht direkt an Chef Wagner für Zutaten & Vorbereitung.',
+                    en: 'An evening of cheese, wine and new connections. Curated cheese & wine tasting, blind tasting games, and table rotation to meet new people. 🧀🍷\n\n25 CHF – goes directly to Chef Wagner for ingredients & preparation.'
+                },
+                link: '/events/wine-cheese-night',
+                recurring: false,
+                organizer: 'connectbern'
+            },
+            {
                 title: { de: 'Acoustic Circle', en: 'Acoustic Circle' },
                 date: new Date(2026, 0, 9, 18, 0),
                 time: '18:00-22:00',
