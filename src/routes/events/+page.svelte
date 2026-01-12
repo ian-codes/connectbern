@@ -254,7 +254,8 @@
                     en: 'Beginner handpan lesson with Berni 🎶 (20 CHF deposit to guarantee your spot)'
                 },
                 link: '/events/handpan',
-                organizer: 'connectbern'
+                organizer: 'connectbern',
+                paid: true
             },
             {
                 title: { de: 'Hobby-Schach', en: 'Hobby Chess' },
@@ -290,7 +291,8 @@
                 },
                 link: '/events/handpan-concert',
                 recurring: false,
-                organizer: 'connectbern'
+                organizer: 'connectbern',
+                paid: true
             },
             {
                 title: { de: 'Christmas Together in Bern', en: 'Christmas Together in Bern' },
@@ -314,7 +316,8 @@
                 },
                 link: '/events/wine-cheese-night',
                 recurring: false,
-                organizer: 'connectbern'
+                organizer: 'connectbern',
+                paid: true
             },
             {
                 title: { de: 'Acoustic Circle', en: 'Acoustic Circle' },
@@ -350,7 +353,8 @@
                 },
                 link: '/events/brunch-games',
                 recurring: false,
-                organizer: 'connectbern'
+                organizer: 'connectbern',
+                paid: true
             },
             {
                 title: { de: 'Pubquiz & Dinner', en: 'Pubquiz & Dinner' },
@@ -362,7 +366,21 @@
                 },
                 link: '/events/pubquiz-dinner',
                 recurring: false,
-                organizer: 'connectbern'
+                organizer: 'connectbern',
+                paid: true
+            },
+            {
+                title: { de: 'Tuesday Jazz Jam', en: 'Tuesday Jazz Jam' },
+                date: getNextWeekday(2),
+                time: '19:30',
+                recurring: 'weekly',
+                description: {
+                    de: 'Treffen am Zytglogge um 19:30 Uhr und zusammen zum Jazz Jam gehen. Live-Band ab 21 Uhr, danach offene Jam-Session. Gemütlicher Ort unter dem Dach mit toller Atmosphäre. 🎷✨\n\n5 CHF Eintritt + optional Risotto für 5 CHF – geht direkt ans Lokal.\n\nFragen? Tomáš (+41 78 228 77 64)',
+                    en: 'Meet at Zytglogge at 7:30 PM and head to Jazz Jam together. Live band at 9 PM, then open jam session. Cozy rooftop spot with great vibes. 🎷✨\n\n5 CHF entry + optional risotto for 5 CHF – goes directly to the venue.\n\nQuestions? Tomáš (+41 78 228 77 64)'
+                },
+                link: '/events/tuesday-jazz-jam',
+                organizer: 'connectbern',
+                paid: true
             },
             {
                 title: { de: 'Sprachenaustausch', en: 'Language Exchange' },
@@ -417,16 +435,6 @@
                     en: 'A hacker space in Bern related to the Chaos Computer Club (CCC) movement, but not part of it'
                 },
                 link: 'https://chaostreffbern.ch/'
-            },
-            {
-                title: { de: 'Posterum Spieleabend', en: 'Posterum Games Night' },
-                date: getNextNthWeekday(3, 2),
-                recurring: 'monthly',
-                description: {
-                    de: 'Einmal im Monat - Spieleabend',
-                    en: 'Once a month - games night'
-                },
-                link: 'https://www.pusterum.ch/kultur'
             },
             {
                 title: { de: 'Effective Altruism Treffen', en: 'Effective Altruism Meetup' },
@@ -717,15 +725,22 @@
                                 <div class="eventCard" style="animation-delay: {(groupIndex * 0.05) + (i * 0.02)}s">
                                     <div class="eventHeader">
                                         <h2>{event.title[lang]}</h2>
-                                        {#if event.recurring && event.recurring !== 'monthly-multiple'}
-                                            <span class="recurringTag">
-                                                {#if event.recurring === 'weekly'}
-                                                    {lang === 'de' ? 'Wöchentlich' : 'Weekly'}
-                                                {:else if event.recurring === 'monthly'}
-                                                    {lang === 'de' ? 'Monatlich' : 'Monthly'}
-                                                {/if}
-                                            </span>
-                                        {/if}
+                                        <div class="eventTags">
+                                            {#if event.recurring && event.recurring !== 'monthly-multiple'}
+                                                <span class="recurringTag">
+                                                    {#if event.recurring === 'weekly'}
+                                                        {lang === 'de' ? 'Wöchentlich' : 'Weekly'}
+                                                    {:else if event.recurring === 'monthly'}
+                                                        {lang === 'de' ? 'Monatlich' : 'Monthly'}
+                                                    {/if}
+                                                </span>
+                                            {/if}
+                                            {#if event.paid}
+                                                <span class="paidTag">
+                                                    💰 {lang === 'de' ? 'Kostenpflichtig' : 'Not Free'}
+                                                </span>
+                                            {/if}
+                                        </div>
                                     </div>
 
                                     <div class="eventDate">
@@ -1659,6 +1674,14 @@
         line-height: 1.3;
     }
 
+    .eventTags {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        align-items: flex-end;
+        flex-shrink: 0;
+    }
+
     .recurringTag {
         display: inline-block;
         padding: 0.4em 0.8em;
@@ -1669,7 +1692,18 @@
         border-radius: 999px;
         border: 1px solid rgba(59, 130, 246, 0.3);
         white-space: nowrap;
-        flex-shrink: 0;
+    }
+
+    .paidTag {
+        display: inline-block;
+        padding: 0.4em 0.8em;
+        font-size: 0.75em;
+        font-weight: 600;
+        background: rgba(76, 175, 80, 0.8);
+        color: white;
+        border-radius: 999px;
+        border: 1px solid rgba(76, 175, 80, 1);
+        white-space: nowrap;
     }
 
     .eventDate {
@@ -2143,6 +2177,15 @@
         .eventCard h2 {
             font-size: 1.2em;
             min-height: 3.1em;
+        }
+
+        .eventTags {
+            align-items: flex-start;
+        }
+
+        .recurringTag,
+        .paidTag {
+            font-size: 0.7em;
         }
 
         .eventDescription {
