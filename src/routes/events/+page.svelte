@@ -255,7 +255,8 @@
                 },
                 link: '/events/handpan',
                 organizer: 'connectbern',
-                paid: true
+                paid: true,
+                optionalPaid: true
             },
             {
                 title: { de: 'Hobby-Schach', en: 'Hobby Chess' },
@@ -354,7 +355,8 @@
                 link: '/events/brunch-games',
                 recurring: false,
                 organizer: 'connectbern',
-                paid: true
+                paid: true,
+                optionalPaid: true
             },
             {
                 title: { de: 'Pubquiz & Dinner', en: 'Pubquiz & Dinner' },
@@ -367,7 +369,8 @@
                 link: '/events/pubquiz-dinner',
                 recurring: false,
                 organizer: 'connectbern',
-                paid: true
+                paid: true,
+                optionalPaid: true
             },
             {
                 title: { de: 'Tuesday Jazz Jam', en: 'Tuesday Jazz Jam' },
@@ -723,24 +726,39 @@
                         <div class="eventsGrid">
                             {#each group.events as event, i}
                                 <div class="eventCard" style="animation-delay: {(groupIndex * 0.05) + (i * 0.02)}s">
+                                    <div class="eventTags">
+                                        {#if event.recurring && event.recurring !== 'monthly-multiple'}
+                                            <span class="recurringTag">
+                                                {#if event.recurring === 'weekly'}
+                                                    {lang === 'de' ? 'Wöchentlich' : 'Weekly'}
+                                                {:else if event.recurring === 'monthly'}
+                                                    {lang === 'de' ? 'Monatlich' : 'Monthly'}
+                                                {/if}
+                                            </span>
+                                        {/if}
+                                        {#if event.paid}
+                                            <span
+                                                class="paidTag"
+                                                class:optionalTag={event.optionalPaid}
+                                                title={event.optionalPaid
+                                                    ? (lang === 'de'
+                                                        ? 'Diese Veranstaltung bietet explizit optionale kostenpflichtige Angebote (z.B. Essen, Kaution) oder empfohlene Spenden an.'
+                                                        : 'This event explicitly offers optional paid elements (e.g., food, deposit) or suggested donations.')
+                                                    : (lang === 'de'
+                                                        ? 'Diese Veranstaltung ist kostenpflichtig, aber das Geld geht nicht an Connect Bern.'
+                                                        : 'This event is paid, but the money does not go to Connect Bern.')}
+                                            >
+                                                {#if event.optionalPaid}
+                                                    💵 {lang === 'de' ? 'Optional kostenpflichtig' : 'Optional Payment'}
+                                                {:else}
+                                                    💰 {lang === 'de' ? 'Kostenpflichtig' : 'Not Free'}
+                                                {/if}
+                                            </span>
+                                        {/if}
+                                    </div>
+
                                     <div class="eventHeader">
                                         <h2>{event.title[lang]}</h2>
-                                        <div class="eventTags">
-                                            {#if event.recurring && event.recurring !== 'monthly-multiple'}
-                                                <span class="recurringTag">
-                                                    {#if event.recurring === 'weekly'}
-                                                        {lang === 'de' ? 'Wöchentlich' : 'Weekly'}
-                                                    {:else if event.recurring === 'monthly'}
-                                                        {lang === 'de' ? 'Monatlich' : 'Monthly'}
-                                                    {/if}
-                                                </span>
-                                            {/if}
-                                            {#if event.paid}
-                                                <span class="paidTag">
-                                                    💰 {lang === 'de' ? 'Kostenpflichtig' : 'Not Free'}
-                                                </span>
-                                            {/if}
-                                        </div>
                                     </div>
 
                                     <div class="eventDate">
@@ -1654,32 +1672,32 @@
 
     .eventHeader {
         display: flex;
-        justify-content: space-between;
         align-items: start;
-        gap: 1em;
-        flex-wrap: wrap;
     }
 
     .eventCard h2 {
         font-size: 1.4em;
         font-weight: bold;
         margin: 0;
-        flex: 1;
-        min-width: 200px;
+        margin-top: 2.5em;
         min-height: 3.6em;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
         line-height: 1.3;
+        padding-right: 0;
     }
 
     .eventTags {
+        position: absolute;
+        top: 1em;
+        right: 1em;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         gap: 0.5em;
-        align-items: flex-end;
-        flex-shrink: 0;
+        align-items: center;
+        z-index: 10;
     }
 
     .recurringTag {
@@ -1704,6 +1722,19 @@
         border-radius: 999px;
         border: 1px solid rgba(76, 175, 80, 1);
         white-space: nowrap;
+        cursor: help;
+        transition: all 0.2s ease;
+    }
+
+    .paidTag:hover {
+        transform: scale(1.05);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .paidTag.optionalTag {
+        background: rgba(255, 167, 38, 0.8);
+        border: 1px solid rgba(255, 167, 38, 1);
+        color: white;
     }
 
     .eventDate {
@@ -2180,12 +2211,20 @@
         }
 
         .eventTags {
-            align-items: flex-start;
+            top: 0.8em;
+            right: 0.8em;
         }
 
         .recurringTag,
         .paidTag {
-            font-size: 0.7em;
+            font-size: 0.65em;
+            padding: 0.3em 0.6em;
+        }
+
+        .eventCard h2 {
+            padding-right: 0;
+            font-size: 1.1em;
+            margin-top: 2em;
         }
 
         .eventDescription {
