@@ -44,8 +44,7 @@ export const GroupsData = [
         img: "connect-bern-logo-white.png",
         type: "whatsapp",
         link: "https://tiny.cc/connectbernwhatsapp",
-        organizer: "connectbern",
-        isCollection: true
+        organizer: "connectbern"
     },
     {
         name: {
