@@ -51,6 +51,10 @@
             <h1>{content[lang].title}</h1>
             <p class="subtitle">{content[lang].subtitle}</p>
 
+            <div class="imageContainer">
+                <img src="/images/coffee, cake & connect.jpeg" alt="Coffee, Cake & Connect" class="eventImage" />
+            </div>
+
             <p class="description">
                 {content[lang].description}
             </p>
@@ -156,6 +160,23 @@
         font-style: italic;
         opacity: 0.9;
         margin-top: -0.5em;
+    }
+
+    .imageContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 1em 0;
+    }
+
+    .eventImage {
+        max-width: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        border-radius: 1em;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
     }
 
     p {
