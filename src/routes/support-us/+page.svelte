@@ -170,6 +170,11 @@
             <div class="methodCard">
                 <h4>{t[lang]['support-bank-title']}</h4>
                 <p>{t[lang]['support-bank-desc']}</p>
+                <div class="bankInfo">
+                    <div class="bankName">Connect Bern</div>
+                    <div class="bankIBAN">CH83 0630 0508 3149 8090 2</div>
+                </div>
+                <button on:click={(e) => copyToClipboard('Connect Bern\nCH83 0630 0508 3149 8090 2', e.currentTarget)} class="btn btnCopy">{t[lang]['support-btn-copy-number']}</button>
             </div>
 
             <div class="methodCard">
@@ -617,14 +622,30 @@
     }
 
     .bankInfo {
-        background: rgba(0, 0, 0, 0.2);
+        background: rgba(0, 0, 0, 0.3);
         padding: 1em;
         border-radius: 0.5em;
         font-size: 0.95em;
+        margin-bottom: 1em;
     }
 
     .bankInfo div {
         margin: 0.5em 0;
+        word-break: break-all;
+    }
+
+    .bankName {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin: 0 0 0.5em 0;
+    }
+
+    .bankIBAN {
+        font-size: 1.2em;
+        font-weight: bold;
+        font-family: monospace;
+        letter-spacing: 1px;
+        margin: 0;
         word-break: break-all;
     }
 

@@ -443,6 +443,19 @@
                 organizer: 'connectbern'
             },
             {
+                title: { de: "Acoustic '90s", en: "Acoustic '90s" },
+                date: new Date(2026, 0, 31, 18, 0),
+                time: '18:00-22:00',
+                description: {
+                    de: 'Akustische 90er-Cover in einer intimen Wohnzimmeratmosphäre. 5 Musiker:innen, vertraute Songs, Nostalgie und Verbindung. 🎸✨\n\nEintritt: CHF 10',
+                    en: "Acoustic '90s covers in an intimate living-room atmosphere. 5 musicians, familiar songs, nostalgia and connection. 🎸✨\n\nEntry: CHF 10"
+                },
+                link: '/events/90s-covers-night',
+                recurring: false,
+                organizer: 'connectbern',
+                paid: true
+            },
+            {
                 title: { de: 'Shrek Movie Night • Filmabend', en: 'Shrek Movie Night • Filmabend' },
                 date: new Date(2026, 0, 14, 19, 0),
                 time: '19:00',
