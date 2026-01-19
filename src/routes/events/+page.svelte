@@ -220,7 +220,12 @@
     }
 
     function startDrag(event) {
-        event.preventDefault();
+        // Only prevent default for mouse events immediately
+        // For touch events, we'll prevent default only during actual dragging
+        if (event.type === 'mousedown') {
+            event.preventDefault();
+        }
+
         isDragging = true;
         hasDragged = false;
         isAutoMoving = false;
@@ -761,8 +766,14 @@
             </button>
             <button
                 class="floatingContent"
-                on:click={() => {
+                on:click={(e) => {
                     if (!hasDragged) {
+                        showSuggestDialog = true;
+                    }
+                }}
+                on:touchend={(e) => {
+                    if (!hasDragged) {
+                        e.preventDefault();
                         showSuggestDialog = true;
                     }
                 }}
