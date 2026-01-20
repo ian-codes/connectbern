@@ -443,6 +443,18 @@
                 organizer: 'connectbern'
             },
             {
+                title: { de: 'Sew Bern: Beginner Mending Group', en: 'Sew Bern: Beginner Mending Group' },
+                date: new Date(2026, 0, 28, 18, 30),
+                time: '18:30-20:30',
+                description: {
+                    de: 'Komm nähen mit uns! Für alle offen - ob Anfänger:in oder Profi. Wir helfen beim Flicken, Säumen und zeigen grundlegende Stiche. Stricken, Häkeln und andere Handarbeiten willkommen. ✂️🧵',
+                    en: 'Come sew with us! Open to all - beginners or pros. Help with mending, hemming, and basic stitches. Knitting, crocheting, and other crafts welcome. ✂️🧵'
+                },
+                link: '/events/sew-bern',
+                recurring: false,
+                organizer: 'connectbern'
+            },
+            {
                 title: { de: "Acoustic '90s", en: "Acoustic '90s" },
                 date: new Date(2026, 0, 31, 18, 0),
                 time: '18:00-22:00',
