@@ -15,7 +15,7 @@
             openToAll: "Diese Veranstaltung ist für alle offen.",
             forBeginners: "Wenn du neu im Nähen bist und Hilfe beim Einstieg brauchst, können wir dir beim Einfädeln einer Nadel helfen, Ratschläge geben und ein paar grundlegende Stiche zeigen. Grundlegendes Nähzubehör steht zur Verfügung.",
             forPros: "Wenn du ein Näh-Profi bist, bring gerne ein bestehendes Projekt mit. Stricken, Häkeln oder andere Handarbeiten sind ebenfalls willkommen.",
-            date: "📅 Dienstag, 28. Januar 2026",
+            date: "📅 Mittwoch, 28. Januar 2026",
             time: "🕕 18:30–20:30",
             location: "📍 Connect Bern Space, Monbijou",
             locationNote: "Bist du zum ersten Mal hier? Kontaktiere uns für die Adresse!",
@@ -24,7 +24,7 @@
             contactName: "April",
             phone: "+1 (331) 213-1557",
             email: "apriljoywelch@gmail.com",
-            whatsappMessage: "Hallo April, ich möchte gerne zum Sew Bern am 28. Januar kommen!",
+            whatsappMessage: "Hallo April, ich möchte gerne zum Sew Bern am Mittwoch, 28. Januar kommen!",
             closingText: "Wir freuen uns darauf, mit dir zu nähen! 🧵"
         },
         en: {
@@ -34,7 +34,7 @@
             openToAll: "This event is open to all.",
             forBeginners: "If you are new to sewing and want help getting started, we can help with threading a needle, provide advice, and demonstrate a few basic stitches. Basic sewing supplies are available for use.",
             forPros: "If you are a sewing pro, feel free to bring an existing project. Knitting, crocheting, or other arts are also welcome.",
-            date: "📅 Tuesday, January 28, 2026",
+            date: "📅 Wednesday, January 28, 2026",
             time: "🕕 18:30–20:30",
             location: "📍 Connect Bern Space, Monbijou",
             locationNote: "First time here? Contact us for the address!",
@@ -43,7 +43,7 @@
             contactName: "April",
             phone: "+1 (331) 213-1557",
             email: "apriljoywelch@gmail.com",
-            whatsappMessage: "Hi April, I would like to come to Sew Bern on January 28th!",
+            whatsappMessage: "Hi April, I would like to come to Sew Bern on Wednesday, January 28th!",
             closingText: "We look forward to sewing with you! 🧵"
         }
     };
