@@ -508,6 +508,18 @@
                 optionalPaid: true
             },
             {
+                title: { de: "Let's Dine Dinner", en: "Let's Dine Dinner" },
+                date: new Date(2026, 0, 24, 18, 0),
+                time: '18:00',
+                description: {
+                    de: 'Komm mit uns zum Abendessen und Karaoke! Restaurant Cavallo Star (Hauptbahnhof), danach Karaoke im Bärengrotte. 🍽️🎤\n\nAnmeldung bis Donnerstag, 23:59 Uhr.',
+                    en: 'Join us for dinner and karaoke! Restaurant Cavallo Star (Central Station), then Karaoke at Bärengrotte. 🍽️🎤\n\nSign up by Thursday, 11:59 PM.'
+                },
+                link: '/events/lets-dine-jan24',
+                recurring: false,
+                organizer: 'connectbern'
+            },
+            {
                 title: { de: 'Tuesday Jazz Jam', en: 'Tuesday Jazz Jam' },
                 date: getNextWeekday(2),
                 time: '19:30',
