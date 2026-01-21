@@ -587,13 +587,16 @@
                 link: 'https://chaostreffbern.ch/'
             },
             {
-                title: { de: 'Effective Altruism Treffen', en: 'Effective Altruism Meetup' },
-                date: getNextWeekday(3),
-                recurring: 'weekly',
+                title: { de: 'EA Bern Social @ Pittaria', en: 'EA Bern Social @ Pittaria' },
+                date: new Date(2026, 0, 22, 18, 30),
+                time: '18:30-20:00',
+                recurring: false,
                 description: {
-                    de: 'Soziales Treffen der Effective Altruism Gruppe',
-                    en: 'Social gathering of effective altruism group'
-                }
+                    de: 'Komm zu unserem monatlichen EA Bern Social! Freundliches, entspanntes Treffen für alle, die sich für Effective Altruism interessieren. 🥙',
+                    en: 'Join us for our monthly EA Bern Social! A friendly, relaxed get-together for everyone interested in Effective Altruism. 🥙'
+                },
+                link: '/events/ea-bern-social',
+                organizer: 'connectbern'
             },
             {
                 title: { de: 'English Club', en: 'English Club' },
