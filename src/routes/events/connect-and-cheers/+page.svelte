@@ -28,21 +28,29 @@
             title: "Connect & Cheers",
             description: "Jeden Freitagabend in der PROGR Turnhalle – entspannter Treff zum Anstoßen, Austauschen und neue Leute kennenlernen. Teil des Community-Projekts Connect Bern.",
             instructions: "Bitte ruf uns an, falls du uns nicht finden kannst",
-            address: "Speichergasse 4, 3011 Bern",
+            address: "Turnhalle, Speichergasse 4, 3011 Bern",
             mapsLink: "Google Maps",
             phone: "+41783166727",
-            time: "⏰ Jeden Freitag ab 18:00",
-            closing: "Wir freuen uns darauf, dich dort zu sehen!"
+            time: "⏰ Jeden Freitag ab 20:00",
+            closing: "Wir freuen uns darauf, dich dort zu sehen!",
+            registerTitle: "📢 Lass uns mehr Leute erreichen!",
+            registerDesc: "Wir haben das Event auf diesen Plattformen registriert. Wenn du ein Konto hast, registriere dich auch dort – der Algorithmus mag es, wenn etwas passiert, und es hilft uns, mehr Menschen zu erreichen! 🚀",
+            meetupLink: "Meetup",
+            meetupNote: "Es gibt ein Event für jedes Datum – es hilft uns wirklich, wenn du dich für mehrere Termine anmeldest, nicht nur für einen! 🙏"
         },
         en: {
             title: "Connect & Cheers",
             description: "Every Friday evening at PROGR Turnhalle – relaxed drinks, chats and connections. Part of the Connect Bern community project.",
             instructions: "Please call us if you can't find us",
-            address: "Speichergasse 4, 3011 Bern",
+            address: "Turnhalle, Speichergasse 4, 3011 Bern",
             mapsLink: "Google Maps",
             phone: "+41783166727",
-            time: "⏰ Every Friday from 18:00",
-            closing: "Looking forward to seeing you there!"
+            time: "⏰ Every Friday from 20:00",
+            closing: "Looking forward to seeing you there!",
+            registerTitle: "📢 Let's reach more people!",
+            registerDesc: "We've registered the event on these platforms. If you have an account, please also register there – the algorithm likes it when something is happening, and it helps us reach more people! 🚀",
+            meetupLink: "Meetup",
+            meetupNote: "There's an event for every date – it really helps if you mark that you'll attend on a few dates, not just one! 🙏"
         }
     };
 </script>
@@ -84,6 +92,17 @@
                         💬 WhatsApp
                     </a>
                 </div>
+            </div>
+
+            <div class="registerBox">
+                <h2 class="registerTitle">{content[lang].registerTitle}</h2>
+                <p class="registerDesc">{content[lang].registerDesc}</p>
+                <div class="registerButtons">
+                    <a href="https://www.meetup.com/meetup-bern/events/312932987" class="btn registerBtn meetup" target="_blank" rel="noopener noreferrer">
+                        👥 {content[lang].meetupLink}
+                    </a>
+                </div>
+                <p class="meetupNote">{content[lang].meetupNote}</p>
             </div>
 
             <p class="closing">
@@ -278,6 +297,68 @@
         font-size: 1.2em;
         font-style: italic;
         margin-top: 1em;
+    }
+
+    .registerBox {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 2em;
+        border-radius: 1em;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+        align-items: center;
+    }
+
+    .registerTitle {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin: 0;
+        text-align: center;
+    }
+
+    .registerDesc {
+        text-align: center;
+        margin: 0;
+        font-size: 1.05em;
+        line-height: 1.6;
+        max-width: 600px;
+    }
+
+    .registerButtons {
+        display: flex;
+        gap: 1em;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .registerBtn {
+        padding: 0.6em 1em;
+        font-size: 0.95em;
+        text-decoration: none;
+        border-radius: 0.6em;
+        font-weight: bold;
+        transition: all 0.2s ease;
+        border: 2px solid white;
+        display: inline-block;
+        width: auto;
+    }
+
+    .meetup {
+        background: #F64060;
+        color: white;
+    }
+
+    .meetup:hover {
+        background: #d63550;
+        transform: scale(1.05);
+    }
+
+    .meetupNote {
+        text-align: center;
+        margin: 0;
+        font-size: 0.95em;
+        font-style: italic;
     }
 
     .back {

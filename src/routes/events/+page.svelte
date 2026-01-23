@@ -533,13 +533,25 @@
                 paid: true
             },
             {
-                title: { de: 'Sprachenaustausch', en: 'Language Exchange' },
-                date: getNextWeekday(3),
+                title: { de: 'Language Exchange di Berna', en: 'Language Exchange di Berna' },
+                date: getNextWeekday(2),
                 time: '19:00',
                 recurring: 'weekly',
                 description: {
                     de: 'Sprachenaustausch im Connect Bern Haus - übe verschiedene Sprachen!',
                     en: 'Language exchange at Connect Bern house - practice different languages!'
+                },
+                link: '/groups/language-exchange',
+                organizer: 'connectbern'
+            },
+            {
+                title: { de: 'Language Exchange Bern', en: 'Language Exchange Bern' },
+                date: getNextWeekday(4),
+                time: '19:00',
+                recurring: 'weekly',
+                description: {
+                    de: 'Sprachenaustausch im Maison, Theaterplatz 7 (neben dem Zytglogge)',
+                    en: 'Language exchange at Maison, Theaterplatz 7 (next to the Zytglogge)'
                 },
                 link: '/groups/language-exchange',
                 organizer: 'connectbern'
