@@ -12,7 +12,6 @@
             title: "Sew Bern: Beginner Mending Group",
             subtitle: "Komm nähen mit uns! ✂️🧵",
             description: "Hast du Kleidung, die geflickt werden muss? Brauchst du etwas gesäumt? Komm mit uns nähen im Connect Bern Space!",
-            openToAll: "Diese Veranstaltung ist für alle offen.",
             forBeginners: "Wenn du neu im Nähen bist und Hilfe beim Einstieg brauchst, können wir dir beim Einfädeln einer Nadel helfen, Ratschläge geben und ein paar grundlegende Stiche zeigen. Grundlegendes Nähzubehör steht zur Verfügung.",
             forPros: "Wenn du ein Näh-Profi bist, bring gerne ein bestehendes Projekt mit. Stricken, Häkeln oder andere Handarbeiten sind ebenfalls willkommen.",
             date: "📅 Mittwoch, 28. Januar 2026",
@@ -25,13 +24,21 @@
             phone: "+1 (331) 213-1557",
             email: "apriljoywelch@gmail.com",
             whatsappMessage: "Hallo April, ich möchte gerne zum Sew Bern am Mittwoch, 28. Januar kommen!",
+            platformTitle: "📢 Lass uns mehr Leute erreichen!",
+            platformDesc: "Wir haben das Event auf diesen Plattformen registriert. Wenn du ein Konto hast, registriere dich auch dort – der Algorithmus mag es, wenn etwas passiert, und es hilft uns, mehr Menschen zu erreichen! 🚀",
+            ronorpLink: "Ronorp",
+            facebookLink: "Facebook",
+            redditLink: "Reddit",
+            spontactsLink: "Spontacts",
+            meetupLink: "Meetup",
+            flyerTitle: "📸 Flyer herunterladen",
+            flyerDesc: "Möchtest du das Event auf deinem Instagram oder Social Media teilen? Lade unseren Flyer herunter!",
             closingText: "Wir freuen uns darauf, mit dir zu nähen! 🧵"
         },
         en: {
             title: "Sew Bern: Beginner Mending Group",
             subtitle: "Come sew with us! ✂️🧵",
             description: "Do you have clothes that need to be mended? Do you need something hemmed? Come sew with us at the Connect Bern Space!",
-            openToAll: "This event is open to all.",
             forBeginners: "If you are new to sewing and want help getting started, we can help with threading a needle, provide advice, and demonstrate a few basic stitches. Basic sewing supplies are available for use.",
             forPros: "If you are a sewing pro, feel free to bring an existing project. Knitting, crocheting, or other arts are also welcome.",
             date: "📅 Wednesday, January 28, 2026",
@@ -44,6 +51,15 @@
             phone: "+1 (331) 213-1557",
             email: "apriljoywelch@gmail.com",
             whatsappMessage: "Hi April, I would like to come to Sew Bern on Wednesday, January 28th!",
+            platformTitle: "📢 Let's reach more people!",
+            platformDesc: "We've registered the event on these platforms. If you have an account, please also register there – the algorithm likes it when something is happening, and it helps us reach more people! 🚀",
+            ronorpLink: "Ronorp",
+            facebookLink: "Facebook",
+            redditLink: "Reddit",
+            spontactsLink: "Spontacts",
+            meetupLink: "Meetup",
+            flyerTitle: "📸 Download Flyer",
+            flyerDesc: "Want to share the event on your Instagram or social media? Download our flyer!",
             closingText: "We look forward to sewing with you! 🧵"
         }
     };
@@ -66,15 +82,15 @@
                 {content[lang].description}
             </p>
 
+            <div class="imageContainer">
+                <img src="/images/sew-bern.jpeg" alt="Sew Bern" class="eventImage" />
+            </div>
+
             <div class="infoBox">
                 <p class="date">{content[lang].date}</p>
                 <p class="eventDetail">{content[lang].time}</p>
                 <p class="eventDetail">{content[lang].location}</p>
                 <p class="locationNote">{content[lang].locationNote}</p>
-            </div>
-
-            <div class="openBox">
-                <p class="openText">{content[lang].openToAll}</p>
             </div>
 
             <div class="beginnersBox">
@@ -113,6 +129,36 @@
                         </a>
                     </div>
                 </div>
+            </div>
+
+            <div class="registerBox">
+                <h2 class="registerTitle">{content[lang].platformTitle}</h2>
+                <p class="registerDesc">{content[lang].platformDesc}</p>
+                <div class="registerButtons">
+                    <a href="https://ronorp.net/bern/market/boost-post/sew-bern-anfanger-gruppe-furs-flicken" class="btn registerBtn ronorp" target="_blank" rel="noopener noreferrer">
+                        🌐 {content[lang].ronorpLink}
+                    </a>
+                    <a href="https://www.facebook.com/events/3262830970557912/" class="btn registerBtn facebook" target="_blank" rel="noopener noreferrer">
+                        📘 {content[lang].facebookLink}
+                    </a>
+                    <a href="https://www.reddit.com/r/bern/comments/1qned5l/sew_bern_beginner_mending_group/" class="btn registerBtn reddit" target="_blank" rel="noopener noreferrer">
+                        🔴 {content[lang].redditLink}
+                    </a>
+                    <a href="https://community.spontacts.com/community/friendseek/wall/257187" class="btn registerBtn spontacts" target="_blank" rel="noopener noreferrer">
+                        🎯 {content[lang].spontactsLink}
+                    </a>
+                    <a href="https://www.meetup.com/meetup-bern/events/313018420/" class="btn registerBtn meetup" target="_blank" rel="noopener noreferrer">
+                        👥 {content[lang].meetupLink}
+                    </a>
+                </div>
+            </div>
+
+            <div class="flyerBox">
+                <h2 class="flyerTitle">{content[lang].flyerTitle}</h2>
+                <p class="flyerDesc">{content[lang].flyerDesc}</p>
+                <a href="/images/event-flyer-sew-bern.jpg" download="sew-bern-flyer.jpg" class="btn downloadBtn">
+                    ⬇️ {lang === 'de' ? 'Flyer herunterladen' : 'Download Flyer'}
+                </a>
             </div>
 
             <p class="closing">
@@ -224,18 +270,26 @@
         font-style: italic;
     }
 
-    .openBox {
-        background: rgba(100, 200, 255, 0.08);
-        padding: 1.5em;
-        border-radius: 1em;
-        border: 2px solid rgba(100, 200, 255, 0.3);
-        text-align: center;
+    .imageContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 1em 0;
     }
 
-    .openText {
-        font-size: 1.2em;
-        font-weight: 600;
-        margin: 0;
+    .eventImage {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        object-fit: cover;
+        border-radius: 1em;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+    }
+
+    .eventImage:hover {
+        transform: scale(1.05);
     }
 
     .beginnersBox {
@@ -396,5 +450,144 @@
     .back:hover {
         transform: scale(1.02);
         background: rgba(0, 0, 0, 0.7);
+    }
+
+    .registerBox {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 2em;
+        border-radius: 1em;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+        align-items: center;
+    }
+
+    .registerTitle {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin: 0;
+        text-align: center;
+    }
+
+    .registerDesc {
+        text-align: center;
+        margin: 0;
+        font-size: 1.05em;
+        line-height: 1.6;
+        max-width: 600px;
+    }
+
+    .registerButtons {
+        display: flex;
+        gap: 1em;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .registerBtn {
+        padding: 0.6em 1em;
+        font-size: 0.95em;
+        text-decoration: none;
+        border-radius: 0.6em;
+        font-weight: bold;
+        transition: all 0.2s ease;
+        border: 2px solid white;
+        display: inline-block;
+        width: auto;
+    }
+
+    .ronorp {
+        background: #7C3AED;
+        color: white;
+    }
+
+    .ronorp:hover {
+        background: #6d28d9;
+        transform: scale(1.05);
+    }
+
+    .facebook {
+        background: #1877F2;
+        color: white;
+    }
+
+    .facebook:hover {
+        background: #0d65d9;
+        transform: scale(1.05);
+    }
+
+    .reddit {
+        background: #FF4500;
+        color: white;
+    }
+
+    .reddit:hover {
+        background: #e03d00;
+        transform: scale(1.05);
+    }
+
+    .spontacts {
+        background: #FF6B35;
+        color: white;
+    }
+
+    .spontacts:hover {
+        background: #e55a2a;
+        transform: scale(1.05);
+    }
+
+    .meetup {
+        background: #F64060;
+        color: white;
+    }
+
+    .meetup:hover {
+        background: #d63550;
+        transform: scale(1.05);
+    }
+
+    .flyerBox {
+        background: rgba(167, 139, 250, 0.1);
+        padding: 2em;
+        border-radius: 1em;
+        border: 2px solid rgba(167, 139, 250, 0.3);
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        align-items: center;
+    }
+
+    .flyerTitle {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin: 0;
+        text-align: center;
+    }
+
+    .flyerDesc {
+        text-align: center;
+        margin: 0;
+        font-size: 1.1em;
+    }
+
+    .downloadBtn {
+        padding: 0.7em 1.3em;
+        font-size: 1.05em;
+        text-decoration: none;
+        border-radius: 0.6em;
+        font-weight: bold;
+        transition: all 0.2s ease;
+        border: 2px solid white;
+        background: #10B981;
+        color: white;
+        display: inline-block;
+        width: auto;
+    }
+
+    .downloadBtn:hover {
+        background: #059669;
+        transform: scale(1.05);
     }
 </style>
