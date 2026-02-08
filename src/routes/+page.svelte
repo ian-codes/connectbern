@@ -11,6 +11,13 @@
     <h1>Connect Bern</h1>
     <p class="subtitle">{@html t[language]["description"]}</p>
 
+    <a href="/events/speed-friending" class="featured-event-bubble">
+        <span class="bubble-badge">⚡ {language === 'de' ? 'Unser coolstes Event!' : 'Our coolest event!'}</span>
+        <span class="bubble-title">Speed Friending</span>
+        <span class="bubble-desc">{language === 'de' ? '25. Feb · Echte Gespräche statt Small Talk!' : 'Feb 25 · Real conversations, not small talk!'}</span>
+        <span class="bubble-cta">{language === 'de' ? 'Mehr erfahren →' : 'Learn more →'}</span>
+    </a>
+
     <div class="menu-grid">
         {#each MenuData as item}
             <a href="/{item.slug}" class="menu-card" title={typeof item.title === 'string' ? item.title : item.title[language]}>
@@ -145,6 +152,76 @@
     .menu-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255,255,255,.35); }
     .menu-icon { width: 40px; height: 40px; background-size: contain; background-repeat: no-repeat; background-position: center; filter: invert(1); }
     .menu-title { font-size: 1rem; }
+
+    /* Featured Event Bubble */
+    .featured-event-bubble {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 1rem 1.5rem;
+        margin: 0.5rem 0 1rem;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 1rem;
+        text-decoration: none;
+        color: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        max-width: 400px;
+        width: 100%;
+    }
+
+    .featured-event-bubble:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    .bubble-badge {
+        font-size: 0.75rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        background: rgba(255, 180, 100, 0.4);
+        padding: 0.25em 0.75em;
+        border-radius: 1em;
+        color: #fff;
+    }
+
+    .bubble-title {
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin: 0.1rem 0;
+    }
+
+    .bubble-desc {
+        font-size: 0.9rem;
+        opacity: 0.95;
+        text-align: center;
+    }
+
+    .bubble-cta {
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-top: 0.3rem;
+        opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+        .featured-event-bubble {
+            padding: 0.8rem 1.2rem;
+            margin: 0.5rem 1rem 1rem;
+        }
+
+        .bubble-title {
+            font-size: 1.2rem;
+        }
+
+        .bubble-desc {
+            font-size: 0.85rem;
+        }
+    }
 
     /* About Section */
     .about-section {

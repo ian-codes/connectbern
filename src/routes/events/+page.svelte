@@ -480,6 +480,21 @@
                 organizer: 'connectbern'
             },
             {
+                title: { de: 'Speed Friending', en: 'Speed Friending' },
+                date: new Date(2026, 1, 25, 18, 0),
+                time: '18:00-19:30',
+                description: {
+                    de: 'Unser coolstes Event! Echte Gespräche statt Small Talk - wir matchen dich basierend auf deinen Interessen. 10 CHF Kaution. ⚡🤝',
+                    en: 'Our coolest event! Real conversations instead of small talk - we match you based on your interests. 10 CHF deposit. ⚡🤝'
+                },
+                link: '/events/speed-friending',
+                recurring: false,
+                organizer: 'connectbern',
+                featured: true,
+                paid: true,
+                optionalPaid: true
+            },
+            {
                 title: { de: 'Brunch & Games', en: 'Brunch & Games' },
                 date: new Date(2026, 0, 17, 9, 0),
                 time: '09:00',
