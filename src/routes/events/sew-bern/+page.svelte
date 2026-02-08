@@ -156,7 +156,7 @@
             <div class="flyerBox">
                 <h2 class="flyerTitle">{content[lang].flyerTitle}</h2>
                 <p class="flyerDesc">{content[lang].flyerDesc}</p>
-                <a href="/images/event-flyer-sew-bern.jpg" download="sew-bern-flyer.jpg" class="btn downloadBtn">
+                <a href="/images/sew-bern-flyer.jpeg" download="sew-bern-flyer.jpeg" class="btn downloadBtn">
                     ⬇️ {lang === 'de' ? 'Flyer herunterladen' : 'Download Flyer'}
                 </a>
             </div>
