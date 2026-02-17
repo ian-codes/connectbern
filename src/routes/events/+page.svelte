@@ -547,9 +547,10 @@
                 organizer: 'connectbern',
                 paid: true
             },
+            // Skip 2026-02-17 (cancelled for this date only)
             {
                 title: { de: 'Language Exchange di Berna', en: 'Language Exchange di Berna' },
-                date: getNextWeekday(2),
+                date: (() => { const d = getNextWeekday(2); if (d.getFullYear() === 2026 && d.getMonth() === 1 && d.getDate() === 17) d.setDate(d.getDate() + 7); return d; })(),
                 time: '19:00',
                 recurring: 'weekly',
                 description: {
