@@ -24,7 +24,7 @@
     $: lang = $currentLanguage;
 
     // Update this each week!
-    const organizerOfTheWeek = "Alessia";
+    const organizerOfTheWeek = "Jacqueline & Laura";
 
     const content = {
         de: {
@@ -33,8 +33,8 @@
             description: "Triff Leute aus aller Welt, übe Sprachen und knüpfe echte Verbindungen. Jeden Dienstag im Connect Bern Space. Ob du Deutsch, Englisch, Französisch, Spanisch oder eine andere Sprache üben möchtest, du bist herzlich willkommen!",
             schedule: "📅 Jeden Dienstag um 19:00 Uhr",
             location: "📍 Connect Bern Space",
-            organizerLabel: "Organisatorin dieser Woche",
-            organizerSub: "Sie führt euch durch den Abend 🌟",
+            organizerLabel: "Organisatorinnen dieser Woche",
+            organizerSub: "Sie führen euch durch den Abend 🌟",
             languagesLabel: "Gesprochene Sprachen",
             instructions: "Schreib uns auf WhatsApp, um die Adresse zu erhalten und uns mitzuteilen, dass du kommst!",
             phone: "+41783166727",
@@ -54,7 +54,7 @@
             description: "Meet people from all over the world, practice languages, and make genuine connections. Every Tuesday at the Connect Bern Space. Whether you want to practice German, English, French, Spanish, or any other language, you're warmly welcome!",
             schedule: "📅 Every Tuesday at 7:00 PM",
             location: "📍 Connect Bern Space",
-            organizerLabel: "Organizer of the Week",
+            organizerLabel: "Organizers of the Week",
             organizerSub: "Leading the evening for you 🌟",
             languagesLabel: "Languages spoken",
             instructions: "Write us on WhatsApp to get the address and let us know you're coming!",
