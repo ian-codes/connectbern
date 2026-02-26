@@ -547,17 +547,17 @@
                 organizer: 'connectbern',
                 paid: true
             },
-            // Skip 2026-02-17 (cancelled for this date only)
+            // Skip 2026-02-17 (cancelled); 2026-03-03 moved to Wednesday 2026-03-04
             {
                 title: { de: 'Language Exchange di Berna', en: 'Language Exchange di Berna' },
-                date: (() => { const d = getNextWeekday(2); if (d.getFullYear() === 2026 && d.getMonth() === 1 && d.getDate() === 17) d.setDate(d.getDate() + 7); return d; })(),
+                date: (() => { const d = getNextWeekday(2); if (d.getFullYear() === 2026 && d.getMonth() === 1 && d.getDate() === 17) d.setDate(d.getDate() + 7); if (d.getFullYear() === 2026 && d.getMonth() === 2 && d.getDate() === 3) d.setDate(d.getDate() + 1); return d; })(),
                 time: '19:00',
                 recurring: 'weekly',
                 description: {
                     de: 'Sprachenaustausch im Connect Bern Haus - übe verschiedene Sprachen!',
                     en: 'Language exchange at Connect Bern house - practice different languages!'
                 },
-                link: '/groups/language-exchange',
+                link: '/events/language-exchange-di-berna',
                 organizer: 'connectbern'
             },
             {
