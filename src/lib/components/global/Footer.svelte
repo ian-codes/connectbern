@@ -79,6 +79,10 @@
         </div>
     </div>
 
+    <div class="impressum-section">
+        <a href="/impressum" class="impressum-link">Impressum</a>
+    </div>
+
     <div class="open-source-section">
         <a href="https://github.com/ian-codes/connectbern/issues" target="_blank" rel="noopener noreferrer" class="github-link">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -167,6 +171,28 @@
 
     .contact-item.whatsapp:hover {
         background: rgba(37, 211, 102, 0.3);
+    }
+
+    .impressum-section {
+        margin-top: 2em;
+        padding-top: 1.5em;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: center;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .impressum-link {
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        font-size: 0.9em;
+        transition: color 0.2s ease;
+    }
+
+    .impressum-link:hover {
+        color: rgba(255, 255, 255, 0.9);
     }
 
     .open-source-section {
