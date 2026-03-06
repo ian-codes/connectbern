@@ -722,6 +722,18 @@
                 link: '/events/karaoke-night-delfino'
             },
             {
+                title: { de: 'Wanderung: First - Bachalpsee - Bort', en: 'Hike: First - Bachalpsee - Bort' },
+                date: new Date(2026, 2, 14, 9, 0),
+                time: '09:00',
+                description: {
+                    de: 'Entspannte Wanderung durch die Berge mit gefrorenem See, Wäldern und Bergpanorama. Anfängerfreundlich, Hunde willkommen (an der Leine). Kleine Gruppe. 🥾🏔️',
+                    en: 'Chill hike through the mountains with a frozen lake, forests and mountain views. Beginner friendly, dogs welcome (leashed). Small group. 🥾🏔️'
+                },
+                link: '/events/hiking',
+                recurring: false,
+                organizer: 'connectbern'
+            },
+            {
                 title: { de: 'Patt Event', en: 'Patt Event' },
                 date: getNextWeekday(6),
                 recurring: 'monthly',
