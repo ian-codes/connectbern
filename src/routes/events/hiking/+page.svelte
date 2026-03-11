@@ -56,6 +56,9 @@
             questionsDesc: "Schreib uns auf WhatsApp:",
             whatsappMessage: "Hi, ich habe eine Frage zur Wanderung First-Bachalpsee-Bort!",
             phone: "+41783166727",
+            helpTitle: "📢 Hilf uns, mehr Leute zu erreichen!",
+            helpDesc: "Wir haben das Event auf diesen Plattformen registriert. Wenn du ein Konto hast, registriere dich auch dort – der Algorithmus mag es, wenn etwas passiert, und es hilft uns, mehr Menschen zu erreichen! 🚀",
+            meetupLink: "Meetup",
             closing: "Wir freuen uns auf dich!"
         },
         en: {
@@ -90,6 +93,9 @@
             questionsDesc: "Write us on WhatsApp:",
             whatsappMessage: "Hi, I have a question about the First-Bachalpsee-Bort hike!",
             phone: "+41783166727",
+            helpTitle: "📢 Help us reach more people!",
+            helpDesc: "We've registered the event on these platforms. If you have an account, please also register there – the algorithm likes it when something is happening, and it helps us reach more people! 🚀",
+            meetupLink: "Meetup",
             closing: "We look forward to seeing you!"
         }
     };
@@ -190,6 +196,16 @@
                 <a href="https://wa.me/{content[lang].phone.replace(/[^0-9]/g, '')}?text={encodeURIComponent(content[lang].whatsappMessage)}" class="btn whatsappBtn" target="_blank" rel="noopener noreferrer">
                     💬 WhatsApp
                 </a>
+            </div>
+
+            <div class="registerBox">
+                <h2 class="registerTitle">{content[lang].helpTitle}</h2>
+                <p class="registerDesc">{content[lang].helpDesc}</p>
+                <div class="registerButtons">
+                    <a href="https://www.meetup.com/meetup-bern/events/313726016" class="btn registerBtn meetup" target="_blank" rel="noopener noreferrer">
+                        👥 {content[lang].meetupLink}
+                    </a>
+                </div>
             </div>
 
             <p class="closing">
@@ -476,6 +492,62 @@
     .whatsappBtn:hover {
         background: #1fb855;
         transform: scale(1.03);
+    }
+
+    .registerBox {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 2em;
+        border-radius: 1em;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+        align-items: center;
+    }
+
+    .registerTitle {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin: 0;
+        text-align: center;
+    }
+
+    .registerDesc {
+        text-align: center;
+        margin: 0;
+        font-size: 1.05em;
+        line-height: 1.6;
+        max-width: 600px;
+    }
+
+    .registerButtons {
+        display: flex;
+        gap: 1em;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .registerBtn {
+        padding: 0.6em 1em;
+        font-size: 0.95em;
+        text-decoration: none;
+        border-radius: 0.6em;
+        font-weight: bold;
+        transition: all 0.2s ease;
+        border: 2px solid white;
+        display: inline-block;
+        width: auto;
+    }
+
+    .meetup {
+        background: #F64060;
+        color: white;
+    }
+
+    .meetup:hover {
+        background: #d63550;
+        transform: scale(1.05);
     }
 
     .closing {
