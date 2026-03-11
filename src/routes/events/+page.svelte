@@ -569,8 +569,7 @@
                     de: 'Sprachenaustausch im Maison, Theaterplatz 7 (neben dem Zytglogge)',
                     en: 'Language exchange at Maison, Theaterplatz 7 (next to the Zytglogge)'
                 },
-                link: '/groups/language-exchange',
-                organizer: 'connectbern'
+                link: '/groups/language-exchange'
             },
             {
                 title: { de: 'Denk:Mal - Schweizerdeutsch Kurs', en: 'Denk:Mal - Swiss German Course' },
