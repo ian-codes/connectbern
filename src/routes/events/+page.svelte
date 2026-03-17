@@ -721,6 +721,19 @@
                 link: '/events/karaoke-night-delfino'
             },
             {
+                title: { de: 'Connect Bern Welcome Party', en: 'Connect Bern Welcome Party' },
+                date: new Date(2026, 2, 24, 18, 0),
+                time: '18:00',
+                description: {
+                    de: 'Wir feiern den Start unseres Community-Projekts! Triff die Menschen dahinter, sieh dir den Space an und geniesse einen entspannten Abend. Begrenzte Plätze – Anmeldung auf der App erforderlich. 🎉',
+                    en: 'We are celebrating the start of our community project! Meet the people behind it, see the space, and enjoy a relaxed evening. Limited spots – register on the app. 🎉'
+                },
+                link: '/events/welcome-party',
+                recurring: false,
+                organizer: 'connectbern',
+                featured: true
+            },
+            {
                 title: { de: 'Wanderung: First - Bachalpsee - Bort', en: 'Hike: First - Bachalpsee - Bort' },
                 date: new Date(2026, 2, 14, 9, 0),
                 time: '09:00',

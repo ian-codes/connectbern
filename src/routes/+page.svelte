@@ -11,10 +11,10 @@
     <h1>Connect Bern</h1>
     <p class="subtitle">{@html t[language]["description"]}</p>
 
-    <a href="/events/speed-friending-2" class="featured-event-bubble">
-        <span class="bubble-badge">🌟⚡ {language === 'de' ? 'Unser coolstes Event!' : 'Our coolest event!'}</span>
-        <span class="bubble-title">Speed Friending #2</span>
-        <span class="bubble-desc">{language === 'de' ? '26. März · Gleiche Energie, neue Leute!' : 'Mar 26 · Same vibe, new people!'}</span>
+    <a href="/events/welcome-party" class="featured-event-bubble">
+        <span class="bubble-badge">🎉 {language === 'de' ? 'Welcome Party' : 'Welcome Party'}</span>
+        <span class="bubble-title">Connect Bern Welcome Party</span>
+        <span class="bubble-desc">{language === 'de' ? '24. März · Feier mit uns den Start!' : 'Mar 24 · Celebrate the beginning with us!'}</span>
         <span class="bubble-cta">{language === 'de' ? 'Mehr erfahren →' : 'Learn more →'}</span>
     </a>
 
