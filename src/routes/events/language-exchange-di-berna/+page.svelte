@@ -23,8 +23,8 @@
 
     $: lang = $currentLanguage;
 
-    // Update this each week!
-    const organizerOfTheWeek = "Jacqueline & Laura";
+    // Update this each week! Leave empty string to hide the organizer block.
+    const organizerOfTheWeek = "";
 
     const content = {
         de: {
@@ -95,6 +95,7 @@
                 <p class="location">{content[lang].location}</p>
             </div>
 
+            {#if organizerOfTheWeek}
             <div class="organizerBox">
                 <div class="organizerStars">⭐ ⭐ ⭐</div>
                 <p class="organizerLabel">{content[lang].organizerLabel}</p>
@@ -104,6 +105,7 @@
                     🇩🇪 🇬🇧 🇫🇷 🇪🇸 🇮🇹 🇵🇹 🌍
                 </div>
             </div>
+            {/if}
 
             <div class="contactBox">
                 <p class="instructions">{content[lang].instructions}</p>
