@@ -1,19 +1,19 @@
 <svelte:head>
 	<title>Connect Bern Welcome Party • Events • Connect Bern</title>
-	<meta name="description" content="We are celebrating the start of something new — our community project Connect Bern. Come by, meet the people behind the project, see the space, and connect with others." />
+	<meta name="description" content="We are celebrating the start of something new, our community project Connect Bern. Come by, meet the people behind the project, see the space, and connect with others." />
 
 	<!-- Open Graph -->
 	<meta property="og:url" content="https://connectbern.ch/events/welcome-party" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="Connect Bern Welcome Party" />
-	<meta property="og:description" content="We are celebrating the start of something new — our community project Connect Bern. Everyone is invited!" />
+	<meta property="og:description" content="We are celebrating the start of something new, our community project Connect Bern. Everyone is invited!" />
 
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta property="twitter:domain" content="connectbern.ch" />
 	<meta property="twitter:url" content="https://connectbern.ch/events/welcome-party" />
 	<meta name="twitter:title" content="Connect Bern Welcome Party" />
-	<meta name="twitter:description" content="We are celebrating the start of something new — our community project Connect Bern. Everyone is invited!" />
+	<meta name="twitter:description" content="We are celebrating the start of something new, our community project Connect Bern. Everyone is invited!" />
 </svelte:head>
 
 <script>
@@ -24,18 +24,17 @@
     const content = {
         de: {
             title: "Connect Bern Welcome Party",
-            badge: "🎉 Willkommen!",
             date: "Dienstag, 24. März 2026",
-            time: "18:00 – 21:00 Uhr",
-            description: "Wir feiern den Start von etwas Neuem – unserem Community-Projekt Connect Bern. Und alle sind eingeladen!",
-            p1: "Was als Idee begann, ist jetzt ein echtes Projekt: ein gemeinsamer Raum, regelmässige Events, eine wachsende Community und eine brandneue App für Web, Android und iPhone – danke Samir. Mit Isabel und Manon, die neu in den Space einziehen, fühlt es sich wie der perfekte Moment an, die Türen zu öffnen, alte und neue Freunde willkommen zu heissen und den Beginn dieses neuen Kapitels zu feiern.",
+            time: "18:00 bis 21:00 Uhr",
+            description: "Wir feiern den Start von etwas Neuem, unserem Community-Projekt Connect Bern. Und alle sind eingeladen!",
+            p1: "Was als Idee begann, ist jetzt ein echtes Projekt: ein gemeinsamer Raum, regelmässige Events, eine wachsende Community und eine brandneue App für Web, Android und iPhone, danke Samir. Mit Isabel und Manon, die neu in den Space einziehen, fühlt es sich wie der perfekte Moment an, die Türen zu öffnen, alte und neue Freunde willkommen zu heissen und den Beginn dieses neuen Kapitels zu feiern.",
             p2: "Komm vorbei, triff die Menschen hinter dem Projekt, sieh dir den Raum an, vernetze dich mit anderen und geniesse einen entspannten Abend zusammen.",
-            p3: "Und ja – wir feiern auch Chagais Geburtstag 🎉",
-            spotsTitle: "👉 Melde dich an – begrenzte Plätze!",
+            p3: "Und ja, wir feiern auch Chagais Geburtstag 🎉",
+            spotsTitle: "👉 Melde dich an, begrenzte Plätze!",
             spotsDesc: "Bitte registriere dich auf unserer App um teilzunehmen. Wir müssen Anmeldungen genehmigen, da wir begrenzte Plätze haben.",
             registerBtn: "Jetzt anmelden",
             helpTitle: "📢 Lass uns mehr Leute erreichen!",
-            helpDesc: "Wir haben das Event auf diesen Plattformen registriert. Wenn du ein Konto hast, registriere dich auch dort – der Algorithmus mag es, wenn etwas passiert, und es hilft uns, mehr Menschen zu erreichen! 🚀",
+            helpDesc: "Wir haben das Event auf diesen Plattformen registriert. Wenn du ein Konto hast, registriere dich auch dort. Der Algorithmus mag es, wenn etwas passiert, und es hilft uns, mehr Menschen zu erreichen! 🚀",
             meetupLink: "Meetup",
             redditLink: "Reddit",
             lumaLink: "Luma",
@@ -43,18 +42,17 @@
         },
         en: {
             title: "Connect Bern Welcome Party",
-            badge: "🎉 Welcome!",
             date: "Tuesday, March 24, 2026",
-            time: "6:00 PM – 9:00 PM",
-            description: "We are celebrating the start of something new — our community project Connect Bern. And everyone is invited!",
-            p1: "What began as an idea is now a real project: a shared space, regular events, a growing community, and a brand new app on web, Android and iPhone — thanks to Samir. With new roommates Isabel and Manon joining the space, it felt like the perfect moment to open the doors, welcome friends old and new, and celebrate the beginning of this next chapter.",
+            time: "6:00 PM to 9:00 PM",
+            description: "We are celebrating the start of something new, our community project Connect Bern. And everyone is invited!",
+            p1: "What began as an idea is now a real project: a shared space, regular events, a growing community, and a brand new app on web, Android and iPhone, thanks to Samir. With new roommates Isabel and Manon joining the space, it felt like the perfect moment to open the doors, welcome friends old and new, and celebrate the beginning of this next chapter.",
             p2: "Come by, meet the people behind the project, see the space, connect with others, and enjoy a relaxed evening together.",
             p3: "And yes, we will also be celebrating Chagai's birthday along the way 🎉",
-            spotsTitle: "👉 Register now — limited spots!",
+            spotsTitle: "👉 Register now, limited spots!",
             spotsDesc: "Please register on our app to join. We approve registrations as we have limited spots.",
             registerBtn: "Register now",
             helpTitle: "📢 Let's reach more people!",
-            helpDesc: "We've registered the event on these platforms. If you have an account, please also register there – the algorithm likes it when something is happening, and it helps us reach more people! 🚀",
+            helpDesc: "We've registered the event on these platforms. If you have an account, please also register there. The algorithm likes it when something is happening, and it helps us reach more people! 🚀",
             meetupLink: "Meetup",
             redditLink: "Reddit",
             lumaLink: "Luma",
@@ -71,7 +69,6 @@
     <div class="cntr">
         <div class="textContainer">
             <div class="titleSection">
-                <span class="badge">{content[lang].badge}</span>
                 <h1>{content[lang].title}</h1>
             </div>
 
