@@ -25,16 +25,23 @@
         de: {
             title: "Connect Bern Welcome Party",
             date: "Dienstag, 24. März 2026",
-            time: "18:00 bis 21:00 Uhr",
+            time: "Ab 18:00 Uhr",
             description: "Wir feiern den Start von etwas Neuem, unserem Community-Projekt Connect Bern. Und alle sind eingeladen!",
-            p1: "Was als Idee begann, ist jetzt ein echtes Projekt: ein gemeinsamer Raum, regelmässige Events, eine wachsende Community und eine brandneue App für Web, Android und iPhone, danke Samir. Mit Isabel und Manon, die neu in den Space einziehen, fühlt es sich wie der perfekte Moment an, die Türen zu öffnen, alte und neue Freunde willkommen zu heissen und den Beginn dieses neuen Kapitels zu feiern.",
+            p1intro: "Was als Idee begann, ist jetzt ein echtes Projekt:",
+            p1items: ["Ein gemeinsamer Raum", { text: "Regelmässige Events", link: "/events" }, "Eine wachsende Community", "Unsere neuen Mitbewohnerinnen Isabel und Manon"],
+            p1app: "Eine brandneue App für Web, Android und iPhone, danke Samir 🙏",
+            p1outro: "Mit allem, was gerade passiert, fühlte sich dieser Moment einfach perfekt an, um die Türen zu öffnen, alte und neue Freunde willkommen zu heissen und den Beginn dieses neuen Kapitels zu feiern.",
             p2: "Komm vorbei, triff die Menschen hinter dem Projekt, sieh dir den Raum an, vernetze dich mit anderen und geniesse einen entspannten Abend zusammen.",
             p3: "Und ja, wir feiern auch Chagais Geburtstag 🎉",
+            onlineTitle: "Feier mit uns, auch online!",
+            onlineDesc1: "Die Party findet auch auf unserer digitalen Karte statt, und wir erwarten viele Leute dort. Du kannst live sehen, wie die Party läuft, Leute kennenlernen und einfach dabei sein.",
+            onlineDesc2: "Egal ob alle Plätze vergeben sind, du nicht in Bern bist oder einfach nicht persönlich kommen kannst: wir würden uns freuen, dich zumindest kurz zu sehen, einfach um Hallo zu sagen. 👋",
+            onlineBtn: "Zur digitalen Karte",
             spotsTitle: "👉 Melde dich an, begrenzte Plätze!",
             spotsDesc: "Bitte registriere dich auf unserer App um teilzunehmen. Wir müssen Anmeldungen genehmigen, da wir begrenzte Plätze haben.",
             registerBtn: "Jetzt anmelden",
             helpTitle: "📢 Lass uns mehr Leute erreichen!",
-            helpDesc: "Wir haben das Event auf diesen Plattformen registriert. Wenn du ein Konto hast, registriere dich auch dort. Der Algorithmus mag es, wenn etwas passiert, und es hilft uns, mehr Menschen zu erreichen! 🚀",
+            helpDesc: "Wir haben das Event auf diesen Plattformen registriert. Wenn du ein Konto hast (oder einfach eines erstellst), registriere dich auch dort. Der Algorithmus mag es, wenn etwas passiert, und es hilft uns, mehr Menschen zu erreichen! 🚀",
             meetupLink: "Meetup",
             redditLink: "Reddit",
             lumaLink: "Luma",
@@ -43,16 +50,23 @@
         en: {
             title: "Connect Bern Welcome Party",
             date: "Tuesday, March 24, 2026",
-            time: "6:00 PM to 9:00 PM",
+            time: "6 p.m. and onwards",
             description: "We are celebrating the start of something new, our community project Connect Bern. And everyone is invited!",
-            p1: "What began as an idea is now a real project: a shared space, regular events, a growing community, and a brand new app on web, Android and iPhone, thanks to Samir. With new roommates Isabel and Manon joining the space, it felt like the perfect moment to open the doors, welcome friends old and new, and celebrate the beginning of this next chapter.",
+            p1intro: "What began as an idea is now a real project:",
+            p1items: ["A shared space", { text: "Regular events", link: "/events" }, "A growing community", "Our new roommates Isabel and Manon"],
+            p1app: "A brand new app on web, Android and iPhone, thank you Samir 🙏🥰",
+            p1outro: "With all of that coming together, we thought there's no better moment to open the doors, welcome friends old and new, and celebrate the beginning of this next chapter.",
             p2: "Come by, meet the people behind the project, see the space, connect with others, and enjoy a relaxed evening together.",
             p3: "And yes, we will also be celebrating Chagai's birthday along the way 🎉",
+            onlineTitle: "Celebrate with us, online too!",
+            onlineDesc1: "The party is also happening on our digital map, and we're expecting a lot of people there. You can see the party live, meet people, and just be part of it all.",
+            onlineDesc2: "Whether the spots are all taken, you're not in Bern, or you just can't make it in person: we'd love to see you even for a few minutes, just to say hi. 👋",
+            onlineBtn: "Go to Digital Map",
             spotsTitle: "👉 Register now, limited spots!",
             spotsDesc: "Please register on our app to join. We approve registrations as we have limited spots.",
             registerBtn: "Register now",
             helpTitle: "📢 Let's reach more people!",
-            helpDesc: "We've registered the event on these platforms. If you have an account, please also register there. The algorithm likes it when something is happening, and it helps us reach more people! 🚀",
+            helpDesc: "We've registered the event on these platforms. If you have an account (or just create one), please also register there. The algorithm likes it when something is happening, and it helps us reach more people! 🚀",
             meetupLink: "Meetup",
             redditLink: "Reddit",
             lumaLink: "Luma",
@@ -72,6 +86,8 @@
                 <h1>{content[lang].title}</h1>
             </div>
 
+            <img src="/images/connect-bern-welcome-party.png" alt="Connect Bern Welcome Party" class="eventImage" />
+
             <div class="dateTimeBox">
                 <p class="date">📅 {content[lang].date}</p>
                 <p class="time">⏰ {content[lang].time}</p>
@@ -82,11 +98,30 @@
                 {content[lang].description}
             </p>
 
-            <p class="bodyText">{content[lang].p1}</p>
+            <div class="p1Block">
+                <p class="bodyText">{content[lang].p1intro}</p>
+                <ul class="p1List">
+                    {#each content[lang].p1items as item}
+                        <li><span>{typeof item === 'string' ? item : item.text}{#if typeof item !== 'string'}&nbsp;&nbsp;<a href={item.link} class="appLink">↗</a>{/if}</span></li>
+                    {/each}
+                    <li><span>{content[lang].p1app}&nbsp;&nbsp;<a href="https://app.connectbern.ch" class="appLink" target="_blank" rel="noopener noreferrer">↗</a></span></li>
+                </ul>
+                <p class="bodyText">{content[lang].p1outro}</p>
+            </div>
 
             <p class="bodyText">{content[lang].p2}</p>
 
             <p class="birthdayText">{content[lang].p3}</p>
+
+            <div class="onlineBox">
+                <span class="onlineEmoji">💻🎉👥</span>
+                <p class="onlineTitle">{content[lang].onlineTitle}</p>
+                <p class="onlineDesc">{content[lang].onlineDesc1}</p>
+                <p class="onlineDesc onlineDesc2">{content[lang].onlineDesc2}</p>
+                <a href="/map" class="btn onlineBtn">
+                    🗺️ {content[lang].onlineBtn}
+                </a>
+            </div>
 
             <div class="registrationBox">
                 <p class="spotsTitle">{content[lang].spotsTitle}</p>
@@ -103,10 +138,10 @@
                     <a href="https://www.meetup.com/meetup-bern/events/313791459" class="btn registerBtn meetup" target="_blank" rel="noopener noreferrer">
                         👥 {content[lang].meetupLink}
                     </a>
-                    <a href="https://www.reddit.com/r/bern/" class="btn registerBtn reddit" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.reddit.com/r/bern/comments/1rxvlsr/connect_bern_welcome_party" class="btn registerBtn reddit" target="_blank" rel="noopener noreferrer">
                         🔴 {content[lang].redditLink}
                     </a>
-                    <a href="https://lu.ma/connectbern" class="btn registerBtn luma" target="_blank" rel="noopener noreferrer">
+                    <a href="https://luma.com/1704htc0" class="btn registerBtn luma" target="_blank" rel="noopener noreferrer">
                         🗓️ {content[lang].lumaLink}
                     </a>
                 </div>
@@ -218,10 +253,132 @@
         font-size: 1.1em;
     }
 
+    .p1Block {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8em;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1em;
+        padding: 1.5em 2em;
+    }
+
+    .p1List {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+    .p1List li {
+        display: flex;
+        align-items: center;
+        gap: 0.65em;
+        font-size: 1.05em;
+        line-height: 1.5;
+    }
+
+    .appLink {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.4em;
+        height: 1.4em;
+        font-size: 0.8em;
+        border-radius: 0.4em;
+        border: 1px solid rgba(255, 180, 100, 0.5);
+        background: rgba(255, 180, 100, 0.15);
+        color: rgba(255, 180, 100, 0.9);
+        text-decoration: none;
+        vertical-align: middle;
+        margin-left: 0.3em;
+        transition: background 0.15s ease, transform 0.15s ease;
+        line-height: 1;
+    }
+
+    .appLink:hover {
+        background: rgba(255, 180, 100, 0.3);
+        transform: scale(1.1);
+    }
+
+    .p1List li::before {
+        content: "✦";
+        color: rgba(255, 180, 100, 0.9);
+        font-size: 0.75em;
+        flex-shrink: 0;
+    }
+
     .birthdayText {
         text-align: center;
         font-size: 1.15em;
         font-weight: 600;
+    }
+
+    .eventImage {
+        width: 100%;
+        border-radius: 1em;
+        object-fit: cover;
+    }
+
+    .onlineBox {
+        background: linear-gradient(135deg, rgba(80, 160, 255, 0.12), rgba(120, 80, 255, 0.12));
+        padding: 2em;
+        border-radius: 1.2em;
+        border: 1px solid rgba(100, 180, 255, 0.35);
+        box-shadow: 0 4px 20px rgba(80, 160, 255, 0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 0.9em;
+        align-items: center;
+        text-align: center;
+    }
+
+    .onlineEmoji {
+        font-size: 2.2em;
+        line-height: 1;
+    }
+
+    .onlineTitle {
+        font-size: 1.35em;
+        font-weight: 800;
+        margin: 0;
+        letter-spacing: -0.01em;
+    }
+
+    .onlineDesc {
+        font-size: 1em;
+        margin: 0;
+        opacity: 0.92;
+        max-width: 520px;
+        line-height: 1.6;
+    }
+
+    .onlineDesc2 {
+        font-style: italic;
+        opacity: 0.85;
+    }
+
+    .onlineBtn {
+        padding: 0.65em 1.4em;
+        font-size: 1em;
+        text-decoration: none;
+        border-radius: 0.6em;
+        font-weight: bold;
+        transition: all 0.2s ease;
+        border: 2px solid rgba(100, 180, 255, 0.6);
+        background: rgba(100, 180, 255, 0.22);
+        color: white;
+        display: inline-block;
+        width: auto;
+        margin-top: 0.3em;
+    }
+
+    .onlineBtn:hover {
+        background: rgba(100, 180, 255, 0.38);
+        transform: scale(1.04);
+        box-shadow: 0 4px 14px rgba(80, 160, 255, 0.3);
     }
 
     .registrationBox {
