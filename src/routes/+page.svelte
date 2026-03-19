@@ -12,6 +12,7 @@
     <p class="subtitle">{@html t[language]["description"]}</p>
 
     <a href="/events/welcome-party" class="featured-event-bubble">
+        <img src="/images/connect-bern-welcome-party.png" alt="Connect Bern Welcome Party" class="bubble-img" />
         <span class="bubble-badge">🎉 {language === 'de' ? 'Welcome Party' : 'Welcome Party'}</span>
         <span class="bubble-title">Connect Bern Welcome Party</span>
         <span class="bubble-desc">{language === 'de' ? '24. März · Feier mit uns den Start!' : 'Mar 24 · Celebrate the beginning with us!'}</span>
@@ -176,6 +177,13 @@
         transform: translateY(-3px) scale(1.02);
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
         background: rgba(255, 255, 255, 0.12);
+    }
+
+    .bubble-img {
+        width: 100%;
+        border-radius: 0.6rem;
+        object-fit: cover;
+        max-height: 160px;
     }
 
     .bubble-badge {
