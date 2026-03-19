@@ -45,6 +45,7 @@
             meetupLink: "Meetup",
             facebookLink: "Facebook",
             lumaLink: "Luma",
+            redditLink: "Reddit",
             closing: "Wir freuen uns auf dich!"
         },
         en: {
@@ -68,6 +69,7 @@
             meetupLink: "Meetup",
             facebookLink: "Facebook",
             lumaLink: "Luma",
+            redditLink: "Reddit",
             closing: "We look forward to seeing you!"
         }
     };
@@ -135,6 +137,9 @@
                     </a>
                     <a href="https://luma.com/hohk6luw" class="btn registerBtn luma" target="_blank" rel="noopener noreferrer">
                         🗓️ {content[lang].lumaLink}
+                    </a>
+                    <a href="https://www.reddit.com/r/bern/comments/1rxw4fo/we_ran_a_speed_friending_event_in_bern_last_month/" class="btn registerBtn reddit" target="_blank" rel="noopener noreferrer">
+                        🔴 {content[lang].redditLink}
                     </a>
                 </div>
             </div>
@@ -417,6 +422,16 @@
 
     .luma:hover {
         background: #7c3aed;
+        transform: scale(1.05);
+    }
+
+    .reddit {
+        background: #FF4500;
+        color: white;
+    }
+
+    .reddit:hover {
+        background: #e03d00;
         transform: scale(1.05);
     }
 

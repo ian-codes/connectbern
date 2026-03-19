@@ -734,6 +734,21 @@
                 featured: true
             },
             {
+                title: { de: 'Speed Friending #2', en: 'Speed Friending #2' },
+                date: new Date(2026, 2, 26, 18, 0),
+                time: '18:00',
+                description: {
+                    de: 'Echte Gespräche statt Small Talk – wir matchen dich basierend auf deinen Interessen. 10 CHF rückerstattbare Kaution. ⚡🤝',
+                    en: 'Real conversations instead of small talk – we match you based on your interests. 10 CHF refundable deposit. ⚡🤝'
+                },
+                link: '/events/speed-friending-2',
+                recurring: false,
+                organizer: 'connectbern',
+                featured: true,
+                paid: true,
+                optionalPaid: true
+            },
+            {
                 title: { de: 'Wanderung: First - Bachalpsee - Bort', en: 'Hike: First - Bachalpsee - Bort' },
                 date: new Date(2026, 2, 14, 9, 0),
                 time: '09:00',
