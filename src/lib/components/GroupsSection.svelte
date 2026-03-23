@@ -114,9 +114,16 @@
                     <GroupCard GroupDataObject={groupDataObject} />
                 {/each}
             </div>
-            <a href="/groups/community-groups" class="cbAllGroupsLink">
-                {language === 'de' ? 'Mehr Connect Bern Gruppen' : 'More Connect Bern groups'} →
-            </a>
+            <div class="cbAllGroupsRow">
+                <a href="/groups/community-groups" class="cbAllGroupsLink">
+                    <img src="/groups/connect-bern-logo-orange.png" alt="" class="cbAllLogo" />
+                    <span class="cbAllText">
+                        <span class="cbAllTitle">{language === 'de' ? 'Mehr Connect Bern Gruppen' : 'More Connect Bern groups'}</span>
+                        <span class="cbAllSub">{language === 'de' ? 'Alle Gruppen ansehen' : 'View all our groups'}</span>
+                    </span>
+                    <span class="cbAllArrow">→</span>
+                </a>
+            </div>
         {/if}
     </div>
 
@@ -350,24 +357,68 @@
         padding: 1.5em 0 1em 0;
     }
 
-    .cbAllGroupsLink {
+    .cbAllGroupsRow {
         display: flex;
+        justify-content: center;
+        padding: 0.5em 0 0.75em 0;
+    }
+
+    .cbAllGroupsLink {
+        display: inline-flex;
         align-items: center;
-        gap: 0.9em;
-        padding: 0.8em 1.2em;
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px dashed rgba(255, 255, 255, 0.25);
+        gap: 1em;
+        padding: 0.9em 1.6em;
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(255, 140, 50, 0.18), rgba(255, 100, 30, 0.1));
+        border: 1px solid rgba(255, 140, 50, 0.45);
         text-decoration: none;
         color: white;
-        margin: 0 auto 0.5em auto;
-        max-width: 480px;
-        transition: background 0.2s ease, border-color 0.2s ease;
+        max-width: 360px;
+        width: 100%;
+        transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .cbAllGroupsLink:hover {
-        background: rgba(255, 255, 255, 0.12);
-        border-color: rgba(255, 255, 255, 0.45);
+        background: linear-gradient(135deg, rgba(255, 140, 50, 0.3), rgba(255, 100, 30, 0.2));
+        border-color: rgba(255, 140, 50, 0.7);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 120, 30, 0.2);
+    }
+
+    .cbAllLogo {
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+    .cbAllText {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15em;
+        flex: 1;
+    }
+
+    .cbAllTitle {
+        font-size: 1em;
+        font-weight: 600;
+    }
+
+    .cbAllSub {
+        font-size: 0.8em;
+        opacity: 0.65;
+    }
+
+    .cbAllArrow {
+        font-size: 1.1em;
+        opacity: 0.6;
+        flex-shrink: 0;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .cbAllGroupsLink:hover .cbAllArrow {
+        transform: translateX(4px);
+        opacity: 1;
     }
 
 
