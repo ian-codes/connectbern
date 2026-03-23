@@ -1161,9 +1161,11 @@
         text-align: center;
     }
     .h1Sub {
+        display: block;
         font-size: 0.55em;
         font-weight: inherit;
         opacity: 0.75;
+        margin-top: 1em;
     }
 
     .appBannerTitle {

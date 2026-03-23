@@ -56,15 +56,6 @@
             {#if data?.slug === "connect-bern" || data?.slug === "vegan-bern"}
                 <div class="w-full flex flex-col gap-4">
                     {#if data?.slug === "connect-bern"}
-                        <div class="platform-explanation">
-                            <p>
-                                {#if lang === "de"}
-                                    Die WhatsApp- und Telegram-Gruppen sind verbunden – Nachrichten werden zwischen beiden synchronisiert. Die Facebook-Gruppe ist separat.
-                                {:else}
-                                    The WhatsApp and Telegram groups are connected – messages are synchronized between both. The Facebook group is separate.
-                                {/if}
-                            </p>
-                        </div>
                     {:else if data?.slug === "vegan-bern"}
                         <div class="platform-explanation">
                             <p>
@@ -142,10 +133,15 @@
                                 JOIN TELEGRAM
                             </a>
                         </div>
+                    {:else if data?.slug === "community-groups"}
+                        <a class="join whatsapp-btn" href="{data?.link}" target="_blank" rel="noopener noreferrer">
+                            <span class="wa-icon" style="background-image: url('/icons/whatsapp.svg');"></span>
+                            {lang === 'de' ? 'WhatsApp Community beitreten' : 'Join WhatsApp Community'}
+                        </a>
                     {:else}
                         <a class="join flex-1" href="{data?.slug}/join">
                             <span class="icon" style="background-image: url(/icons/link.png);" />
-                            {data?.isCollection ? "VIEW GROUPS" : (data?.slug === "community-groups" ? "JOIN WHATSAPP COMMUNITY" : (data?.slug === "fire-community-bern" ? "CHECK FORUM" : "JOIN GROUP"))}
+                            {data?.isCollection ? "VIEW GROUPS" : (data?.slug === "fire-community-bern" ? "CHECK FORUM" : "JOIN GROUP")}
                         </a>
                     {/if}
 
@@ -381,6 +377,17 @@
         font-size: 1.5em;
     }
 
+    .wa-icon {
+        display: inline-block;
+        width: 1.3em;
+        height: 1.3em;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: brightness(0) invert(1);
+        flex-shrink: 0;
+    }
+
     .platform-explanation {
         margin-bottom: 1.5em;
     }
@@ -398,6 +405,7 @@
         flex-wrap: wrap;
         gap: 0.75em;
         width: 100%;
+        justify-content: center;
     }
 
     .platform-detail-btn {

@@ -1,19 +1,49 @@
 export const GroupsData = [
     {
         name: {
-            de: "Connect Bern Hauptgruppe",
-            en: "Connect Bern main group"
+            de: "Our Main Groups",
+            en: "Our Main Groups"
         },
         slug: "connect-bern",
         desc: {
-            de: "Diese Gruppe ist für alles rund um Connect Bern und die Connect Bern Mission (Menschen in Bern verbinden 🙂)",
-            en: "This group is for anything related to Connect Bern and the Connect Bern mission (connecting people in Bern 🙂)"
+            de: "Unsere Hauptgruppen auf WhatsApp, Telegram und Facebook sind zum Organisieren, Einladen und Teilen von Aktivitäten.\n\nZum Beispiel:\n\n💬 \"Ich gehe jetzt joggen, möchte jemand mitkommen?\"\n🎭 \"Es gibt dieses Wochenende ein Theaterstück\"\n💻 \"Wer möchte co-worken?\" 🚀",
+            en: "Our main groups on WhatsApp, Telegram and Facebook are for organising, inviting and sharing activities.\n\nFor example:\n\n💬 \"I'm going for a run now, does anyone want to join?\"\n🎭 \"There's a theatre play this weekend\"\n💻 \"Who wants to co-work?\" 🚀"
         },
         img: "connect-bern-logo-orange.png",
         type: "multiplatform",
         link: "https://tiny.cc/connectbernwhatsapp",
         telegramLink: "https://t.me/connectbern",
         facebookLink: "https://www.facebook.com/groups/connectbern",
+        organizer: "connectbern"
+    },
+    {
+        name: {
+            de: "Hang Out",
+            en: "Hang Out"
+        },
+        slug: "hang-out",
+        desc: {
+            de: "Ein lockerer Ort zum Vernetzen. Sag einfach Hallo, teile mit, dass du zu einem Event gehst und lade andere ein, oder schlage ein spontanes Treffen vor.\n\n💬 \"Wer möchte abhängen?\"\n🎉 \"Ich gehe zu diesem Event, kommst du mit?\"\n👋 Oder einfach: \"Hi\"\n\nJa, auch Diskussionen über Spam und warum wir Nachrichten gelöscht haben, sind hier willkommen 😄",
+            en: "A relaxed space to connect. Say hi, share that you're heading to an event and invite others to join, or just suggest a spontaneous meetup.\n\n💬 \"Who wants to hang out?\"\n🎉 \"I'm going to this event, wanna join?\"\n👋 Or just: \"Hi\"\n\nYes, discussions about spam and why we deleted a message are also welcome here 😄"
+        },
+        img: "hang-out.jpg",
+        type: "whatsapp",
+        link: "https://tiny.cc/connectbernhangout",
+        organizer: "connectbern"
+    },
+    {
+        name: {
+            de: "Fragen & Hilfe",
+            en: "Ask for Help"
+        },
+        slug: "ask-for-help",
+        desc: {
+            de: "Hast du eine Frage oder brauchst du Hilfe mit irgendwas? Bitte frag nur in dieser Gruppe! 😊\n\nWenn du helfen möchtest, bist du herzlich eingeladen, in der Gruppe zu bleiben und einfach Menschen zu helfen. 😍🎉\n\nWir glauben daran, uns gegenseitig zu helfen, aber lass uns respektieren, dass nicht jeder ständig um Hilfe gebeten werden möchte, und deshalb halten wir es in dieser Gruppe. 😎",
+            en: "If you have a question or need help with anything please ask only in this group. 😊\n\nIf you want to help, you're welcome to join and stay in this group and just help people. 😍🎉\n\nWe believe in helping each other but let's respect that not everyone wants to constantly be asked for help and that's why we keep it in this group. 😎"
+        },
+        img: "ask-for-help.jpg",
+        type: "whatsapp",
+        link: "https://tiny.cc/askforhelp",
         organizer: "connectbern"
     },
     {
@@ -38,8 +68,8 @@ export const GroupsData = [
         },
         slug: "community-groups",
         desc: {
-            de: "Eine Sammlung von verschiedenen Community-Gruppen, die von Connect Bern betrieben werden.\n\nDies sind kleinere, spezialisierte WhatsApp-Gruppen für verschiedene Interessen und Aktivitäten - von geselligen Treffen über spezifische Hobbys bis hin zu Veranstaltungen.\n\nWir zeigen hier nur einige der verfügbaren Gruppen. Tritt der Hauptgruppe bei, um mehr über alle Community-Gruppen zu erfahren!",
-            en: "A collection of various community groups run by Connect Bern.\n\nThese are smaller, specialized WhatsApp groups for different interests and activities - from social hangouts to specific hobbies and events.\n\nWe're only showing some of the available groups here. Join the main group to discover more community groups!"
+            de: "Eine Sammlung von Community-Gruppen, die von Connect Bern betrieben werden. Kleinere, spezialisierte WhatsApp-Gruppen für verschiedene Interessen.\n\nZum Beispiel:\n🏓 Tischtennis\n📚 Buchclub\n🎵 Musik\n📷 Fotografie\n👩 Girls Hangout\n🏳️‍🌈 Queer Friends\n\nWir zeigen hier nur einige. Tritt der WhatsApp-Community bei, um alle Gruppen zu sehen!",
+            en: "A collection of community groups run by Connect Bern. Smaller, specialized WhatsApp groups for different interests.\n\nFor example:\n🏓 Ping pong\n📚 Book club\n🎵 Music\n📷 Photography\n👩 Girls Hangout\n🏳️‍🌈 Queer friends\n\nWe're only showing some of them here. Join the WhatsApp community to see all the groups!"
         },
         img: "connect-bern-logo-white.png",
         type: "whatsapp",
@@ -164,8 +194,7 @@ export const GroupsData = [
         },
         img: "it-gruppe.webp",
         type: "telegram",
-        link: "https://t.me/+e6QTJfwGEus0NThi",
-        organizer: "connectbern"
+        link: "https://t.me/+e6QTJfwGEus0NThi"
     },
     {
         name: {

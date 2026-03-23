@@ -1,1 +1,2 @@
 Make sure the buttons are always wrapping tightly around their text content, so they are not too large
+Never use em-dashes (—) anywhere in content, descriptions, or UI text. The user finds them unnatural and ChatGPT-like. Use a comma, period, or rewrite the sentence instead.

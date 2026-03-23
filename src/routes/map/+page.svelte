@@ -23,7 +23,7 @@
 
 <section class="map-section">
     <div class="hero">
-        <h1>🗺️ {t[language]["map-title"]}</h1>
+        <h1>🌐 {t[language]["map-title"]}</h1>
         <p class="description">{@html t[language]["map-description"]}</p>
         <p class="map-note">{@html t[language]["map-note"]}</p>
 

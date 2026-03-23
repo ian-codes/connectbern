@@ -6,7 +6,15 @@
       "Bash(git config:*)",
       "Bash(git commit -m \"$\\(cat <<''EOF''\nremove events-calendar route\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "WebFetch(domain:www.meetup.com)",
+      "Bash(winget install:*)",
+      "Bash(xargs grep:*)",
+      "Bash(powershell -command \"Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.Clipboard]::GetImage\\(\\).Save\\('C:\\\\Users\\\\chaga\\\\Documents\\\\connectbern\\\\static\\\\groups\\\\ask-for-help.jpg'\\)\")",
+      "Bash(powershell -command \"Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.Clipboard]::GetImage\\(\\).Save\\('C:\\\\Users\\\\chaga\\\\Documents\\\\connectbern\\\\static\\\\groups\\\\hang-out.jpg'\\)\")",
+      "Bash(grep -n \"desc\\\\|html\\\\|white-space\\\\|pre\" src/routes/groups/[slug]/+page.svelte)",
+      "Bash(grep -n \"whatsapp.btn\\\\|\\\\.join\\\\b\\\\|join {\" src/routes/groups/[slug]/+page.svelte)",
+      "Bash(cat:*)"
     ]
   }
 }
