@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Physical Space • Connect Bern</title>
+	<title>Space • Connect Bern</title>
 </svelte:head>
 
 <script>

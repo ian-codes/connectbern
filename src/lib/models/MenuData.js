@@ -1,8 +1,8 @@
 export const MenuData = [
     {
         title: {
-            en: "Physical Space",
-            de: "Physischer Raum"
+            en: "Our Space",
+            de: "Our Space"
         },
         slug: "location",
         img: "home.svg",
@@ -10,8 +10,8 @@ export const MenuData = [
     },
     {
         title: {
-            en: "Digital Map",
-            de: "Digitale Karte"
+            en: "Our Virtual Space",
+            de: "Our Virtual Space"
         },
         slug: "map",
         img: "map.svg",
@@ -19,17 +19,23 @@ export const MenuData = [
     },
     {
         title: {
-            de: "Gruppen",
-            en: "Groups"
+            de: "Groups in Bern",
+            en: "Groups in Bern"
         },
         slug: "groups",
 		img: "groups.svg",
-		homeImg: "/navigation/groups.svg"
+		homeImg: "/navigation/groups.svg",
+        chips: [
+            { icon: '/icons/whatsapp.svg', label: 'WhatsApp', pos: 'top-left' },
+            { icon: '/icons/telegram.svg', label: 'Telegram', pos: 'top-right' },
+            { icon: '/icons/facebook.svg', label: 'Facebook', pos: 'bottom-left' },
+            { emoji: '🌎', label: 'Web & Forums', pos: 'bottom-right' },
+        ]
     },
     {
         title: {
-            en: "Events",
-            de: "Events"
+            en: "Events in Bern",
+            de: "Events in Bern"
         },
         slug: "events",
 		img: "events.svg",
