@@ -3,13 +3,69 @@
     import { t } from "$lib/locales/translations.js";
     import { currentLanguage } from '$lib/stores/languageStore';
     import { MenuData } from "$lib/models/MenuData.js";
+    import { onMount } from 'svelte';
     $: language = $currentLanguage;
+
+    const PARTY_START = new Date('2026-03-24T18:00:00+01:00');
+
+    let showPartyBanner = false;
+    let countdown = '';
+    let partyLive = false;
+
+    function updateCountdown() {
+        const now = new Date();
+        const y = now.getFullYear(), m = now.getMonth(), d = now.getDate();
+        showPartyBanner = (y === 2026 && m === 2 && (d === 23 || d === 24));
+        if (!showPartyBanner) return;
+        const diff = PARTY_START - now;
+        if (diff <= 0) {
+            partyLive = true;
+            countdown = '';
+        } else {
+            partyLive = false;
+            const totalSec = Math.floor(diff / 1000);
+            const s = totalSec % 60;
+            const totalMin = Math.floor(totalSec / 60);
+            const min = totalMin % 60;
+            const totalH = Math.floor(totalMin / 60);
+            const h = totalH % 24;
+            const days = Math.floor(totalH / 24);
+            countdown = days > 0
+                ? `${days}d ${h}h ${String(min).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`
+                : `${h}h ${String(min).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
+        }
+    }
+
+    onMount(() => {
+        updateCountdown();
+        const interval = setInterval(updateCountdown, 1000);
+        return () => clearInterval(interval);
+    });
 </script>
 
 <section class="landing">
     <!-- <div class="logo" title="Connect Bern" /> -->
     <h1>Connect Bern</h1>
     <p class="subtitle">{@html t[language]["description"]}</p>
+
+    {#if showPartyBanner}
+    <a href="/map" class="party-banner">
+        <span class="party-pulse"></span>
+        <span class="party-emoji">🎉</span>
+        <span class="party-content">
+            <span class="party-title">{language === 'de' ? 'Feier mit uns ONLINE!' : 'Join the ONLINE party!'}</span>
+            {#if partyLive}
+                <span class="party-live">{language === 'de' ? '🔴 JETZT LIVE' : '🔴 LIVE NOW'}</span>
+            {:else}
+                <span class="party-countdown">
+                    {language === 'de' ? 'Startet in' : 'Starts in'} <strong>{countdown}</strong>
+                </span>
+            {/if}
+            <span class="party-sub">{language === 'de' ? 'Zum Space →' : 'Go to the space →'}</span>
+        </span>
+        <span class="party-emoji">🥳</span>
+    </a>
+    {/if}
 
     <a href="/events/welcome-party" class="featured-event-bubble">
         <img src="/images/connect-bern-welcome-party.png" alt="Connect Bern Welcome Party" class="bubble-img" />
@@ -24,6 +80,17 @@
             <a href="/{item.slug}" class="menu-card" title={typeof item.title === 'string' ? item.title : item.title[language]}>
                 <span class="menu-icon" style={`background-image: url('${(item.homeImg ?? '').startsWith('/') ? item.homeImg : '/icons/' + (item.homeImg ?? item.img)}')`} />
                 <span class="menu-title">{typeof item.title === 'string' ? item.title : item.title[language]}</span>
+                {#if item.chips}
+                    {#each item.chips as chip}
+                        <span class="menu-chip menu-chip--{chip.pos}" title={chip.label}>
+                            {#if chip.emoji}
+                                <span class="menu-chip-emoji">{chip.emoji}</span>
+                            {:else}
+                                <span class="menu-chip-img" style="background-image: url('{chip.icon}');"></span>
+                            {/if}
+                        </span>
+                    {/each}
+                {/if}
             </a>
         {/each}
     </div>
@@ -149,10 +216,129 @@
         background: linear-gradient(rgba(255,255,255,.12), rgba(255,255,255,.04));
         box-shadow: 0 2px 6px rgba(0,0,0,.35);
         transition: transform .08s ease, box-shadow .08s ease;
+        position: relative;
+    }
+    .menu-chip {
+        position: absolute;
+        width: 1.3rem;
+        height: 1.3rem;
+        opacity: 0.7;
+        transition: opacity 0.15s ease;
+    }
+    .menu-card:hover .menu-chip { opacity: 1; }
+    .menu-chip--top-left     { top: 6px;    left: 7px; }
+    .menu-chip--top-right    { top: 6px;    right: 7px; }
+    .menu-chip--bottom-left  { bottom: 6px; left: 7px; }
+    .menu-chip--bottom-right { bottom: 6px; right: 7px; }
+    .menu-chip-img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+    }
+    .menu-chip-emoji {
+        display: block;
+        font-size: 1rem;
+        line-height: 1.3rem;
+        text-align: center;
+        filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
     }
     .menu-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255,255,255,.35); }
     .menu-icon { width: 40px; height: 40px; background-size: contain; background-repeat: no-repeat; background-position: center; filter: invert(1); }
     .menu-title { font-size: 1rem; }
+
+    /* Online Party Banner */
+    .party-banner {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.85rem 1.4rem;
+        margin: 0.25rem 0 0.5rem;
+        background: linear-gradient(135deg, rgba(120, 60, 220, 0.35), rgba(60, 160, 220, 0.35));
+        border: 1.5px solid rgba(160, 120, 255, 0.55);
+        border-radius: 1rem;
+        text-decoration: none;
+        color: white;
+        box-shadow: 0 0 20px rgba(140, 80, 255, 0.25);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        position: relative;
+        overflow: hidden;
+        max-width: 480px;
+        width: 100%;
+        animation: partyGlow 2.5s ease-in-out infinite;
+    }
+
+    .party-banner:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 6px 24px rgba(140, 80, 255, 0.4);
+    }
+
+    @keyframes partyGlow {
+        0%, 100% { box-shadow: 0 0 18px rgba(140, 80, 255, 0.25); }
+        50% { box-shadow: 0 0 28px rgba(140, 80, 255, 0.45); }
+    }
+
+    .party-pulse {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+        animation: partyShine 3s ease-in-out infinite;
+    }
+
+    @keyframes partyShine {
+        0% { transform: translateX(-100%); }
+        60%, 100% { transform: translateX(100%); }
+    }
+
+    .party-emoji {
+        font-size: 1.6rem;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    .party-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        flex: 1;
+        position: relative;
+    }
+
+    .party-title {
+        font-size: 1rem;
+        font-weight: 800;
+        letter-spacing: 0.01em;
+    }
+
+    .party-countdown {
+        font-size: 0.88rem;
+        opacity: 0.92;
+    }
+
+    .party-countdown strong {
+        font-variant-numeric: tabular-nums;
+    }
+
+    .party-live {
+        font-size: 0.88rem;
+        font-weight: bold;
+        color: #ff6b6b;
+        animation: livePulse 1s ease-in-out infinite;
+    }
+
+    @keyframes livePulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.6; }
+    }
+
+    .party-sub {
+        font-size: 0.8rem;
+        opacity: 0.8;
+        font-weight: 600;
+    }
 
     /* Featured Event Bubble */
     .featured-event-bubble {
