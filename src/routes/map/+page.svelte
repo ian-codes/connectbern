@@ -1,12 +1,21 @@
 <svelte:head>
-	<title>Digital Map • Connect Bern</title>
+	<title>Virtual Space • Connect Bern</title>
 </svelte:head>
 
 <script>
     import { t } from "$lib/locales/translations.js";
     import { currentLanguage } from '$lib/stores/languageStore';
+    import { onMount } from 'svelte';
     $: language = $currentLanguage;
-    
+
+    const PARTY_WINDOW_END = new Date('2026-03-24T23:59:59+01:00');
+    let showPartyText = false;
+
+    onMount(() => {
+        const now = new Date();
+        showPartyText = now < PARTY_WINDOW_END;
+    });
+
     function goToMap() {
         window.open('https://play.workadventu.re/@/connect-bern-map/connect-bern-map/welcome', '_blank');
     }
@@ -16,10 +25,16 @@
     <div class="hero">
         <h1>🗺️ {t[language]["map-title"]}</h1>
         <p class="description">{@html t[language]["map-description"]}</p>
+        <p class="map-note">{@html t[language]["map-note"]}</p>
 
         <button class="quick-access-button" on:click={goToMap}>
-            <span class="quick-icon">🚀</span>
-            <span class="quick-text">{t[language]["go-to-map"]}</span>
+            {#if showPartyText}
+                <span class="quick-icon">🎉</span>
+                <span class="quick-text">{language === 'de' ? 'Hier zur Party:' : 'Join the online party here'}</span>
+            {:else}
+                <span class="quick-icon">🚀</span>
+                <span class="quick-text">{t[language]["go-to-map"]}</span>
+            {/if}
         </button>
     </div>
 
@@ -63,8 +78,13 @@
 
     <div class="cta-section">
         <button class="mappy-button" on:click={goToMap}>
-            <span class="button-icon">🗺️</span>
-            <span class="button-text">{t[language]["go-to-map"]}</span>
+            {#if showPartyText}
+                <span class="button-icon">🎉</span>
+                <span class="button-text">{language === 'de' ? 'Hier zur Party:' : 'Join the online party here'}</span>
+            {:else}
+                <span class="button-icon">🗺️</span>
+                <span class="button-text">{t[language]["go-to-map"]}</span>
+            {/if}
             <span class="button-arrow">→</span>
         </button>
     </div>
@@ -93,7 +113,15 @@
         font-size: 1.2rem;
         opacity: 0.9;
         line-height: 1.6;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .map-note {
+        font-size: 0.95rem;
+        opacity: 0.7;
+        line-height: 1.6;
+        font-style: italic;
+        margin-bottom: 1.5rem;
     }
 
     .quick-access-button {
