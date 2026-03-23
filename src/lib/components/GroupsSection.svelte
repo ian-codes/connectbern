@@ -11,30 +11,34 @@
     const allOtherGroups = GroupsData.filter(g => g.organizer !== 'connectbern' && g.slug !== 'community-groups');
 
     let groupType = "All";
-    let groupTypes = ["All", "WhatsApp", "Telegram", "Facebook", "Multiplatform", "Other"];
     let groups = allOtherGroups;
     let searchTerm = "";
     let cbExpanded = true;
     let filteredCbGroups = cbGroups;
 
-    function handleSearch() {
-        if (!searchTerm.trim()) {
-            groups = allOtherGroups;
-            filteredCbGroups = cbGroups;
-            return;
+    function applyFilters() {
+        const filterType = groupType.toLowerCase();
+        let pool = filterType === 'all' ? [...GroupsData] : filterByGroupType(filterType);
+
+        if (searchTerm.trim()) {
+            const term = searchTerm.toLowerCase();
+            pool = pool.filter(g => {
+                const name = typeof g.name === 'string' ? g.name : (g.name[language] || '');
+                const desc = g.desc ? (g.desc[language] || '') : '';
+                return name.toLowerCase().includes(term) || desc.toLowerCase().includes(term);
+            });
         }
-        const all = searchGroups(searchTerm, language);
-        filteredCbGroups = all.filter(g => g.organizer === 'connectbern' && g.slug !== 'community-groups');
-        groups = all.filter(g => g.organizer !== 'connectbern' && g.slug !== 'community-groups');
-        if (filteredCbGroups.length > 0) cbExpanded = true;
+
+        filteredCbGroups = pool.filter(g => g.organizer === 'connectbern' && g.slug !== 'community-groups');
+        groups = pool.filter(g => g.organizer !== 'connectbern' && g.slug !== 'community-groups');
+        if (searchTerm.trim() && filteredCbGroups.length > 0) cbExpanded = true;
     }
 
-    function handleGroupTypeChange() {
-        const filterType = groupType.toLowerCase();
-        groups = filterType === 'all'
-            ? allOtherGroups
-            : filterByGroupType(filterType).filter(g => g.organizer !== 'connectbern' && g.slug !== 'community-groups');
+    function handleSearch(e) {
+        if (e?.target) searchTerm = e.target.value;
+        applyFilters();
     }
+    function handleGroupTypeChange() { applyFilters(); }
 </script>
 
 
@@ -60,25 +64,35 @@
     </div>
 
     <div class="settingsBar">
-        <div class="groupTypeFilter">
-            <label title="Filter groups by type" for="type">Type</label>
-            <select bind:value={groupType} on:change={handleGroupTypeChange} title="Filter groups by type" id="type" name="type">
-                {#each groupTypes as type}
-                    <option value={type}>{type}</option>
-                {/each}
-            </select>
-        </div>
-        <div class="searchbar">
-            <input
-                on:input={handleSearch}
-                bind:value={searchTerm}
-                type="text"
-                title="Search Groups"
-                id="search"
-                name="search"
-                placeholder="{t[language]["search-groups"]}" />
-            <button title="Go" class="iconWrapper">
-                <span class="searchIcon" style="background: url('/icons/search.svg');"/>
+        <input
+            on:input={handleSearch}
+            on:keyup={handleSearch}
+            on:paste={() => setTimeout(handleSearch, 0)}
+            bind:value={searchTerm}
+            type="text"
+            title="Search Groups"
+            id="search"
+            name="search"
+            class="searchInput"
+            placeholder="{t[language]["search-groups"]}" />
+        <div class="filterPills">
+            <button class="filterPill" class:active={groupType === 'All'} on:click={() => { groupType = 'All'; handleGroupTypeChange(); }}>
+                {language === 'de' ? 'Alle' : 'All'}
+            </button>
+            <button class="filterPill" class:active={groupType === 'WhatsApp'} on:click={() => { groupType = 'WhatsApp'; handleGroupTypeChange(); }}>
+                <img src="/icons/whatsapp.svg" alt="WhatsApp" class="filterIcon" />
+            </button>
+            <button class="filterPill" class:active={groupType === 'Telegram'} on:click={() => { groupType = 'Telegram'; handleGroupTypeChange(); }}>
+                <img src="/icons/telegram.svg" alt="Telegram" class="filterIcon" />
+            </button>
+            <button class="filterPill" class:active={groupType === 'Facebook'} on:click={() => { groupType = 'Facebook'; handleGroupTypeChange(); }}>
+                <img src="/icons/facebook.svg" alt="Facebook" class="filterIcon" />
+            </button>
+            <button class="filterPill" class:active={groupType === 'Multiplatform'} on:click={() => { groupType = 'Multiplatform'; handleGroupTypeChange(); }}>
+                {language === 'de' ? 'Multi' : 'Multi'}
+            </button>
+            <button class="filterPill" class:active={groupType === 'Other'} on:click={() => { groupType = 'Other'; handleGroupTypeChange(); }}>
+                {language === 'de' ? 'Andere' : 'Other'}
             </button>
         </div>
     </div>
@@ -125,8 +139,22 @@
         }
 
         .settingsBar {
-            margin: 0 !important;
+            margin: 0 0 1.5em 0 !important;
             padding: 0 !important;
+        }
+
+        .searchInput {
+            flex: 0 0 auto;
+            width: 100%;
+            max-width: 100%;
+            height: 40px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        .filterPills {
+            justify-content: flex-start;
+            width: 100%;
         }
 
         .cbBannerText h2 {
@@ -134,28 +162,67 @@
         }
     }
 
-    .groupTypeFilter {
+    .searchInput {
+        flex: 0 1 260px;
+        min-width: 0;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 2em;
+        padding: 0.6em 1.2em;
         color: white;
-        font-size: 1em;
-        border: none;
-        box-shadow: 0 2px 2px rgba(50, 50, 50, 0.425);
+        font-size: 0.95em;
+        outline: none;
+        -webkit-appearance: none;
+        appearance: none;
+        transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .searchInput::placeholder {
+        color: rgba(255, 255, 255, 0.45);
+    }
+
+    .searchInput:focus {
+        border-color: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .filterPills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4em;
+    }
+
+    .filterPill {
         display: flex;
         align-items: center;
-        gap: 1em;
-        padding-left: .5em;
-    }
-
-    select {
-        background: linear-gradient(rgba(255, 255, 255, 0.202), transparent);
+        justify-content: center;
+        padding: 0.45em 0.9em;
+        border-radius: 2em;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.08);
         color: white;
-        font-size: 1em;
-        border: none;
-        padding: .5em;
+        font-size: 0.9em;
         cursor: pointer;
+        transition: background 0.15s ease, border-color 0.15s ease;
+        white-space: nowrap;
     }
 
-    select option {
-        color: black !important;
+    .filterPill:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .filterPill.active {
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.6);
+        font-weight: 600;
+    }
+
+    .filterIcon {
+        width: 1.2em;
+        height: 1.2em;
+        object-fit: contain;
+        display: block;
     }
 
     .topbarWrapper {
@@ -208,49 +275,11 @@
     .settingsBar {
         display: flex;
         flex-wrap: wrap;
-        gap: 1em;
-        align-items: start;
-        justify-content: space-between;
-        margin: 0 1rem;
-        margin-bottom: 1em;
-        padding-bottom: 2em;
-    }
-
-    .searchbar {
-        display: flex;
+        gap: 0.75em;
         align-items: center;
-        justify-content: space-evenly;
-        gap: 1em;
+        margin: 0 0 2em 0;
     }
 
-    #search {
-        width: 100%;
-        padding: .5em !important;
-    }
-
-    .iconWrapper {
-        padding: .5em;
-        border-radius: 100%;
-        box-shadow: 0 2px 2px rgba(50, 50, 50, 0.425);
-        cursor: pointer;
-        transition: all .1s ease;
-        border: none;
-        background: linear-gradient(rgba(255, 255, 255, 0.202), transparent);
-    }
-
-    .iconWrapper:hover, input:hover, input:focus {
-        box-shadow: 0 2px 1px 2px rgba(255, 255, 255, 0.815);
-    }
-
-    .searchIcon {
-        filter: invert(1);
-        display: block;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        width: 20px;
-        height: 20px;
-    }
 
     /* Connect Bern collapsible section */
     .cbSection {
