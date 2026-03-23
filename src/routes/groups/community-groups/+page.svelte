@@ -50,7 +50,9 @@
 </script>
 
 <section>
-    <a class="back" href="/groups">← {lang === 'de' ? 'Alle Gruppen' : 'All groups'}</a>
+    <a class="btn back" href="/groups">
+        <span>→</span>Back
+    </a>
 
     <div class="hero">
         <img src="/groups/connect-bern-logo-orange.png" alt="Connect Bern" class="heroLogo" />
@@ -98,14 +100,28 @@
     }
 
     .back {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        background: black;
         color: white;
         text-decoration: none;
-        opacity: 0.7;
-        font-size: 0.9em;
-        transition: opacity 0.2s;
+        opacity: .5;
+        width: max-content;
+        padding: .8em 1.2em;
+        transition: all .1s ease;
     }
 
-    .back:hover { opacity: 1; }
+    .back span {
+        margin-top: 3px;
+        transform: rotate(180deg);
+    }
+
+    .back:hover {
+        transform: scale(1.02);
+        opacity: 1;
+    }
 
     .hero {
         text-align: center;
