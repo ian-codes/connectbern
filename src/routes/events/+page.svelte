@@ -854,7 +854,7 @@
             </div>
 
             <div class="titleSection">
-                <h1>Events in Bern<span class="h1Sub">{lang === 'de' ? ' – wo du wirklich Leute treffen kannst!' : ' – where you can actually meet people!'}</span></h1>
+                <h1>Events in Bern<span class="h1Sub">{lang === 'de' ? ' wo du wirklich Leute treffen kannst!' : ' where you can actually meet people!'}</span></h1>
             </div>
 
             <button class="whyDifferentButton" on:click={() => showWhyDifferentDialog = true} title={t[lang]['events-why-different']}>
