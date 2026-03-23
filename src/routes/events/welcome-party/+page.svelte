@@ -34,9 +34,9 @@
             p2: "Komm vorbei, triff die Menschen hinter dem Projekt, sieh dir den Raum an, vernetze dich mit anderen und geniesse einen entspannten Abend zusammen.",
             p3: "Und ja, wir feiern auch Chagais Geburtstag 🎉",
             onlineTitle: "Feier mit uns, auch online!",
-            onlineDesc1: "Die Party findet auch auf unserer digitalen Karte statt, und wir erwarten viele Leute dort. Du kannst live sehen, wie die Party läuft, Leute kennenlernen und einfach dabei sein.",
+            onlineDesc1: "Die Party findet auch in unserem Space statt, und wir erwarten viele Leute dort. Du kannst live sehen, wie die Party läuft, Leute kennenlernen und einfach dabei sein.",
             onlineDesc2: "Egal ob alle Plätze vergeben sind, du nicht in Bern bist oder einfach nicht persönlich kommen kannst: wir würden uns freuen, dich zumindest kurz zu sehen, einfach um Hallo zu sagen. 👋",
-            onlineBtn: "Zur digitalen Karte",
+            onlineBtn: "Zum Space",
             spotsTitle: "👉 Melde dich an, begrenzte Plätze!",
             spotsDesc: "Bitte registriere dich auf unserer App um teilzunehmen. Wir müssen Anmeldungen genehmigen, da wir begrenzte Plätze haben.",
             registerBtn: "Jetzt anmelden",
@@ -59,9 +59,9 @@
             p2: "Come by, meet the people behind the project, see the space, connect with others, and enjoy a relaxed evening together.",
             p3: "And yes, we will also be celebrating Chagai's birthday along the way 🎉",
             onlineTitle: "Celebrate with us, online too!",
-            onlineDesc1: "The party is also happening on our digital map, and we're expecting a lot of people there. You can see the party live, meet people, and just be part of it all.",
+            onlineDesc1: "The party is also happening in our space, and we're expecting a lot of people there. You can see the party live, meet people, and just be part of it all.",
             onlineDesc2: "Whether the spots are all taken, you're not in Bern, or you just can't make it in person: we'd love to see you even for a few minutes, just to say hi. 👋",
-            onlineBtn: "Go to Digital Map",
+            onlineBtn: "Go to the Space",
             spotsTitle: "👉 Register now, limited spots!",
             spotsDesc: "Please register on our app to join. We approve registrations as we have limited spots.",
             registerBtn: "Register now",
@@ -119,7 +119,7 @@
                 <p class="onlineDesc">{content[lang].onlineDesc1}</p>
                 <p class="onlineDesc onlineDesc2">{content[lang].onlineDesc2}</p>
                 <a href="/map" class="btn onlineBtn">
-                    🗺️ {content[lang].onlineBtn}
+                    💻 {content[lang].onlineBtn}
                 </a>
             </div>
 
