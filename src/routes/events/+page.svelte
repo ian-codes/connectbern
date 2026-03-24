@@ -735,6 +735,18 @@
                 link: '/events/karaoke-night-delfino'
             },
             {
+                title: { de: 'CB Boardgame Night', en: 'CB Boardgame Night' },
+                date: new Date(2026, 2, 25, 18, 30),
+                time: '18:30',
+                description: {
+                    de: 'Gesellschaftsspiele spielen bei Erupt Lounge, Parkterrasse 14 (3. Stock). Kostenlos. 🎲',
+                    en: 'Board games at Erupt Lounge, Parkterrasse 14 (3rd floor). Free entry. 🎲'
+                },
+                link: '/events/cb-boardgame-night',
+                recurring: false,
+                organizer: 'connectbern'
+            },
+            {
                 title: { de: 'Connect Bern Welcome Party', en: 'Connect Bern Welcome Party' },
                 date: new Date(2026, 2, 24, 18, 0),
                 time: '18:00',
