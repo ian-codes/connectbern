@@ -370,6 +370,18 @@
                 organizer: 'connectbern'
             },
             {
+                title: { de: '🐰 POTLUCK OSTER PARTY & BRUNCH 🐣', en: '🐰 POTLUCK EASTER PARTY & BRUNCH 🐣' },
+                date: new Date(2026, 3, 5, 13, 0),
+                recurring: false,
+                time: '11:00',
+                description: {
+                    de: 'Bring ein homemade Gericht, Getränke oder erfinde ein Osterspiel für unsere Potluck Party.',
+                    en: 'Bring a homemade dish, a drink or invent a fun Easter game for our potluch party.'
+                },
+                link: '/events/easter-potluck',
+                organizer: 'connectbern'
+            },
+            {
                 title: { de: 'Handpan-Lektion für Anfänger', en: 'Beginner Handpan Lesson' },
                 date: getNextWeekday(0),
                 recurring: 'weekly',
