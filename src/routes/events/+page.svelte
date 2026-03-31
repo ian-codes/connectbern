@@ -4,19 +4,23 @@
 
 
 <script>
-    import { t } from "$lib/locales/translations.js";
+    import { t } from "$lib/locales/eventPageTranslations.js";
+    import { date_trans } from "$lib/locales/eventPageTranslations.js";
     import { currentLanguage } from '$lib/stores/languageStore';
-    import Calendar from "$lib/components/calendar/Calendar.svelte";
-    import { onMount } from 'svelte';
+    import EventSuggestionFloatingButton from "$lib/components/EventSuggestionFloatingButton.svelte";
+    import AppBanner from "$lib/components/banner/AppBanner.svelte";
+    import EventResourcesBanner from "$lib/components/banner/EventResourcesBanner.svelte";
+    import TitleDescDialog from "$lib/components/TitleDescDialog.svelte";
+    import { eventData } from "$lib/data/event.data.js";
 
     $: lang = $currentLanguage;
 
     let eventsDisplayMode = 'events'; // 'events' or 'resources'
     let calendarEvents = [];
     let filterMode = 'connectbern'; // 'all' or 'connectbern'
-    let showSuggestDialog = false;
+    let isFloatingButtonHidden = false;
     let showWhyDifferentDialog = false;
-    let showDisclaimer = false;
+    let showDisclaimer = true; // collapseable in mobile view
 
     // Simple chronological event list
     $: filteredEvents = (() => {
@@ -41,88 +45,11 @@
         return Object.values(groups);
     })();
 
-    function getNextWeekday(dayOfWeek) {
-        const today = new Date();
-        const currentDay = today.getDay();
-        let daysUntil = dayOfWeek - currentDay;
-
-        if (daysUntil < 0) {
-            daysUntil += 7;
-        }
-
-        const nextDate = new Date(today);
-        nextDate.setDate(today.getDate() + daysUntil);
-        return nextDate;
-    }
-
-    function getNextNthWeekday(dayOfWeek, nthOccurrence) {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const currentMonth = today.getMonth();
-        const currentYear = today.getFullYear();
-
-        let date = getNthWeekdayOfMonth(currentYear, currentMonth, dayOfWeek, nthOccurrence);
-        date.setHours(0, 0, 0, 0);
-
-        if (date < today) {
-            let nextMonth = currentMonth + 1;
-            let nextYear = currentYear;
-            if (nextMonth > 11) {
-                nextMonth = 0;
-                nextYear++;
-            }
-            date = getNthWeekdayOfMonth(nextYear, nextMonth, dayOfWeek, nthOccurrence);
-        }
-
-        return date;
-    }
-
-    function generateMonthlyOccurrences(dayOfWeek, nthOccurrence, monthsAhead = 3) {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const occurrences = [];
-
-        for (let i = 0; i < monthsAhead; i++) {
-            const targetMonth = today.getMonth() + i;
-            const targetYear = today.getFullYear() + Math.floor(targetMonth / 12);
-            const adjustedMonth = targetMonth % 12;
-
-            const date = getNthWeekdayOfMonth(targetYear, adjustedMonth, dayOfWeek, nthOccurrence);
-            date.setHours(0, 0, 0, 0);
-
-            if (date >= today) {
-                occurrences.push(date);
-            }
-        }
-
-        return occurrences;
-    }
-
-    function getNthWeekdayOfMonth(year, month, dayOfWeek, nthOccurrence) {
-        const firstDay = new Date(year, month, 1);
-        const firstWeekday = firstDay.getDay();
-
-        let daysToAdd = dayOfWeek - firstWeekday;
-        if (daysToAdd < 0) {
-            daysToAdd += 7;
-        }
-
-        const nthDay = 1 + daysToAdd + ((nthOccurrence - 1) * 7);
-        return new Date(year, month, nthDay);
-    }
 
     $: formatDate = (date) => {
-        const days = lang === 'de'
-            ? ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
-            : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-        const months = lang === 'de'
-            ? ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
-            : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-        const dayName = days[date.getDay()];
+        const dayName = date_trans[lang].days[date.getDay()];
         const day = date.getDate();
-        const month = months[date.getMonth()];
+        const month = date_trans[lang].months[date.getMonth()];
         const year = date.getFullYear();
 
         return lang === 'de'
@@ -130,15 +57,14 @@
             : `${dayName}, ${month} ${day}, ${year}`;
     };
 
-    function getDaysUntil(date) {
+    $: getDaysUntil = (date) => {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         const dateClone = new Date(date);
         dateClone.setHours(0, 0, 0, 0);
         const diffTime = dateClone - today;
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        return diffDays;
-    }
+        return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    };
 
     $: getDaysUntilText = (days) => {
         if (days === 0) return lang === 'de' ? 'Heute!' : 'Today!';
@@ -149,12 +75,7 @@
     $: getRecurrencePattern = (event) => {
         if (!event.recurring) return null;
 
-        const days = lang === 'de'
-            ? ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
-            : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-        const dayName = days[event.date.getDay()];
-
+        const dayName = date_trans[lang].days[event.date.getDay()];
         if (event.recurring === 'weekly') {
             return lang === 'de' ? `Jeden ${dayName}` : `Every ${dayName}`;
         } else if (event.recurring === 'monthly') {
@@ -172,686 +93,20 @@
         return null;
     };
 
-    // Floating button animation and drag
-    let floatingX = 85;
-    let floatingY = 85;
-    let buttonElement;
-    let isFloatingButtonHidden = false;
-    let isDragging = false;
-    let hasDragged = false;
-    let isAutoMoving = false;
-    let hasBeenManuallyMoved = false;
-    let isNearButton = false;
-    let moveInterval;
-    let dragStartX = 0;
-    let dragStartY = 0;
-    let buttonStartX = 0;
-    let buttonStartY = 0;
 
-    function moveFloatingButton() {
-        if (typeof window === 'undefined' || isDragging || hasBeenManuallyMoved || isNearButton) return;
 
-        const buttonWidth = 250;
-        const buttonHeight = 60;
-        const padding = 20;
 
-        const maxX = window.innerWidth - buttonWidth - padding;
-        const maxY = window.innerHeight - buttonHeight - padding;
+    const events = eventData;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-        isAutoMoving = true;
-        floatingX = Math.random() * (maxX - padding) + padding;
-        floatingY = Math.random() * (maxY - padding) + padding;
-
-        // Reset after transition completes
-        setTimeout(() => {
-            isAutoMoving = false;
-        }, 2500);
-    }
-
-    function hideFloatingButton(event) {
-        event.stopPropagation();
-        event.preventDefault();
-        isFloatingButtonHidden = true;
-    }
-
-    function handleCloseButtonTouch(event) {
-        event.stopPropagation();
-        event.preventDefault();
-        isFloatingButtonHidden = true;
-    }
-
-    function startDrag(event) {
-        // Only prevent default for mouse events immediately
-        // For touch events, we'll prevent default only during actual dragging
-        if (event.type === 'mousedown') {
-            event.preventDefault();
-        }
-
-        isDragging = true;
-        hasDragged = false;
-        isAutoMoving = false;
-
-        if (event.type === 'mousedown') {
-            dragStartX = event.clientX;
-            dragStartY = event.clientY;
-        } else if (event.type === 'touchstart') {
-            dragStartX = event.touches[0].clientX;
-            dragStartY = event.touches[0].clientY;
-        }
-
-        buttonStartX = floatingX;
-        buttonStartY = floatingY;
-
-        document.addEventListener('mousemove', onDrag);
-        document.addEventListener('mouseup', stopDrag);
-        document.addEventListener('touchmove', onDrag, { passive: false });
-        document.addEventListener('touchend', stopDrag);
-    }
-
-    function onDrag(event) {
-        if (!isDragging) return;
-
-        // Prevent scrolling on touch devices
-        if (event.type === 'touchmove') {
-            event.preventDefault();
-        }
-
-        let currentX, currentY;
-        if (event.type === 'mousemove') {
-            currentX = event.clientX;
-            currentY = event.clientY;
-        } else if (event.type === 'touchmove') {
-            currentX = event.touches[0].clientX;
-            currentY = event.touches[0].clientY;
-        }
-
-        const deltaX = currentX - dragStartX;
-        const deltaY = currentY - dragStartY;
-
-        // If moved more than 5px, consider it a drag
-        if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
-            hasDragged = true;
-        }
-
-        floatingX = buttonStartX + deltaX;
-        floatingY = buttonStartY + deltaY;
-    }
-
-    function stopDrag() {
-        isDragging = false;
-
-        // If the user actually dragged (not just clicked), stop automatic movements
-        if (hasDragged) {
-            hasBeenManuallyMoved = true;
-            if (moveInterval) {
-                clearInterval(moveInterval);
-            }
-        }
-
-        document.removeEventListener('mousemove', onDrag);
-        document.removeEventListener('mouseup', stopDrag);
-        document.removeEventListener('touchmove', onDrag);
-        document.removeEventListener('touchend', stopDrag);
-    }
-
-    onMount(() => {
-        // Move button every 3-5 seconds randomly
-        moveInterval = setInterval(() => {
-            const randomDelay = 3000 + Math.random() * 2000;
-            setTimeout(moveFloatingButton, randomDelay);
-        }, 5000);
-
-        // Initial random position after 1 second
-        setTimeout(moveFloatingButton, 1000);
-
-        // Track whether cursor is near the floating button (with generous margin)
-        function checkCursorNearButton(e) {
-            if (!buttonElement) return;
-            const rect = buttonElement.getBoundingClientRect();
-            const margin = 70;
-            isNearButton = e.clientX >= rect.left - margin &&
-                           e.clientX <= rect.right + margin &&
-                           e.clientY >= rect.top - margin &&
-                           e.clientY <= rect.bottom + margin;
-        }
-        document.addEventListener('mousemove', checkCursorNearButton);
-
-        return () => {
-            if (moveInterval) {
-                clearInterval(moveInterval);
-            }
-            document.removeEventListener('mousemove', checkCursorNearButton);
-            document.removeEventListener('mousemove', onDrag);
-            document.removeEventListener('mouseup', stopDrag);
-            document.removeEventListener('touchmove', onDrag);
-            document.removeEventListener('touchend', stopDrag);
-        };
-    });
-
-    const content = {
-        de: {
-            title: 'Events',
-            description: 'Hier sind alle kommenden Events - sortiert nach Datum. Die Daten werden automatisch aktualisiert.',
-            recurringLabel: 'Wiederkehrend',
-            oneTime: 'Einmalig',
-            filterAll: 'Alle Events in Bern',
-            filterConnectBern: 'Organisiert von Connect Bern',
-            toggleRecurring: 'Wiederkehrende Events',
-            toggleSpecial: 'Nur Spezial-Events',
-            nextOccurrence: 'Nächstes Event',
-            disclaimer: '⚠️ <strong>Hinweis:</strong> Wöchentliche und monatliche Events finden möglicherweise nicht immer statt. Bitte überprüfe die Details auf den jeweiligen Event-Seiten oder Webseiten.'
-        },
-        en: {
-            title: 'Events',
-            description: 'Here are all upcoming events - sorted by date. Dates are automatically updated.',
-            recurringLabel: 'Recurring',
-            oneTime: 'One-time',
-            filterAll: 'Show all events in Bern',
-            filterConnectBern: 'Organised by Connect Bern',
-            toggleRecurring: 'Recurring Events',
-            toggleSpecial: 'Special Events Only',
-            nextOccurrence: 'Next Occurrence',
-            disclaimer: '⚠️ <strong>Note:</strong> Weekly and monthly events might not always take place. Please double-check the details on the respective event pages or websites.'
-        }
-    };
-
-    onMount(() => {
-        const events = [
-            {
-                title: { de: 'Coffee, Cake & Connect', en: 'Coffee, Cake & Connect' },
-                date: getNextWeekday(0),
-                recurring: 'weekly',
-                time: '16:00',
-                description: {
-                    de: 'Unsere wöchentliche Zeit für neue Leute, die das Projekt kennenlernen möchten! ☕🍰',
-                    en: 'Our weekly time for new people who want to see what the project is about! ☕🍰'
-                },
-                link: '/events/coffee-cake-connect',
-                organizer: 'connectbern'
-            },
-            {
-                title: { de: '🐰 POTLUCK OSTER PARTY & BRUNCH 🐣', en: '🐰 POTLUCK EASTER PARTY & BRUNCH 🐣' },
-                date: new Date(2026, 3, 5, 13, 0),
-                recurring: false,
-                time: '11:00',
-                description: {
-                    de: 'Bring ein homemade Gericht, Getränke oder erfinde ein Osterspiel für unsere Potluck Party.',
-                    en: 'Bring a homemade dish, a drink or invent a fun Easter game for our potluch party.'
-                },
-                link: '/events/easter-potluck',
-                organizer: 'connectbern'
-            },
-            {
-                title: { de: 'Handpan-Lektion für Anfänger', en: 'Beginner Handpan Lesson' },
-                date: getNextWeekday(0),
-                recurring: 'weekly',
-                description: {
-                    de: 'Handpan-Lektion für Anfänger mit Berni 🎶 (20 CHF Kaution um deinen Platz zu garantieren)',
-                    en: 'Beginner handpan lesson with Berni 🎶 (20 CHF deposit to guarantee your spot)'
-                },
-                link: '/events/handpan',
-                organizer: 'connectbern',
-                paid: true,
-                optionalPaid: true
-            },
-            {
-                title: { de: 'Hobby-Schach', en: 'Hobby Chess' },
-                date: new Date(2025, 10, 4, 18, 0),
-                time: '18:00',
-                description: {
-                    de: 'Komm vorbei für Hobby-Schach im Connect Bern Haus ♟',
-                    en: 'Come join us for hobby chess at Connect Bern house ♟'
-                },
-                link: '/events/chess',
-                recurring: false,
-                organizer: 'connectbern'
-            },
-            {
-                title: { de: 'Tichu Abend', en: 'Tichu Evening' },
-                date: new Date(2025, 11, 23, 18, 30),
-                time: '18:30',
-                description: {
-                    de: 'Komm vorbei und spiel mit uns Tichu! 🃏',
-                    en: 'Come join us for a game of Tichu! 🃏'
-                },
-                link: '/events/tichu',
-                recurring: false,
-                organizer: 'connectbern'
-            },
-            {
-                title: { de: 'Sound journey HANDPAN CONCERT', en: 'Sound journey HANDPAN CONCERT' },
-                date: new Date(2025, 11, 13, 18, 0),
-                time: '18:00-19:00',
-                description: {
-                    de: 'Ein warmer, gemütlicher Raum während der kälteren Wintertage. Decken, Kissen, heißer Tee & eine Stunde beruhigende Handpan-Klänge. Ein sanfter Moment zum Entspannen, Loslassen und Wiederverbinden. 🛋☕🎶',
-                    en: 'Step into a warm, cozy space during the colder winter days. Blankets, pillows, hot tea & one hour of soothing handpan sounds. A gentle moment to relax, unwind and reconnect. 🛋☕🎶'
-                },
-                link: '/events/handpan-concert',
-                recurring: false,
-                organizer: 'connectbern',
-                paid: true
-            },
-            {
-                title: { de: 'Christmas Together in Bern', en: 'Christmas Together in Bern' },
-                date: new Date(2025, 11, 25, 19, 0),
-                time: '19:00',
-                description: {
-                    de: 'Weihnachten muss man nicht allein verbringen. Komm vorbei für peruanisches Essen, Kuchen und einen entspannten Abend. Warm, einfach und offen für alle. 🎄',
-                    en: 'Christmas doesn\'t have to be spent alone. Join us for Peruvian food, cake and a relaxed evening. Warm, simple, and open to everyone. 🎄'
-                },
-                link: '/events/christmas-together',
-                recurring: false,
-                organizer: 'connectbern'
-            },
-            {
-                title: { de: 'Wine & Cheese Night', en: 'Wine & Cheese Night' },
-                date: new Date(2026, 0, 24, 18, 0),
-                time: '18:00',
-                description: {
-                    de: 'Ein Abend mit Käse, Wein und neuen Begegnungen. Kuratierte Käse- & Weinverkostung, Blind-Tasting-Spiele und Tischrotation zum Kennenlernen. 🧀🍷\n\n25 CHF – geht direkt an Chef Wagner für Zutaten & Vorbereitung.',
-                    en: 'An evening of cheese, wine and new connections. Curated cheese & wine tasting, blind tasting games, and table rotation to meet new people. 🧀🍷\n\n25 CHF – goes directly to Chef Wagner for ingredients & preparation.'
-                },
-                link: '/events/wine-cheese-night',
-                recurring: false,
-                organizer: 'connectbern',
-                paid: true
-            },
-            {
-                title: { de: 'Acoustic Circle', en: 'Acoustic Circle' },
-                date: new Date(2026, 0, 9, 18, 0),
-                time: '18:00-22:00',
-                description: {
-                    de: 'Ein intimer Abend für Musiker:innen und Musikliebhaber:innen in unserem gemütlichen Wohnzimmer. 5–6 Musiker:innen, akustische Sets, eigene Songs. 🎸✨',
-                    en: 'An intimate evening for musicians and music lovers in our cozy living room. 5–6 musicians, acoustic sets, original songs. 🎸✨'
-                },
-                link: '/events/acoustic-circle',
-                recurring: false,
-                organizer: 'connectbern'
-            },
-            {
-                title: { de: 'Sew Bern: Beginner Mending Group', en: 'Sew Bern: Beginner Mending Group' },
-                date: new Date(2026, 0, 28, 18, 30),
-                time: '18:30-20:30',
-                description: {
-                    de: 'Komm nähen mit uns! Für alle offen - ob Anfänger:in oder Profi. Wir helfen beim Flicken, Säumen und zeigen grundlegende Stiche. Stricken, Häkeln und andere Handarbeiten willkommen. ✂️🧵',
-                    en: 'Come sew with us! Open to all - beginners or pros. Help with mending, hemming, and basic stitches. Knitting, crocheting, and other crafts welcome. ✂️🧵'
-                },
-                link: '/events/sew-bern',
-                recurring: false,
-                organizer: 'connectbern'
-            },
-            {
-                title: { de: "Acoustic '90s", en: "Acoustic '90s" },
-                date: new Date(2026, 0, 31, 18, 0),
-                time: '18:00-22:00',
-                description: {
-                    de: 'Akustische 90er-Cover in einer intimen Wohnzimmeratmosphäre. 5 Musiker:innen, vertraute Songs, Nostalgie und Verbindung. 🎸✨\n\nEintritt: CHF 10',
-                    en: "Acoustic '90s covers in an intimate living-room atmosphere. 5 musicians, familiar songs, nostalgia and connection. 🎸✨\n\nEntry: CHF 10"
-                },
-                link: '/events/90s-covers-night',
-                recurring: false,
-                organizer: 'connectbern',
-                paid: true
-            },
-            {
-                title: { de: 'Shrek Movie Night • Filmabend', en: 'Shrek Movie Night • Filmabend' },
-                date: new Date(2026, 0, 14, 19, 0),
-                time: '19:00',
-                description: {
-                    de: 'Lustiger Abend mit Shrek! Bring deine Lieblingssnacks mit. Anmeldung erforderlich - wir haben nur 2 Sofas! 🎬🛋️',
-                    en: 'Fun evening watching Shrek! Bring your favorite snacks. Registration required - we only have 2 couches! 🎬🛋️'
-                },
-                link: '/events/shrek',
-                recurring: false,
-                organizer: 'connectbern'
-            },
-            {
-                title: { de: 'Speed Friending', en: 'Speed Friending' },
-                date: new Date(2026, 1, 25, 18, 0),
-                time: '18:00-19:30',
-                description: {
-                    de: 'Unser coolstes Event! Echte Gespräche statt Small Talk - wir matchen dich basierend auf deinen Interessen. 10 CHF Kaution. ⚡🤝',
-                    en: 'Our coolest event! Real conversations instead of small talk - we match you based on your interests. 10 CHF deposit. ⚡🤝'
-                },
-                link: '/events/speed-friending',
-                recurring: false,
-                organizer: 'connectbern',
-                featured: true,
-                paid: true,
-                optionalPaid: true
-            },
-            {
-                title: { de: 'Brunch & Games', en: 'Brunch & Games' },
-                date: new Date(2026, 0, 17, 9, 0),
-                time: '09:00',
-                description: {
-                    de: 'Starte deinen Samstag mit einem leckeren Brunch und bleib für Spiele! 🥐🎲',
-                    en: 'Start your Saturday with a delicious brunch and stay for games! 🥐🎲'
-                },
-                link: '/events/brunch-games',
-                recurring: false,
-                organizer: 'connectbern',
-                paid: true,
-                optionalPaid: true
-            },
-            {
-                title: { de: 'Pubquiz & Dinner', en: 'Pubquiz & Dinner' },
-                date: new Date(2026, 0, 18, 17, 30),
-                time: '17:30',
-                description: {
-                    de: 'Teste dein Wissen in unserem Pubquiz und geniesse ein leckeres Abendessen! 🧠🍕',
-                    en: 'Test your knowledge in our pubquiz and enjoy a delicious dinner! 🧠🍕'
-                },
-                link: '/events/pubquiz-dinner',
-                recurring: false,
-                organizer: 'connectbern',
-                paid: true,
-                optionalPaid: true
-            },
-            {
-                title: { de: "Let's Dine Dinner", en: "Let's Dine Dinner" },
-                date: new Date(2026, 0, 24, 18, 0),
-                time: '18:00',
-                description: {
-                    de: 'Komm mit uns zum Abendessen und Karaoke! Restaurant Cavallo Star (Hauptbahnhof), danach Karaoke im Bärengrotte. 🍽️🎤\n\nAnmeldung bis Donnerstag, 23:59 Uhr.',
-                    en: 'Join us for dinner and karaoke! Restaurant Cavallo Star (Central Station), then Karaoke at Bärengrotte. 🍽️🎤\n\nSign up by Thursday, 11:59 PM.'
-                },
-                link: '/events/lets-dine-jan24',
-                recurring: false,
-                organizer: 'connectbern'
-            },
-            {
-                title: { de: 'Tuesday Jazz Jam', en: 'Tuesday Jazz Jam' },
-                date: getNextWeekday(2),
-                time: '19:30',
-                recurring: 'weekly',
-                description: {
-                    de: 'Treffen am Zytglogge um 19:30 Uhr und zusammen zum Jazz Jam gehen. Live-Band ab 21 Uhr, danach offene Jam-Session. Gemütlicher Ort unter dem Dach mit toller Atmosphäre. 🎷✨\n\n5 CHF Eintritt + optional Risotto für 5 CHF – geht direkt ans Lokal.\n\nFragen? Tomáš (+41 78 228 77 64)',
-                    en: 'Meet at Zytglogge at 7:30 PM and head to Jazz Jam together. Live band at 9 PM, then open jam session. Cozy rooftop spot with great vibes. 🎷✨\n\n5 CHF entry + optional risotto for 5 CHF – goes directly to the venue.\n\nQuestions? Tomáš (+41 78 228 77 64)'
-                },
-                link: '/events/tuesday-jazz-jam',
-                organizer: 'connectbern',
-                paid: true
-            },
-            // Skip 2026-02-17 (cancelled); 2026-03-03 moved to Wednesday 2026-03-04
-            {
-                title: { de: 'Language Exchange di Berna', en: 'Language Exchange di Berna' },
-                date: (() => { const d = getNextWeekday(2); if (d.getFullYear() === 2026 && d.getMonth() === 1 && d.getDate() === 17) d.setDate(d.getDate() + 7); if (d.getFullYear() === 2026 && d.getMonth() === 2 && d.getDate() === 3) d.setDate(d.getDate() + 1); return d; })(),
-                time: '19:00',
-                recurring: 'weekly',
-                description: {
-                    de: 'Sprachenaustausch im Connect Bern Haus - übe verschiedene Sprachen!',
-                    en: 'Language exchange at Connect Bern house - practice different languages!'
-                },
-                link: '/events/language-exchange-di-berna',
-                organizer: 'connectbern'
-            },
-            {
-                title: { de: 'Language Exchange Bern', en: 'Language Exchange Bern' },
-                date: getNextWeekday(4),
-                time: '19:00',
-                recurring: 'weekly',
-                description: {
-                    de: 'Sprachenaustausch im Maison, Theaterplatz 7 (neben dem Zytglogge)',
-                    en: 'Language exchange at Maison, Theaterplatz 7 (next to the Zytglogge)'
-                },
-                link: '/groups/language-exchange'
-            },
-            {
-                title: { de: 'Denk:Mal - Schweizerdeutsch Kurs', en: 'Denk:Mal - Swiss German Course' },
-                date: getNextWeekday(1),
-                recurring: 'weekly',
-                description: {
-                    de: 'Schweizerdeutsch-Kurs',
-                    en: 'Swiss German course'
-                },
-                link: 'https://tiny.cc/germanbern'
-            },
-            {
-                title: { de: 'Beer on Tuesday', en: 'Beer on Tuesday' },
-                date: getNextNthWeekday(2, 3),
-                recurring: 'monthly',
-                time: '19:00',
-                description: {
-                    de: 'Treffen mit Hacker:innen und Infosec-Profis - Voranmeldung erforderlich!',
-                    en: 'Meetup with hackers and infosec professionals - Pre-registration required!'
-                },
-                link: '/events/beer-on-tuesday'
-            },
-            {
-                title: { de: 'BlaBla Language Exchange', en: 'BlaBla Language Exchange' },
-                date: getNextWeekday(3),
-                recurring: 'weekly',
-                time: '19:00',
-                description: {
-                    de: 'Internationales Treffen zum Sprachenaustausch',
-                    en: 'International language exchange meetup'
-                },
-                link: 'https://t.me/+-Q6c3xU3uEwyNmZk'
-            },
-            {
-                title: { de: 'ChaosTreff Bern Wöchentliches Treffen', en: 'ChaosTreff Bern Weekly Meeting' },
-                date: getNextWeekday(2),
-                recurring: 'weekly',
-                description: {
-                    de: 'Ein Hackerspace in Bern, verwandt mit der Chaos Computer Club (CCC) Bewegung, aber nicht Teil davon',
-                    en: 'A hacker space in Bern related to the Chaos Computer Club (CCC) movement, but not part of it'
-                },
-                link: 'https://chaostreffbern.ch/'
-            },
-            {
-                title: { de: 'EA Bern Social @ Pittaria', en: 'EA Bern Social @ Pittaria' },
-                date: new Date(2026, 0, 22, 18, 30),
-                time: '18:30-20:00',
-                recurring: false,
-                description: {
-                    de: 'Komm zu unserem monatlichen EA Bern Social! Freundliches, entspanntes Treffen für alle, die sich für Effective Altruism interessieren. 🥙',
-                    en: 'Join us for our monthly EA Bern Social! A friendly, relaxed get-together for everyone interested in Effective Altruism. 🥙'
-                },
-                link: '/events/ea-bern-social',
-                organizer: 'connectbern'
-            },
-            {
-                title: { de: 'English Club', en: 'English Club' },
-                date: getNextWeekday(4),
-                recurring: 'weekly',
-                description: {
-                    de: 'Englisch üben und neue Leute treffen',
-                    en: 'Practice English and meet new people'
-                },
-                link: 'https://englishclub.ch/club-calendar'
-            },
-            {
-                title: { de: 'Polyamorie Treffen', en: 'Polyamorous Meetup' },
-                date: getNextNthWeekday(4, 1),
-                recurring: 'monthly',
-                description: {
-                    de: 'Einmal im Monat am ersten Donnerstag',
-                    en: 'Once a month on the first Thursday'
-                }
-            },
-            {
-                title: { de: 'Deutscher Sprachenaustausch', en: 'German Language Exchange' },
-                date: getNextWeekday(4),
-                recurring: 'weekly',
-                description: {
-                    de: 'Deutsch üben (schau auf MeetUp für Ort)',
-                    en: 'Practice German (check MeetUp for location)'
-                },
-                link: 'https://www.meetup.com/meetup-bern/events/calendar/'
-            },
-            {
-                title: { de: 'Erupt Spieleabend', en: 'Erupt Games Night' },
-                date: getNextWeekday(4),
-                recurring: 'weekly',
-                description: {
-                    de: 'Spieleabend bei Erupt',
-                    en: 'Games night at Erupt'
-                },
-                link: 'https://www.meetup.com/eruptlounge/events/calendar/'
-            },
-            {
-                title: { de: 'Berndeutsch Konversationsgruppe', en: 'Berndeutsch Conversation Group' },
-                date: getNextWeekday(5),
-                recurring: 'weekly',
-                time: '19:00',
-                description: {
-                    de: 'Mir träffe üs am Abe zum gmüetlech Mundart mitanang rede. Mir tüe gärn Schwizerdütsch üebe. 🇨🇭💬',
-                    en: 'We meet in the evening to practice Swiss German dialect together in a relaxed atmosphere. 🇨🇭💬'
-                },
-                link: '/events/berndeutsch',
-                organizer: 'connectbern'
-            },
-            {
-                title: { de: 'Connect & Cheers', en: 'Connect & Cheers' },
-                date: getNextWeekday(5),
-                recurring: 'weekly',
-                time: '19:00',
-                description: {
-                    de: 'Jeden Freitagabend in der PROGR Turnhalle – entspannter Treff zum Anstoßen, Austauschen und neue Leute kennenlernen. Teil des Community-Projekts Connect Bern.',
-                    en: 'Every Friday evening at PROGR Turnhalle – relaxed drinks, chats and connections. Part of the Connect Bern community project.'
-                },
-                link: '/events/connect-and-cheers',
-                organizer: 'connectbern'
-            },
-            {
-                title: { de: 'English Speaking Club', en: 'English Speaking Club' },
-                date: getNextWeekday(5),
-                recurring: 'weekly',
-                description: {
-                    de: 'Englisch üben und neue Leute treffen',
-                    en: 'Practice English and meet new people'
-                },
-                link: 'https://englishclub.ch/club-calendar'
-            },
-            {
-                title: { de: 'Karaoke Nacht bei DELFINO', en: 'Karaoke Night at DELFINO' },
-                date: getNextWeekday(5),
-                recurring: 'weekly',
-                time: '21:00',
-                description: {
-                    de: 'Finde Freunde beim Karaoke. Frage in Gruppen, ob jemand mitkommen möchte, damit du nicht alleine gehen musst! 🎤',
-                    en: 'Find friends while doing karaoke. Ask in groups if anybody wants to join you, so you don\'t have to go alone! 🎤'
-                },
-                link: '/events/karaoke-night-delfino'
-            },
-            {
-                title: { de: 'Karaoke Nacht bei DELFINO', en: 'Karaoke Night at DELFINO' },
-                date: getNextWeekday(6),
-                recurring: 'weekly',
-                time: '21:00',
-                description: {
-                    de: 'Finde Freunde beim Karaoke. Frage in Gruppen, ob jemand mitkommen möchte, damit du nicht alleine gehen musst! 🎤',
-                    en: 'Find friends while doing karaoke. Ask in groups if anybody wants to join you, so you don\'t have to go alone! 🎤'
-                },
-                link: '/events/karaoke-night-delfino'
-            },
-            {
-                title: { de: 'CB Boardgame Night', en: 'CB Boardgame Night' },
-                date: new Date(2026, 2, 25, 18, 30),
-                time: '18:30',
-                description: {
-                    de: 'Gesellschaftsspiele spielen bei Erupt Lounge, Parkterrasse 14 (3. Stock). Kostenlos. 🎲',
-                    en: 'Board games at Erupt Lounge, Parkterrasse 14 (3rd floor). Free entry. 🎲'
-                },
-                link: '/events/cb-boardgame-night',
-                recurring: false,
-                organizer: 'connectbern'
-            },
-            {
-                title: { de: 'Connect Bern Welcome Party', en: 'Connect Bern Welcome Party' },
-                date: new Date(2026, 2, 24, 18, 0),
-                time: '18:00',
-                description: {
-                    de: 'Wir feiern den Start unseres Community-Projekts! Triff die Menschen dahinter, sieh dir den Space an und geniesse einen entspannten Abend. Begrenzte Plätze – Anmeldung auf der App erforderlich. 🎉',
-                    en: 'We are celebrating the start of our community project! Meet the people behind it, see the space, and enjoy a relaxed evening. Limited spots – register on the app. 🎉'
-                },
-                link: '/events/welcome-party',
-                recurring: false,
-                organizer: 'connectbern',
-                featured: true
-            },
-            {
-                title: { de: 'Speed Friending #2', en: 'Speed Friending #2' },
-                date: new Date(2026, 2, 26, 18, 0),
-                time: '18:00',
-                description: {
-                    de: 'Echte Gespräche statt Small Talk – wir matchen dich basierend auf deinen Interessen. 10 CHF rückerstattbare Kaution. ⚡🤝',
-                    en: 'Real conversations instead of small talk – we match you based on your interests. 10 CHF refundable deposit. ⚡🤝'
-                },
-                link: '/events/speed-friending-2',
-                recurring: false,
-                organizer: 'connectbern',
-                featured: true,
-                paid: true,
-                optionalPaid: true
-            },
-            {
-                title: { de: 'Wanderung: First - Bachalpsee - Bort', en: 'Hike: First - Bachalpsee - Bort' },
-                date: new Date(2026, 2, 14, 9, 0),
-                time: '09:00',
-                description: {
-                    de: 'Entspannte Wanderung durch die Berge mit gefrorenem See, Wäldern und Bergpanorama. Anfängerfreundlich, Hunde willkommen (an der Leine). Kleine Gruppe. 🥾🏔️',
-                    en: 'Chill hike through the mountains with a frozen lake, forests and mountain views. Beginner friendly, dogs welcome (leashed). Small group. 🥾🏔️'
-                },
-                link: '/events/hiking',
-                recurring: false,
-                organizer: 'connectbern'
-            },
-            {
-                title: { de: 'Patt Event', en: 'Patt Event' },
-                date: getNextWeekday(6),
-                recurring: 'monthly',
-                time: '17:00-23:00',
-                description: {
-                    de: 'Einmal im Monat',
-                    en: 'Once a month'
-                },
-                link: 'https://patt.be'
-            }
-        ];
-
-        // Generate multiple occurrences for ping pong events (1st and 3rd Wednesday)
-        const pingPongTemplate = {
-            title: { de: 'Sip & Smash - Ping Pong bei Lovestino', en: 'Sip & Smash - Ping Pong at Lovestino' },
-            recurring: 'monthly-multiple',
-            time: '16:30-00:30',
-            description: {
-                de: 'Ping Pong bei Lovestino! Bring deinen Schläger mit oder hol dir einen vor Ort. Frag in der WhatsApp-Gruppe, wer heute dabei ist! 🏓',
-                en: 'Ping pong at Lovestino! Bring your paddle or get one there. Ask in the WhatsApp group who\'s going today! 🏓'
-            },
-            link: '/events/pingpong'
-        };
-
-        // Generate occurrences for 1st Wednesday (next 3 months)
-        const firstWedOccurrences = generateMonthlyOccurrences(3, 1, 3);
-        firstWedOccurrences.forEach(date => {
-            events.push({
-                ...pingPongTemplate,
-                date: date
-            });
-        });
-
-        // Generate occurrences for 3rd Wednesday (next 3 months)
-        const thirdWedOccurrences = generateMonthlyOccurrences(3, 3, 3);
-        thirdWedOccurrences.forEach(date => {
-            events.push({
-                ...pingPongTemplate,
-                date: date
-            });
-        });
-
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-
-        calendarEvents = events
-            .filter(event => {
-                const eventDate = new Date(event.date);
-                eventDate.setHours(0, 0, 0, 0);
-                return eventDate >= today;
-            })
-            .sort((a, b) => a.date - b.date);
-    });
+    calendarEvents = events
+        .filter(event => {
+            const eventDate = new Date(event.date);
+            eventDate.setHours(0, 0, 0, 0);
+            return eventDate >= today;
+        })
+        .sort((a, b) => a.date - b.date);
 </script>
 
 <section>
@@ -865,132 +120,47 @@
                         on:click={() => eventsDisplayMode = 'events'}
                     >
                         <span class="chipIcon">📅</span>
-                        <span class="chipText">{lang === 'de' ? 'Kommende' : 'Upcoming'}</span>
+                        <span class="chipText">{t[lang]['filter-chip-upcoming']}</span>
                     </button>
                     <button
                         class="filterChip {eventsDisplayMode === 'resources' ? 'active' : ''}"
                         on:click={() => eventsDisplayMode = 'resources'}
                     >
                         <span class="chipIcon">🌐</span>
-                        <span class="chipText">{lang === 'de' ? 'Mehr finden' : 'Find More'}</span>
+                        <span class="chipText">{t[lang]['filter-chip-more']}</span>
                     </button>
                 </div>
             </div>
 
             <div class="titleSection">
-                <h1>Events in Bern<span class="h1Sub">{lang === 'de' ? ' wo du wirklich Leute treffen kannst!' : ' where you can actually meet people!'}</span></h1>
+                <h1>{t[lang]['title']}<span class="h1Sub">{t[lang]['subTitle']}</span></h1>
             </div>
 
             <button class="whyDifferentButton" on:click={() => showWhyDifferentDialog = true} title={t[lang]['events-why-different']}>
                 <span class="whyIcon">🤔</span>
                 <span class="whyText">{t[lang]['events-why-different']}</span>
             </button>
+            <!-- Why Different Dialog -->
+            <TitleDescDialog bind:showDialog={showWhyDifferentDialog}
+                    titleKey="events-why-different-title"
+                    descKey="events-description"
+                    icon="💡">
+            </TitleDescDialog>
+
+
         </div>
     </div>
 
-    <!-- App Banner -->
-    <div class="appBanner">
-        <p class="appBannerTitle">{lang === 'de' ? 'Wir haben jetzt auch eine App. 📱🎉' : 'We now also have an app. 📱🎉'}</p>
-        <p class="appBannerSub">{lang === 'de' ? 'Entdecke mehr Events auf der App:' : 'Check out more events on the app:'}</p>
-        <div class="storeBadges">
-            <a href="https://app.connectbern.ch" class="storeBadge webBadge" target="_blank" rel="noopener noreferrer">
-                <svg class="storeIcon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                </svg>
-                <div class="storeText">
-                    <span class="storeSmall">{lang === 'de' ? 'Öffnen im' : 'Open in'}</span>
-                    <span class="storeBig">Browser</span>
-                </div>
-            </a>
-            <a href="https://play.google.com/store/apps/details?id=com.innr.app" class="storeBadge androidBadge" target="_blank" rel="noopener noreferrer">
-                <svg class="storeIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.575a1 1 0 0 1 0 1.736l-2.035 1.175L13.315 12l2.348-2.348 2.035 1.48zM5.864 3.658L16.8 10.09l-2.302 2.302-8.635-8.734z" fill="white"/>
-                </svg>
-                <div class="storeText">
-                    <span class="storeSmall">GET IT ON</span>
-                    <span class="storeBig">Google Play</span>
-                </div>
-            </a>
-            <a href="https://apps.apple.com/de/app/connect-bern/id6751537380" class="storeBadge iosBadge" target="_blank" rel="noopener noreferrer">
-                <svg class="storeIcon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                </svg>
-                <div class="storeText">
-                    <span class="storeSmall">Download on the</span>
-                    <span class="storeBig">App Store</span>
-                </div>
-            </a>
-        </div>
-    </div>
 
-    <!-- Floating Suggest Event Button (Moving around) -->
+    <AppBanner></AppBanner>
+
+
     {#if !isFloatingButtonHidden}
-        <div
-            class="floatingButton"
-            class:autoMove={isAutoMoving}
-            class:nearButton={isNearButton}
-            bind:this={buttonElement}
-            style="left: {floatingX}px; top: {floatingY}px; cursor: {isDragging ? 'grabbing' : 'grab'};"
-            on:mousedown={startDrag}
-            on:touchstart={startDrag}
-            role="button"
-            tabindex="0"
-        >
-            <button
-                class="floatingCloseBtn"
-                on:click={hideFloatingButton}
-                on:touchstart={handleCloseButtonTouch}
-                aria-label="Close"
-                title={lang === 'de' ? 'Schließen' : 'Close'}
-            >
-                ✕
-            </button>
-            <button
-                class="floatingContent"
-                on:click={(e) => {
-                    if (!hasDragged) {
-                        showSuggestDialog = true;
-                    }
-                }}
-                on:touchend={(e) => {
-                    if (!hasDragged) {
-                        e.preventDefault();
-                        showSuggestDialog = true;
-                    }
-                }}
-            >
-                <span class="floatingIcon">🔥</span>
-                <span class="floatingText">{lang === 'de' ? 'Event vorschlagen?' : 'Know of an event?'}</span>
-            </button>
-        </div>
+        <EventSuggestionFloatingButton></EventSuggestionFloatingButton>
     {/if}
 
-    <!-- Suggest Event Dialog -->
-    {#if showSuggestDialog}
-        <div class="dialogOverlay" on:click={() => showSuggestDialog = false}>
-            <div class="dialogBox" on:click|stopPropagation>
-                <button class="closeButton" on:click={() => showSuggestDialog = false}>×</button>
-                <div class="dialogIcon">✨</div>
-                <h2>{t[lang]['events-suggest-title']}</h2>
-                <p class="dialogDescription">{t[lang]['events-suggest-description']}</p>
-                <a href="/contact" class="dialogButton">
-                    {t[lang]['events-suggest-button']} →
-                </a>
-            </div>
-        </div>
-    {/if}
 
-    <!-- Why Different Dialog -->
-    {#if showWhyDifferentDialog}
-        <div class="dialogOverlay" on:click={() => showWhyDifferentDialog = false}>
-            <div class="dialogBox" on:click|stopPropagation>
-                <button class="closeButton" on:click={() => showWhyDifferentDialog = false}>×</button>
-                <div class="dialogIcon">💡</div>
-                <h2>{t[lang]['events-why-different-title']}</h2>
-                <p class="dialogDescription">{t[lang]['events-description']}</p>
-            </div>
-        </div>
-    {/if}
+
 
     <!-- Upcoming Events View -->
     {#if eventsDisplayMode === 'events'}
@@ -1000,24 +170,24 @@
                     class="filterBtn {filterMode === 'connectbern' ? 'active' : ''}"
                     on:click={() => filterMode = 'connectbern'}
                 >
-                    🏠 {content[lang].filterConnectBern}
+                    🏠 {t[lang].filterConnectBern}
                 </button>
                 <button
                     class="filterBtn {filterMode === 'all' ? 'active' : ''}"
                     on:click={() => filterMode = 'all'}
                 >
-                    {content[lang].filterAll}
+                    {t[lang].filterAll}
                 </button>
             </div>
 
             {#if filterMode === 'all'}
                 <div class="disclaimerWrapper">
                     <button class="disclaimerToggle" on:click={() => showDisclaimer = !showDisclaimer}>
-                        <span class="toggleText">⚠️ {lang === 'de' ? 'Wichtiger Hinweis' : 'Important Note'}</span>
+                        <span class="toggleText">{t[lang].disclaimerToggle}</span>
                         <span class="toggleIcon">{showDisclaimer ? '▼' : '▶'}</span>
                     </button>
                     <div class="disclaimer" class:expanded={showDisclaimer}>
-                        {@html content[lang].disclaimer}
+                        {@html t[lang].disclaimer}
                     </div>
                 </div>
             {/if}
@@ -1029,14 +199,7 @@
                         <div class="dateGroupHeader">
                             <div class="dateGroupDate">
                                 <div class="dayNumber">{group.date.getDate()}</div>
-                                <div class="monthYear">
-                                    {(() => {
-                                        const months = lang === 'de'
-                                            ? ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez']
-                                            : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-                                        return months[group.date.getMonth()];
-                                    })()}
-                                </div>
+                                <div class="monthYear">{date_trans[lang].months_short[group.date.getMonth()]} </div>
                             </div>
                             <div class="dateGroupInfo">
                                 <div class="fullDate">{formatDate(group.date)}</div>
@@ -1049,31 +212,15 @@
                                 <div class="eventCard" style="animation-delay: {(groupIndex * 0.05) + (i * 0.02)}s">
                                     <div class="eventTags">
                                         {#if event.recurring && event.recurring !== 'monthly-multiple'}
-                                            <span class="recurringTag">
-                                                {#if event.recurring === 'weekly'}
-                                                    {lang === 'de' ? 'Wöchentlich' : 'Weekly'}
-                                                {:else if event.recurring === 'monthly'}
-                                                    {lang === 'de' ? 'Monatlich' : 'Monthly'}
-                                                {/if}
-                                            </span>
+                                            <span class="recurringTag">{t[lang][event.recurring]}</span>
                                         {/if}
                                         {#if event.paid}
                                             <span
                                                 class="paidTag"
                                                 class:optionalTag={event.optionalPaid}
-                                                title={event.optionalPaid
-                                                    ? (lang === 'de'
-                                                        ? 'Diese Veranstaltung bietet explizit optionale kostenpflichtige Angebote (z.B. Essen, Kaution) oder empfohlene Spenden an.'
-                                                        : 'This event explicitly offers optional paid elements (e.g., food, deposit) or suggested donations.')
-                                                    : (lang === 'de'
-                                                        ? 'Diese Veranstaltung ist kostenpflichtig, aber das Geld geht nicht an Connect Bern.'
-                                                        : 'This event is paid, but the money does not go to Connect Bern.')}
+                                                title={t[lang][event.optionalPaid ? "optional-paid-event-tooltip" : "paid-event-tooltip"]}
                                             >
-                                                {#if event.optionalPaid}
-                                                    💵 {lang === 'de' ? 'Optional kostenpflichtig' : 'Optional Payment'}
-                                                {:else}
-                                                    💰 {lang === 'de' ? 'Kostenpflichtig' : 'Not Free'}
-                                                {/if}
+                                                {t[lang][event.optionalPaid ? "optional-paid-event-chip" : "paid-event-chip"]}
                                             </span>
                                         {/if}
                                     </div>
@@ -1109,7 +256,7 @@
                                             target={event.link.startsWith('http') ? '_blank' : '_self'}
                                             rel={event.link.startsWith('http') ? 'noopener noreferrer' : ''}
                                         >
-                                            {lang === 'de' ? 'Mehr Info' : 'More Info'} →
+                                            {t[lang]["more-info"]} →
                                         </a>
                                     {/if}
                                 </div>
@@ -1120,70 +267,13 @@
             </div>
         </div>
 
-    <!-- Find More Events Resources -->
     {:else}
-        <div class="resourcesTile">
-            <p class="tileDescription">
-                {lang === 'de'
-                    ? 'Entdecke Events auf diesen Plattformen:'
-                    : 'Discover events on these platforms:'}
-            </p>
-            <div class="resourceCards">
-                <a href="https://www.facebook.com/events/?date_filter_option=TODAY&discover_tab=LOCAL" class="resourceCard" target="_blank" rel="noopener noreferrer">
-                    <span class="resourceIcon">📘</span>
-                    <h3>Facebook Local</h3>
-                    <p>{lang === 'de' ? 'Lokale Events in der Umgebung' : 'Local events in the area'}</p>
-                </a>
-
-                <a href="https://meetup.com" class="resourceCard" target="_blank" rel="noopener noreferrer">
-                    <span class="resourceIcon">👥</span>
-                    <h3>Meetup.com</h3>
-                    <p>{lang === 'de' ? 'Treffen und Gruppen finden' : 'Find meetups and groups'}</p>
-                </a>
-
-                <a href="https://gemeinsamerleben.com/orte-und-regionen/schweiz/bern" class="resourceCard" target="_blank" rel="noopener noreferrer">
-                    <span class="resourceIcon">🤝</span>
-                    <h3>{lang === 'de' ? 'Gemeinsam Erleben / Spontacts' : 'Gemeinsam Erleben / Spontacts'}</h3>
-                    <p>{lang === 'de' ? 'Lokale App um Leute zu treffen und Events zu machen' : 'Local app to meet people and do events'}</p>
-                </a>
-
-                <a href="https://www.reitschule.ch/reitschule/?programm" class="resourceCard" target="_blank" rel="noopener noreferrer">
-                    <span class="resourceIcon">🏛️</span>
-                    <h3>Reitschule</h3>
-                    <p>{lang === 'de' ? 'Alternative Kultur' : 'Alternative culture'}</p>
-                </a>
-
-                <a href="https://www.dieheiterefahne.ch/menu" class="resourceCard" target="_blank" rel="noopener noreferrer">
-                    <span class="resourceIcon">🎪</span>
-                    <h3>Heitere Fahne</h3>
-                    <p>{lang === 'de' ? 'Kulturzentrum' : 'Cultural center'}</p>
-                </a>
-
-                <a href="https://bern.impacthub.net/events-erleben" class="resourceCard" target="_blank" rel="noopener noreferrer">
-                    <span class="resourceIcon">💡</span>
-                    <h3>Impact Hub</h3>
-                    <p>{lang === 'de' ? 'Networking' : 'Networking'}</p>
-                </a>
-
-                <a href="https://www.reddit.com/r/bern/" class="resourceCard" target="_blank" rel="noopener noreferrer">
-                    <span class="resourceIcon">💬</span>
-                    <h3>r/Bern</h3>
-                    <p>{lang === 'de' ? 'Reddit Community' : 'Reddit Community'}</p>
-                </a>
-            </div>
-        </div>
+        <EventResourcesBanner></EventResourcesBanner>
     {/if}
 </section>
 
 <style>
-    .appBanner {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 1rem;
-        padding: 1.2rem 1rem;
-        margin-bottom: 1rem;
-        text-align: center;
-    }
+
     .h1Sub {
         display: block;
         font-size: 0.55em;
@@ -1192,54 +282,7 @@
         margin-top: 1em;
     }
 
-    .appBannerTitle {
-        font-size: 1rem;
-        font-weight: 700;
-        margin: 0 0 0.2rem 0;
-    }
-    .appBannerSub {
-        font-size: 0.85rem;
-        opacity: 0.7;
-        margin: 0 0 1rem 0;
-    }
-    .storeBadges {
-        display: flex;
-        gap: 0.6rem;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    .storeBadge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.55rem;
-        background: #111;
-        border: 1px solid rgba(255,255,255,0.18);
-        border-radius: 10px;
-        padding: 0.45rem 0.9rem;
-        text-decoration: none;
-        color: white;
-        transition: transform 0.15s ease, background 0.15s ease;
-        min-width: 130px;
-    }
-    .storeBadge:hover { transform: translateY(-2px); background: #222; }
-    .storeIcon { width: 22px; height: 22px; flex-shrink: 0; }
-    .storeText {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        line-height: 1.15;
-    }
-    .storeSmall {
-        font-size: 0.6rem;
-        opacity: 0.75;
-        text-transform: uppercase;
-        letter-spacing: 0.03em;
-    }
-    .storeBig {
-        font-size: 0.95rem;
-        font-weight: 700;
-        white-space: nowrap;
-    }
+
 
     section {
         max-width: 1200px;
@@ -1361,39 +404,6 @@
         font-size: 0.95em;
     }
 
-    .eventsIntro {
-        margin-top: 2em !important;
-        margin-bottom: 2em !important;
-    }
-
-    /* Suggest Event CTA */
-    .suggestEventCTA {
-        background: linear-gradient(135deg, rgba(255, 180, 100, 0.15), rgba(255, 120, 150, 0.15));
-        border: 2px solid rgba(255, 180, 100, 0.4);
-        border-radius: 1.2em;
-        padding: 1.5em 1.5em;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.7em;
-        max-width: 550px;
-        width: 100%;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 20px rgba(255, 180, 100, 0.2);
-    }
-
-    .suggestEventCTA:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(255, 180, 100, 0.3);
-        border-color: rgba(255, 180, 100, 0.6);
-    }
-
-    .ctaIcon {
-        font-size: 2.2em;
-        animation: pulse 2s ease-in-out infinite;
-    }
-
     @keyframes pulse {
         0%, 100% {
             transform: scale(1);
@@ -1420,30 +430,6 @@
         max-width: 500px;
     }
 
-    .ctaButton {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5em;
-        padding: 0.8em 1.5em;
-        background: linear-gradient(135deg, rgba(255, 180, 100, 0.9), rgba(255, 120, 150, 0.9));
-        color: white;
-        text-decoration: none;
-        border-radius: 2em;
-        font-weight: bold;
-        font-size: 0.95em;
-        transition: all 0.3s ease;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        margin-top: 0.3em;
-    }
-
-    .ctaButton:hover {
-        transform: translateX(5px) scale(1.05);
-        background: linear-gradient(135deg, rgba(255, 200, 120, 1), rgba(255, 140, 170, 1));
-        box-shadow: 0 6px 25px rgba(255, 180, 100, 0.4);
-        border-color: rgba(255, 255, 255, 0.5);
-    }
-
     /* Filter Bar Style */
     .filterBar {
         display: flex;
@@ -1458,267 +444,6 @@
         flex-wrap: nowrap;
         flex-shrink: 0;
         margin-right: auto;
-    }
-
-    /* Floating Button (Moving around page) */
-    .floatingButton {
-        position: fixed;
-        background: linear-gradient(135deg, rgb(255, 100, 80), rgb(255, 150, 50));
-        border: 3px solid rgba(255, 255, 255, 0.8);
-        border-radius: 2em;
-        box-shadow: 0 8px 30px rgba(255, 100, 80, 0.6);
-        z-index: 999;
-        transition: transform 0.3s ease,
-                    box-shadow 0.3s ease;
-        animation: wiggle 3s ease-in-out infinite, glow 2s ease-in-out infinite;
-        white-space: nowrap;
-        transform-origin: center;
-        user-select: none;
-    }
-
-    .floatingButton.autoMove {
-        transition: left 2.5s cubic-bezier(0.4, 0, 0.2, 1),
-                    top 2.5s cubic-bezier(0.4, 0, 0.2, 1),
-                    transform 0.3s ease,
-                    box-shadow 0.3s ease;
-    }
-
-    .floatingContent {
-        background: none;
-        border: none;
-        padding: 1em 1.5em;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 0.7em;
-        color: white;
-        font: inherit;
-    }
-
-    .floatingCloseBtn {
-        position: absolute;
-        top: -8px;
-        right: -8px;
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        border: 2px solid white;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 14px;
-        font-weight: bold;
-        z-index: 1001;
-        transition: all 0.2s ease;
-        padding: 0;
-        line-height: 1;
-    }
-
-    .floatingCloseBtn:hover {
-        background: rgba(255, 50, 50, 0.9);
-        transform: scale(1.1);
-    }
-
-    @keyframes wiggle {
-        0%, 100% {
-            transform: rotate(-3deg) scale(1);
-        }
-        25% {
-            transform: rotate(3deg) scale(1.05);
-        }
-        50% {
-            transform: rotate(-3deg) scale(1);
-        }
-        75% {
-            transform: rotate(3deg) scale(0.95);
-        }
-    }
-
-    @keyframes glow {
-        0%, 100% {
-            box-shadow: 0 8px 30px rgba(255, 100, 80, 0.6), 0 0 20px rgba(255, 150, 50, 0.4);
-        }
-        50% {
-            box-shadow: 0 10px 40px rgba(255, 100, 80, 0.9), 0 0 30px rgba(255, 150, 50, 0.7);
-        }
-    }
-
-    .floatingButton:hover,
-    .floatingButton.nearButton {
-        animation: none;
-        box-shadow: 0 15px 50px rgba(255, 100, 80, 0.9);
-    }
-
-    .floatingButton:hover {
-        transform: scale(1.05);
-    }
-
-    .floatingButton:active {
-        transform: scale(1.1);
-    }
-
-    .floatingIcon {
-        font-size: 1.8em;
-        line-height: 1;
-        animation: pulse 1.5s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-        0%, 100% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.2);
-        }
-    }
-
-    .floatingText {
-        font-size: 1em;
-        font-weight: bold;
-        color: white;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        letter-spacing: 0.3px;
-    }
-
-    @media (max-width: 800px) {
-        .floatingButton {
-            padding: 0.8em 1.2em;
-            gap: 0.5em;
-        }
-
-        .floatingIcon {
-            font-size: 1.5em;
-        }
-
-        .floatingText {
-            font-size: 0.85em;
-        }
-    }
-
-    /* Dialog Styles */
-    .dialogOverlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(5px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
-        animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-
-    .dialogBox {
-        background: linear-gradient(135deg, rgb(30, 40, 60), rgb(20, 30, 50));
-        border: 2px solid rgba(255, 200, 100, 0.3);
-        border-radius: 1.5em;
-        padding: 2em 1.5em;
-        max-width: 450px;
-        width: 85%;
-        max-height: 80vh;
-        overflow-y: auto;
-        position: relative;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        animation: slideUp 0.3s ease;
-        text-align: center;
-    }
-
-    @keyframes slideUp {
-        from {
-            transform: translateY(50px);
-            opacity: 0;
-        }
-        to {
-            transform: translateY(0);
-            opacity: 1;
-        }
-    }
-
-    .closeButton {
-        position: absolute;
-        top: 1em;
-        right: 1em;
-        background: rgba(255, 255, 255, 0.1);
-        border: none;
-        color: white;
-        font-size: 2em;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.2s ease;
-        line-height: 1;
-    }
-
-    .closeButton:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: rotate(90deg);
-    }
-
-    .dialogIcon {
-        font-size: 3em;
-        margin-bottom: 0.4em;
-    }
-
-    .dialogBox h2 {
-        color: white;
-        font-size: 1.3em;
-        margin-bottom: 0.5em;
-        line-height: 1.3;
-    }
-
-    .dialogDescription {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 0.85em;
-        line-height: 1.4;
-        margin-bottom: 1.2em;
-    }
-
-    .dialogButton {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5em;
-        padding: 0.9em 1.8em;
-        background: linear-gradient(135deg, rgb(255, 200, 100), rgb(255, 180, 80));
-        color: rgb(20, 20, 30);
-        border: none;
-        border-radius: 2em;
-        font-size: 0.9em;
-        font-weight: 700;
-        text-decoration: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(255, 180, 80, 0.4);
-        margin-top: 0.5em;
-    }
-
-    .dialogButton:hover {
-        transform: translateY(-2px) scale(1.05);
-        box-shadow: 0 8px 25px rgba(255, 180, 80, 0.6);
-    }
-
-    .filterLabel {
-        font-size: 0.85em;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.8);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        white-space: nowrap;
     }
 
     .filterOptions {
@@ -1794,77 +519,6 @@
         line-height: 1;
     }
 
-    /* Resources Tile */
-    .resourcesTile {
-        background: linear-gradient(135deg, rgba(108, 72, 167, 0.1), rgba(58, 152, 189, 0.1));
-        border: 2px solid rgba(108, 72, 167, 0.3);
-        border-radius: 1.5em;
-        padding: 2.5em;
-        margin: 0.5em 0 2em 0;
-    }
-
-    .tileDescription {
-        text-align: center;
-        font-size: 1.2em;
-        opacity: 0.9;
-        margin-bottom: 2em;
-    }
-
-    .resourceCards {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1em;
-        margin-top: 2em;
-    }
-
-    @media (max-width: 1000px) {
-        .resourceCards {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    .resourceCard {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 1em;
-        padding: 1.2em;
-        text-align: center;
-        text-decoration: none;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5em;
-        transition: all 0.3s ease;
-    }
-
-    .resourceCard:hover {
-        transform: translateY(-3px);
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.2);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .resourceIcon {
-        font-size: 2.5em;
-        margin-bottom: 0.2em;
-    }
-
-    .resourceCard h3 {
-        font-size: 1.1em;
-        font-weight: bold;
-        margin: 0;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
-    }
-
-    .resourceCard p {
-        font-size: 0.9em;
-        opacity: 0.8;
-        margin: 0;
-        line-height: 1.5;
-        max-width: 100%;
-    }
 
     /*  Calendar View Styles */
     .calendarViewWrapper {
@@ -2242,83 +896,6 @@
         border-color: rgba(255, 255, 255, 0.3);
     }
 
-    .groupedEventsList {
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-        margin-top: 0.5em;
-    }
-
-    .groupedEvent {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 0.8em;
-        padding: 1.2em;
-        display: flex;
-        flex-direction: column;
-        gap: 0.8em;
-        transition: all 0.2s ease;
-    }
-
-    .groupedEvent:hover {
-        background: rgba(255, 255, 255, 0.05);
-        border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    .groupedEventHeader {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1em;
-        flex-wrap: wrap;
-    }
-
-    h3 {
-        font-size: 1.2em;
-        font-weight: bold;
-        margin: 0;
-        flex: 1;
-        min-width: 150px;
-    }
-
-    .groupedEventTime {
-        font-size: 0.95em;
-        font-weight: bold;
-        padding: 0.3em 0.8em;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 1em;
-        white-space: nowrap;
-    }
-
-    .groupedEventDescription {
-        font-size: 0.95em;
-        opacity: 0.85;
-        margin: 0;
-        line-height: 1.5;
-    }
-
-    .groupedEventLink {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5em;
-        padding: 0.6em 1em;
-        background: rgba(255, 255, 255, 0.1);
-        color: #1e40af;
-        text-decoration: none;
-        border-radius: 0.5em;
-        font-weight: bold;
-        font-size: 0.9em;
-        transition: all 0.2s ease;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        align-self: flex-start;
-    }
-
-    .groupedEventLink:hover {
-        background: rgba(255, 255, 255, 0.15);
-        transform: translateX(3px);
-        border-color: rgba(255, 255, 255, 0.25);
-    }
-
     /* Responsive */
     @media (max-width: 768px) {
         section {
@@ -2378,38 +955,6 @@
             padding: 0 0.5em;
             line-height: 1.7;
             font-size: 1.05em;
-        }
-
-        .suggestEventCTA {
-            padding: 0.6em 0.8em;
-            gap: 0.3em;
-            border-radius: 0.8em;
-            max-width: 100%;
-        }
-
-        .ctaIcon {
-            font-size: 1.2em;
-        }
-
-        .suggestEventCTA h3 {
-            font-size: 0.9em;
-        }
-
-        .suggestEventCTA p {
-            font-size: 0.7em;
-            line-height: 1.3;
-        }
-
-        .ctaButton {
-            padding: 0.4em 0.6em;
-            font-size: 0.65em;
-            width: auto;
-            max-width: 90%;
-            justify-content: center;
-        }
-
-        .ctaButton:hover {
-            transform: scale(1.02);
         }
 
         .filterBar {
@@ -2521,69 +1066,8 @@
             display: block;
         }
 
-        .dialogBox {
-            padding: 1.2em 0.9em;
-            width: 92%;
-            max-width: 92%;
-        }
-
-        .dialogBox h2 {
-            font-size: 1.1em;
-            margin-bottom: 0.4em;
-        }
-
-        .dialogDescription {
-            font-size: 0.75em;
-            line-height: 1.3;
-            margin-bottom: 1em;
-        }
-
-        .dialogIcon {
-            font-size: 2em;
-            margin-bottom: 0.3em;
-        }
-
-        .closeButton {
-            width: 32px;
-            height: 32px;
-            font-size: 1.3em;
-            top: 0.7em;
-            right: 0.7em;
-        }
-
-        .dialogButton {
-            font-size: 0.8em;
-            padding: 0.7em 1.3em;
-        }
-
         .filterButtons {
             margin-bottom: 1em;
-        }
-
-        /* Make floating button smaller on mobile */
-        .floatingButton {
-            font-size: 0.5em;
-        }
-
-        .floatingContent {
-            padding: 0.5em 0.8em;
-            gap: 0.5em;
-        }
-
-        .floatingIcon {
-            font-size: 1.6em;
-        }
-
-        .floatingText {
-            font-size: 1em;
-        }
-
-        .floatingCloseBtn {
-            width: 20px;
-            height: 20px;
-            font-size: 12px;
-            top: -6px;
-            right: -6px;
         }
 
         .chipIcon {
@@ -2593,25 +1077,6 @@
         .chipText {
             font-size: 0.95em;
         }
-
-        .resourcesTile {
-            padding: 1.5em;
-        }
-
-        .resourceCards {
-            grid-template-columns: 1fr;
-            gap: 0.8em;
-        }
-
-        .resourceCard h3 {
-            font-size: 0.95em;
-            line-height: 1.3;
-        }
-
-        .resourceCard p {
-            font-size: 0.85em;
-        }
-
 
         .dateGroupsContainer {
             gap: 2em;

@@ -155,7 +155,9 @@ export const t = {
         "events-suggest-description": "Wir suchen Events, die sich auf das Kennenlernen neuer Menschen konzentrieren – nicht nur kommerzielle oder thematisch fokussierte Veranstaltungen. Wenn das Event, von dem du weisst, Menschen zusammenbringt und eine offene, einladende Atmosphäre schafft, würden wir gerne davon hören!",
         "events-suggest-button": "Event vorschlagen",
         "events-why-different": "Warum sind diese Events anders?",
-        "events-why-different-title": "Was macht diese Events besonders?"
+        "events-why-different-title": "Was macht diese Events besonders?",
+        "app-banner-title": "Wir haben jetzt auch eine App. 📱🎉",
+        "app-banner-subtitle": "Entdecke mehr Events auf der App:",
     },
     en: {
         "search-groups": "Search groups...",
@@ -313,6 +315,8 @@ export const t = {
         "events-suggest-description": "We're looking for events that focus on meeting new people – not just commercial or topic-focused gatherings. If the event you know of brings people together and creates an open, welcoming atmosphere, we'd love to hear about it!",
         "events-suggest-button": "Suggest an Event",
         "events-why-different": "Why are these events different?",
-        "events-why-different-title": "What makes these events special?"
+        "events-why-different-title": "What makes these events special?",
+        "app-banner-title": "We now also have an app. 📱🎉",
+        "app-banner-subtitle": "Check out more events on the app:",
     }
 }
