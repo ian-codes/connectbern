@@ -1,7 +1,7 @@
 name: Build Project
 
 on:
-  pullRequest:
+  pull_request:
   push:
     branches-ignore:
       - main
