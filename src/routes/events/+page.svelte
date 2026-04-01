@@ -5,7 +5,7 @@
 
 <script>
     import { t } from "$lib/locales/eventPageTranslations.js";
-    import { date_trans } from "$lib/locales/eventPageTranslations.js";
+    import { date_trans } from "$lib/locales/dateTranslations.js";
     import { currentLanguage } from '$lib/stores/languageStore';
     import EventSuggestionFloatingButton from "$lib/components/EventSuggestionFloatingButton.svelte";
     import AppBanner from "$lib/components/banner/AppBanner.svelte";
