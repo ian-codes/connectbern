@@ -68,7 +68,7 @@
             </div>
 
             <div class="linkBox">
-                <a href="https://app.connectbern.ch/events/karoeke" class="btn appBtn" target="_blank" rel="noopener noreferrer">
+                <a href="https://app.connectbern.ch/events/karaoke" class="btn appBtn" target="_blank" rel="noopener noreferrer">
                     🎤 {content[lang].appBtn}
                 </a>
             </div>
