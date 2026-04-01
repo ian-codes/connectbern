@@ -787,16 +787,6 @@
         transform: translateY(-1px);
     }
 
-    .btnCopy.copied {
-        background: rgba(255, 255, 255, 0.3);
-        color: white;
-        border-color: rgba(255, 255, 255, 0.6);
-    }
-
-    .btnCopy.pulse {
-        animation: pulseBtn 0.6s ease-in-out;
-    }
-
     @keyframes pulseBtn {
         0% { transform: scale(1); }
         50% { transform: scale(1.05); }

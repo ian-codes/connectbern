@@ -163,10 +163,6 @@
         p {
             font-size: 1rem !important;
         }
-
-        .badge {
-            font-size: 0.85rem !important;
-        }
     }
 
     section {
@@ -191,17 +187,6 @@
 
     .titleSection {
         text-align: center;
-    }
-
-    .badge {
-        display: inline-block;
-        background: rgba(255, 180, 100, 0.3);
-        color: white;
-        padding: 0.4em 0.8em;
-        border-radius: 2em;
-        font-size: 0.9rem;
-        font-weight: bold;
-        margin-bottom: 0.5em;
     }
 
     h1 {

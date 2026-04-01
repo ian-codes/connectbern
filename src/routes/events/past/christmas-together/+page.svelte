@@ -52,28 +52,6 @@
             alternativeContact: "SMS or call works too though:",
             phone: "+41783166727",
             whatsappMessage: "Hi, I would like to join Christmas Together!",
-            registerTitle: "📢 Lass uns mehr Leute erreichen!",
-            registerDesc: "Wir haben das Event auf diesen Plattformen registriert. Wenn du ein Konto hast, registriere dich auch dort – der Algorithmus mag es, wenn etwas passiert, und es hilft uns, mehr Menschen zu erreichen! 🚀",
-            ronorpLink: "Ronorp",
-            spontactsLink: "Spontacts",
-            redditLink: "Reddit",
-            facebookLink: "Facebook",
-            meetupLink: "Meetup",
-            flyerTitle: "📸 Flyer herunterladen",
-            flyerDesc: "Möchtest du das Event auf deinem Instagram oder Social Media teilen? Lade unseren Flyer herunter!"
-        },
-        en: {
-            title: "Christmas Together in Bern",
-            date: "December 25th",
-            time: "⏰ 7:00 PM",
-            description: "Christmas doesn't have to be spent alone. On December 25th, we're inviting anyone who wants to spend the cold days together, meet new people, and enjoy a relaxed evening.",
-            details: "We start at 7:00 pm. Lia will prepare Peruvian food and cake, and you're very welcome to be creative and bring something to share if you'd like.",
-            addressNote: "If you've never been to Connect Bern before, just write us for the address.<br>Please let us know if you're coming, so we know how many people to expect and can prepare.",
-            closing: "Warm, simple, and open to everyone.",
-            preferWhatsapp: "Preferably on WhatsApp:",
-            alternativeContact: "SMS or call works too though:",
-            phone: "+41783166727",
-            whatsappMessage: "Hi, I would like to join Christmas Together!",
             registerTitle: "📢 Let's reach more people!",
             registerDesc: "We've registered the event on these platforms. If you have an account, please also register there – the algorithm likes it when something is happening, and it helps us reach more people! 🚀",
             ronorpLink: "Ronorp",
@@ -411,16 +389,6 @@
         background: rgba(255, 255, 255, 0.25);
         border-color: rgba(255, 255, 255, 0.5);
         transform: translateY(-1px);
-    }
-
-    .btnCopy.copied {
-        background: rgba(255, 255, 255, 0.3);
-        color: white;
-        border-color: rgba(255, 255, 255, 0.6);
-    }
-
-    .btnCopy.pulse {
-        animation: pulse 0.6s ease-in-out;
     }
 
     @keyframes pulse {
