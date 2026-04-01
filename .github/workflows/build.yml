@@ -1,0 +1,26 @@
+name: Build Project
+
+on:
+  pullRequest:
+  push:
+    branches-ignore:
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v4
+
+      - name: Setup nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install packages
+        run: npm install
+
+      - name: Build app
+        run: npm run build
+      
