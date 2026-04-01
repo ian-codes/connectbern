@@ -370,6 +370,19 @@
                 organizer: 'connectbern'
             },
             {
+                title: { de: 'Karaoke Nacht im Stellwerk', en: 'Karaoke Night at Stellwerk' },
+                date: new Date(2026, 3, 3, 20, 0),
+                time: '20:00',
+                description: {
+                    de: 'Singst du gerne? Triff neue Leute bei der Karaoke Nacht im Stellwerk! Singen ist nicht Pflicht, aber anfeuern schon. 🎤',
+                    en: 'Like singing? Meet new people at the Karaoke Night at Stellwerk! Singing is not mandatory but cheering for everybody on stage is. 🎤'
+                },
+                link: '/events/karaoke',
+                recurring: false,
+                organizer: 'connectbern',
+                featured: true
+            },
+            {
                 title: { de: '🐰 POTLUCK OSTER PARTY & BRUNCH 🐣', en: '🐰 POTLUCK EASTER PARTY & BRUNCH 🐣' },
                 date: new Date(2026, 3, 5, 13, 0),
                 recurring: false,
@@ -392,7 +405,8 @@
                 link: '/events/handpan',
                 organizer: 'connectbern',
                 paid: true,
-                optionalPaid: true
+                optionalPaid: true,
+                hidden: true
             },
             {
                 title: { de: 'Hobby-Schach', en: 'Hobby Chess' },
@@ -725,28 +739,6 @@
                 link: 'https://englishclub.ch/club-calendar'
             },
             {
-                title: { de: 'Karaoke Nacht bei DELFINO', en: 'Karaoke Night at DELFINO' },
-                date: getNextWeekday(5),
-                recurring: 'weekly',
-                time: '21:00',
-                description: {
-                    de: 'Finde Freunde beim Karaoke. Frage in Gruppen, ob jemand mitkommen möchte, damit du nicht alleine gehen musst! 🎤',
-                    en: 'Find friends while doing karaoke. Ask in groups if anybody wants to join you, so you don\'t have to go alone! 🎤'
-                },
-                link: '/events/karaoke-night-delfino'
-            },
-            {
-                title: { de: 'Karaoke Nacht bei DELFINO', en: 'Karaoke Night at DELFINO' },
-                date: getNextWeekday(6),
-                recurring: 'weekly',
-                time: '21:00',
-                description: {
-                    de: 'Finde Freunde beim Karaoke. Frage in Gruppen, ob jemand mitkommen möchte, damit du nicht alleine gehen musst! 🎤',
-                    en: 'Find friends while doing karaoke. Ask in groups if anybody wants to join you, so you don\'t have to go alone! 🎤'
-                },
-                link: '/events/karaoke-night-delfino'
-            },
-            {
                 title: { de: 'CB Boardgame Night', en: 'CB Boardgame Night' },
                 date: new Date(2026, 2, 25, 18, 30),
                 time: '18:30',
@@ -848,7 +840,7 @@
             .filter(event => {
                 const eventDate = new Date(event.date);
                 eventDate.setHours(0, 0, 0, 0);
-                return eventDate >= today;
+                return eventDate >= today && !event.hidden;
             })
             .sort((a, b) => a.date - b.date);
     });
