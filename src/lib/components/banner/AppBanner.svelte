@@ -1,5 +1,5 @@
 <script>
-    import { t } from "$lib/locales/eventPageTranslations.js";
+    import { t } from "$lib/locales/translations.js";
     import { currentLanguage } from '$lib/stores/languageStore';
     $: lang = $currentLanguage;
 </script>
