@@ -209,8 +209,7 @@
         background: rgba(66, 133, 244, 0.2);
         color: white;
         border: 2px solid rgba(66, 133, 244, 0.5);
-        white-space: normal;
-        text-align: center;
+        width: fit-content;
     }
 
     .mapsBtn:hover {
