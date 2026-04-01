@@ -34,7 +34,8 @@ const PAST_EVENTS_2025 = [
         link: '/events/handpan-concert',
         recurring: false,
         organizer: 'connectbern',
-        paid: true
+        paid: true,
+        hidden: true,
     },
     {
         title: { de: 'Christmas Together in Bern', en: 'Christmas Together in Bern' },
@@ -415,17 +416,6 @@ const RECURRING_EVENTS_BY_OTHERS = [
         link: 'https://englishclub.ch/club-calendar'
     },
     {
-        title: { de: 'Karaoke Nacht bei DELFINO', en: 'Karaoke Night at DELFINO' },
-        date: getNextWeekday(5),
-        recurring: 'weekly',
-        time: '21:00',
-        description: {
-            de: 'Finde Freunde beim Karaoke. Frage in Gruppen, ob jemand mitkommen möchte, damit du nicht alleine gehen musst! 🎤',
-            en: 'Find friends while doing karaoke. Ask in groups if anybody wants to join you, so you don\'t have to go alone! 🎤'
-        },
-        link: '/events/karaoke-night-delfino'
-    },
-    {
         title: { de: 'Patt Event', en: 'Patt Event' },
         date: getNextWeekday(6),
         recurring: 'monthly',
@@ -450,6 +440,19 @@ const RECURRING_EVENTS_BY_OTHERS = [
 ];
 
 const FUTURE_EVENTS = [
+    {
+        title: { de: 'Karaoke Nacht im Stellwerk', en: 'Karaoke Night at Stellwerk' },
+        date: new Date(2026, 3, 3, 20, 0),
+        time: '20:00',
+        description: {
+            de: 'Singst du gerne? Triff neue Leute bei der Karaoke Nacht im Stellwerk! Singen ist nicht Pflicht, aber anfeuern schon. 🎤',
+            en: 'Like singing? Meet new people at the Karaoke Night at Stellwerk! Singing is not mandatory but cheering for everybody on stage is. 🎤'
+        },
+        link: '/events/karaoke',
+        recurring: false,
+        organizer: 'connectbern',
+        featured: true
+    },
     {
         title: { de: '🐰 POTLUCK OSTER PARTY & BRUNCH 🐣', en: '🐰 POTLUCK EASTER PARTY & BRUNCH 🐣' },
         date: new Date(2026, 3, 5, 13, 0),

@@ -104,7 +104,7 @@
         .filter(event => {
             const eventDate = new Date(event.date);
             eventDate.setHours(0, 0, 0, 0);
-            return eventDate >= today;
+            return eventDate >= today && !event.hidden;
         })
         .sort((a, b) => a.date - b.date);
 </script>
