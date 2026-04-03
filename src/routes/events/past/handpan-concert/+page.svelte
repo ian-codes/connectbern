@@ -420,68 +420,6 @@
         transform: scale(1.05);
     }
 
-    .contactBox {
-        background: rgba(255, 255, 255, 0.08);
-        padding: 2em;
-        border-radius: 1em;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-        align-items: center;
-    }
-
-    .instructions {
-        text-align: center;
-        margin: 0;
-    }
-
-    .phoneLink {
-        font-size: 1.5em;
-        font-weight: bold;
-        color: white;
-        text-decoration: none;
-        padding: 0.5em 1em;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 0.5em;
-        transition: all 0.2s ease;
-    }
-
-    .phoneLink:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: scale(1.05);
-    }
-
-    .contactButtons {
-        display: flex;
-        gap: 1em;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 0.5em;
-    }
-
-    .contactBtn {
-        padding: 0.6em 1em;
-        font-size: 0.95em;
-        text-decoration: none;
-        border-radius: 0.6em;
-        font-weight: bold;
-        transition: all 0.2s ease;
-        border: 2px solid white;
-        display: inline-block;
-        width: auto;
-    }
-
-    .whatsapp {
-        background: #25D366;
-        color: white;
-    }
-
-    .whatsapp:hover {
-        background: #1fb855;
-        transform: scale(1.05);
-    }
-
     .registerBox {
         background: rgba(255, 255, 255, 0.08);
         padding: 2em;

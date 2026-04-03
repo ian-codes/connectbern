@@ -7,7 +7,7 @@ const PAST_EVENTS_2025 = [
             de: 'Komm vorbei für Hobby-Schach im Connect Bern Haus ♟',
             en: 'Come join us for hobby chess at Connect Bern house ♟'
         },
-        link: '/events/chess',
+        link: '/events/past/chess',
         recurring: false,
         organizer: 'connectbern'
     },
@@ -19,7 +19,7 @@ const PAST_EVENTS_2025 = [
             de: 'Komm vorbei und spiel mit uns Tichu! 🃏',
             en: 'Come join us for a game of Tichu! 🃏'
         },
-        link: '/events/tichu',
+        link: '/events/past/tichu',
         recurring: false,
         organizer: 'connectbern'
     },
@@ -31,7 +31,7 @@ const PAST_EVENTS_2025 = [
             de: 'Ein warmer, gemütlicher Raum während der kälteren Wintertage. Decken, Kissen, heißer Tee & eine Stunde beruhigende Handpan-Klänge. Ein sanfter Moment zum Entspannen, Loslassen und Wiederverbinden. 🛋☕🎶',
             en: 'Step into a warm, cozy space during the colder winter days. Blankets, pillows, hot tea & one hour of soothing handpan sounds. A gentle moment to relax, unwind and reconnect. 🛋☕🎶'
         },
-        link: '/events/handpan-concert',
+        link: '/events/past/handpan-concert',
         recurring: false,
         organizer: 'connectbern',
         paid: true,
@@ -45,7 +45,7 @@ const PAST_EVENTS_2025 = [
             de: 'Weihnachten muss man nicht allein verbringen. Komm vorbei für peruanisches Essen, Kuchen und einen entspannten Abend. Warm, einfach und offen für alle. 🎄',
             en: 'Christmas doesn\'t have to be spent alone. Join us for Peruvian food, cake and a relaxed evening. Warm, simple, and open to everyone. 🎄'
         },
-        link: '/events/christmas-together',
+        link: '/events/past/christmas-together',
         recurring: false,
         organizer: 'connectbern'
     },
@@ -60,7 +60,7 @@ const PAST_EVENTS_2026 = [
             de: 'Ein Abend mit Käse, Wein und neuen Begegnungen. Kuratierte Käse- & Weinverkostung, Blind-Tasting-Spiele und Tischrotation zum Kennenlernen. 🧀🍷\n\n25 CHF – geht direkt an Chef Wagner für Zutaten & Vorbereitung.',
             en: 'An evening of cheese, wine and new connections. Curated cheese & wine tasting, blind tasting games, and table rotation to meet new people. 🧀🍷\n\n25 CHF – goes directly to Chef Wagner for ingredients & preparation.'
         },
-        link: '/events/wine-cheese-night',
+        link: '/events/past/wine-cheese-night',
         recurring: false,
         organizer: 'connectbern',
         paid: true
@@ -73,7 +73,7 @@ const PAST_EVENTS_2026 = [
             de: 'Ein intimer Abend für Musiker:innen und Musikliebhaber:innen in unserem gemütlichen Wohnzimmer. 5–6 Musiker:innen, akustische Sets, eigene Songs. 🎸✨',
             en: 'An intimate evening for musicians and music lovers in our cozy living room. 5–6 musicians, acoustic sets, original songs. 🎸✨'
         },
-        link: '/events/acoustic-circle',
+        link: '/events/past/acoustic-circle',
         recurring: false,
         organizer: 'connectbern'
     },
@@ -85,7 +85,7 @@ const PAST_EVENTS_2026 = [
             de: 'Komm nähen mit uns! Für alle offen - ob Anfänger:in oder Profi. Wir helfen beim Flicken, Säumen und zeigen grundlegende Stiche. Stricken, Häkeln und andere Handarbeiten willkommen. ✂️🧵',
             en: 'Come sew with us! Open to all - beginners or pros. Help with mending, hemming, and basic stitches. Knitting, crocheting, and other crafts welcome. ✂️🧵'
         },
-        link: '/events/sew-bern',
+        link: '/events/past/sew-bern',
         recurring: false,
         organizer: 'connectbern'
     },
@@ -97,7 +97,7 @@ const PAST_EVENTS_2026 = [
             de: 'Akustische 90er-Cover in einer intimen Wohnzimmeratmosphäre. 5 Musiker:innen, vertraute Songs, Nostalgie und Verbindung. 🎸✨\n\nEintritt: CHF 10',
             en: "Acoustic '90s covers in an intimate living-room atmosphere. 5 musicians, familiar songs, nostalgia and connection. 🎸✨\n\nEntry: CHF 10"
         },
-        link: '/events/90s-covers-night',
+        link: '/events/past/90s-covers-night',
         recurring: false,
         organizer: 'connectbern',
         paid: true
@@ -110,7 +110,7 @@ const PAST_EVENTS_2026 = [
             de: 'Lustiger Abend mit Shrek! Bring deine Lieblingssnacks mit. Anmeldung erforderlich - wir haben nur 2 Sofas! 🎬🛋️',
             en: 'Fun evening watching Shrek! Bring your favorite snacks. Registration required - we only have 2 couches! 🎬🛋️'
         },
-        link: '/events/shrek',
+        link: '/events/past/shrek',
         recurring: false,
         organizer: 'connectbern'
     },
@@ -122,7 +122,7 @@ const PAST_EVENTS_2026 = [
             de: 'Unser coolstes Event! Echte Gespräche statt Small Talk - wir matchen dich basierend auf deinen Interessen. 10 CHF Kaution. ⚡🤝',
             en: 'Our coolest event! Real conversations instead of small talk - we match you based on your interests. 10 CHF deposit. ⚡🤝'
         },
-        link: '/events/speed-friending',
+        link: '/events/past/speed-friending',
         recurring: false,
         organizer: 'connectbern',
         featured: true,
@@ -137,7 +137,7 @@ const PAST_EVENTS_2026 = [
             de: 'Starte deinen Samstag mit einem leckeren Brunch und bleib für Spiele! 🥐🎲',
             en: 'Start your Saturday with a delicious brunch and stay for games! 🥐🎲'
         },
-        link: '/events/brunch-games',
+        link: '/events/past/brunch-games',
         recurring: false,
         organizer: 'connectbern',
         paid: true,
@@ -151,7 +151,7 @@ const PAST_EVENTS_2026 = [
             de: 'Teste dein Wissen in unserem Pubquiz und geniesse ein leckeres Abendessen! 🧠🍕',
             en: 'Test your knowledge in our pubquiz and enjoy a delicious dinner! 🧠🍕'
         },
-        link: '/events/pubquiz-dinner',
+        link: '/events/past/pubquiz-dinner',
         recurring: false,
         organizer: 'connectbern',
         paid: true,
@@ -165,7 +165,7 @@ const PAST_EVENTS_2026 = [
             de: 'Komm mit uns zum Abendessen und Karaoke! Restaurant Cavallo Star (Hauptbahnhof), danach Karaoke im Bärengrotte. 🍽️🎤\n\nAnmeldung bis Donnerstag, 23:59 Uhr.',
             en: 'Join us for dinner and karaoke! Restaurant Cavallo Star (Central Station), then Karaoke at Bärengrotte. 🍽️🎤\n\nSign up by Thursday, 11:59 PM.'
         },
-        link: '/events/lets-dine-jan24',
+        link: '/events/past/lets-dine-jan24',
         recurring: false,
         organizer: 'connectbern'
     },
@@ -178,7 +178,7 @@ const PAST_EVENTS_2026 = [
             de: 'Komm zu unserem monatlichen EA Bern Social! Freundliches, entspanntes Treffen für alle, die sich für Effective Altruism interessieren. 🥙',
             en: 'Join us for our monthly EA Bern Social! A friendly, relaxed get-together for everyone interested in Effective Altruism. 🥙'
         },
-        link: '/events/ea-bern-social',
+        link: '/events/past/ea-bern-social',
         organizer: 'connectbern'
     },
     {
@@ -189,7 +189,7 @@ const PAST_EVENTS_2026 = [
             de: 'Gesellschaftsspiele spielen bei Erupt Lounge, Parkterrasse 14 (3. Stock). Kostenlos. 🎲',
             en: 'Board games at Erupt Lounge, Parkterrasse 14 (3rd floor). Free entry. 🎲'
         },
-        link: '/events/cb-boardgame-night',
+        link: '/events/past/cb-boardgame-night',
         recurring: false,
         organizer: 'connectbern'
     },
@@ -201,7 +201,7 @@ const PAST_EVENTS_2026 = [
             de: 'Wir feiern den Start unseres Community-Projekts! Triff die Menschen dahinter, sieh dir den Space an und geniesse einen entspannten Abend. Begrenzte Plätze – Anmeldung auf der App erforderlich. 🎉',
             en: 'We are celebrating the start of our community project! Meet the people behind it, see the space, and enjoy a relaxed evening. Limited spots – register on the app. 🎉'
         },
-        link: '/events/welcome-party',
+        link: '/events/past/welcome-party',
         recurring: false,
         organizer: 'connectbern',
         featured: true
@@ -214,7 +214,7 @@ const PAST_EVENTS_2026 = [
             de: 'Echte Gespräche statt Small Talk – wir matchen dich basierend auf deinen Interessen. 10 CHF rückerstattbare Kaution. ⚡🤝',
             en: 'Real conversations instead of small talk – we match you based on your interests. 10 CHF refundable deposit. ⚡🤝'
         },
-        link: '/events/speed-friending-2',
+        link: '/events/past/speed-friending-2',
         recurring: false,
         organizer: 'connectbern',
         featured: true,
@@ -229,9 +229,22 @@ const PAST_EVENTS_2026 = [
             de: 'Entspannte Wanderung durch die Berge mit gefrorenem See, Wäldern und Bergpanorama. Anfängerfreundlich, Hunde willkommen (an der Leine). Kleine Gruppe. 🥾🏔️',
             en: 'Chill hike through the mountains with a frozen lake, forests and mountain views. Beginner friendly, dogs welcome (leashed). Small group. 🥾🏔️'
         },
-        link: '/events/hiking',
+        link: '/events/past/hiking',
         recurring: false,
         organizer: 'connectbern'
+    },
+    {
+        title: { de: 'Handpan-Lektion für Anfänger', en: 'Beginner Handpan Lesson' },
+        date: getNextWeekday(0),
+        recurring: 'weekly',
+        description: {
+            de: 'Handpan-Lektion für Anfänger mit Berni 🎶 (20 CHF Kaution um deinen Platz zu garantieren)',
+            en: 'Beginner handpan lesson with Berni 🎶 (20 CHF deposit to guarantee your spot)'
+        },
+        link: '/events/past/handpan',
+        organizer: 'connectbern',
+        paid: true,
+        optionalPaid: true
     },
 ];
 
@@ -296,19 +309,6 @@ const RECURRING_EVENTS = [
         },
         link: '/events/coffee-cake-connect',
         organizer: 'connectbern'
-    },
-    {
-        title: { de: 'Handpan-Lektion für Anfänger', en: 'Beginner Handpan Lesson' },
-        date: getNextWeekday(0),
-        recurring: 'weekly',
-        description: {
-            de: 'Handpan-Lektion für Anfänger mit Berni 🎶 (20 CHF Kaution um deinen Platz zu garantieren)',
-            en: 'Beginner handpan lesson with Berni 🎶 (20 CHF deposit to guarantee your spot)'
-        },
-        link: '/events/handpan',
-        organizer: 'connectbern',
-        paid: true,
-        optionalPaid: true
     },
 ];
 
@@ -425,17 +425,6 @@ const RECURRING_EVENTS_BY_OTHERS = [
             en: 'Once a month'
         },
         link: 'https://patt.be'
-    },
-    {
-        title: { de: 'Karaoke Nacht bei DELFINO', en: 'Karaoke Night at DELFINO' },
-        date: getNextWeekday(6),
-        recurring: 'weekly',
-        time: '21:00',
-        description: {
-            de: 'Finde Freunde beim Karaoke. Frage in Gruppen, ob jemand mitkommen möchte, damit du nicht alleine gehen musst! 🎤',
-            en: 'Find friends while doing karaoke. Ask in groups if anybody wants to join you, so you don\'t have to go alone! 🎤'
-        },
-        link: '/events/karaoke-night-delfino'
     },
 ];
 

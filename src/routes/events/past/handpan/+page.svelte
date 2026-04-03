@@ -179,12 +179,6 @@
         line-height: 1.6;
     }
 
-    .description {
-        text-align: center;
-        font-size: 1.1em;
-        opacity: 0.9;
-    }
-
     .mainText {
         text-align: center;
         font-size: 1.4em;

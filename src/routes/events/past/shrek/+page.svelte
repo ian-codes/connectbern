@@ -188,7 +188,6 @@
                     src="https://luma.com/embed/event/evt-5eT1RNoJSL936np/simple"
                     width="100%"
                     height="850"
-                    frameborder="0"
                     style="border-radius: 4px; max-width: 600px;"
                     allow="fullscreen"
                     aria-hidden="false"
@@ -393,16 +392,6 @@
         background: rgba(255, 255, 255, 0.25);
         border-color: rgba(255, 255, 255, 0.5);
         transform: translateY(-1px);
-    }
-
-    .btnCopy.copied {
-        background: rgba(255, 255, 255, 0.3);
-        color: white;
-        border-color: rgba(255, 255, 255, 0.6);
-    }
-
-    .btnCopy.pulse {
-        animation: pulse 0.6s ease-in-out;
     }
 
     @keyframes pulse {
