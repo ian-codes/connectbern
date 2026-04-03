@@ -20,7 +20,8 @@ export const t = {
         "paid-event-chip": "💰 Kostenpflichtig",
         "optional-paid-event-tooltip": "Diese Veranstaltung bietet explizit optionale kostenpflichtige Angebote (z.B. Essen, Kaution) oder empfohlene Spenden an.",
         "paid-event-tooltip": "Diese Veranstaltung ist kostenpflichtig, aber das Geld geht nicht an Connect Bern.",
-        "more-info": "Mehr Info"
+        "more-info": "Mehr Info",
+        "calendar.info.recurring-events": "ℹ️ Events mit diesem Icon 🔄 passieren regelmäßig. Gehe auf die Eventseite um mehr herauszufinden."
     },
     en: {
         "filter-chip-upcoming": "Upcoming",
@@ -43,6 +44,7 @@ export const t = {
         "paid-event-chip": "💰 Not Free",
         "optional-paid-event-tooltip": "This event explicitly offers optional paid elements (e.g., food, deposit) or suggested donations.",
         "paid-event-tooltip": "This event is paid, but the money does not go to Connect Bern.",
-        "more-info": "More Info"
+        "more-info": "More Info",
+        "calendar.info.recurring-events": "ℹ️ Events marked with 🔄 are happening regularly. Checkout the event page to find out more."
     }
 };

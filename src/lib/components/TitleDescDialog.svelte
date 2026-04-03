@@ -7,8 +7,8 @@
     export let icon;
     export let titleKey;
     export let descKey;
-    export let buttonKey;
-    export let buttonHref;
+    export let buttonKey = "";
+    export let buttonHref = "";
 </script>
 
 {#if showDialog}
