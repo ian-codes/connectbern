@@ -233,6 +233,9 @@ const PAST_EVENTS_2026 = [
         recurring: false,
         organizer: 'connectbern'
     },
+];
+
+const PAST_RECURRING_EVENTS = [
     {
         title: { de: 'Handpan-Lektion für Anfänger', en: 'Beginner Handpan Lesson' },
         date: getNextWeekday(0),
@@ -457,7 +460,11 @@ const FUTURE_EVENTS = [
 ]
 
 
-export const eventData = [
+export const ALL_EVENT_DATA = [
+    ...PAST_EVENTS_2025, ...PAST_EVENTS_2026, ...RECURRING_EVENTS, ...FUTURE_EVENTS, ...RECURRING_EVENTS_BY_OTHERS
+]
+
+export const EVENT_DATA = [
     ...RECURRING_EVENTS, ...FUTURE_EVENTS, ...RECURRING_EVENTS_BY_OTHERS
 ];
 
