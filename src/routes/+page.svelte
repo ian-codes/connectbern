@@ -45,6 +45,22 @@
     </div>
 </section>
 
+<section class="vibe-section">
+    <p class="vibe-question">{language === 'de' ? 'Fragst du dich, ob du hierher gehörst?' : 'Are you wondering if you belong here?'}</p>
+    <p class="vibe-sub">{language === 'de' ? 'Überspring die Worte. Fühl es einfach.' : 'Skip the words for now. Feel it instead.'}</p>
+    <div class="vibe-video-wrap">
+        <iframe
+            src="https://www.youtube.com/embed/2Q46aER0758?si=Gp7ZbHj06mBTCA4H&start=68&autoplay=0"
+            title="Connect Bern vibe"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+        ></iframe>
+    </div>
+    <p class="vibe-label">{language === 'de' ? 'Zugehörigkeit ist ein Gefühl. Lass uns es gemeinsam finden.' : 'Belonging is a feeling. Let\'s find it together.'}</p>
+</section>
+
 <section class="about-section">
     <h2>{t[language]["about-title"]}</h2>
 
@@ -267,6 +283,56 @@
         }
         .bubble-title { font-size: 1.2rem; }
         .bubble-desc { font-size: 0.85rem; }
+    }
+
+    /* Vibe Section */
+    .vibe-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 3rem 1rem 3.5rem;
+        text-align: center;
+    }
+    .vibe-question {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.3;
+        max-width: 600px;
+    }
+    .vibe-sub {
+        font-size: 1rem;
+        opacity: 0.7;
+        margin: 0;
+    }
+    .vibe-video-wrap {
+        width: 100%;
+        max-width: 700px;
+        margin-top: 0.5rem;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 0 40px rgba(108, 72, 167, 0.5), 0 8px 32px rgba(0,0,0,0.5);
+        aspect-ratio: 16 / 9;
+        position: relative;
+    }
+    .vibe-video-wrap iframe {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        inset: 0;
+        display: block;
+    }
+    .vibe-label {
+        font-size: 0.8rem;
+        opacity: 0.45;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin: 0;
+    }
+    @media (max-width: 768px) {
+        .vibe-question { font-size: 1.3rem; }
+        .vibe-video-wrap { border-radius: 10px; }
     }
 
     /* About Section */
