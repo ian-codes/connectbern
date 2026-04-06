@@ -50,7 +50,7 @@
     <p class="vibe-sub">{language === 'de' ? 'Überspring die Worte. Fühl es einfach.' : 'Skip the words for now. Feel it instead.'}</p>
     <div class="vibe-video-wrap">
         <iframe
-            src="https://www.youtube.com/embed/2Q46aER0758?si=Gp7ZbHj06mBTCA4H&start=68&autoplay=0"
+            src="https://www.youtube.com/embed/2Q46aER0758?si=Gp7ZbHj06mBTCA4H&start=69&autoplay=0"
             title="Connect Bern vibe"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
