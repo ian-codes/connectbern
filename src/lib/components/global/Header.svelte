@@ -182,9 +182,11 @@
         animation: blur 1s forwards ease;
         align-items: start;
     }
-    a:hover {
-        box-shadow: 0 0 0 1px white;
+
+    .titleWrapper:hover {
+        transform: scale(1.05);
     }
+
     @keyframes disappear {
         0% {
             font-size: 1rem;

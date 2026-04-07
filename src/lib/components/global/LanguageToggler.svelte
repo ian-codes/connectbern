@@ -12,12 +12,14 @@
     <div class="languageToggler">
         <button id="en" title="English"
             on:click={() => handleLanguageToggle("en")}
-            class:active={$currentLanguage == "en"}>
+            class:inactive={$currentLanguage !== "en"}
+            class:active={$currentLanguage === "en"}>
             EN
         </button>
         <button id="de" title="Deutsch"
             on:click={() => handleLanguageToggle("de")}
-            class:active={$currentLanguage == "de"}>
+            class:inactive={$currentLanguage !== "de"}
+            class:active={$currentLanguage === "de"}>
             DE
         </button>
     </div>
@@ -69,7 +71,6 @@
         background: none;
         padding: .7em;
         cursor: pointer;
-        opacity: 1;
         aspect-ratio: 1;
         font-size: .8em;
         border-radius: 100%;
@@ -87,4 +88,9 @@
         position: absolute;
         left: -3px;
     }
+
+    .inactive:hover {
+        transform: scale(1.1);
+    }
+
 </style>

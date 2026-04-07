@@ -9,13 +9,13 @@
 </script>
 
 
-<button   
-    style="display: {isOpen ? "block" : "none"};" 
-    on:click={() => {isOpen = false;}} 
-    class="defocus" />
+<button
+    style='display: {isOpen ? "block" : "none"};'
+    on:click={() => {isOpen = false;}}
+    class="defocus"></button>
 
 <nav>
-    <button title="menu" on:click={() => isOpen = !isOpen} class="burger {isOpen ? "burgerOpen" : ""}">
+    <button title="menu" on:click={() => isOpen = !isOpen} class='burger {isOpen ? "burgerOpen" : ""}'>
         {#each {length: 3} as _, i}
             <span></span>
         {/each}
@@ -74,8 +74,7 @@
         z-index: 1;
         position: absolute;
         right: 0;
-        margin: 0;
-        margin-top: 1em;
+        margin: 1em 0 0;
         padding: 0;
         flex-direction: column;
         list-style: none;
@@ -138,9 +137,11 @@
     .burgerOpen {
         position: relative;
     }
+
     .burger:hover {
-        outline: 1px solid white;
+        transform: scale(1.2);
     }
+
     .burger span {
         transition: all .2s ease;
         height: 2px;
