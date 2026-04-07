@@ -158,6 +158,9 @@ export const t = {
         "events-why-different-title": "Was macht diese Events besonders?",
         "app-banner-title": "Wir haben jetzt auch eine App. 📱🎉",
         "app-banner-subtitle": "Entdecke mehr Events auf der App:",
+        "footer.contact-form": "Kontaktformular",
+        "footer.contact-us": "Kontaktiere uns",
+        "footer.follow-us": "Folge uns",
     },
     en: {
         "search-groups": "Search groups...",
@@ -318,5 +321,8 @@ export const t = {
         "events-why-different-title": "What makes these events special?",
         "app-banner-title": "We now also have an app. 📱🎉",
         "app-banner-subtitle": "Check out more events on the app:",
+        "footer.contact-form": "contact form",
+        "footer.contact-us": "Contact us",
+        "footer.follow-us": "Follow us",
     }
 }

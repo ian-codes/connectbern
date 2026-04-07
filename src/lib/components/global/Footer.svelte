@@ -1,4 +1,8 @@
 <script>
+    import { t } from "$lib/locales/translations.js";
+    import { currentLanguage } from '$lib/stores/languageStore';
+    $: language = $currentLanguage;
+
     const contactInfo = {
         email: 'info@connectbern.ch',
         instagram: 'connect.bern',
@@ -31,7 +35,7 @@
 <footer>
     <div class="footer-content">
         <div class="section">
-            <h3>Contact us</h3>
+            <h3>{t[language]["footer.contact-us"]}</h3>
             <div class="contact-links">
                 <a href="mailto:{contactInfo.email}" class="contact-item" aria-label="Email">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -48,6 +52,13 @@
                     <span>{contactInfo.phoneFormatted}</span>
                 </a>
 
+                <a href="/contact" class="contact-item" title='Contact'>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="rgb(255, 255, 255)" d="M1.706 16.556c0.192-0.684 0.553-1.308 1.059-1.814l8.494-8.494 1.589-1.589c0.778 0.778 2.405 2.405 4.875 4.875l1.589 1.589-1.589 1.589-8.494 8.494c-0.502 0.502-1.129 0.868-1.814 1.059L1.425 23.904c-0.389 0.108-0.811 0-1.097-0.291s-0.399-0.708-0.291-1.097l1.669-6.96zm2.606-0.173c-0.206 0.22-0.356 0.488-0.436 0.778l-1.13 4.073 4.073-1.13c0.3-0.084 0.572-0.239 0.797-0.455l-3.304-3.266zm16.594-6.844c-0.778-0.778-2.405-2.405-4.875-4.875L14.438 3.07c1.238-1.238 1.934-1.934 2.098-2.098C17.166 0.328 18.023-0.028 18.938-0.028s1.772 0.356 2.402 1.0l1.673 1.673c0.644 0.63 1.0 1.487 1.0 2.402s-0.356 1.772-1.0 2.402c-0.164 0.164-0.86 0.86-2.098 2.098z"/>
+                    </svg>
+                    <span>{t[language]["footer.contact-form"]}</span>
+                </a>
+
                 <a href="https://wa.me/{contactInfo.whatsappNumber}" target="_blank" rel="noopener noreferrer" class="contact-item whatsapp" aria-label="WhatsApp">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -58,7 +69,7 @@
         </div>
 
         <div class="section">
-            <h3>Follow us</h3>
+            <h3>{t[language]["footer.follow-us"]}</h3>
             <div class="contact-links">
                 <a href="https://instagram.com/{contactInfo.instagram}" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="Instagram">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -135,11 +146,12 @@
     }
 
     .contact-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.5em;
-        justify-content: center;
-        align-items: center;
+        align-self: center;
+        width: 100%;
+        display: grid;
+        gap: 1em;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+
     }
 
     .contact-item {
