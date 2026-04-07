@@ -2,46 +2,45 @@
 <script>
     import { t } from "$lib/locales/translations.js";
     import { currentLanguage } from '$lib/stores/languageStore';
-    import { MenuData } from "$lib/models/MenuData.js";
+    import { MenuData, StackedMenuData } from "$lib/models/MenuData.js";
     $: language = $currentLanguage;
-
-    const showKaraokeBubble = new Date() < new Date(2026, 3, 4);
 </script>
 
 <section class="landing">
-    <!-- <div class="logo" title="Connect Bern" /> -->
     <h1>Connect Bern</h1>
     <p class="subtitle">{@html t[language]["description"]}</p>
 
-    {#if showKaraokeBubble}
-    <a href="/events/karaoke" class="featured-event-bubble">
-        <img src="/images/karaoke.webp" alt="Karaoke Night at Stellwerk" class="bubble-img" />
-        <span class="bubble-badge">🎤 {language === 'de' ? 'Diese Woche' : 'This week'}</span>
-        <span class="bubble-title">{language === 'de' ? 'Karaoke Nacht im Stellwerk' : 'Karaoke Night at Stellwerk'}</span>
-        <span class="bubble-tagline">{language === 'de' ? 'Connect Bern goes Karaoke!' : 'Connect Bern going to Karaoke!'}</span>
-        <span class="bubble-desc">{language === 'de' ? 'Fr. 3. April · 20:00 · Stellwerk Bern' : 'Fri Apr 3 · 20:00 · Stellwerk Bern'}</span>
-        <span class="bubble-cta">{language === 'de' ? 'Mehr erfahren →' : 'Learn more →'}</span>
-    </a>
-    {/if}
+    <div class="menu-section">
+        <div class="menu-grid">
+            {#each MenuData as item}
+                <a href="/{item.slug}" class="menu-card" title={typeof item.title === 'string' ? item.title : item.title[language]}>
+                    <span class="menu-icon" style={`background-image: url('${(item.homeImg ?? '').startsWith('/') ? item.homeImg : '/icons/' + (item.homeImg ?? item.img)}')`} />
+                    <span class="menu-title">{typeof item.title === 'string' ? item.title : item.title[language]}</span>
+                    {#if item.chips}
+                        {#each item.chips as chip}
+                            <span class="menu-chip menu-chip--{chip.pos}" title={chip.label}>
+                                {#if chip.emoji}
+                                    <span class="menu-chip-emoji">{chip.emoji}</span>
+                                {:else}
+                                    <span class="menu-chip-img" style="background-image: url('{chip.icon}');"></span>
+                                {/if}
+                            </span>
+                        {/each}
+                    {/if}
+                </a>
+            {/each}
 
-    <div class="menu-grid">
-        {#each MenuData as item}
-            <a href="/{item.slug}" class="menu-card" title={typeof item.title === 'string' ? item.title : item.title[language]}>
-                <span class="menu-icon" style={`background-image: url('${(item.homeImg ?? '').startsWith('/') ? item.homeImg : '/icons/' + (item.homeImg ?? item.img)}')`} />
-                <span class="menu-title">{typeof item.title === 'string' ? item.title : item.title[language]}</span>
-                {#if item.chips}
-                    {#each item.chips as chip}
-                        <span class="menu-chip menu-chip--{chip.pos}" title={chip.label}>
-                            {#if chip.emoji}
-                                <span class="menu-chip-emoji">{chip.emoji}</span>
-                            {:else}
-                                <span class="menu-chip-img" style="background-image: url('{chip.icon}');"></span>
-                            {/if}
-                        </span>
-                    {/each}
-                {/if}
-            </a>
-        {/each}
+
+        </div>
+
+        <div class="stacked-menu-list">
+            {#each StackedMenuData as item}
+                <a href="/{item.slug}" class="stacked-menu-item" title={typeof item.title === 'string' ? item.title : item.title[language]}>
+                    <span class="stacked-menu-icon" style={`background-image: url('${(item.homeImg ?? '').startsWith('/') ? item.homeImg : '/icons/' + (item.homeImg ?? item.img)}')`} />
+                    <span class="stacked-menu-title">{typeof item.title === 'string' ? item.title : item.title[language]}</span>
+                </a>
+            {/each}
+        </div>
     </div>
 </section>
 
@@ -157,7 +156,16 @@
         display: block;
         margin-bottom: 0.25rem;
     }
+
+    .menu-section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
     .menu-grid {
+        align-self: center;
         width: 100%;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -215,74 +223,44 @@
     .menu-icon { width: 40px; height: 40px; background-size: contain; background-repeat: no-repeat; background-position: center; filter: invert(1); }
     .menu-title { font-size: 1rem; }
 
-    /* Featured Event Bubble */
-    .featured-event-bubble {
+    .stacked-menu-list {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 1rem 1.5rem;
-        margin: 0.5rem 0 1rem;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 1rem;
-        text-decoration: none;
-        color: white;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-        max-width: 400px;
-        width: 100%;
+        gap: 0.75rem;
     }
-    .featured-event-bubble:hover {
-        transform: translateY(-3px) scale(1.02);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-        background: rgba(255, 255, 255, 0.12);
-    }
-    .bubble-img {
-        width: 100%;
-        border-radius: 0.6rem;
-        object-fit: cover;
-        max-height: 160px;
-    }
-    .bubble-badge {
-        font-size: 0.75rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        background: rgba(255, 180, 100, 0.4);
-        padding: 0.25em 0.75em;
-        border-radius: 1em;
-        color: #fff;
-    }
-    .bubble-title {
-        font-size: 1.4rem;
-        font-weight: bold;
-        margin: 0.1rem 0;
-    }
-    .bubble-tagline {
-        font-size: 0.85rem;
-        font-weight: 600;
-        opacity: 0.85;
-        text-align: center;
-    }
-    .bubble-desc {
-        font-size: 0.9rem;
-        opacity: 0.95;
-        text-align: center;
-    }
-    .bubble-cta {
-        font-size: 0.85rem;
-        font-weight: 600;
-        margin-top: 0.3rem;
-        opacity: 0.9;
-    }
-    @media (max-width: 768px) {
-        .featured-event-bubble {
-            padding: 0.8rem 1.2rem;
-            margin: 0.5rem 1rem 1rem;
+
+    @media (min-width: 768px) {
+        .stacked-menu-list {
+            max-width: 33%;
         }
-        .bubble-title { font-size: 1.2rem; }
-        .bubble-desc { font-size: 0.85rem; }
+    }
+
+    .stacked-menu-item {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: left;
+        padding: 0.75rem 1rem;
+        gap: 0.75rem;
+        display: flex;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        color: white;
+        text-decoration: none;
+        background: linear-gradient(rgba(255,255,255,.12), rgba(255,255,255,.04));
+        box-shadow: 0 2px 6px rgba(0,0,0,.35);
+        transition: transform .08s ease, box-shadow .08s ease;
+    }
+
+    .stacked-menu-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255,255,255,.35); }
+
+
+    .stacked-menu-icon { width: 20px; height: 20px; background-size: contain; background-repeat: no-repeat; background-position: center; filter: invert(1); }
+
+
+    .stacked-menu-title {
+        font-size: 0.95rem;
     }
 
     /* Vibe Section */
@@ -334,6 +312,8 @@
         .vibe-question { font-size: 1.3rem; }
         .vibe-video-wrap { border-radius: 10px; }
     }
+
+
 
     /* About Section */
     .about-section {
