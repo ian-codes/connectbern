@@ -40,7 +40,10 @@ export const MenuData = [
         slug: "events",
 		img: "events.svg",
 		homeImg: "calendar-add.svg"
-    },
+    }
+];
+
+export const StackedMenuData = [
     {
         title: {
             en: "Cool places",
@@ -86,13 +89,4 @@ export const MenuData = [
 		img: "contact.svg",
 		homeImg: "/navigation/contact.svg"
     }
-
-    // {
-    //     title: {
-    //         en: "About",
-    //         de: "Info"
-    //     },
-    //     slug: "about",
-    //     img: "about.svg"
-    // }
 ];
