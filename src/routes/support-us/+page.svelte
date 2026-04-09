@@ -84,7 +84,6 @@
                 <div class="ideasList">
                     <h4>{t[lang]['support-creative-ideas-title']}</h4>
                     <ul>
-                        <li>{@html t[lang]['support-creative-idea-1']}</li>
                         <li>{@html t[lang]['support-creative-idea-2']}</li>
                         <li>{@html t[lang]['support-creative-idea-3']}</li>
                         <li>{@html t[lang]['support-creative-idea-4']}</li>
