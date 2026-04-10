@@ -160,6 +160,9 @@ export const t = {
         "footer.contact-form": "Kontaktformular",
         "footer.contact-us": "Kontaktiere uns",
         "footer.follow-us": "Folge uns",
+        "team-title": "Über Uns",
+        "team-p1": "Lerne das Team hinter Connect Bern kennen! Wir sind eine Gruppe leidenschaftlicher Freiwilliger, die sich dafür einsetzen, Menschen dabei zu helfen, ihre Gemeinschaft in und um die Stadt Bern zu entdecken und sich zu vernetzen.",
+        "team-p2": "Weitere Details zu unseren Mitgliedern werden hier in Kürze hinzugefügt."
     },
     en: {
         "search-groups": "Search groups...",
@@ -322,5 +325,8 @@ export const t = {
         "footer.contact-form": "contact form",
         "footer.contact-us": "Contact us",
         "footer.follow-us": "Follow us",
+        "team-title": "About Us",
+        "team-p1": "Meet the team behind Connect Bern! We are a group of passionate volunteers dedicated to helping people discover and connect with their community in and around the city of Bern.",
+        "team-p2": "More details about our members will be added here soon."
     }
 }

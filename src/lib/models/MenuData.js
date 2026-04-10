@@ -23,8 +23,8 @@ export const MenuData = [
             en: "Groups in Bern"
         },
         slug: "groups",
-		img: "groups.svg",
-		homeImg: "/navigation/groups.svg",
+        img: "groups.svg",
+        homeImg: "/navigation/groups.svg",
         chips: [
             { icon: '/icons/whatsapp.svg', label: 'WhatsApp', pos: 'top-left' },
             { icon: '/icons/telegram.svg', label: 'Telegram', pos: 'top-right' },
@@ -38,20 +38,29 @@ export const MenuData = [
             de: "Events in Bern"
         },
         slug: "events",
-		img: "events.svg",
-		homeImg: "calendar-add.svg"
+        img: "events.svg",
+        homeImg: "calendar-add.svg"
     }
 ];
 
 export const StackedMenuData = [
     {
         title: {
+            en: "Events in Bern",
+            de: "Events in Bern"
+        },
+        slug: "events",
+        img: "events.svg",
+        homeImg: "calendar-add.svg"
+    },
+    {
+        title: {
             en: "Cool places",
             de: "Coole Orte"
         },
         slug: "places",
-		img: "location.svg",
-		homeImg: "/navigation/location.svg"
+        img: "location.svg",
+        homeImg: "/navigation/location.svg"
     },
     {
         title: {
@@ -68,8 +77,8 @@ export const StackedMenuData = [
             de: "Ähnliche Projekte"
         },
         slug: "similar-projects",
-		img: "similar-projects.svg",
-		homeImg: "/navigation/similar-projects.svg"
+        img: "similar-projects.svg",
+        homeImg: "/navigation/similar-projects.svg"
     },
     {
         title: {
@@ -77,8 +86,8 @@ export const StackedMenuData = [
             de: "Wie kann ich helfen?"
         },
         slug: "support-us",
-		img: "help.svg",
-		homeImg: "/navigation/help.svg"
+        img: "help.svg",
+        homeImg: "/navigation/help.svg"
     },
     {
         title: {
@@ -86,7 +95,16 @@ export const StackedMenuData = [
             de: "Schreib uns"
         },
         slug: "contact",
-		img: "contact.svg",
-		homeImg: "/navigation/contact.svg"
+        img: "contact.svg",
+        homeImg: "/navigation/contact.svg"
+    },
+    {
+        title: {
+            en: "About Us",
+            de: "Über Uns"
+        },
+        slug: "team",
+        img: "team.svg",
+        homeImg: "/navigation/team.svg"
     }
 ];
