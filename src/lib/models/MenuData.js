@@ -1,3 +1,5 @@
+import { featureFlags } from "$lib/featureFlags.js";
+
 export const MenuData = [
     {
         title: {
@@ -98,13 +100,13 @@ export const StackedMenuData = [
         img: "contact.svg",
         homeImg: "/navigation/contact.svg"
     },
-    {
+    ...(featureFlags.teamPage ? [{
         title: {
-            en: "About Us",
-            de: "Über Uns"
+            en: "Meet our Team",
+            de: "Unser Team"
         },
         slug: "team",
         img: "team.svg",
         homeImg: "/navigation/team.svg"
-    }
+    }] : [])
 ];
