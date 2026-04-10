@@ -3,7 +3,7 @@
     import { t } from "$lib/locales/translations.js";
     import { currentLanguage } from '$lib/stores/languageStore';
     import { MenuData, StackedMenuData } from "$lib/models/MenuData.js";
-    $: language = $currentLanguage;
+        $: language = $currentLanguage;
 </script>
 
 <section class="landing">

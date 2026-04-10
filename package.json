@@ -24,9 +24,11 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@imgly/background-removal-node": "^1.4.5",
 		"@internationalized/date": "^3.5.2",
 		"bits-ui": "^0.21.2",
 		"dayjs": "^1.11.10",
-		"gh-pages": "^5.0.0"
+		"gh-pages": "^5.0.0",
+		"sharp": "^0.34.5"
 	}
 }

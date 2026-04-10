@@ -4,6 +4,7 @@
     import Header from "$lib/components/global/Header.svelte";
     import Footer from "$lib/components/global/Footer.svelte";
     import { currentLanguage } from "$lib/stores/languageStore.js";
+    import Mascot from "$lib/components/Mascot.svelte";
 
     onMount(() => {
         // Check localStorage first, then fall back to browser language
@@ -20,6 +21,7 @@
 <div class="bg"></div>
 
 <Header />
+<Mascot />
 <main>
     <slot />
 </main>
