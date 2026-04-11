@@ -48,15 +48,6 @@ export const MenuData = [
 export const StackedMenuData = [
     {
         title: {
-            en: "Events in Bern",
-            de: "Events in Bern"
-        },
-        slug: "events",
-        img: "events.svg",
-        homeImg: "calendar-add.svg"
-    },
-    {
-        title: {
             en: "Cool places",
             de: "Coole Orte"
         },

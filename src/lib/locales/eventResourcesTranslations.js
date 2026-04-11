@@ -1,6 +1,6 @@
 export const t = {
     de: {
-        "event-resources-title": "Entdecke Events auf diesen Plattformen",
+        "event-resources-title": "Entdecke mehr Events auf diesen Plattformen",
         "fb": "Facebook Local",
         "fb-desc": "Lokale Events in der Umgebung",
         "meetup": "Meetup.com",
@@ -17,7 +17,7 @@ export const t = {
         "reddit-desc": "Reddit Community"
     },
     en: {
-        "event-resources-title": "Discover events on these platforms",
+        "event-resources-title": "Discover more events on these platforms",
         "fb": "Facebook Local",
         "fb-desc": "Local events in the area",
         "meetup": "Meetup.com",

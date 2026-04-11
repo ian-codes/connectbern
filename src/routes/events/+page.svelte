@@ -16,7 +16,6 @@
 
     $: lang = $currentLanguage;
 
-    let eventsDisplayMode = 'events'; // 'events' or 'resources'
     let eventView = 'list'; // 'list' | 'calendar'
     let filterMode = 'connectbern'; // 'all' or 'connectbern'
     let isFloatingButtonHidden = false;
@@ -48,25 +47,6 @@
 <section>
     <div class="topbarWrapper">
         <div class="titleRow">
-            <!-- Filter View Switcher (left side) -->
-            <div class="filterBar">
-                <div class="filterOptions">
-                    <button
-                        class="filterChip {eventsDisplayMode === 'events' ? 'active' : ''}"
-                        on:click={() => eventsDisplayMode = 'events'}
-                    >
-                        <span class="chipIcon">📅</span>
-                        <span class="chipText">{t[lang]['filter-chip-upcoming']}</span>
-                    </button>
-                    <button
-                        class="filterChip {eventsDisplayMode === 'resources' ? 'active' : ''}"
-                        on:click={() => eventsDisplayMode = 'resources'}
-                    >
-                        <span class="chipIcon">🌐</span>
-                        <span class="chipText">{t[lang]['filter-chip-more']}</span>
-                    </button>
-                </div>
-            </div>
 
             <div class="titleSection">
                 <h1>{t[lang]['title']}<span class="h1Sub">{t[lang]['subTitle']}</span></h1>
@@ -87,69 +67,49 @@
     </div>
 
 
-    <AppBanner></AppBanner>
-
-
     {#if !isFloatingButtonHidden}
         <EventSuggestionFloatingButton></EventSuggestionFloatingButton>
     {/if}
 
+    <div class="calendarViewWrapper">
+        <div class="filterRow">
+            <div class="viewButtons">
+                <button class="round-bttn" class:highlighted-bttn={eventView === 'list'} on:click={() => { eventView = 'list' }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="14" width="14" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path fill="rgb(255, 255, 255)" d="M104 112C90.7 112 80 122.7 80 136L80 184C80 197.3 90.7 208 104 208L152 208C165.3 208 176 197.3 176 184L176 136C176 122.7 165.3 112 152 112L104 112zM256 128C238.3 128 224 142.3 224 160C224 177.7 238.3 192 256 192L544 192C561.7 192 576 177.7 576 160C576 142.3 561.7 128 544 128L256 128zM256 288C238.3 288 224 302.3 224 320C224 337.7 238.3 352 256 352L544 352C561.7 352 576 337.7 576 320C576 302.3 561.7 288 544 288L256 288zM256 448C238.3 448 224 462.3 224 480C224 497.7 238.3 512 256 512L544 512C561.7 512 576 497.7 576 480C576 462.3 561.7 448 544 448L256 448zM80 296L80 344C80 357.3 90.7 368 104 368L152 368C165.3 368 176 357.3 176 344L176 296C176 282.7 165.3 272 152 272L104 272C90.7 272 80 282.7 80 296zM104 432C90.7 432 80 442.7 80 456L80 504C80 517.3 90.7 528 104 528L152 528C165.3 528 176 517.3 176 504L176 456C176 442.7 165.3 432 152 432L104 432z"/></svg>
+                </button>
 
-
-
-    <!-- Upcoming Events View -->
-    {#if eventsDisplayMode === 'events'}
-
-        <div class="calendarViewWrapper">
-            <div class="filterRow">
-                <div class="viewButtons">
-                    <button class="round-bttn" class:highlighted-bttn={eventView === 'list'} on:click={() => { eventView = 'list' }}>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="14" width="14" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path fill="rgb(255, 255, 255)" d="M104 112C90.7 112 80 122.7 80 136L80 184C80 197.3 90.7 208 104 208L152 208C165.3 208 176 197.3 176 184L176 136C176 122.7 165.3 112 152 112L104 112zM256 128C238.3 128 224 142.3 224 160C224 177.7 238.3 192 256 192L544 192C561.7 192 576 177.7 576 160C576 142.3 561.7 128 544 128L256 128zM256 288C238.3 288 224 302.3 224 320C224 337.7 238.3 352 256 352L544 352C561.7 352 576 337.7 576 320C576 302.3 561.7 288 544 288L256 288zM256 448C238.3 448 224 462.3 224 480C224 497.7 238.3 512 256 512L544 512C561.7 512 576 497.7 576 480C576 462.3 561.7 448 544 448L256 448zM80 296L80 344C80 357.3 90.7 368 104 368L152 368C165.3 368 176 357.3 176 344L176 296C176 282.7 165.3 272 152 272L104 272C90.7 272 80 282.7 80 296zM104 432C90.7 432 80 442.7 80 456L80 504C80 517.3 90.7 528 104 528L152 528C165.3 528 176 517.3 176 504L176 456C176 442.7 165.3 432 152 432L104 432z"/></svg>
-                    </button>
-
-                    <button class="round-bttn" class:highlighted-bttn={eventView === 'calendar'} on:click={() => { eventView = 'calendar' }}>
-                        <span>📅</span>
-                    </button>
-                </div>
-
-                <div class="filterButtons">
-                    <button
-                            class="filterBtn {filterMode === 'connectbern' ? 'active' : ''}"
-                            on:click={() => filterMode = 'connectbern'}
-                    >
-                        🏠 {t[lang].filterConnectBern}
-                    </button>
-                    <button
-                            class="filterBtn {filterMode === 'all' ? 'active' : ''}"
-                            on:click={() => filterMode = 'all'}
-                    >
-                        {t[lang].filterAll}
-                    </button>
-                </div>
-
+                <button class="round-bttn" class:highlighted-bttn={eventView === 'calendar'} on:click={() => { eventView = 'calendar' }}>
+                    <span>📅</span>
+                </button>
             </div>
 
-            {#if filterMode === 'all'}
-                <div class="disclaimerWrapper">
-                    <button class="disclaimerToggle" on:click={() => showDisclaimer = !showDisclaimer}>
-                        <span class="toggleText">{t[lang].disclaimerToggle}</span>
-                        <span class="toggleIcon">{showDisclaimer ? '▼' : '▶'}</span>
-                    </button>
-                    <div class="disclaimer" class:expanded={showDisclaimer}>
-                        {@html t[lang].disclaimer}
-                    </div>
-                </div>
-            {/if}
+            <div class="filterButtons">
+                <button
+                        class="filterBtn {filterMode === 'connectbern' ? 'active' : ''}"
+                        on:click={() => filterMode = 'connectbern'}
+                >
+                    🏠 {t[lang].filterConnectBern}
+                </button>
+                <button
+                        class="filterBtn {filterMode === 'all' ? 'active' : ''}"
+                        on:click={() => filterMode = 'all'}
+                >
+                    {t[lang].filterAll}
+                </button>
+            </div>
 
-            {#if eventView === 'list'}
-                <EventList events={presentEvents(filteredEvents(EVENT_DATA, filterMode))}></EventList>
-            {:else}
-                <EventCalendar events={filteredEvents(ALL_EVENT_DATA, filterMode)}></EventCalendar>
-            {/if}
         </div>
-    {:else}
-        <EventResourcesBanner></EventResourcesBanner>
-    {/if}
+
+        {#if eventView === 'list'}
+            <EventList events={presentEvents(filteredEvents(EVENT_DATA, filterMode))}></EventList>
+        {:else}
+            <EventCalendar events={filteredEvents(ALL_EVENT_DATA, filterMode)}></EventCalendar>
+        {/if}
+    </div>
+
+    <AppBanner></AppBanner>
+    <EventResourcesBanner></EventResourcesBanner>
+
 </section>
 
 <style>
@@ -312,90 +272,6 @@
         max-width: 500px;
     }
 
-    /* Filter Bar Style */
-    .filterBar {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 1em;
-        padding: 1em 1.5em;
-        background: rgba(0, 0, 0, 0.25);
-        border-radius: 1em;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        flex-wrap: nowrap;
-        flex-shrink: 0;
-        margin-right: auto;
-    }
-
-    .filterOptions {
-        display: flex;
-        gap: 0.6em;
-        flex-wrap: nowrap;
-    }
-
-    .filterChip {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5em;
-        padding: 0.6em 1em;
-        border: 2px solid rgba(255, 255, 255, 0.15);
-        background: rgba(255, 255, 255, 0.05);
-        color: rgba(255, 255, 255, 0.75);
-        border-radius: 2em;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-size: 0.85em;
-        font-weight: 500;
-        white-space: nowrap;
-        position: relative;
-    }
-
-    .filterChip:hover:not(.active) {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.3);
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .filterChip.active {
-        background: linear-gradient(135deg,
-            rgba(108, 72, 167, 0.9),
-            rgba(58, 152, 189, 0.9)
-        );
-        border-color: rgba(108, 72, 167, 0.8);
-        color: white;
-        font-weight: 700;
-        box-shadow:
-            0 6px 20px rgba(108, 72, 167, 0.5),
-            0 0 0 3px rgba(108, 72, 167, 0.15);
-        transform: scale(1.05);
-    }
-
-    .filterChip.active::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: 2em;
-        padding: 2px;
-        background: linear-gradient(135deg,
-            rgba(255, 255, 255, 0.4),
-            transparent
-        );
-        opacity: 0.5;
-    }
-
-    .chipIcon {
-        font-size: 1.1em;
-        line-height: 1;
-    }
-
-    .chipText {
-        font-size: 0.95em;
-        line-height: 1;
-    }
-
-
     /*  Calendar View Styles */
     .calendarViewWrapper {
         margin-top: 0;
@@ -454,43 +330,6 @@
         box-shadow: 0 5px 20px rgba(108, 72, 167, 0.4);
     }
 
-    .disclaimerWrapper {
-        margin-top: 1.5em;
-        margin-bottom: 2em;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    /* Hide toggle button on desktop */
-    .disclaimerToggle {
-        display: none;
-    }
-
-    .toggleIcon {
-        font-size: 0.8em;
-        transition: transform 0.2s ease;
-    }
-
-    /* Always show disclaimer on desktop */
-    .disclaimer {
-        padding: 0.7em 0.9em;
-        background: rgba(255, 180, 0, 0.1);
-        border: 1px solid rgba(255, 180, 0, 0.3);
-        border-radius: 0.6em;
-        font-size: 0.7em;
-        line-height: 1.4;
-        text-align: left;
-        opacity: 0.9;
-        margin-bottom: 1.5em;
-    }
-
-    .disclaimer :global(strong) {
-        color: rgb(255, 200, 100);
-        margin-right: 0.5em;
-    }
-
-
     /* Responsive */
     @media (max-width: 768px) {
         section {
@@ -506,13 +345,6 @@
             flex-wrap: wrap;
             gap: 1em;
             padding: 0 0.5em;
-        }
-
-        .filterBar {
-            order: 3;
-            width: 100%;
-            max-width: 100%;
-            flex-basis: 100%;
         }
 
         .titleSection {
@@ -543,13 +375,6 @@
             font-size: 1.05em;
         }
 
-        .filterBar {
-            gap: 0.6em;
-            padding: 0.7em 0.6em;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
         .viewButtons {
             display: None;
         }
@@ -560,33 +385,6 @@
             gap: 0.6em;
         }
 
-
-        .filterOptions {
-            gap: 0.4em;
-            width: 100%;
-            justify-content: center;
-        }
-
-        .filterChip {
-            padding: 0.5em 0.8em;
-            font-size: 0.7em;
-            flex: 1;
-            min-width: 0;
-            justify-content: center;
-        }
-
-        .filterChip.active {
-            transform: scale(1);
-        }
-
-        .chipText {
-            font-size: 0.85em;
-        }
-
-        .chipIcon {
-            font-size: 1em;
-        }
-
         .filterBtn {
             width: 100%;
             max-width: 100%;
@@ -594,78 +392,8 @@
             padding: 0.7em 1em;
         }
 
-        /* Show toggle button on mobile */
-        .disclaimerToggle {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 0.4em;
-            width: auto;
-            max-width: max-content;
-            padding: 0.4em 0.7em;
-            background: rgba(255, 180, 0, 0.15);
-            border: 1px solid rgba(255, 180, 0, 0.4);
-            border-radius: 0.5em;
-            font-size: 0.6em;
-            font-weight: 600;
-            color: rgb(255, 200, 100);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: left;
-        }
-
-        .toggleText {
-            flex: 1;
-            white-space: nowrap;
-            line-height: 1.2;
-        }
-
-        .toggleIcon {
-            flex-shrink: 0;
-            margin-top: 0.05em;
-            font-size: 0.9em;
-        }
-
-        .disclaimerToggle:hover {
-            background: rgba(255, 180, 0, 0.2);
-            border-color: rgba(255, 180, 0, 0.5);
-        }
-
-        /* When expanded, make button wider */
-        .disclaimer.expanded ~ .disclaimerToggle,
-        .disclaimerWrapper:has(.disclaimer.expanded) .disclaimerToggle {
-            width: 100%;
-            max-width: 100%;
-        }
-
-        .disclaimerWrapper:has(.disclaimer.expanded) .toggleText {
-            white-space: normal;
-            word-wrap: break-word;
-        }
-
-        /* Collapsible on mobile */
-        .disclaimer {
-            font-size: 0.6em;
-            padding: 0.6em 0.7em;
-            display: none;
-            margin-top: 0.5em;
-            margin-bottom: 1.5em;
-        }
-
-        .disclaimer.expanded {
-            display: block;
-        }
-
         .filterButtons {
             margin-bottom: 1em;
-        }
-
-        .chipIcon {
-            font-size: 1.1em;
-        }
-
-        .chipText {
-            font-size: 0.95em;
         }
     }
 </style>
