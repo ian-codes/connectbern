@@ -3,7 +3,8 @@
     import { t } from "$lib/locales/translations.js";
     import { currentLanguage } from '$lib/stores/languageStore';
     import { MenuData, StackedMenuData } from "$lib/models/MenuData.js";
-        $: language = $currentLanguage;
+    import AppBanner from "$lib/components/banner/AppBanner.svelte";
+    $: language = $currentLanguage;
 </script>
 
 <section class="landing">
@@ -43,6 +44,7 @@
         </div>
     </div>
 </section>
+
 
 <section class="vibe-section">
     <p class="vibe-question">{language === 'de' ? 'Fragst du dich, ob du hierher gehörst?' : 'Are you wondering if you belong here?'}</p>
@@ -130,7 +132,11 @@
             </div>
         </div>
     </div>
+
 </section>
+
+<AppBanner></AppBanner>
+
 
 <style>
     .landing {
