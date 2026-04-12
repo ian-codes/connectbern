@@ -6,6 +6,9 @@
     import { t } from "$lib/locales/translations.js";
     import { currentLanguage } from '$lib/stores/languageStore';
     import { getContext, onMount } from 'svelte';
+    import BernMap from "$lib/components/map/BernMap.svelte";
+    import { TOP_5_PLACES } from "$lib/data/places.data.js";
+
 
     let scrollToContent;
     try {
@@ -22,69 +25,7 @@
     });
 
     $: lang = $currentLanguage;
-
-    const places = [
-        {
-            name: "Berner Generationenhaus",
-            mapUrl: "https://maps.app.goo.gl/w1YDLT3DYaBVSfMw6",
-            website: "https://www.begh.ch/",
-            icon: "🏠",
-            description: {
-                en: "A place where you can just sit down without ordering anything. Bring your friends and study together! They organize lots of events. Very central, right next to the Central Station. A cozy government-organized space focused on bringing people together.",
-                de: "Ein Ort, wo du einfach sitzen kannst, ohne etwas zu bestellen. Bring deine Freunde mit und lernt zusammen! Sie organisieren viele Events. Sehr zentral, direkt beim Hauptbahnhof. Ein gemütlicher, vom Staat organisierter Raum, der Menschen zusammenbringt."
-            }
-        },
-        {
-            name: "Erupt",
-            mapUrl: "https://maps.app.goo.gl/vLi6xDad6EdhPdF57",
-            website: "http://erupt.ch/",
-            icon: "🎮",
-            description: {
-                en: "A gaming bar that's very social with lots of social events. Open to people meeting each other, running not for money but to be a social place. Main focus on gaming but everyone is welcome, even if you're not into gaming!",
-                de: "Eine Gaming-Bar, die sehr sozial ist mit vielen sozialen Events. Offen für Menschen, die sich treffen möchten, läuft nicht für Geld, sondern um ein sozialer Ort zu sein. Hauptfokus auf Gaming, aber alle sind willkommen, auch wenn du nicht auf Gaming stehst!"
-            }
-        },
-        {
-            name: "Heitere Fahne",
-            mapUrl: "https://maps.app.goo.gl/JSP5R3n5Ume8qtLq8",
-            website: "https://www.dieheiterefahne.ch/",
-            icon: "🎪",
-            description: {
-                en: "A place with a very strong left-wing orientation. Very social and accepting of everyone with lovely people. They have lots of events with a focus on being socially active in a left-wing sense.",
-                de: "Ein Ort mit sehr starker linker Orientierung. Sehr sozial und offen für alle mit lieben Menschen. Sie haben viele Events mit Fokus darauf, sozial aktiv zu sein im linken Sinne."
-            }
-        },
-        {
-            name: "Reitschule",
-            mapUrl: "https://maps.app.goo.gl/JSP5R3n5Ume8qtLq8",
-            website: "https://reitschule.ch/",
-            icon: "🏛️",
-            description: {
-                en: "A place with a very strong left-wing orientation. Very social and accepting of everyone with lovely people. They have lots of events with a focus on being socially active in a left-wing sense.",
-                de: "Ein Ort mit sehr starker linker Orientierung. Sehr sozial und offen für alle mit lieben Menschen. Sie haben viele Events mit Fokus darauf, sozial aktiv zu sein im linken Sinne."
-            }
-        },
-        {
-            name: "PROGR Turnhalle",
-            mapUrl: "https://maps.app.goo.gl/vgBkbAwSi9X1Rz717",
-            website: "https://www.progr.ch/",
-            icon: "🏢",
-            description: {
-                en: "A very left-wing place with a focus on concerts and cultural events. Especially dedicated to art and music concerts.",
-                de: "Ein sehr linker Ort mit Fokus auf Konzerte und kulturelle Events. Besonders gewidmet Kunst und Musikkonzerten."
-            }
-        },
-        {
-            name: "English Club of Bern",
-            mapUrl: "https://maps.app.goo.gl/KjFE3FX8mrqHDSQy5",
-            website: "http://englishclub.ch/",
-            icon: "🗣️",
-            description: {
-                en: "A very cool place to speak English and meet English-speaking people or others who came to practice English and meet people. Very international with a strong focus on connecting people. Public opening hours on Friday and Saturday, but they're very open to connecting outside those hours too!",
-                de: "Ein sehr cooler Ort, um Englisch zu sprechen und englischsprachige Menschen oder andere zu treffen, die gekommen sind, um Englisch zu üben und Leute zu treffen. Sehr international mit starkem Fokus auf Menschen zu verbinden. Öffentliche Öffnungszeiten Freitag und Samstag, aber sie sind sehr offen dafür, auch außerhalb dieser Zeiten Menschen zu verbinden!"
-            }
-        }
-    ];
+    const places = TOP_5_PLACES;
 </script>
 
 <section>
@@ -95,19 +36,23 @@
         </p>
     </div>
 
+    <BernMap></BernMap>
+
     <div class="placesGrid">
         {#each places as place}
             <div class="placeCard">
                 <div class="placeIcon">{place.icon}</div>
                 <div class="placeContent">
-                    <h3>{place.name}</h3>
-                    <p class="placeDescription">{place.description[lang]}</p>
+                    <div>
+                        <h3>{place.name}</h3>
+                        <p class="placeDescription">{place.description[lang]}</p>
+                    </div>
                     <div class="placeLinks">
                         <a href={place.website} class="placeLink websiteLink" target="_blank" rel="noopener noreferrer">
-                            🌐 Website →
+                            🌐 {t[lang]['places-website']} →
                         </a>
                         <a href={place.mapUrl} class="placeLink mapLink" target="_blank" rel="noopener noreferrer">
-                            📍 Map →
+                            📍 {t[lang]['places-map']} →
                         </a>
                     </div>
                 </div>
@@ -115,6 +60,8 @@
         {/each}
     </div>
 </section>
+
+
 
 <style>
     section {
@@ -186,10 +133,12 @@
         flex-direction: column;
         gap: 1em;
         align-items: center;
+        justify-content: space-between;
         width: 100%;
+        height: 100%;
     }
 
-    .placeContent h3 {
+    h3 {
         font-size: 1.4em;
         font-weight: bold;
         margin: 0;
@@ -203,6 +152,7 @@
     }
 
     .placeLinks {
+        width: 100%;
         display: flex;
         gap: 0.8em;
         margin-top: 0.5em;

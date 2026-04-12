@@ -1,5 +1,5 @@
 // [slug]/join/+page.js
-import { GroupsData } from "$lib/models/GroupsData";
+import { GroupsData } from "$lib/data/GroupsData";
 import { redirect } from "@sveltejs/kit";
 
 export const prerender = false;

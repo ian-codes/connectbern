@@ -1,5 +1,5 @@
 <script>
-    import { MenuData } from "$lib/models/MenuData.js";
+    import { MenuData } from "$lib/data/MenuData.js";
     import { currentLanguage } from "$lib/stores/languageStore.js";
     import LanguageToggler from "$lib/components/global/LanguageToggler.svelte";
 

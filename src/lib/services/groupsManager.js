@@ -1,4 +1,4 @@
-import { GroupsData } from "$lib/models/GroupsData.js";
+import { GroupsData } from "$lib/data/GroupsData.js";
 
 export function searchGroups(searchTerm, language) {
     let results = []
