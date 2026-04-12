@@ -1,4 +1,4 @@
-import { GroupsData } from "$lib/models/GroupsData";
+import { GroupsData } from "$lib/data/GroupsData";
 import { goto } from "$app/navigation";
 
 export function load({ params }) {

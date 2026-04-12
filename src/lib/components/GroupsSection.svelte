@@ -1,6 +1,6 @@
 <script>
-    import { GroupsData } from "$lib/models/GroupsData.js";
-    import { searchGroups, filterByGroupType } from "$lib/services/groupsManager.js";
+    import { GroupsData } from "$lib/data/GroupsData.js";
+    import { filterByGroupType } from "$lib/services/groupsManager.js";
     import { currentLanguage } from '$lib/stores/languageStore';
     import GroupCard from "$lib/components/GroupCard.svelte";
     import { t } from "$lib/locales/translations.js";

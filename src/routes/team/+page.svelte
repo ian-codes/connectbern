@@ -1,7 +1,7 @@
 <script>
     import { currentLanguage } from "$lib/stores/languageStore";
     import { t } from "$lib/locales/translations.js";
-    import { TeamData } from "$lib/models/TeamData.js";
+    import { TeamData } from "$lib/data/TeamData.js";
 
     $: lang = $currentLanguage;
 </script>
