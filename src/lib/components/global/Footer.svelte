@@ -175,6 +175,11 @@
 
     .contact-item svg {
         flex-shrink: 0;
+        display: block;
+    }
+
+    .contact-item span {
+        line-height: 1;
     }
 
     .contact-item.whatsapp {
