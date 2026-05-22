@@ -47,6 +47,15 @@ export const TOP_5_PLACES = [
         description: {
             en: "A very left-wing place with a focus on concerts and cultural events. Especially dedicated to art and music concerts.",
             de: "Ein sehr linker Ort mit Fokus auf Konzerte und kulturelle Events. Besonders gewidmet Kunst und Musikkonzerten."
+        }    },
+    {
+        name: "Caffè Bar Sempre Berna",
+        mapUrl: "https://www.google.com/maps/search/?api=1&query=Caff%C3%A8+Bar+Sempre+Berna+Bern",
+        website: "",
+        icon: "☕",
+        description: {
+            en: "A relaxed Italian-style café in Bern, often used as a meet-up spot before community events. Cozy, social, and good for a low-pressure first hangout.",
+            de: "Ein entspanntes italienisches Café in Bern, das oft als Treffpunkt vor Community-Events dient. Gemütlich, sozial und gut für ein lockeres erstes Kennenlernen."
         }
     }
 ];
