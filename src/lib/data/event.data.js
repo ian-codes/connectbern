@@ -457,6 +457,19 @@ const FUTURE_EVENTS = [
         link: '/events/easter-potluck',
         organizer: 'connectbern'
     },
+    {
+        title: { de: 'Speed Friending #3', en: 'Speed Friending #3' },
+        date: new Date(2026, 4, 29, 19, 0),
+        time: '19:00',
+        description: {
+            de: 'Runde drei, diesmal gratis im Rahmen vom Tag der Nachbarschaft. Echte Gespräche statt Small Talk, wir matchen dich nach deinen Interessen. ⚡🤝',
+            en: 'Round three, free this time as part of Tag der Nachbarschaft. Real conversations instead of small talk, we match you based on your interests. ⚡🤝'
+        },
+        link: '/events/speed-friending-3',
+        recurring: false,
+        organizer: 'connectbern',
+        featured: true
+    },
 ]
 
 
