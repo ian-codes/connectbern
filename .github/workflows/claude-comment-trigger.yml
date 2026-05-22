@@ -1,0 +1,42 @@
+# Light-touch trigger: when a new issue is opened or a comment is added,
+# remove the `claude:wip` label so the next scheduled run of the daily bot
+# will re-pick the issue (with the new comment as context).
+#
+# This keeps the user's preference: don't act on each comment immediately,
+# just queue it for the next daily run.
+
+name: Claude Comment Re-queue
+
+on:
+  issues:
+    types: [opened, edited, reopened]
+  issue_comment:
+    types: [created, edited]
+
+permissions:
+  issues: write
+
+jobs:
+  unwip:
+    if: github.event.issue && !github.event.issue.pull_request
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const number = context.payload.issue.number;
+            try {
+              await github.rest.issues.removeLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: number,
+                name: 'claude:wip',
+              });
+              core.info(`Re-queued issue #${number} for the next Claude bot run.`);
+            } catch (e) {
+              if (e.status === 404) {
+                core.info(`Issue #${number} had no claude:wip label; nothing to do.`);
+              } else {
+                throw e;
+              }
+            }

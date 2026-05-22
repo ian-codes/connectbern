@@ -11,3 +11,5 @@ vite.config.ts.timestamp-*
 contact-submissions
 .idea
 /package-lock.json
+.vercel
+.env*
