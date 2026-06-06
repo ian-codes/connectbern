@@ -163,8 +163,10 @@ export const t = {
         "footer.contact-us": "Kontaktiere uns",
         "footer.follow-us": "Folge uns",
         "team-title": "Unser Team",
-        "team-p1": "Lerne das Team hinter Connect Bern kennen! Wir sind eine Gruppe leidenschaftlicher Freiwilliger, die sich dafür einsetzen, Menschen dabei zu helfen, ihre Gemeinschaft in und um die Stadt Bern zu entdecken und sich zu vernetzen.",
-        "team-p2": "Weitere Details zu unseren Mitgliedern werden hier in Kürze hinzugefügt."
+        "team-p1": "Lerne einige der Menschen hinter Connect Bern kennen! Dies ist eine erste Version – es gibt viele weitere Entwickler, Freiwillige und Mitwirkende, die zum Aufbau dieser Website und des Projekts in vielen verschiedenen Bereichen beigetragen haben. Wir sind euch allen dankbar!",
+        "team-p2": "Weitere Details zu unseren Mitgliedern werden hier in Kürze hinzugefügt.",
+        "team-alumni-title": "Core Team Alumni",
+        "team-alumni-text": "Connect Bern wäre nicht das, was es ist, ohne die frühen Mitgründer, die sein Fundament gelegt haben. Ian hat das Grundgerüst dieser Website mit Svelte aufgebaut, das Kerndesign geprägt, die visuelle Identität der Website definiert und unsere Entwicklungs-Pipeline sowie unsere Open-Source-Identität etabliert. Reto war von Anfang an dabei und hat sich den Namen ausgedacht; er half, die erste Version der Website zu gestalten und setzte sich besonders dafür ein, die Website auf Deutsch und Englisch zu halten, damit Einheimische und Deutschsprachige nicht in der Masse der Internationalen untergehen. Sie sind eine zentrale Kernzielgruppe für uns. Frank hat die Identität des Projekts in der Praxis zum Leben erweckt: Er hat unsere WhatsApp-Community gegründet, die Gruppenprofilbilder gestaltet, unser Logo entworfen, viele Social-Media-Aspekte gepflegt und neue Eventreihen gestartet wie den Language Exchange de Berna, die heute fester Bestandteil unserer Identität sind. Frank war Mitte 2025 dabei, in der entscheidenden Phase, als die Community wuchs und sich festigte."
     },
     en: {
         "search-groups": "Search groups...",
@@ -330,7 +332,9 @@ export const t = {
         "footer.contact-us": "Contact us",
         "footer.follow-us": "Follow us",
         "team-title": "Meet our Team",
-        "team-p1": "Meet the team behind Connect Bern! We are a group of passionate volunteers dedicated to helping people discover and connect with their community in and around the city of Bern.",
-        "team-p2": "More details about our members will be added here soon."
+        "team-p1": "Meet some of the people behind Connect Bern! This is a first version – there are many more developers, volunteers, and contributors who helped build this website and the project across many different areas. We are grateful to all of you!",
+        "team-p2": "More details about our members will be added here soon.",
+        "team-alumni-title": "Core Team Alumni",
+        "team-alumni-text": "Connect Bern wouldn't be what it is without the early co-founders who built its foundation. Ian built the backbone of this website using Svelte, shaping the core design, defining the site's visual identity, and establishing our development pipeline and open source identity. Reto was there from the very beginning and came up with the name, helping shape the first version of the website. He was especially committed to keeping the site in both German and English, making sure that locals and German speakers wouldn't disappear into the crowd of internationals. They are a core target group for us. Frank helped bring the project's identity to life on the ground: he created our WhatsApp community and its group profile pictures, designed our logo, drove our social media presence, and started new event series like the Language Exchange de Berna that are now a regular part of our identity. Frank was with us in mid-2025, during the crucial period when the community grew and became more established."
     }
 }

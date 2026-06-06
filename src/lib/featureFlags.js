@@ -1,3 +1,3 @@
 export const featureFlags = {
-    teamPage: false
+    teamPage: true
 };

@@ -14,7 +14,8 @@
       "Bash(powershell -command \"Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.Clipboard]::GetImage\\(\\).Save\\('C:\\\\Users\\\\chaga\\\\Documents\\\\connectbern\\\\static\\\\groups\\\\hang-out.jpg'\\)\")",
       "Bash(grep -n \"desc\\\\|html\\\\|white-space\\\\|pre\" src/routes/groups/[slug]/+page.svelte)",
       "Bash(grep -n \"whatsapp.btn\\\\|\\\\.join\\\\b\\\\|join {\" src/routes/groups/[slug]/+page.svelte)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "PowerShell(git clone *)"
     ]
   }
 }
