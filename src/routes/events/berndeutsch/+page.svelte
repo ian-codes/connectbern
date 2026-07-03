@@ -1,12 +1,12 @@
 <svelte:head>
 	<title>Berndeutsch Konversationsgruppe • Events • Connect Bern</title>
-	<meta name="description" content="Every Friday evening – relaxed Swiss German practice. Part of the Connect Bern community project." />
+	<meta name="description" content="Every Saturday evening – relaxed Swiss German practice. Part of the Connect Bern community project." />
 
 	<!-- Open Graph -->
 	<meta property="og:url" content="https://connectbern.ch/events/berndeutsch" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="Berndeutsch Konversationsgruppe • Connect Bern" />
-	<meta property="og:description" content="Every Friday evening – relaxed Swiss German practice. Part of the Connect Bern community project." />
+	<meta property="og:description" content="Every Saturday evening – relaxed Swiss German practice. Part of the Connect Bern community project." />
 	<meta property="og:image" content="https://connectbern.ch/images/swiss-german-event.avif" />
 
 	<!-- Twitter -->
@@ -14,7 +14,7 @@
 	<meta property="twitter:domain" content="connectbern.ch" />
 	<meta property="twitter:url" content="https://connectbern.ch/events/berndeutsch" />
 	<meta name="twitter:title" content="Berndeutsch Konversationsgruppe • Connect Bern" />
-	<meta name="twitter:description" content="Every Friday evening – relaxed Swiss German practice. Part of the Connect Bern community project." />
+	<meta name="twitter:description" content="Every Saturday evening – relaxed Swiss German practice. Part of the Connect Bern community project." />
 	<meta name="twitter:image" content="https://connectbern.ch/images/swiss-german-event.avif" />
 </svelte:head>
 
@@ -39,7 +39,7 @@
             alternativeContact: "SMS oder Anruf geht aber auch:",
             phone: "+41783166727",
             whatsappMessage: "Hi, ich würde gerne zur Berndeutsch Konversationsgruppe kommen!",
-            time: "⏰ Jeden Freitag um 18:00 Uhr",
+            time: "⏰ Jeden Samstag ab 18:00 Uhr",
             closing: "Mir freue üs druuf, mit öich zäme Berndütsch z'üebe!",
             registerTitle: "📢 Lass uns mehr Leute erreichen!",
             registerDesc: "Wir haben das Event auf diesen Plattformen registriert. Wenn du ein Konto hast, registriere dich auch dort – der Algorithmus mag es, wenn etwas passiert, und es hilft uns, mehr Menschen zu erreichen! 🚀",
@@ -58,7 +58,7 @@
             alternativeContact: "SMS or call works too though:",
             phone: "+41783166727",
             whatsappMessage: "Hi, I would like to join the Berndeutsch conversation group!",
-            time: "⏰ Every Friday at 6:00 PM",
+            time: "⏰ Every Saturday from 6:00 PM",
             closing: "Looking forward to practicing Berndeutsch with you!",
             registerTitle: "📢 Let's reach more people!",
             registerDesc: "We've registered the event on these platforms. If you have an account, please also register there – the algorithm likes it when something is happening, and it helps us reach more people! 🚀",
