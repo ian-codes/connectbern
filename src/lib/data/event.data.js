@@ -279,9 +279,9 @@ const RECURRING_EVENTS = [
     },
     {
         title: { de: 'Berndeutsch Konversationsgruppe', en: 'Berndeutsch Conversation Group' },
-        date: getNextWeekday(5),
+        date: getNextWeekday(6),
         recurring: 'weekly',
-        time: '19:00',
+        time: '18:00',
         description: {
             de: 'Mir träffe üs am Abe zum gmüetlech Mundart mitanang rede. Mir tüe gärn Schwizerdütsch üebe. 🇨🇭💬',
             en: 'We meet in the evening to practice Swiss German dialect together in a relaxed atmosphere. 🇨🇭💬'
