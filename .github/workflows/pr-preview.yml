@@ -1,0 +1,93 @@
+name: PR Preview (GitHub Pages subpath)
+
+# Builds each PR with a /pr-<NUM> base path and pushes the build into
+# /pr-<NUM>/ on the existing gh-pages branch. Result: previews show up at
+# https://connectbern.ch/pr-<NUM>/ within a minute or two of pushing to the PR.
+# Closing the PR removes the subfolder.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+concurrency:
+  group: pr-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  deploy-preview:
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    env:
+      PR: ${{ github.event.pull_request.number }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install
+        run: npm install
+
+      - name: Build with /pr-${{ env.PR }} base
+        env:
+          BASE_PATH: /pr-${{ env.PR }}
+        run: npm run build
+
+      # The CNAME at static/CNAME would otherwise overwrite the production
+      # CNAME on every preview push. Subfolders don't need it.
+      - name: Drop CNAME from preview output
+        run: rm -f build/CNAME
+
+      - name: Deploy preview to gh-pages /pr-${{ env.PR }}/
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          publish_branch: gh-pages
+          destination_dir: pr-${{ env.PR }}
+          keep_files: true
+          commit_message: "preview: PR #${{ env.PR }} (${{ github.event.pull_request.head.sha }})"
+
+      - name: Comment preview URL on PR
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: pr-preview
+          message: |
+            🚀 **Preview**: https://connectbern.ch/pr-${{ env.PR }}/
+
+            (rebuilds on every push; updated for commit `${{ github.event.pull_request.head.sha }}`)
+
+  cleanup-preview:
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    env:
+      PR: ${{ github.event.pull_request.number }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+
+      - name: Remove pr-${{ env.PR }} folder
+        run: |
+          if [ -d "pr-$PR" ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git rm -rf "pr-$PR"
+            git commit -m "preview: clean up PR #$PR"
+            git push origin gh-pages
+          else
+            echo "No pr-$PR folder to clean up; skipping."
+          fi
+
+      - name: Remove preview comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: pr-preview
+          delete: true
