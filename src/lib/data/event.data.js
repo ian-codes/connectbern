@@ -293,7 +293,7 @@ const RECURRING_EVENTS = [
         title: { de: 'Connect & Cheers', en: 'Connect & Cheers' },
         date: getNextWeekday(5),
         recurring: 'weekly',
-        time: '19:00',
+        time: '20:00',
         description: {
             de: 'Jeden Freitagabend in der PROGR Turnhalle – entspannter Treff zum Anstoßen, Austauschen und neue Leute kennenlernen. Teil des Community-Projekts Connect Bern.',
             en: 'Every Friday evening at PROGR Turnhalle – relaxed drinks, chats and connections. Part of the Connect Bern community project.'
